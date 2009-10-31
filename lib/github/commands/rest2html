@@ -1,0 +1,48 @@
+#!/usr/bin/env python
+
+"""A small wrapper file for parsing ReST files at GitHub."""
+
+__author__ = "Jannis Leidel"
+__copyright__ = "Copyright (C) 2008 Jannis Leidel"
+__license__ = "Public Domain"
+__version__ = "0.1"
+
+try:
+    import locale
+    locale.setlocale(locale.LC_ALL, '')
+except:
+    pass
+
+import sys
+from docutils.core import publish_parts
+from docutils.writers.html4css1 import Writer
+
+SETTINGS = {
+    'cloak_email_addresses': True,
+    'file_insertion_enabled': False,
+    'raw_enabled': False,
+    'strip_comments': True,
+}
+
+def main():
+    """
+    Parses the given ReST file or the redirected string input and returns the
+    HTML body.
+
+    Usage: rest2html < README.rst
+           rest2html README.rst
+    """
+    try:
+        text = open(sys.argv[1], 'r').read()
+    except IOError: # given filename could not be found
+        return ''
+    except IndexError: # no filename given
+        text = sys.stdin.read()
+
+    parts = publish_parts(text, writer=Writer(), settings_overrides=SETTINGS)
+    if 'html_body' in parts:
+        return parts['html_body']
+    return ''
+
+if __name__ == '__main__':
+    print main()

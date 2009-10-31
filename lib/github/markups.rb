@@ -6,7 +6,4 @@ markup(:redcloth, /textile/) do |content|
   RedCloth.new(content).to_html
 end
 
-markup('github/markup/rest', /rest|rst/) do |content|
-  GitHub::Markup::ReST.translate(content)
-end
-
+command(:rest2html, /rest|rst/)

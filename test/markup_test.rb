@@ -47,9 +47,11 @@ output
 
 2. More ``code``, hooray
 input
-<ul>
-\t<li>One</li>
-\t<li>Two</li>
-</ul>
+<div class="document">
+<ol class="arabic simple">
+<li>Blah blah <tt class="docutils literal">code</tt> blah</li>
+<li>More <tt class="docutils literal">code</tt>, hooray</li>
+</ol>
+</div>\n
 output
 end
