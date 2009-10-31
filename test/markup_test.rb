@@ -24,4 +24,10 @@ markdown
 </ul>
 textile
   end
+
+  def test_graceful_fail
+    content = "* One\n* Two"
+    text = GitHub::Markup.render('README.imadeitup', content)
+    assert_equal content, text
+  end
 end

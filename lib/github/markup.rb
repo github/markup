@@ -20,7 +20,7 @@ module GitHub
     end
 
     def render(filename, content)
-      renderer(filename)[content]
+      renderer(filename)[content] || content
     end
   end
 end
