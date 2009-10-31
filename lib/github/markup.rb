@@ -38,7 +38,7 @@ module GitHub
 
     def renderer(filename)
       @@markups.each do |key, value|
-        if Regexp.compile("#{key}$") =~ filename
+        if Regexp.compile("(#{key})$") =~ filename
           return value
         end
       end
