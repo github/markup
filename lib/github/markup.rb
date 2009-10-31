@@ -1,13 +1,34 @@
+begin
+  require 'open3_detach'
+rescue LoadError
+  require 'open3'
+end
+
 module GitHub
   module Markup
     extend self
     @@markups = {}
+
+    def render(filename, content)
+      renderer(filename)[content] || content
+    end
 
     def markup(file, pattern, &block)
       require file.to_s
       add_markup(pattern, &block)
     rescue LoadError
       nil
+    end
+
+    def command(command, regexp)
+      command = command.to_s
+      if !File.exists?(command) && !command.include?('/')
+        command = File.dirname(__FILE__) + '/commands/' + command.to_s
+      end
+
+      add_markup(regexp) do |content|
+        execute(command, content)
+      end
     end
 
     def add_markup(regexp, &block)
@@ -22,8 +43,16 @@ module GitHub
       end
     end
 
-    def render(filename, content)
-      renderer(filename)[content] || content
+    def execute(command, target)
+      out = ''
+      Open3.popen3(command) do |stdin, stdout, _|
+        stdin.puts target
+        stdin.close
+        while tmp = stdout.read(1024)
+          out << tmp
+        end
+      end
+      out
     end
 
     # Define markups
