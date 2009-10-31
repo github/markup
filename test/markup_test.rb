@@ -42,6 +42,16 @@ input
 * Two
 output
 
+  test 'README.rdoc', <<-input, <<-output
+* One
+* Two
+input
+<ul>
+<li>One\n\n</li>
+<li>Two\n\n</li>
+</ul>
+output
+
   test 'README.rst', <<-input, <<-output
 1. Blah blah ``code`` blah
 
