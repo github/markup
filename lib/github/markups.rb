@@ -11,3 +11,5 @@ markup('github/markup/rdoc', /rdoc/) do |content|
 end
 
 command(:rest2html, /rest|rst/)
+
+command(:asciidoc2html, /asciidoc/)

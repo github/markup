@@ -52,6 +52,24 @@ input
 </ul>
 output
 
+  test 'README.asciidoc', <<-input, <<-output
+* One
+* Two
+input
+<div class="ulist"><ul>\r
+<li>\r
+<p>\r
+One\r
+</p>\r
+</li>\r
+<li>\r
+<p>\r
+Two\r
+</p>\r
+</li>\r
+</ul></div>\r\n
+output
+
   test 'README.rst', <<-input, <<-output
 1. Blah blah ``code`` blah
 

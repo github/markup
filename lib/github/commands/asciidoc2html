@@ -1,0 +1,119 @@
+#!/usr/bin/env python
+
+"""A small wrapper file for parsing AsciiDoc files at Github."""
+
+__author__ = "Devin Weaver" 
+__copyright__ = "Copyright (C) 2009 Devin Weaver" 
+__license__ = "Public Domain" 
+__version__ = "0.1" 
+
+"""
+github_asciidoc.py
+------------------
+
+This is a wrapper file for parsing AsciiDoc files at github. It wraps the
+current AsciiDoc API.
+
+AsciiDoc specifications suggest using the file extension of `.txt` however this
+causes conflict because there is no way to determine if a text file is an
+AsciiDoc or not without pre-processing the file. This gives us two simple
+options:
+
+1. **Parse all text files**. We could have all files ending in `.txt` or
+   ``README.txt`` be parsed through AsciiDoc. It will print pretty text fine
+   even if it isn't formatted as such. However this could be *not what the user
+   expects*.
+2. **Pick a unique extension**. We could pick a unique extension (i.e.
+   `.asciidoc`) to prevent clashing. Although not directly suggested by the
+   author of AsciiDoc there is no standard or practice to the contrary.
+
+Option two is recommended by myself.
+
+Requirements
+~~~~~~~~~~~~
+
+The AsciiDoc API comes in two parts. The first is the system installation of
+AsciiDoc which has a simple install_. The second part is the API script. You
+can either copy this to the current directory or the application's lib folder.
+There is more information on the `API page`_
+
+The `re` package is imported here for the purpose to accomplish E-Mail address
+cloaking. AsciiDoc does not offer it's own cloaking algorithm like docutils
+does. So I made a simple one here to do the same. **If the expense of regex's
+is too high it can be easily commented out.**
+
+.. tip::
+    AsciiDoc by default runs in *safe mode* which means it will not include
+    external files that are **not** in the same directory as the `infile`.
+    However since we use a StringIO through the API it should be based on the
+    current working directory.
+
+.. _install: http://www.methods.co.nz/asciidoc/userguide.html
+.. _API page: http://www.methods.co.nz/asciidoc/asciidocapi.html
+"""
+
+try:
+    import locale
+    locale.setlocale(locale.LC_ALL, '')
+except:
+    pass
+
+import sys
+import cStringIO # faster then StringIO
+from asciidocapi import AsciiDocAPI
+from asciidocapi import AsciiDocError
+import re # only needed to simulate cloak_email_addresses
+
+def main():
+    """
+    Parses the given AsciiDoc file or the redirected string input and returns
+    the HTML body.
+
+    Usage: asciidoc2html < README.rst
+           asciidoc2html README.rst
+    """
+    try:
+        text = open(sys.argv[1], 'r').read()
+    except IOError: # given filename could not be found
+        return ''
+    except IndexError: # no filename given
+        text = sys.stdin.read()
+
+    infile = cStringIO.StringIO(text)
+    outfile = cStringIO.StringIO()
+    asciidoc = AsciiDocAPI()
+    asciidoc.options('-s')
+
+    try:
+        asciidoc.execute(infile, outfile, 'xhtml11')
+    except AsciiDocError, strerror:
+        str = "%s" % (strerror)
+        str = str.replace("&", "&amp;") # Must be done first
+        str = str.replace("<", "%lt;")
+        str = str.replace(">", "%gt;")
+        outfile.write ("<blockquote><strong>AsciiDoc ERROR: %s</strong></blockquote>" % (str))
+
+    """
+    Cloak email addresses
+
+    AsciiDoc API does not have a `cloak_email_addresses` option. We can do the
+    same with a set of regex but that can be expensive. Keep section commented
+    to disable. So ``abc@mail.example.com`` becomes:
+
+    -----------
+    <a class="reference" href="mailto:abc&#37;&#52;&#48;mail&#46;example&#46;org">
+    abc<span>&#64;</span>mail<span>&#46;</span>example<span>&#46;</span>org</a>
+    -----------
+    """
+    def mangleEmail(matches):
+        email1 = "%s&#37;&#52;&#48;%s" % (matches.group(1), matches.group(2))
+        email1 = email1.replace(".", "&#46;")
+        email2 = "%s<span>&#64;</span>%s" % (matches.group(1), matches.group(2))
+        email2 = email2.replace(".", "<span>&#46;</span>")
+        return "<a class=\"reference\" href=\"mailto:%s\">%s</a>" % (email1, email2)
+
+    return re.sub(r'<a href="mailto:([^@]+)@([^@]+)">([^@]+)@([^@]+)</a>', mangleEmail, outfile.getvalue())
+    #return outfile.getvalue()
+
+if __name__ == '__main__':
+    print main()
