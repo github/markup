@@ -3,12 +3,8 @@ module GitHub
     extend self
     @@markups = {}
 
-    def markups
-      @@markups
-    end
-
     def add_markup(regexp, &block)
-      markups[regexp] = block
+      @@markups[regexp] = block
     end
 
     def renderer(filename)
