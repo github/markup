@@ -3,6 +3,13 @@ module GitHub
     extend self
     @@markups = {}
 
+    def markup(file, pattern, &block)
+      require file.to_s
+      add_markup(pattern, &block)
+    rescue LoadError
+      nil
+    end
+
     def add_markup(regexp, &block)
       @@markups[regexp] = block
     end
@@ -18,23 +25,14 @@ module GitHub
     def render(filename, content)
       renderer(filename)[content] || content
     end
-  end
-end
 
-begin
-  require 'rdiscount'
-  GitHub::Markup.add_markup(/md|mkdn?|markdown/) do |content|
-    Markdown.new(content).to_html
-  end
-rescue LoadError
-  nil
-end
+    # Markup definitions
+    markup(:markdown, /md|mkdn?|markdown/) do |content|
+      Markdown.new(content).to_html
+    end
 
-begin
-  require 'redcloth'
-  GitHub::Markup.add_markup(/textile/) do |content|
-    RedCloth.new(content).to_html
+    markup(:redcloth, /textile/) do |content|
+      RedCloth.new(content).to_html
+    end
   end
-rescue LoadError
-  nil
 end
