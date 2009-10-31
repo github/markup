@@ -20,14 +20,15 @@ module GitHub
       nil
     end
 
-    def command(command, regexp)
+    def command(command, regexp, &block)
       command = command.to_s
       if !File.exists?(command) && !command.include?('/')
         command = File.dirname(__FILE__) + '/commands/' + command.to_s
       end
 
       add_markup(regexp) do |content|
-        execute(command, content)
+        rendered = execute(command, content)
+        block ? block.call(rendered) : rendered
       end
     end
 
