@@ -14,6 +14,11 @@ command(:rest2html, /rest|rst/)
 
 command(:asciidoc2html, /asciidoc/)
 
+# pod2html is nice enough to generate a full-on HTML document for us,
+# so we return the favor by ripping out the good parts.
+#
+# Any block passed to `command` will be handed the command's STDOUT for
+# post processing.
 command("/usr/bin/env pod2html", /pod/) do |rendered|
   if rendered =~ /<!-- INDEX BEGIN -->\s*(.+)\s*<!-- INDEX END -->/mi
     $1
