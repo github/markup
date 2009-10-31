@@ -27,6 +27,6 @@ module GitHub
     end
 
     # Define markups
-    require 'github/markups'
+    instance_eval File.read(File.dirname(__FILE__) + '/markups.rb')
   end
 end
