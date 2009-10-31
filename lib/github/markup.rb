@@ -26,13 +26,7 @@ module GitHub
       renderer(filename)[content] || content
     end
 
-    # Markup definitions
-    markup(:markdown, /md|mkdn?|markdown/) do |content|
-      Markdown.new(content).to_html
-    end
-
-    markup(:redcloth, /textile/) do |content|
-      RedCloth.new(content).to_html
-    end
+    # Define markups
+    require 'github/markups'
   end
 end
