@@ -1,6 +1,3 @@
-require 'rdiscount'
-require 'redcloth'
-
 module GitHub
   module Markup
     extend self
