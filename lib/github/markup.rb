@@ -53,7 +53,7 @@ module GitHub
           out << tmp
         end
       end
-      out
+      out.gsub("\r", '')
     end
 
     # Define markups
