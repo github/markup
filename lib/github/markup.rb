@@ -49,9 +49,7 @@ module GitHub
       Open3.popen3(command) do |stdin, stdout, _|
         stdin.puts target
         stdin.close
-        while tmp = stdout.read(1024)
-          out << tmp
-        end
+        out = stdout.read
       end
       out.gsub("\r", '')
     end
