@@ -1,0 +1,7 @@
+=head1 NAME
+
+podsample - A sample pod document
+
+=item * This is a bulleted list.
+
+=item * Here's another item.
