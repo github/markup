@@ -13,3 +13,9 @@ end
 command(:rest2html, /rest|rst/)
 
 command(:asciidoc2html, /asciidoc/)
+
+command("/usr/bin/env pod2html", /pod/) do |rendered|
+  if rendered =~ /<!-- INDEX BEGIN -->\s*(.+)\s*<!-- INDEX END -->/mi
+    $1
+  end
+end

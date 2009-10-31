@@ -82,4 +82,27 @@ input
 </ol>
 </div>\n
 output
+
+
+  test 'README.pod', <<-input, <<-output
+=head1 NAME
+
+podsample - A sample pod document
+
+=item * This is a bulleted list.
+
+=item * Here's another item.
+input
+<div name="index">
+<p><a name="__index__"></a></p>
+
+<ul>
+
+\t<li><a href="#name">NAME</a></li>
+</ul>
+
+<hr name="index" />
+</div>
+output
+
 end
