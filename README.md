@@ -24,7 +24,20 @@ Or, more realistically:
     GitHub::Markup.render(file, File.read(file))
 
 
+Contributing
+------------
+
+1. Fork it.
+2. Create a branch
+3. Commit your changes
+4. Push to the branch
+5. Create an [Issue][1] with a link to your branch
+6. Enjoy a refreshing Diet Coke and wait
+
+
 Authors
 -------
 
 Chris Wanstrath and all of you
+
+[1]: http://github.com/defunkt/github_markup/issues
