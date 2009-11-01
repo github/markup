@@ -1,4 +1,5 @@
 require 'rdoc/generators/html_generator'
+require 'ostruct'
 
 module GitHub
   module Markup
