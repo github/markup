@@ -21,8 +21,8 @@ command(:asciidoc2html, /asciidoc/)
 # post processing.
 command("/usr/bin/env pod2html", /pod/) do |rendered|
   if rendered =~ /<!-- INDEX BEGIN -->\s*(.+)\s*<!-- INDEX END -->/mi
-    `rm pod2htmd.tmp` if File.exists?('pod2htmd.tmp')
-    `rm pod2htmi.tmp` if File.exists?('pod2htmi.tmp')
+    `rm pod2htmd.tmp` if File.exists?('pod2htmd.tmp') rescue nil
+    `rm pod2htmi.tmp` if File.exists?('pod2htmi.tmp') rescue nil
     $1
   end
 end
