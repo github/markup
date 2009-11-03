@@ -54,6 +54,12 @@ Tests should be added in the same manner as described under the
 `Commands` section.
 
 
+Installation
+-----------
+
+    gem install github_markup --source=http://gemcutter.org
+
+
 Usage
 -----
 
