@@ -57,7 +57,7 @@ Tests should be added in the same manner as described under the
 Installation
 -----------
 
-    gem install github_markup --source=http://gemcutter.org
+    gem install github-markup --source=http://gemcutter.org
 
 
 Usage
@@ -83,6 +83,6 @@ Contributing
 6. Enjoy a refreshing Diet Coke and wait
 
 
-[r2h]: http://github.com/defunkt/github_markup/tree/master/lib/github/commands/rest2html
-[r2hc]: http://github.com/defunkt/github_markup/tree/master/lib/github/markups.rb#L13
-[1]: http://github.com/defunkt/github_markup/issues
+[r2h]: http://github.com/defunkt/github-markup/tree/master/lib/github/commands/rest2html
+[r2hc]: http://github.com/defunkt/github-markup/tree/master/lib/github/markups.rb#L13
+[1]: http://github.com/defunkt/github-markup/issues
