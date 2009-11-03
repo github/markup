@@ -34,6 +34,9 @@ rescue LoadError
   puts "sdoc support not enabled. Please gem install sdoc-helpers."
 end
 
+desc "Build a gem"
+task :gem => [ :gemspec, :build ]
+
 desc "Push a new version to Gemcutter"
 task :publish => [ :test, :gemspec, :build ] do
   system "git tag v#{GitHub::Markup::Version}"
