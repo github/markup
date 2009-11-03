@@ -10,7 +10,11 @@ module GitHub
     @@markups = {}
 
     def render(filename, content)
-      renderer(filename)[content] || content
+      if proc = renderer(filename)
+        proc[content]
+      else
+        content
+      end
     end
 
     def markup(file, pattern, &block)
@@ -36,12 +40,17 @@ module GitHub
       @@markups[regexp] = block
     end
 
+    def can_render?(filename)
+      !!renderer(filename)
+    end
+
     def renderer(filename)
       @@markups.each do |key, value|
         if Regexp.compile("(#{key})$") =~ filename
           return value
         end
       end
+      nil
     end
 
     def execute(command, target)

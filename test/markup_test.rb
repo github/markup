@@ -20,4 +20,9 @@ class MarkupTest < Test::Unit::TestCase
 message
     end
   end
+
+  def test_knows_what_it_can_and_cannot_render
+    assert_equal false, GitHub::Markup.can_render?('README.html')
+    assert_equal true, GitHub::Markup.can_render?('README.markdown')
+  end
 end
