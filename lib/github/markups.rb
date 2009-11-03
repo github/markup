@@ -20,7 +20,7 @@ command(:asciidoc2html, /asciidoc/)
 # Any block passed to `command` will be handed the command's STDOUT for
 # post processing.
 command("/usr/bin/env pod2html", /pod/) do |rendered|
-  if rendered =~ /<!-- INDEX BEGIN -->\s*(.+)\s*<!-- INDEX END -->/mi
+  if rendered =~ /<body.+?>\s*(.+)\s*<\/body>/mi
     `rm pod2htmd.tmp` if File.exists?('pod2htmd.tmp') rescue nil
     `rm pod2htmi.tmp` if File.exists?('pod2htmi.tmp') rescue nil
     $1
