@@ -1,7 +1,89 @@
-=head1 NAME
+=head1 Matrixy
 
-podsample - A sample pod document
+=head2 INTRODUCTION
 
-=item * This is a bulleted list.
+This is a port of the MATLAB/Octave programming language to Parrot. See the
+ROADMAP file for more information on the status of this project, and what else
+needs to be done.
 
-=item * Here's another item.
+=head2 ABOUT
+
+Primary goals are:
+
+=over 4
+
+=item* Create a working compiler that understands the majority of the
+MATLAB/Octave programming language.
+
+=back
+
+=head2 IMPLEMENTATION
+
+This project is broken into three primary components:
+
+=over 4
+
+=item* The first is the parser, located in the C<src/parser/> directory. The
+parser proper is composed of three source files, F<grammar.pg> which is a
+Perl6Grammar file, and F<actions.pm> which is the associated actions file
+written in NQP, and F<grammar-oper.pm> which is the operator precidence parser.
+In addition, several helper functions used by the parser are located in
+C<src/internals>.
+
+=item* The second component is the library of builtin functions in the
+C<src/builtins/> directory. These functions are, currently, written primarily in
+PIR. Function names prefixed with an underscore are "private" functions for use
+with the parser. Other functions should have names which are the same as names
+for regular MATLAB or Octave functions, since they will be available to the
+HLL. These are also separated into different namespaces depending on visibility
+and utility.
+
+=item* A number of library functions are written in M, or mostly M with some
+inline PIR code in C<toolbox/>.
+
+=back
+
+=head2 DEPENDENCIES
+
+Matrixy depends on these dependencies:
+
+=head3 Parrot
+
+To get a proper version of Parrot to build Matrixy, you will need to check out
+and build Parrot from source:
+
+    svn co http://svn.parrot.org/parrot/trunk parrot
+    cd parrot
+    perl Configure.pl
+    make && make test && make install-dev
+
+=head3 Parrot-Linear-Algebra
+
+The linear algebra package for Parrot is available separately and provides
+functionality required by Matrixy. This includes matrix data types and matrix
+manipulation libraries
+
+=head2 BUILDING
+
+Once all dependencies are in place, you can build Matrixy using this sequence of
+commands:
+
+    perl Configure.pl
+    nmake test
+
+=head2 TODO
+
+    * Parser
+    * Standard Builtins
+    * Test against Octave Test Suite.
+
+=head2 BUGS
+
+Lots!
+
+=head2 CONTACT
+
+If you need to contact the Matrixy team, go to the project home page at:
+
+www.github.com\Whiteknight\matrixy
+
