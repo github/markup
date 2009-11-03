@@ -1,3 +1,7 @@
+## 0.1.3 (2009-11-02)
+
+* Strip the INDEX comments from POD
+
 ## 0.1.2 (2009-11-02)
 
 * Renamed to `github-markup`
