@@ -1,3 +1,7 @@
+## 0.1.5 (2009-11-17)
+
+* Actually, if we can't render a thing then don't. Not once, not never.
+
 ## 0.1.4 (2009-11-17)
 
 * Bugfix: Missing commands return the input (instead of nothing)

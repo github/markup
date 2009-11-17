@@ -27,9 +27,11 @@ module GitHub
     def command(command, regexp, &block)
       command = command.to_s
 
-      if !File.exists?(command) && !command.include?('/')
-        command = File.dirname(__FILE__) + '/commands/' + command.to_s
+      if File.exists?(file = File.dirname(__FILE__) + "/commands/#{command}")
+        command = file
       end
+
+      return if !system("which #{command} > /dev/null")
 
       add_markup(regexp) do |content|
         rendered = execute(command, content)
@@ -55,8 +57,6 @@ module GitHub
     end
 
     def execute(command, target)
-      return target if !system("which #{command} > /dev/null")
-
       out = ''
       Open3.popen3(command) do |stdin, stdout, _|
         stdin.puts target

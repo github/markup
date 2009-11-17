@@ -30,8 +30,16 @@ message
   def test_fails_gracefully_on_missing_commands
     GitHub::Markup.command(:i_made_it_up, /mde/)
     text = 'hi there'
-    assert_equal true, GitHub::Markup.can_render?('README.mde')
+    assert_equal false, GitHub::Markup.can_render?('README.mde')
     actual = GitHub::Markup.render('README.mde', text)
+    assert_equal text, actual
+  end
+
+  def test_fails_gracefully_on_missing_env_commands
+    GitHub::Markup.command('/usr/bin/env totally_fake', /tf/)
+    text = 'hey mang'
+    assert_equal false, GitHub::Markup.can_render?('README.tf')
+    actual = GitHub::Markup.render('README.tf', text)
     assert_equal text, actual
   end
 end
