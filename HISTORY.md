@@ -1,3 +1,7 @@
+## 0.1.4 (2009-11-17)
+
+* Bugfix: Missing commands return the input (instead of nothing)
+
 ## 0.1.3 (2009-11-02)
 
 * Strip the INDEX comments from POD

@@ -26,4 +26,12 @@ message
     assert_equal true, GitHub::Markup.can_render?('README.markdown')
     assert_equal false, GitHub::Markup.can_render?('README.cmd')
   end
+
+  def test_fails_gracefully_on_missing_commands
+    GitHub::Markup.command(:i_made_it_up, /mde/)
+    text = 'hi there'
+    assert_equal true, GitHub::Markup.can_render?('README.mde')
+    actual = GitHub::Markup.render('README.mde', text)
+    assert_equal text, actual
+  end
 end
