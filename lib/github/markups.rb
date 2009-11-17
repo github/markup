@@ -1,4 +1,4 @@
-markup(:markdown, /md|mkdn?|markdown/) do |content|
+markup(:markdown, /md|mkdn?|mdown|markdown/) do |content|
   Markdown.new(content).to_html
 end
 
