@@ -31,10 +31,9 @@ module GitHub
         command = file
       end
 
-      return if !system("which #{command} > /dev/null")
-
       add_markup(regexp) do |content|
         rendered = execute(command, content)
+        rendered = rendered.to_s.empty? ? content : rendered
         block ? block.call(rendered) : rendered
       end
     end
@@ -64,6 +63,8 @@ module GitHub
         out = stdout.read
       end
       out.gsub("\r", '')
+    rescue Errno::EPIPE
+      ""
     end
 
     # Define markups
