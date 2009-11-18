@@ -1,3 +1,7 @@
+## 0.1.7 (2009-11-17)
+
+* Ditch asciidoc2html, call asciidoc directly
+
 ## 0.1.6 (2009-11-17)
 
 * mdown
