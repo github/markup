@@ -12,7 +12,7 @@ end
 
 command(:rest2html, /rest|rst/)
 
-command(:asciidoc2html, /asciidoc/)
+command('asciidoc -s --backend=xhtml11 -o - -', /asciidoc/)
 
 # pod2html is nice enough to generate a full-on HTML document for us,
 # so we return the favor by ripping out the good parts.
