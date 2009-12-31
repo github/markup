@@ -1,0 +1,115 @@
+#+TITLE:     org-ruby
+#+AUTHOR:    Brian Dewey
+#+EMAIL:     bdewey@gmail.com
+#+DATE:      2009-12-21
+#+DESCRIPTION: 
+#+KEYWORDS: 
+#+LANGUAGE:  en
+#+OPTIONS:   H:3 num:t toc:nil \n:nil @:t ::t |:t ^:t -:t f:t *:t <:t
+#+OPTIONS:   TeX:t LaTeX:nil skip:nil d:nil todo:nil pri:nil tags:not-in-toc
+#+EXPORT_EXCLUDE_TAGS: exclude
+#+STARTUP:    showall
+
+ | Status:   | Under Development                 |
+ | Location: | [[http://github.com/bdewey/org-ruby]] |
+ | Version:  | 0.5.1                             |
+
+* Description
+
+  Helpful Ruby routines for parsing orgmode files. The most
+  significant thing this library does today is convert orgmode files
+  to textile. Currently, you cannot do much to customize the
+  conversion. The supplied textile conversion is optimized for
+  extracting "content" from the orgfile as opposed to "metadata."
+
+
+* History
+
+** 2009-12-30: Version 0.5.1
+
+   - Minor enhancement: Recognize lines starting with ":" as examples.
+   - Minor enhancement: Recognize #+BEGIN_SRC as source blocks
+   - Minor enhancement: Add "src" and "example" classes to <pre> blocks.
+
+
+** 2009-12-30: Version 0.5.0
+
+   - Parse (but not necessarily *use*) in-buffer settings. The following
+     in-buffer settings *are* used:
+     - Understand the #+TITLE: directive.
+     - Exporting todo keywords (option todo:t)
+     - Numbering headlines (option num:t)
+     - Skipping text before the first headline (option skip:t)
+     - Skipping tables (option |:nil)
+     - Custom todo keywords
+     - EXPORT_SELECT_TAGS and EXPORT_EXLUDE_TAGS for controlling parts of
+       the tree to export
+   - Rewrite "file:(blah).org" links to "http:(blah).html" links. This
+     makes the inter-links to other org-mode files work.
+   - Uses <th> tags inside table rows that precede table separators.
+   - Bugfixes:
+     - Headings now have HTML escaped.
+
+** 2009-12-29: Version 0.4.2
+
+   - Got rid of the extraneous newline at the start of code blocks.
+   - Everything now shows up in code blocks, even org-mode metadata.
+   - Fixed bugs:
+     - Regressed smart double quotes with HTML escaping. Added a test
+       case and fixed the regression.
+
+** 2009-12-29: Version 0.4.1
+   - HTML is now escaped by default
+   - org-mode comments will show up in a code block.
+
+** 2009-12-29: Version 0.4
+
+   - The first thing output in HTML gets the class "title"
+   - HTML output is now indented
+   - Proper support for multi-paragraph list items.
+
+     See? This paragraph is part of the last bullet.
+     
+   - Fixed bugs:
+     - "rake spec" wouldn't work on Linux. Needed "require 'rubygems'".
+
+** 2009-12-27: Version 0.3
+
+   - Uses rubypants to get better typography (smart quotes, elipses, etc...).
+   - Fixed bugs:
+     - Tables and lists did not get properly closed at the end of file
+     - You couldn't do inline formatting inside table cells
+     - Characters in PRE blocks were not HTML escaped.
+   
+** 2009-12-26: Version 0.2
+
+   - Added =to_html= output on the parser.
+   - Added support for the full range of inline markup: *bold*,
+     /italic/, =code=, ~verbatim~, _underline_, +strikethrough+.
+   - Lots of refactoring to make the code more maintainable.
+
+** 2009-12-23: Version 0.1
+
+   - Added support for block code, like this:
+
+     #+BEGIN_EXAMPLE
+     def flush!
+     @logger.debug "FLUSH ==========> #{@output_type}"
+     if (@output_type == :blank) then
+       @output << "\n"
+     elsif (@buffer.length > 0) then
+       if @cancel_modifier then
+         @output << "p. " if @output_type == :paragraph
+         @cancel_modifier = false
+       end
+       @output << @paragraph_modifier if (@paragraph_modifier and not sticky_modifier?)
+       @output << @buffer.textile_substitution << "\n"
+     end
+     @buffer = ""
+   end
+   #+END_EXAMPLE
+
+   - Major code cleanup: Created the =OutputBuffer= class that
+     greatly simplified a lot of the messiness of =textile=
+     conversion.
+   - Added support for line breaks within list items.

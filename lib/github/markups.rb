@@ -10,6 +10,10 @@ markup('github/markup/rdoc', /rdoc/) do |content|
   GitHub::Markup::RDoc.new(content).to_html
 end
 
+markup('org-ruby', /org/) do |content|
+  Orgmode::Parser.new(content).to_html
+end
+
 command(:rest2html, /rest|rst/)
 
 command('asciidoc -s --backend=xhtml11 -o - -', /asciidoc/)

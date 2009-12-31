@@ -1,0 +1,99 @@
+<p class="title">org-ruby</p>
+<table>
+  <tr><td>Status:</td><td>Under Development</td></tr>
+  <tr><td>Location:</td><td><a href="http://github.com/bdewey/org-ruby">http://github.com/bdewey/org-ruby</a></td></tr>
+  <tr><td>Version:</td><td>0.5.1</td></tr>
+</table>
+<h1><span class="heading-number heading-number-1">1 </span>Description</h1>
+<p>Helpful Ruby routines for parsing orgmode files. The most significant thing this library does today is convert orgmode files to textile. Currently, you cannot do much to customize the conversion. The supplied textile conversion is optimized for extracting &#8220;content&#8221; from the orgfile as opposed to &#8220;metadata.&#8221;</p>
+<h1><span class="heading-number heading-number-1">2 </span>History</h1>
+<h2><span class="heading-number heading-number-2">2.1 </span>2009-12-30: Version 0.5.1</h2>
+<ul>
+  <li>Minor enhancement: Recognize lines starting with &#8220;:&#8221; as examples.</li>
+  <li>Minor enhancement: Recognize #+BEGIN_SRC as source blocks</li>
+  <li>Minor enhancement: Add &#8220;src&#8221; and &#8220;example&#8221; classes to &lt;pre&gt; blocks.</li>
+</ul>
+<h2><span class="heading-number heading-number-2">2.2 </span>2009-12-30: Version 0.5.0</h2>
+<ul>
+  <li>Parse (but not necessarily <b>use</b>) in-buffer settings. The following in-buffer settings <b>are</b> used:</li>
+  <ul>
+    <li>Understand the #+TITLE: directive.</li>
+    <li>Exporting todo keywords (option todo:t)</li>
+    <li>Numbering headlines (option num:t)</li>
+    <li>Skipping text before the first headline (option skip:t)</li>
+    <li>Skipping tables (option |:nil)</li>
+    <li>Custom todo keywords</li>
+    <li>EXPORT_SELECT_TAGS and EXPORT_EXLUDE_TAGS for controlling parts of the tree to export</li>
+  </ul>
+  <li>Rewrite &#8220;file:(blah).org&#8221; links to &#8220;http:(blah).html&#8221; links. This makes the inter-links to other org-mode files work.</li>
+  <li>Uses &lt;th&gt; tags inside table rows that precede table separators.</li>
+  <li>Bugfixes:</li>
+  <ul>
+    <li>Headings now have HTML escaped.</li>
+  </ul>
+</ul>
+<h2><span class="heading-number heading-number-2">2.3 </span>2009-12-29: Version 0.4.2</h2>
+<ul>
+  <li>Got rid of the extraneous newline at the start of code blocks.</li>
+  <li>Everything now shows up in code blocks, even org-mode metadata.</li>
+  <li>Fixed bugs:</li>
+  <ul>
+    <li>Regressed smart double quotes with HTML escaping. Added a test case and fixed the regression.</li>
+  </ul>
+</ul>
+<h2><span class="heading-number heading-number-2">2.4 </span>2009-12-29: Version 0.4.1</h2>
+<ul>
+  <li>HTML is now escaped by default</li>
+  <li>org-mode comments will show up in a code block.</li>
+</ul>
+<h2><span class="heading-number heading-number-2">2.5 </span>2009-12-29: Version 0.4</h2>
+<ul>
+  <li>The first thing output in HTML gets the class &#8220;title&#8221;</li>
+  <li>HTML output is now indented</li>
+  <li>Proper support for multi-paragraph list items.</li>
+  <p>See? This paragraph is part of the last bullet.</p>
+  <li>Fixed bugs:</li>
+  <ul>
+    <li>&#8220;rake spec&#8221; wouldn&#8217;t work on Linux. Needed &#8220;require &#8216;rubygems&#8217;&#8221;.</li>
+  </ul>
+</ul>
+<h2><span class="heading-number heading-number-2">2.6 </span>2009-12-27: Version 0.3</h2>
+<ul>
+  <li>Uses rubypants to get better typography (smart quotes, elipses, etc&#8230;).</li>
+  <li>Fixed bugs:</li>
+  <ul>
+    <li>Tables and lists did not get properly closed at the end of file</li>
+    <li>You couldn&#8217;t do inline formatting inside table cells</li>
+    <li>Characters in PRE blocks were not HTML escaped.</li>
+  </ul>
+</ul>
+<h2><span class="heading-number heading-number-2">2.7 </span>2009-12-26: Version 0.2</h2>
+<ul>
+  <li>Added <code>to_html</code> output on the parser.</li>
+  <li>Added support for the full range of inline markup: <b>bold</b>, <i>italic</i>, <code>code</code>, <code>verbatim</code>, <span style="text-decoration:underline;">underline</span>, <del>strikethrough</del>.</li>
+  <li>Lots of refactoring to make the code more maintainable.</li>
+</ul>
+<h2><span class="heading-number heading-number-2">2.8 </span>2009-12-23: Version 0.1</h2>
+<ul>
+  <li>Added support for block code, like this:</li>
+</ul>
+<pre class="example">
+     def flush!
+     @logger.debug "FLUSH ==========&gt; #{@output_type}"
+     if (@output_type == :blank) then
+       @output &lt;&lt; "\n"
+     elsif (@buffer.length &gt; 0) then
+       if @cancel_modifier then
+         @output &lt;&lt; "p. " if @output_type == :paragraph
+         @cancel_modifier = false
+       end
+       @output &lt;&lt; @paragraph_modifier if (@paragraph_modifier and not sticky_modifier?)
+       @output &lt;&lt; @buffer.textile_substitution &lt;&lt; "\n"
+     end
+     @buffer = ""
+   end
+</pre>
+<ul>
+  <li>Major code cleanup: Created the <code>OutputBuffer</code> class that greatly simplified a lot of the messiness of <code>textile</code> conversion.</li>
+  <li>Added support for line breaks within list items.</li>
+</ul>
