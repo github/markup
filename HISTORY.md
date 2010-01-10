@@ -1,3 +1,7 @@
+## 0.2.0 (2010-01-10)
+
+* org-mode support
+
 ## 0.1.7 (2009-11-17)
 
 * Ditch asciidoc2html, call asciidoc directly
