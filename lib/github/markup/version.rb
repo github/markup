@@ -1,5 +1,5 @@
 module GitHub
   module Markup
-    Version = '0.1.7'
+    Version = '0.2.0'
   end
 end
