@@ -34,12 +34,6 @@ rescue LoadError
   warn "sdoc support not enabled. Please gem install sdoc-helpers."
 end
 
-begin
-  require 'org-ruby'
-rescue LoadError
-  warn "org-mode support not enabled. Please gem install org-ruby."
-end
-
 desc "Build a gem"
 task :gem => [ :gemspec, :build ]
 
