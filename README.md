@@ -57,7 +57,8 @@ Tests should be added in the same manner as described under the
 Installation
 -----------
 
-    gem install github-markup --source=http://gemcutter.org
+    gem install github-markup
+    gem install org-ruby
 
 
 Usage
