@@ -24,20 +24,20 @@ begin
     gemspec.version = GitHub::Markup::Version
   end
 rescue LoadError
-  puts "Jeweler not available."
-  puts "Install it with: gem install jeweler"
+  warn "Jeweler not available."
+  warn "Install it with: gem install jeweler"
 end
 
 begin
   require 'sdoc_helpers'
 rescue LoadError
-  puts "sdoc support not enabled. Please gem install sdoc-helpers."
+  warn "sdoc support not enabled. Please gem install sdoc-helpers."
 end
 
 begin
   require 'org-ruby'
 rescue LoadError
-  puts "org-mode support not enabled. Please gem install org-ruby."
+  warn "org-mode support not enabled. Please gem install org-ruby."
 end
 
 desc "Build a gem"
