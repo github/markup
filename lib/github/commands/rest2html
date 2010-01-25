@@ -22,6 +22,7 @@ SETTINGS = {
     'file_insertion_enabled': False,
     'raw_enabled': False,
     'strip_comments': True,
+    'doctitle_xform': False,
 }
 
 def main():
