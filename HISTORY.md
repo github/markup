@@ -1,3 +1,7 @@
+## 0.2.1 (2010-01-25)
+
+* ReST fixes from Michael Jones
+
 ## 0.2.0 (2010-01-10)
 
 * org-mode support
