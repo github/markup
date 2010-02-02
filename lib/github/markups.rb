@@ -23,11 +23,8 @@ command('asciidoc -s --backend=xhtml11 -o - -', /asciidoc/)
 #
 # Any block passed to `command` will be handed the command's STDOUT for
 # post processing.
-command("/usr/bin/env pod2html", /pod/) do |rendered|
-  require 'fileutils'
-  if rendered =~ /<body.+?>\s*(.+)\s*<\/body>/mi
-    FileUtils.rm("pod2htmd.tmp") if File.exists?('pod2htmd.tmp') rescue nil
-    FileUtils.rm("pod2htmi.tmp") if File.exists?('pod2htmi.tmp') rescue nil
-    $1.sub('<!-- INDEX BEGIN -->', '').sub('<!-- INDEX END -->', '')
+command("/usr/bin/env perl -MPod::Simple::HTML -e Pod::Simple::HTML::go", /pod/) do |rendered|
+  if rendered =~ /<!-- start doc -->\s*(.+)\s*<!-- end doc -->/mi
+    $1
   end
 end
