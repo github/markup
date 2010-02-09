@@ -1,3 +1,7 @@
+## 0.2.2 (2010-02-09)
+
+* pod fixes from Ricardo Signes 
+
 ## 0.2.1 (2010-01-25)
 
 * ReST fixes from Michael Jones
