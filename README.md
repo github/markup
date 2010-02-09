@@ -73,6 +73,17 @@ Or, more realistically:
     GitHub::Markup.render(file, File.read(file))
 
 
+Testing
+-------
+
+To run the tests:
+
+    $ rake
+
+To add tests see the `Commands` section earlier in this 
+README.
+
+
 Contributing
 ------------
 
