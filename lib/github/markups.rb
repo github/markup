@@ -43,11 +43,11 @@ command('groff -t -e -mandoc -Thtml -P -l -P -r -', /\d/) do |rendered, original
     title = "#{name}(#{section})"
 
     # Classy divs.
-    left = "<div float='left'>#{title}</div>"
-    right = "<div float='right'>#{title}</div>"
+    left = "<div style='float:left'>#{title}</div>"
+    right = "<div style='float:right'>#{title}</div>"
   end
 
   if rendered =~ /<body>\s*(.+)\s*<\/body>/mi
-    $1.gsub(/<hr>/, '').gsub(/(<h1.+?h1>)/, "<div>#{left}\\1#{right}</div>")
+    $1.gsub(/<hr>/, '').gsub(/(<h1.+?h1>)/, "#{left}#{right}\\1")
   end
 end
