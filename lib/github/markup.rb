@@ -9,7 +9,9 @@ module GitHub
     extend self
     @@markups = {}
 
-    def render(filename, content)
+    def render(filename, content = nil)
+      content ||= File.read(filename)
+
       if proc = renderer(filename)
         proc[content]
       else
