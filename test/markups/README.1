@@ -1,0 +1,138 @@
+.\" generated with Ron/v0.3
+.\" http://github.com/rtomayko/ron/
+.
+.TH "MUSTACHE" "1" "March 2010" "DEFUNKT" "Mustache Manual"
+.
+.SH "NAME"
+\fBmustache\fR \-\- Mustache processor
+.
+.SH "SYNOPSIS"
+\fBcat data.yml template.mustache | mustache\fR
+.
+.SH "DESCRIPTION"
+Mustache is a logic\-less templating system for HTML, config files,
+anything.
+.
+.P
+The \fBmustache\fR command processes a Mustache template preceded by YAML
+frontmatter from standard input and prints one or more documents to
+standard output.
+.
+.P
+YAML frontmatter beings with \fB---\fR on a single line, followed by YAML,
+ending with another \fB---\fR on a single line, e.g.
+.
+.IP "" 4
+.
+.nf
+
+\fB---
+names: [ {name: chris}, {name: mark}, {name: scott} ]
+--- \fR
+.
+.fi
+.
+.IP "" 0
+.
+.P
+If you are unfamiliar with YAML, it is a superset of JSON. Valid JSON
+should work fine.
+.
+.P
+After the frontmatter should come any valid Mustache template. See
+mustache(5) for an overview of Mustache templates.
+.
+.P
+For example:
+.
+.IP "" 4
+.
+.nf
+
+\fB{{#names}}
+  Hi {{name}}!
+{{/names}} \fR
+.
+.fi
+.
+.IP "" 0
+.
+.P
+Now let's combine them.
+.
+.IP "" 4
+.
+.nf
+
+\fB$ cat data.yml
+---
+names: [ {name: chris}, {name: mark}, {name: scott} ]
+--- 
+$ cat template.mustache
+{{#names}}
+  Hi {{name}}!
+{{/names}}
+
+$ cat data.yml template.mustache | mustache
+Hi chris!
+Hi mark!
+Hi scott!
+\fR
+.
+.fi
+.
+.IP "" 0
+.
+.P
+If you provide multiple YAML documents (as delimited by \fB---\fR), your
+template will be rendered multiple times. Like a mail merge.
+.
+.P
+For example:
+.
+.IP "" 4
+.
+.nf
+
+\fB$ cat data.yml
+---
+name: chris
+---
+name: mark
+---
+name: scott
+--- 
+$ cat template.mustache
+Hi {{name}}!
+
+$ cat data.yml template.mustache | mustache
+Hi chris!
+Hi mark!
+Hi scott!
+\fR
+.
+.fi
+.
+.IP "" 0
+.
+.SH "INSTALLATION"
+If you have RubyGems installed:
+.
+.IP "" 4
+.
+.nf
+
+\fBgem install mustache \fR
+.
+.fi
+.
+.IP "" 0
+.
+.SH "COPYRIGHT"
+Mustache is Copyright (C) 2009 Chris Wanstrath
+.
+.P
+Original CTemplate by Google
+.
+.SH "SEE ALSO"
+mustache(5), mustache(7), gem(1),\fIhttp://defunkt.github.com/mustache/\fR

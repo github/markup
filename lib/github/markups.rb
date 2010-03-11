@@ -28,3 +28,26 @@ command("/usr/bin/env perl -MPod::Simple::HTML -e Pod::Simple::HTML::go", /pod/)
     $1
   end
 end
+
+#
+# man pages!
+#
+command('groff -t -e -mandoc -Thtml -P -l -P -r -', /\d/) do |rendered, original|
+  # Try to grab the name and section.
+  if original =~ /^.TH (\S+).*?(\d).*$/
+    # Clear out the gunk, "MUSTACHE" => MUSTACHE
+    name, section = $1, $2
+    name.gsub!(/"|'/, '')
+
+    # make MUSTACHE(1)
+    title = "#{name}(#{section})"
+
+    # Classy divs.
+    left = "<div float='left'>#{title}</div>"
+    right = "<div float='right'>#{title}</div>"
+  end
+
+  if rendered =~ /<body>\s*(.+)\s*<\/body>/mi
+    $1.gsub(/<hr>/, '').gsub(/(<h1.+?h1>)/, "<div>#{left}\\1#{right}</div>")
+  end
+end

@@ -1,0 +1,184 @@
+<div><div float='left'>MUSTACHE(1)</div><h1 align=center>MUSTACHE</h1><div float='right'>MUSTACHE(1)</div></div>
+
+
+
+<a name="NAME"></a>
+<h2>NAME</h2>
+
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>mustache</b>
+&minus;&minus; Mustache processor</p>
+
+<a name="SYNOPSIS"></a>
+<h2>SYNOPSIS</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>cat data.yml
+template.mustache | mustache</b></p>
+
+<a name="DESCRIPTION"></a>
+<h2>DESCRIPTION</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">Mustache is a
+logic&minus;less templating system for HTML, config files,
+anything.</p>
+
+<p style="margin-left:11%; margin-top: 1em">The
+<b>mustache</b> command processes a Mustache template
+preceded by YAML frontmatter from standard input and prints
+one or more documents to standard output.</p>
+
+<p style="margin-left:11%; margin-top: 1em">YAML
+frontmatter beings with <b>---</b> on a single line,
+followed by YAML, ending with another <b>---</b> on a single
+line, e.g.</p>
+
+<table width="100%" border=0 rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="17%"></td>
+<td width="5%">
+
+
+<p style="margin-top: 1em" valign="top"><b>---</b></p></td>
+<td width="78%">
+</td>
+</table>
+
+<p style="margin-left:17%;"><b>names: [ {name: chris},
+{name: mark}, {name: scott} ] <br>
+---</b></p>
+
+<p style="margin-left:11%; margin-top: 1em">If you are
+unfamiliar with YAML, it is a superset of JSON. Valid JSON
+should work fine.</p>
+
+<p style="margin-left:11%; margin-top: 1em">After the
+frontmatter should come any valid Mustache template. See
+mustache(5) for an overview of Mustache templates.</p>
+
+<p style="margin-left:11%; margin-top: 1em">For
+example:</p>
+
+<table width="100%" border=0 rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="17%"></td>
+<td width="15%">
+
+
+
+<p style="margin-top: 1em" valign="top"><b>{{#names}}</b></p> </td>
+<td width="68%">
+</td>
+</table>
+
+<p style="margin-left:17%;"><b>Hi {{name}}! <br>
+{{/names}}</b></p>
+
+<p style="margin-left:11%; margin-top: 1em">Now let&rsquo;s
+combine them.</p>
+
+<table width="100%" border=0 rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="17%"></td>
+<td width="21%">
+
+
+<p style="margin-top: 1em" valign="top"><b>$ cat
+data.yml</b></p> </td>
+<td width="62%">
+</td>
+</table>
+
+<p style="margin-left:17%;"><b>--- <br>
+names: [ {name: chris}, {name: mark}, {name: scott} ] <br>
+--- <br>
+$ cat template.mustache <br>
+{{#names}} <br>
+Hi {{name}}! <br>
+{{/names}}</b></p>
+
+<p style="margin-left:17%; margin-top: 1em"><b>$ cat
+data.yml template.mustache | mustache <br>
+Hi chris! <br>
+Hi mark! <br>
+Hi scott!</b></p>
+
+<p style="margin-left:11%; margin-top: 1em">If you provide
+multiple YAML documents (as delimited by <b>---</b>), your
+template will be rendered multiple times. Like a mail
+merge.</p>
+
+<p style="margin-left:11%; margin-top: 1em">For
+example:</p>
+
+<table width="100%" border=0 rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="17%"></td>
+<td width="21%">
+
+
+<p style="margin-top: 1em" valign="top"><b>$ cat
+data.yml</b></p> </td>
+<td width="62%">
+</td>
+</table>
+
+<p style="margin-left:17%;"><b>--- <br>
+name: chris <br>
+--- <br>
+name: mark <br>
+--- <br>
+name: scott <br>
+--- <br>
+$ cat template.mustache <br>
+Hi {{name}}!</b></p>
+
+<p style="margin-left:17%; margin-top: 1em"><b>$ cat
+data.yml template.mustache | mustache <br>
+Hi chris! <br>
+Hi mark! <br>
+Hi scott!</b></p>
+
+<a name="INSTALLATION"></a>
+<h2>INSTALLATION</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">If you have
+RubyGems installed:</p>
+
+<table width="100%" border=0 rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="17%"></td>
+<td width="31%">
+
+
+<p style="margin-top: 1em" valign="top"><b>gem install
+mustache</b></p> </td>
+<td width="52%">
+</td>
+</table>
+
+<a name="COPYRIGHT"></a>
+<h2>COPYRIGHT</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">Mustache is
+Copyright (C) 2009 Chris Wanstrath</p>
+
+<p style="margin-left:11%; margin-top: 1em">Original
+CTemplate by Google</p>
+
+<a name="SEE ALSO"></a>
+<h2>SEE ALSO</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">mustache(5),
+mustache(7),
+gem(1),<i>http://defunkt.github.com/mustache/</i></p>

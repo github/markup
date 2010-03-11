@@ -34,7 +34,18 @@ module GitHub
       add_markup(regexp) do |content|
         rendered = execute(command, content)
         rendered = rendered.to_s.empty? ? content : rendered
-        block ? block.call(rendered) : rendered
+
+        if block && block.arity == 2
+          # If the block takes two arguments, pass new content and old
+          # content.
+          block.call(rendered, content)
+        elsif block
+          # One argument is just the new content.
+          block.call(rendered)
+        else
+          # No block? No problem!
+          rendered
+        end
       end
     end
 
