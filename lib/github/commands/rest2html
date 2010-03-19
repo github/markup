@@ -42,7 +42,8 @@ def main():
 
     parts = publish_parts(text, writer=Writer(), settings_overrides=SETTINGS)
     if 'html_body' in parts:
-        return parts['html_body']
+        html = parts['html_body']
+        return html.encode('utf-8')
     return ''
 
 if __name__ == '__main__':
