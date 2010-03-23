@@ -14,7 +14,7 @@ markup('org-ruby', /org/) do |content|
   Orgmode::Parser.new(content).to_html
 end
 
-command(:rest2html, /re?st(.txt)?/)
+command(:rest2html, /re?st(\.txt)?/)
 
 command('asciidoc -s --backend=xhtml11 -o - -', /asciidoc/)
 
