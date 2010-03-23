@@ -23,7 +23,6 @@ SETTINGS = {
     'raw_enabled': False,
     'strip_comments': True,
     'doctitle_xform': False,
-    'report_level': 5,
 }
 
 def main():
