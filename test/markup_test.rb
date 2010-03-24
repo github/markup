@@ -9,9 +9,15 @@ class MarkupTest < Test::Unit::TestCase
     markup = readme.split('/').last.gsub(/^README\./, '')
 
     define_method "test_#{markup}" do
+      source = File.read(readme)
+
       expected_file = "#{readme}.html"
       expected = File.read(expected_file)
       actual = GitHub::Markup.render(readme, File.read(readme))
+
+      if source != expected
+        assert(source != actual, "#{markup} did not render anything")
+      end
 
       diff = IO.popen("diff -u - #{expected_file}", 'r+') do |f|
         f.write actual
