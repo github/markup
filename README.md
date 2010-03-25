@@ -4,6 +4,22 @@ GitHub Markup
 We use this library on GitHub when rendering your README or any other
 rich text file.
 
+Markups
+-------
+
+* .markdown - `gem install markdown`
+* .textile - `gem install RedCloth`
+* .rdoc
+* .org - `gem install org-mode`
+* .rst - `easy_install docutils`
+* .asciidoc - `brew install asciidoc`
+* .pod - `Pod::Simple::HTML` should come with Perl
+* .1 - Requires `groff`
+
+
+Contributing
+------------
+
 Want to contribute? Great! There are two ways to add markups.
 
 
@@ -58,7 +74,6 @@ Installation
 -----------
 
     gem install github-markup
-    gem install org-ruby
 
 
 Usage
@@ -80,7 +95,7 @@ To run the tests:
 
     $ rake
 
-To add tests see the `Commands` section earlier in this 
+To add tests see the `Commands` section earlier in this
 README.
 
 
@@ -88,9 +103,9 @@ Contributing
 ------------
 
 1. Fork it.
-2. Create a branch
-3. Commit your changes
-4. Push to the branch
+2. Create a branch (`git checkout -b my_markup`)
+3. Commit your changes (`git commit -am "Added Snarkdown"`)
+4. Push to the branch (`git push origin my_markup`)
 5. Create an [Issue][1] with a link to your branch
 6. Enjoy a refreshing Diet Coke and wait
 
