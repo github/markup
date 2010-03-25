@@ -1,6 +1,11 @@
+## 0.3.2 (2010-03-25)
+
+* Improved test runner
+* Forgive ReST problems that aren't user errors.
+
 ## 0.3.1 (2010-03-22)
 
-* Add .rst.txt extension 
+* Add .rst.txt extension
 * Fix ASCII encoding error while using print u'\u010c' non-ASCII char and similar.
 
 ## 0.3.0 (2010-03-11)
