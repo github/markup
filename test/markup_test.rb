@@ -9,14 +9,19 @@ class MarkupTest < Test::Unit::TestCase
     markup = readme.split('/').last.gsub(/^README\./, '')
 
     define_method "test_#{markup}" do
-      expected = File.read("#{readme}.html")
+      expected_file = "#{readme}.html"
+      expected = File.read(expected_file)
       actual = GitHub::Markup.render(readme, File.read(readme))
 
-      assert expected == actual, <<-message
-#{markup} expected:
-#{expected}
-#{markup} actual:
-#{actual}
+      diff = IO.popen("diff -u - #{expected_file}", 'r+') do |f|
+        f.write actual
+        f.close_write
+        f.read
+      end
+
+      assert expected == actual, <<message
+#{File.basename expected_file}'s contents don't match command output:
+#{diff}
 message
     end
   end
