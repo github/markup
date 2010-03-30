@@ -10,4 +10,4 @@ Header 2
 
 2. More ``code``, hooray
 
-
+3. Somé UTF-8°

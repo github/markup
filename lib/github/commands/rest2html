@@ -14,6 +14,8 @@ except:
     pass
 
 import sys
+import codecs
+
 from docutils.core import publish_parts
 from docutils.writers.html4css1 import Writer
 
@@ -35,7 +37,7 @@ def main():
            rest2html README.rst
     """
     try:
-        text = open(sys.argv[1], 'r').read()
+        text = codecs.open(sys.argv[1], 'r', 'utf-8').read()
     except IOError: # given filename could not be found
         return ''
     except IndexError: # no filename given
