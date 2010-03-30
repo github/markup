@@ -1,3 +1,7 @@
+## 0.3.3 (2010-03-29)
+
+* UTF-8 works with ReST now.
+
 ## 0.3.2 (2010-03-25)
 
 * Improved test runner
