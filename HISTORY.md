@@ -1,3 +1,7 @@
+## 0.4.0 (2010-04-23)
+
+* Removed man page support until it's ready.
+
 ## 0.3.3 (2010-03-29)
 
 * UTF-8 works with ReST now.
