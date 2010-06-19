@@ -7,14 +7,17 @@ rich text file.
 Markups
 -------
 
-* .markdown - `gem install markdown`
-* .textile - `gem install RedCloth`
-* .rdoc
-* .org - `gem install org-mode`
-* .rst - `easy_install docutils`
-* .asciidoc - `brew install asciidoc`
-* .pod - `Pod::Simple::HTML` should come with Perl
-* .1 - Requires `groff`
+The following markups are supported.  The dependencies listed are required if
+you wish to run the library.
+
+* [.markdown](http://daringfireball.net/projects/markdown/) -- `gem install markdown`
+* [.textile](http://www.textism.com/tools/textile/) -- `gem install RedCloth`
+* [.rdoc](http://rdoc.sourceforge.net/)
+* [.org](http://orgmode.org/) -- `gem install org-mode`
+* [.rst](http://docutils.sourceforge.net/rst.html) -- `easy_install docutils`
+* [.asciidoc](http://www.methods.co.nz/asciidoc/) -- `brew install asciidoc`
+* [.pod](http://search.cpan.org/dist/perl/pod/perlpod.pod) -- `Pod::Simple::HTML` *should come with Perl*
+* .1 - Requires [`groff`](http://www.gnu.org/software/groff/)
 
 
 Contributing
