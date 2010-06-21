@@ -16,7 +16,8 @@ you wish to run the library.
 * [.org](http://orgmode.org/) -- `gem install org-ruby`
 * [.rst](http://docutils.sourceforge.net/rst.html) -- `easy_install docutils`
 * [.asciidoc](http://www.methods.co.nz/asciidoc/) -- `brew install asciidoc`
-* [.pod](http://search.cpan.org/dist/perl/pod/perlpod.pod) -- `Pod::Simple::HTML` *should come with Perl*
+* [.pod](http://search.cpan.org/dist/perl/pod/perlpod.pod) -- `Pod::Simple::HTML`
+  comes with Perl >= 5.10. Lower versions should install Pod::Simple from CPAN.
 * .1 - Requires [`groff`](http://www.gnu.org/software/groff/)
 
 
