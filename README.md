@@ -10,10 +10,10 @@ Markups
 The following markups are supported.  The dependencies listed are required if
 you wish to run the library.
 
-* [.markdown](http://daringfireball.net/projects/markdown/) -- `gem install markdown`
+* [.markdown](http://daringfireball.net/projects/markdown/) -- `gem install rdiscount`
 * [.textile](http://www.textism.com/tools/textile/) -- `gem install RedCloth`
 * [.rdoc](http://rdoc.sourceforge.net/)
-* [.org](http://orgmode.org/) -- `gem install org-mode`
+* [.org](http://orgmode.org/) -- `gem install org-ruby`
 * [.rst](http://docutils.sourceforge.net/rst.html) -- `easy_install docutils`
 * [.asciidoc](http://www.methods.co.nz/asciidoc/) -- `brew install asciidoc`
 * [.pod](http://search.cpan.org/dist/perl/pod/perlpod.pod) -- `Pod::Simple::HTML` *should come with Perl*
