@@ -14,6 +14,7 @@ you wish to run the library.
 * [.textile](http://www.textism.com/tools/textile/) -- `gem install RedCloth`
 * [.rdoc](http://rdoc.sourceforge.net/)
 * [.org](http://orgmode.org/) -- `gem install org-ruby`
+* [.creole](http://wikicreole.org/) -- `gem install creole`
 * [.rst](http://docutils.sourceforge.net/rst.html) -- `easy_install docutils`
 * [.asciidoc](http://www.methods.co.nz/asciidoc/) -- `brew install asciidoc`
 * [.pod](http://search.cpan.org/dist/perl/pod/perlpod.pod) -- `Pod::Simple::HTML`
