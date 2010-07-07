@@ -1,3 +1,7 @@
+## 0.5.0 (2010-07-07)
+
+* Added creole support
+
 ## 0.4.0 (2010-04-23)
 
 * Removed man page support until it's ready.
