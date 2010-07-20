@@ -1,2 +1,6 @@
 * One
 * Two
+
+This is an {absolute link}[http://github.com].  So is this: http://github.com
+
+This is a {relative link}[link:rawr.html].  So is this: link:rawr.html
