@@ -18,6 +18,10 @@ markup(:creole, /creole/) do |content|
   Creole.creolize(content)
 end
 
+markup(:hikidoc, /hiki/) do |content|
+  HikiDoc.to_html(content)
+end
+
 command(:rest2html, /re?st(\.txt)?/)
 
 command('asciidoc -s --backend=xhtml11 -o - -', /asciidoc/)
