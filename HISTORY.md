@@ -1,3 +1,7 @@
+## 0.5.1 (2010-09-30)
+
+* Support relative path links in rdoc
+
 ## 0.5.0 (2010-07-07)
 
 * Added creole support
