@@ -18,6 +18,10 @@ markup(:creole, /creole/) do |content|
   Creole.creolize(content)
 end
 
+markup(:neapolitan, /neapolitan|np|npt|choc/) do |content|
+  Neapolitan::Template.new(content).render.to_s
+end
+
 command(:rest2html, /re?st(\.txt)?/)
 
 command('asciidoc -s --backend=xhtml11 -o - -', /asciidoc/)

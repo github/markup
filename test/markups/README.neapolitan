@@ -1,0 +1,18 @@
+author: Abe Lincoln
+date  : 2010-10-10
+
+--- markdown
+
+Examples Of Liberty
+===================
+
+* Sparticus
+* Emancipation Proclimation
+* Neapolitan
+
+--- textile
+
+h1. Table of Freedom
+
+| political  | billd of rights |
+| templating | neapolitan |
