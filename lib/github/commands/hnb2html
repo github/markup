@@ -1,0 +1,29 @@
+#!/usr/bin/perl -w
+
+use strict;
+use File::Temp qw(:mktemp);
+
+# hnb outputs version number etc. every time to STDOUT, so
+# using files makes it easier to seprarate.
+
+my ($infh,  $tmpin)  = mkstemp( "/tmp/github-hnbin.XXXXXXXXXX"  );
+my ($outfh, $tmpout) = mkstemp( "/tmp/github-hnbout.XXXXXXXXXX" );
+
+open(TMP, '>', $tmpin) or die "Can't write to $tmpin: $!";
+print TMP <>;
+close TMP;
+
+system("hnb '$tmpin' 'go root' 'export_html $tmpout' > /dev/null");
+unlink $tmpin;
+
+open(TMP, '<', $tmpout) or die "Can't read from $tmpout: $!";
+local $/;
+my $ret = <TMP>;
+close TMP;
+unlink $tmpout;
+
+$ret =~ s/.*<body>//si;
+$ret =~ s/<\/body>.*//si;
+$ret =~ s:</?[A-Z0-9]+>:lc($&):eg;
+
+print $ret;
