@@ -19,7 +19,7 @@ markup(:creole, /creole/) do |content|
 end
 
 markup(:wikicloth, /mediawiki|wiki/) do |content|
-  WikiCloth::WikiCloth.new({:data => content}).to_html
+  WikiCloth::WikiCloth.new(:data => content).to_html(:noedit => true)
 end
 
 command(:rest2html, /re?st(\.txt)?/)
