@@ -4,7 +4,7 @@ require 'github/markup'
 require 'test/unit'
 
 class MarkupTest < Test::Unit::TestCase
-  Dir['test/markups/README.*'].each do |readme|
+  Dir['test/markups/README*'].each do |readme|
     next if readme =~ /html$/
     markup = readme.split('/').last.gsub(/^README\./, '')
 
