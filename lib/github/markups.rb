@@ -26,6 +26,8 @@ command(:rest2html, /re?st(\.txt)?/)
 
 command('asciidoc -s --backend=xhtml11 -o - -', /asciidoc/)
 
+command('pandoc -S --webtex', /pandoc|pdc/)
+
 # pod2html is nice enough to generate a full-on HTML document for us,
 # so we return the favor by ripping out the good parts.
 #
