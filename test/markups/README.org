@@ -113,3 +113,9 @@
      greatly simplified a lot of the messiness of =textile=
      conversion.
    - Added support for line breaks within list items.
+
+```ruby
+  def hello
+    puts "Hello World"
+  end
+```
