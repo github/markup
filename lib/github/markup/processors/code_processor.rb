@@ -71,6 +71,12 @@ module GitHub
             # Ensure we always return something, if formatting fails just return the original code
             formatted.empty? && !code.empty? ? code : formatted
           end
+
+          # Some parsers (Rdoc, Markdown) wrap our token in a paragraph tag, we need to remove it before
+          # inserting the formatted code snippet
+          data.gsub!(/\<p\>\r?\n?#{id}\r?\n?\<\/p\>/m, id)
+          
+          # Replace our token with formatted code snippet
           data.gsub!(id, formatted)
         end
         data
