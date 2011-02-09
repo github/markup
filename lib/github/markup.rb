@@ -1,4 +1,5 @@
-require "rubygems"
+
+
 begin
   require 'open3_detach'
 rescue LoadError
@@ -7,13 +8,10 @@ end
 
 $:.unshift(File.dirname(__FILE__))
 
-require 'digest/sha1'
-require 'cgi'
-require "albino"
-
 module GitHub
   module Markup
-    autoload :Albino, "markup/albino"
+    
+    autoload :Processor, "markup/processor"
     
     extend self
     @@markups = {}
