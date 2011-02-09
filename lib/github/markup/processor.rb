@@ -3,39 +3,46 @@ module GitHub
     class Processor
       
       @@processors = []
+      @@processor_instances = []
       @@loaded = false
+      @@initialized = false
       
-      def self.inherited(klass)
-        instance = klass.new
-        @@processors << instance
-      end
-      
-      def self.load
-        Dir.glob(File.join(File.dirname(__FILE__), 'processors', '*_processor.rb')).each { |file| require file }
-        @@loaded = true
-      end
-      
-      def self.loaded?
-        @@loaded
-      end
-      
-      def self.run_callback(callback, content)
-        @@processors.each do |processor|
-          begin
-            result = processor.send(callback, content)
-            content = result if result.is_a?(String)
-          rescue
+      class << self
+        def inherited(klass)
+          @@processors << klass
+        end
+
+        def load_processors
+          Dir.glob(File.join(File.dirname(__FILE__), 'processors', '*_processor.rb')).each { |file| require file }
+          @@loaded = true
+        end
+        
+        def init!
+          @@processors.each do |proc|
+            klass = proc.new
+            @@processor_instances << klass
+            klass.setup if klass.respond_to?(:setup)
           end
         end
-        content
-      end
-      
-      def initialize
-        self.setup
-      end
-      
-      def setup
-        # noop
+
+        def loaded?
+          @@loaded
+        end
+        
+        def initialized?
+          @@initialized
+        end
+
+        def run_callback(callback, content)
+          @@processor_instances.each do |processor|
+            begin
+              result = processor.send(callback, content)
+              content = result if result.is_a?(String)
+            rescue
+            end
+          end
+          content
+        end
       end
       
       def before_render(content)
