@@ -32,3 +32,8 @@ drwxr-xr-x   3 nferrier users  4096 Jul  5 18:19 lib
 drwxr-xr-x   3 nferrier users  4096 Jul  5 18:19 test
 }}}
 
+```ruby
+  def hello
+    puts "Hello World"
+  end
+```
