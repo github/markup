@@ -15,7 +15,7 @@ module GitHub
       end
     end
     
-    class Code < Markup::Processor
+    class CodeProcessor < GitHub::Markup::Processor
       
       def before_render(content)
         extract_code(content)
