@@ -25,13 +25,10 @@ module GitHub
       content = Processor.run_callback(:before_render, content)
       
       if proc = renderer(filename)
-        proc[content]
-      else
-        content
+        content = proc[content]
       end
       
       content = Processor.run_callback(:after_render, content)
-      
       content
     end
 
