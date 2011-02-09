@@ -95,60 +95,6 @@ module GitHub
       ""
     end
     
-    #########################################################################
-    #
-    # Code
-    #
-    #########################################################################
-
-    # Extract all code blocks into the codemap and replace with placeholders.
-    #
-    # data - The raw String data.
-    #
-    # Returns the placeholder'd String data.
-    def extract_code(data)
-      data.gsub!(/^``` ?([^\r\n]+)?\r?\n(.+?)\r?\n```\r?$/m) do
-        id     = Digest::SHA1.hexdigest($2)
-        cached = nil #check_cache(:code, id)
-        @codemap[id] = cached   ?
-          { :output => cached } :
-          { :lang => $1, :code => $2 }
-        id
-      end
-      data
-    end
-    
-    # Process all code from the codemap and replace the placeholders with the
-    # final HTML.
-    #
-    # data - The String data (with placeholders).
-    #
-    # Returns the marked up String data.
-    def process_code(data)
-      @codemap.each do |id, spec|
-        formatted = spec[:output] || begin
-          code = spec[:code]
-          lang = spec[:lang]
-          
-
-          if code.lines.all? { |line| line =~ /\A\r?\n\Z/ || line =~ /^(  |\t)/ }
-            code.gsub!(/^(  |\t)/m, '')
-          end
-
-          formatted = begin
-            lang && Albino.colorize(code, lang)
-          rescue ::Albino::ShellArgumentError, ::Albino::Process::TimeoutExceeded,
-              ::Albino::Process::MaximumOutputExceeded
-          end
-          formatted ||= "<pre><code>#{CGI.escapeHTML(code)}</code></pre>"
-          # update_cache(:code, id, formatted)
-          formatted
-        end
-        data.gsub!(id, formatted)
-      end
-      data
-    end
-
     # Define markups
     instance_eval File.read(File.dirname(__FILE__) + '/markups.rb')
   end
