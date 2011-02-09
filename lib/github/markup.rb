@@ -19,7 +19,8 @@ module GitHub
     def render(filename, content = nil)
       content ||= File.read(filename)
       
-      Processor.load unless Processor.loaded?
+      Processor.load_processors unless Processor.loaded?
+      Processor.init! unless Processor.initialized?
       
       content = Processor.run_callback(:before_render, content)
       
