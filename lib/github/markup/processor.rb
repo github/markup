@@ -53,6 +53,10 @@ module GitHub
         # noop
       end
       
+      def setup
+        
+      end
+      
     end
   end
 end
