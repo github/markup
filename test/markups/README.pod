@@ -87,3 +87,8 @@ If you need to contact the Matrixy team, go to the project home page at:
 
 www.github.com\Whiteknight\matrixy
 
+```ruby
+  def hello
+    puts "Hello World"
+  end
+```
