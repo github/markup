@@ -11,3 +11,8 @@ Header 2
 2. More ``code``, hooray
 
 
+```ruby
+  def hello
+    puts "Hello World"
+  end
+```

@@ -11,3 +11,9 @@ Header 2
 2. More ``code``, hooray
 
 3. Somé UTF-8°
+
+```ruby
+  def hello
+    puts "Hello World"
+  end
+```
