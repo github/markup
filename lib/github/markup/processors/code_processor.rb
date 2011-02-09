@@ -67,6 +67,8 @@ module GitHub
             
             formatted ||= "<pre><code>#{CGI.escapeHTML(code)}</code></pre>"
             update_cache(:code, id, formatted)
+            
+            # Ensure we always return something, if formatting fails just return the original code
             formatted.empty? && !code.empty? ? code : formatted
           end
           data.gsub!(id, formatted)
