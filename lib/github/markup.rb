@@ -15,12 +15,13 @@ module GitHub
     
     extend self
     @@markups = {}
-
+    
     def render(filename, content = nil)
       content ||= File.read(filename)
       
-      @codemap ||= {}
-      content = extract_code(content)
+      Processor.load unless Processor.loaded?
+      
+      content = Processor.run_callback(:before_render, content)
       
       if proc = renderer(filename)
         proc[content]
@@ -28,7 +29,7 @@ module GitHub
         content
       end
       
-      content = process_code(content)
+      content = Processor.run_callback(:after_render, content)
       
       content
     end
