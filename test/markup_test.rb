@@ -14,7 +14,11 @@ class MarkupTest < Test::Unit::TestCase
       expected_file = "#{readme}.html"
       expected = File.read(expected_file)
       actual = GitHub::Markup.render(readme, File.read(readme))
-
+      
+      file = File.open("#{readme}.actual.html", 'w+')
+      file.puts actual
+      file.close
+      
       if source != expected
         assert(source != actual, "#{markup} did not render anything")
       end
