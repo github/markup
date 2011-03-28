@@ -1,0 +1,314 @@
+
+<h1>Introduction</h1>
+
+<p>
+Welcome to the txt2tags sample file.
+</p>
+<p>
+Here you have examples and a brief explanation of all
+marks.
+</p>
+<p>
+The first 3 lines of the this file are used as headers,
+on the following format:
+</p>
+
+<pre>
+  line1: document title
+  line2: author name, email
+  line3: date, version
+</pre>
+
+<p>
+Lines with balanced equal signs = around are titles.
+</p>
+
+<h1>Fonts and Beautifiers</h1>
+
+<p>
+We have two sets of fonts:
+</p>
+<p>
+The NORMAL type that can be improved with beautifiers.
+</p>
+<p>
+The TYPEWRITER type that uses monospaced font for
+pre-formatted text.
+</p>
+<p>
+We will now enter on a subtitle...
+</p>
+
+<h2>Beautifiers</h2>
+
+<p>
+The text marks for beautifiers are simple, just as you
+type on a plain text email message.
+</p>
+<p>
+We use double *, /, - and _ to represent <b>bold</b>,
+<i>italic</i>, <s>strike</s> and <u>underline</u>.
+</p>
+<p>
+The <b><i>bold italic</i></b> style is also supported as a
+combination.
+</p>
+
+<h2>Pre-Formatted Text</h2>
+
+<p>
+We can put a code sample or other pre-formatted text:
+</p>
+
+<pre>
+    here    is     pre-formatted
+  //marks// are  **not**  ``interpreted``
+</pre>
+
+<p>
+And also, it's easy to put a one line pre-formatted
+text:
+</p>
+
+<pre>
+  prompt$ ls /etc
+</pre>
+
+<p>
+Or use <code>pre-formatted</code> inside sentences.
+</p>
+
+<h2>More Cosmetics</h2>
+
+<p>
+Special entities like email (<a href="mailto:duh@somewhere.com">duh@somewhere.com</a>) and
+URL (<a href="http://www.duh.com">http://www.duh.com</a>) are detected automagically,
+as long as the horizontal line:
+</p>
+
+<hr class="light" />
+
+<p>
+^ thin or large v
+</p>
+
+<hr class="heavy" />
+
+<p>
+You can also specify an <a href="http://duh.org">explicit link</a>
+or an <a href="mailto:duh@somewhere.com">explicit email</a> with label.
+</p>
+<p>
+And remember,
+</p>
+	<blockquote>
+	A TAB in front of the line does a quotation.
+		<blockquote>
+		More TABs, more depth (if allowed).
+		</blockquote>
+	</blockquote>
+<p>
+Nice.
+</p>
+
+<h1>Lists</h1>
+
+<p>
+A list of items is natural, just putting a <b>dash</b> or
+a <b>plus</b> at the beginning of the line.
+</p>
+
+<h2>Plain List</h2>
+
+<p>
+The dash is the default list identifier. For sublists,
+just add <b>spaces</b> at the beginning of the line. More
+spaces, more sublists.
+</p>
+
+<ul>
+<li>Earth
+  <ul>
+  <li>America
+    <ul>
+    <li>South America
+      <ul>
+      <li>Brazil
+        <ul>
+        <li>How deep can I go?
+        </li>
+        </ul>
+      </li>
+      </ul>
+    </li>
+    </ul>
+  </li>
+  <li>Europe
+    <ul>
+    <li>Lots of countries
+    </li>
+    </ul>
+  </li>
+  </ul>
+</li>
+<li>Mars
+  <ul>
+  <li>Who knows?
+  </li>
+  </ul>
+</li>
+</ul>
+
+<p>
+The list ends with <b>two</b> consecutive blank lines.
+</p>
+
+<h2>Numbered List</h2>
+
+<p>
+The same rules as the plain list, just a different
+identifier (plus).
+</p>
+
+<ol>
+<li>one
+</li>
+<li>two
+</li>
+<li>three
+  <ul>
+  <li>mixed lists!
+  </li>
+  <li>what a mess
+    <ol>
+    <li>counting again
+    </li>
+    <li>...
+    </li>
+    </ol>
+  </li>
+  </ul>
+</li>
+<li>four
+</li>
+</ol>
+
+<h2>Definition List</h2>
+
+<p>
+The definition list identifier is a colon, followed by
+the term. The term contents is placed on the next line.
+</p>
+
+<dl>
+<dt>orange</dt><dd>
+  a yellow fruit
+</dd>
+<dt>apple</dt><dd>
+  a green or red fruit
+</dd>
+<dt>other fruits</dt><dd>
+  <ul>
+  <li>wee!
+  </li>
+  <li>mixing lists
+    <ol>
+    <li>again!
+    </li>
+    <li>and again!
+    </li>
+    </ol>
+  </li>
+  </ul>
+</dd>
+</dl>
+
+<h1>Tables</h1>
+
+<p>
+Use pipes to compose table rows and cells.
+Double pipe at the line beginning starts a heading row.
+Natural spaces specify each cell alignment.
+</p>
+
+<table align="center" border="1" cellpadding="4">
+<tr>
+<th>heading 1</th>
+<th>heading 2</th>
+<th>heading 3</th>
+</tr>
+<tr>
+<td>cell 1.1</td>
+<td align="center">cell 1.2</td>
+<td align="right">cell 1.3</td>
+</tr>
+<tr>
+<td>cell 2.1</td>
+<td align="center">cell 2.2</td>
+<td align="right">cell 2.3</td>
+</tr>
+</table>
+
+<p>
+Without the last pipe, no border:
+</p>
+
+<table align="center" cellpadding="4">
+<tr>
+<th>heading 1</th>
+<th>heading 2</th>
+<th>heading 3</th>
+</tr>
+<tr>
+<td>cell 1.1</td>
+<td align="center">cell 1.2</td>
+<td align="right">cell 1.3</td>
+</tr>
+<tr>
+<td>cell 2.1</td>
+<td align="center">cell 2.2</td>
+<td align="right">cell 2.3</td>
+</tr>
+</table>
+
+<h1>Special Entities</h1>
+
+<p>
+Because things were too simple.
+</p>
+
+<h2>Images</h2>
+
+<p>
+The image mark is as simple as it can be: <code>[filename]</code>.
+</p>
+                      <center><img align="middle" src="img/photo.jpg" border="0" alt=""/></center>  
+
+<ul>
+<li>The filename must end in PNG, JPG, GIF, or similar.
+</li>
+<li>No spaces inside the brackets!
+</li>
+</ul>
+
+<h2>Other</h2>
+
+<p>
+The handy <code>%%date</code> macro expands to the current date.
+</p>
+<p>
+So today is 20110328 on the ISO <code>YYYYMMDD</code> format.
+</p>
+<p>
+You can also specify the date format with the %? flags,
+as <code>%%date(%m-%d-%Y)</code> which gives: 03-28-2011.
+</p>
+<p>
+That's all for now.
+</p>
+
+<hr class="light" />
+
+<p>
+<img align="left" src="img/t2tpowered.png" border="0" alt=""/> (<a href="-">-</a>)
+</p>

@@ -36,3 +36,5 @@ command("/usr/bin/env perl -MPod::Simple::HTML -e Pod::Simple::HTML::go", /pod/)
     $1
   end
 end
+
+command("/usr/bin/env txt2tags  --quiet --target=xhtml --encoding=utf-8  --no-headers --infile=- --outfile=-",/t2t/)

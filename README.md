@@ -20,6 +20,7 @@ you wish to run the library.
 * [.pod](http://search.cpan.org/dist/perl/pod/perlpod.pod) -- `Pod::Simple::HTML`
   comes with Perl >= 5.10. Lower versions should install Pod::Simple from CPAN.
 * .1 - Requires [`groff`](http://www.gnu.org/software/groff/)
+* [.t2t](http://http://txt2tags.org/) -- `Download and install from website, v2.6`
 
 
 Contributing
