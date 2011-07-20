@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
 
 $LOAD_PATH.unshift File.dirname(__FILE__) + "/../lib"
+require 'rubygems'
 require 'github/markup'
 
 if ARGV[0] && File.exists?(file = ARGV[0])
