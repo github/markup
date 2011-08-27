@@ -15,7 +15,8 @@ markup('org-ruby', /org/) do |content|
 end
 
 markup(:creole, /creole/) do |content|
-  Creole.creolize(content)
+  require 'wiki_creole'
+  WikiCreole.creole_parse(content)
 end
 
 markup(:wikicloth, /mediawiki|wiki/) do |content|
