@@ -1,0 +1,35 @@
+#!/usr/bin/env php
+<?php
+
+// Texy! 3.0-dev (c) David Grudl, 2004-2010 (http://davidgrudl.com) under GNU GPL
+
+// Check for PHP CLI SAPI
+if(PHP_SAPI !== 'cli'){
+  trigger_error('This script should be run from CLI.', E_USER_ERROR);
+  exit;
+}
+
+// Get the content
+$content = stream_get_contents(STDIN);
+
+// Don't process empty files
+if(!$content){
+  exit;
+}
+
+// Load Texy! preprocessor
+require_once dirname(__FILE__) . '/texy.library.min.php';
+
+$texy = new Texy();
+
+// Configure Texy!
+$texy->setOutputMode(Texy::XHTML1_TRANSITIONAL);
+$texy->headingModule->generateID = TRUE;
+$texy->allowed['html/tag'] = FALSE;
+$texy->allowed['html/comment'] = FALSE;
+$texy->allowed['longwords'] = FALSE;
+$texy->allowed['script'] = FALSE;
+$texy->typographyModule->locale = 'en';
+
+// Print processed content to STDOUT.
+fwrite(STDOUT, $texy->process($content));

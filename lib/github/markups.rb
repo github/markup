@@ -36,3 +36,5 @@ command("/usr/bin/env perl -MPod::Simple::HTML -e Pod::Simple::HTML::go", /pod/)
     $1
   end
 end
+
+command(:texy, /texy(\.txt)?/)
