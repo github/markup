@@ -16,6 +16,7 @@ you wish to run the library.
 * [.org](http://orgmode.org/) -- `gem install org-ruby`
 * [.creole](http://wikicreole.org/) -- `gem install creole`
 * [.mediawiki](http://www.mediawiki.org/wiki/Help:Formatting) -- `gem install wikicloth`
+* [.shmakowiki](http://github.com/veged/shmakowiki) -- `npm install shmakowiki`
 * [.rst](http://docutils.sourceforge.net/rst.html) -- `easy_install docutils`
 * [.asciidoc](http://www.methods.co.nz/asciidoc/) -- `brew install asciidoc`
 * [.pod](http://search.cpan.org/dist/perl/pod/perlpod.pod) -- `Pod::Simple::HTML`
