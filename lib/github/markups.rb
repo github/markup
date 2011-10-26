@@ -24,7 +24,8 @@ end
 
 command(:rest2html, /re?st(\.txt)?/)
 
-command('asciidoc -s --backend=xhtml11 -o - -', /asciidoc(\.txt)?|asc(\.txt)?|adoc(\.txt)?/)
+### Add support for embedded icons
+command('asciidoc -s -a data-uri -a iconsdir=/usr/share/asciidoc/images/icons --backend=xhtml11 -o - -', /asciidoc(\.txt)?|asc(\.txt)?|adoc(\.txt)?/)
 
 # pod2html is nice enough to generate a full-on HTML document for us,
 # so we return the favor by ripping out the good parts.
