@@ -61,12 +61,12 @@ desc
     Rakefile
     bin/github-markup
     github-markup.gemspec
+    lib/github-markup.rb
     lib/github/commands/asciidoc2html
     lib/github/commands/asciidocapi.py
     lib/github/commands/rest2html
     lib/github/markup.rb
     lib/github/markup/rdoc.rb
-    lib/github/markup/version.rb
     lib/github/markups.rb
     test/markup_test.rb
     test/markups/README.asciidoc
