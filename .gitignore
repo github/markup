@@ -1,1 +1,4 @@
 *.pyc
+bin
+.bundle
+Gemfile.lock
