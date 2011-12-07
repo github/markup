@@ -1,3 +1,4 @@
+require "rdoc"
 require "rdoc/markup/to_html"
 
 module GitHub

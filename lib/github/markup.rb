@@ -22,8 +22,9 @@ module GitHub
     def markup(file, pattern, &block)
       require file.to_s
       add_markup(pattern, &block)
+      true
     rescue LoadError
-      nil
+      false
     end
 
     def command(command, regexp, &block)

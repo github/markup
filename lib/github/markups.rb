@@ -1,5 +1,20 @@
-markup(:markdown, /md|mkdn?|mdown|markdown/) do |content|
-  Markdown.new(content).to_html
+MD_FILES = /md|mkdn?|mdown|markdown/
+
+if markup(:redcarpet, MD_FILES) do |content|
+    RedcarpetCompat.new(content).to_html
+  end 
+elsif markup(:rdiscount, MD_FILES) do |content|
+    RDiscount.new(content).to_html
+  end 
+elsif markup(:maruku, MD_FILES) do |content|
+    Maruku.new(content).to_html
+  end 
+elsif markup(:kramdown, MD_FILES) do |content|
+    Kramdown::Document.new(content).to_html
+  end
+elsif markup(:bluecloth, MD_FILES) do |content|
+    BlueCloth.new(content).to_html
+  end
 end
 
 markup(:redcloth, /textile/) do |content|
