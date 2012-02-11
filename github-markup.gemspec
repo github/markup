@@ -15,7 +15,7 @@ Gem::Specification.new do |s|
   s.name              = 'github-markup'
   s.version           = '0.7.0'
   s.date              = '2011-12-07'
-  s.rubyforge_project = 'github-markup'
+  s.executables       = ['github-markup']
 
   ## Make sure your summary is short. The description may be as long
   ## as you like.
