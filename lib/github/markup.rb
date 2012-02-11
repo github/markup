@@ -69,6 +69,15 @@ module GitHub
       nil
     end
 
+    def renderer_name(filename)
+      @@markups.each do |key, value|
+        if Regexp.compile("\\.(#{key})$") =~ filename
+          return key
+        end
+      end
+      nil
+    end
+
     def execute(command, target)
       out = ''
       Open3.popen3(command) do |stdin, stdout, _|
