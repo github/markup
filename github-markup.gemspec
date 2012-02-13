@@ -14,7 +14,7 @@ Gem::Specification.new do |s|
   ## the sub! line in the Rakefile
   s.name              = 'github-markup'
   s.version           = '0.7.0'
-  s.date              = '2011-12-07'
+  s.date              = '2012-02-13'
   s.executables       = ['github-markup']
 
   ## Make sure your summary is short. The description may be as long
