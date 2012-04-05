@@ -18,6 +18,8 @@ import codecs
 
 from docutils.core import publish_parts
 from docutils.writers.html4css1 import Writer
+from docutils import nodes
+from docutils.parsers.rst import directives, Directive
 
 SETTINGS = {
     'cloak_email_addresses': True,
@@ -27,6 +29,70 @@ SETTINGS = {
     'doctitle_xform': False,
     'report_level': 5,
 }
+
+try:
+    from pygments import highlight
+    from pygments.lexers import get_lexer_by_name
+    from pygments.formatters import HtmlFormatter
+except:
+    highlight = get_lexer_by_name = HtmlFormatter = None
+
+class Pygments(Directive):
+    """
+    Adds support for Pygments syntax highlighting.
+    """
+
+    required_arguments = 1
+    optional_arguments = 0
+    final_argument_whitespace = True
+    option_spec = {
+        'linenos': directives.flag,
+        'hl_lines': directives.positive_int_list,
+        'linenostart': directives.nonnegative_int,
+        'linenostep': directives.positive_int,
+        'linenospecial': directives.nonnegative_int,
+        'nobackground': directives.flag,
+        'anchorlinenos': directives.flag,
+        'noclasses': directives.flag,
+    }
+    has_content = True
+
+    def run(self):
+        """
+        Renders code directives into docutils nodes,
+        while applying syntax highlighting using Pygments.
+        """
+        self.assert_has_content()
+        try:
+            lexer = get_lexer_by_name(self.arguments[0])
+        except ValueError:
+            # no lexer found
+            lexer = get_lexer_by_name('text')
+
+        # Prepare the options that will be used
+        # to render the code in the HtmlFormatter.
+        options={}
+        for (option, converter) in self.option_spec.iteritems():
+            if converter == directives.flag:
+                if option in self.options:
+                    options[option] = True
+            elif option in self.options:
+                options[option] = self.options[option]
+
+        formatter = HtmlFormatter(**options)
+        parsed = highlight(u'\n'.join(self.content), lexer, formatter)
+        return [nodes.raw('', parsed, format='html')]
+
+# Only register the Pygments directive
+# if pygments is indeed available.
+if highlight:
+    # We register the same aliases as those
+    # recognized by Sphinx (for compatibility).
+    directives.register_directive('code', Pygments)
+    directives.register_directive('code-block', Pygments)
+    directives.register_directive('sourcecode', Pygments)
+    directives.register_directive('sourcecode-block', Pygments)
+
 
 def main():
     """
