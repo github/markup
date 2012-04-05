@@ -1,6 +1,9 @@
 MD_FILES = /md|mkdn?|mdown|markdown/
 
-if markup(:redcarpet, MD_FILES) do |content|
+if markup('github/markdown', MD_FILES) do |content|
+    GitHub::Markdown.render(content)
+  end
+elsif markup(:redcarpet, MD_FILES) do |content|
     RedcarpetCompat.new(content).to_html
   end 
 elsif markup(:rdiscount, MD_FILES) do |content|
