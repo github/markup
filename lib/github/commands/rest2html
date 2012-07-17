@@ -17,7 +17,7 @@ import sys
 import codecs
 
 from docutils.core import publish_parts
-from docutils.writers.html4css1 import Writer
+from docutils.writers.html4css1 import Writer, HTMLTranslator
 
 SETTINGS = {
     'cloak_email_addresses': True,
@@ -26,7 +26,19 @@ SETTINGS = {
     'strip_comments': True,
     'doctitle_xform': False,
     'report_level': 5,
+    'syntax_highlight' : 'none',
+    'math_output' : 'latex'
 }
+
+class GitHubHTMLTranslator(HTMLTranslator):
+    def visit_literal_block(self, node):
+        classes = node.attributes['classes']
+        if len(classes) >= 2 and classes[0] == 'code':
+            language = classes[1]
+            del classes[:]
+            self.body.append(self.starttag(node, 'pre', lang=language))
+        else:
+            super(self, node)
 
 def main():
     """
@@ -43,7 +55,10 @@ def main():
     except IndexError: # no filename given
         text = sys.stdin.read()
 
-    parts = publish_parts(text, writer=Writer(), settings_overrides=SETTINGS)
+    writer = Writer()
+    writer.translator_class = GitHubHTMLTranslator
+
+    parts = publish_parts(text, writer=writer, settings_overrides=SETTINGS)
     if 'html_body' in parts:
         html = parts['html_body']
         return html.encode('utf-8')
@@ -51,3 +66,35 @@ def main():
 
 if __name__ == '__main__':
     print main()
+ 1) +S5(]>9D)   2) =7Ue:M,/C
+ 3) ~>q7>nM}c   4) JF>L[30}W
+ 5) _oCN{mT?m   6) igQW@FZ#3
+ 7) GC{q,E2ko   8) i0Mi]uhKX
+ 9) E#FE{(>{>  10) (Jy[?tp(v
+11) A@q>;)SCC  12) VMg-#d^,<
+13) c,K!.1Gy!  14) <Qq^^E:dE
+15) Z5vL_7LGb  16) -7D%+K39c
+17) Z/yf~ZRpC  18) 7)n7{L:!6
+19) q=(l(~E1!  20) /]g$?H@g9
+
+----------  MD5 Signatures  ----------
+9CF92DE4C27540C79262EF56508067CE
+4D08B0114565C9D45503141C7B238267
+A30A3223A37D8586785043C2EE31BE2C
+278561650B3272B0FFBA9A9BB23390C7
+9127E59EC1BDCCAA5B75D8F4147864C3
+3353C308144A94B200CA0E537B82712B
+E3CDE929A2FB59F4EF10D5850DC32C5B
+CD767ABA921A53041B24E38FCB3DE644
+C18736CBC6ABFDEF1DF95979CB312929
+9F08601CA916DF079407537349B870D1
+746C65273B0C6A2B97916253D7FDB90E
+A7EE77098D801D8105543A37713519B5
+C9820A03AC4DDF3A2B0235C86C5FEE5F
+FF3DAB076BA27065B8F25B8C191F1927
+6DF17E983B8BB131430E063DF04CEBF9
+728D0209C9C373281F457C8AD92E06C0
+860859F7C4A155D58FEB9D1D23746DD3
+BADD98E98EC07918606F730679F428B1
+8881E101B6F11F18B2F5D6DF9677473F
+7D90D7E85E2118634477A91B1A0A5F29
