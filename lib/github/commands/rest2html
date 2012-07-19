@@ -38,7 +38,7 @@ class GitHubHTMLTranslator(HTMLTranslator):
             del classes[:]
             self.body.append(self.starttag(node, 'pre', lang=language))
         else:
-            super(self, node)
+            self.body.append(self.starttag(node, 'pre'))
 
 def main():
     """
