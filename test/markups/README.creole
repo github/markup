@@ -2,9 +2,18 @@
 
 == H2 ==
 
-paragraph of text that will be turned into a paragraph element. It can
+=== H3 ===
+
+==== H4 ====
+
+~** not ~~bold~~ ~**
+~// not ~~italic~~ ~//
+
+[[https://github.com|{{https://a248.e.akamai.net/assets.github.com/images/modules/header/logov6-hover.png|github social coding}}]]
+
+paragraph of text that will be turned into a //paragraph element//. It can
 go over several lines with line breaks, it will be turned into a
-contiguous paragraph element.
+**contiguous //paragraph element//**.
 
 You can force a linebreak in your paragraph text\\thusly.
 
