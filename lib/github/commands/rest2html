@@ -2,8 +2,6 @@
 
 """A small wrapper file for parsing ReST files at GitHub."""
 
-from __future__ import print_function
-
 __author__ = "Jannis Leidel"
 __copyright__ = "Copyright (C) 2008 Jannis Leidel"
 __license__ = "Public Domain"
@@ -73,4 +71,5 @@ def main():
     return ''
 
 if __name__ == '__main__':
-    print(main())
+    sys.stdout.write("%s%s" % (main(), "\n"))
+    sys.stdout.flush()
