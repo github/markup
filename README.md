@@ -57,7 +57,7 @@ If nothing complains, congratulations!
 ### Classes
 
 If your markup can be translated using a Ruby library, that's
-great. Check out Check `lib/github/markups.rb` for some
+great. Check out `lib/github/markups.rb` for some
 examples. Let's look at Markdown:
 
     markup(:markdown, /md|mkdn?|markdown/) do |content|
