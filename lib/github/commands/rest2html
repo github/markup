@@ -61,8 +61,15 @@ def main():
     parts = publish_parts(text, writer=writer, settings_overrides=SETTINGS)
     if 'html_body' in parts:
         html = parts['html_body']
-        return html.encode('utf-8')
+
+        # publish_parts() in python 2.x return dict values as Unicode type
+        # in py3k Unicode is unavailable and values are of str type
+        if isinstance(html, str):
+            return html
+        else:
+            return html.encode('utf-8')
     return ''
 
 if __name__ == '__main__':
-    print main()
+    sys.stdout.write("%s%s" % (main(), "\n"))
+    sys.stdout.flush()

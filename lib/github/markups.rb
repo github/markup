@@ -1,4 +1,4 @@
-MD_FILES = /md|mkdn?|mdown|markdown/
+MD_FILES = /md|mkdn?|mdwn|mdown|markdown/
 
 if markup('github/markdown', MD_FILES) do |content|
     GitHub::Markdown.render(content)
