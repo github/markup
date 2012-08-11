@@ -24,6 +24,10 @@ markup(:redcloth, /textile/) do |content|
   RedCloth.new(content).to_html
 end
 
+markup(:faqml, /faqml|fml/) do |content|
+  FML.new(content).to_html
+end
+
 markup('github/markup/rdoc', /rdoc/) do |content|
   GitHub::Markup::RDoc.new(content).to_html
 end
