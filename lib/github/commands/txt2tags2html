@@ -1,0 +1,50 @@
+#!/usr/bin/env python
+
+"""A small wrapper file for parsing txt2tags files at GitHub."""
+
+__author__ = "Florent Gallaire"
+__copyright__ = "Copyright (C) 2012 Florent Gallaire"
+__license__ = "MIT"
+
+import sys
+import txt2tags
+
+def main():
+    """
+    Parses the given txt2tags file or the redirected string input and returns the
+    HTML body.
+
+    Usage: txt2tags2html < README.t2t
+           txt2tags2html README.t2t
+    """
+    try:
+        text = open(sys.argv[1], 'r').read()
+    except IOError: # given filename could not be found
+        return ''
+    except IndexError: # no filename given
+        text = sys.stdin.read()
+
+    # Here is the marked text, it must be a list.
+    txt = "\n%!options: -H\n%!target: html\n" + text
+    txt = txt.split('\n')
+    
+    # Let's do the conversion
+    try:    
+        # First we parse the text, splitting parts and getting config.
+        data = txt2tags.process_source_file(contents=txt)
+        # Then we convert it, dumping results to the 'tagged' list.
+        tagged, config = txt2tags.convert_this_files([data])
+        # Show the tagged file on the screen.
+        return '\n'.join(tagged) + '\n'
+    
+    # Txt2tags error, show the message to the user
+    except txt2tags.error, msg:
+        return msg 
+    
+    # Unknown error, show the traceback to the user
+    except: 
+        return txt2tags.getUnknownErrorMessage()
+
+if __name__ == '__main__':
+    sys.stdout.write(main())
+    sys.stdout.flush()
