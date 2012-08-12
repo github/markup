@@ -42,7 +42,7 @@ end
 
 command(:rest2html, /re?st(\.txt)?/)
 
-command(:txt2tags2html, /t2t(\.txt)?/)
+command(:txt2tags2html, /txt2tags|t2t(\.txt)?/)
 
 command('asciidoc -s --backend=xhtml11 -o - -', /asciidoc/)
 
