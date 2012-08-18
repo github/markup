@@ -1,6 +1,7 @@
 source "http://rubygems.org"
 gem "redcarpet"
 gem "RedCloth"
+gem "rdtool"
 gem "rdoc", "~>3.6"
 gem "org-ruby", ">= 0.7.0"
 gem "creole", "~>0.3.6"

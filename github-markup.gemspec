@@ -66,6 +66,7 @@ desc
     lib/github/commands/asciidocapi.py
     lib/github/commands/rest2html
     lib/github/markup.rb
+    lib/github/markup/rd.rb
     lib/github/markup/rdoc.rb
     lib/github/markups.rb
     test/markup_test.rb
@@ -83,6 +84,8 @@ desc
     test/markups/README.org.html
     test/markups/README.pod
     test/markups/README.pod.html
+    test/markups/README.rd
+    test/markups/README.rd.html
     test/markups/README.rdoc
     test/markups/README.rdoc.html
     test/markups/README.rst
@@ -93,6 +96,8 @@ desc
     test/markups/README.textile.html
     test/markups/README.txt
     test/markups/README.txt.html
+    test/markups/README_no_begin_end.rd
+    test/markups/README_no_begin_end.rd.html
   ]
   # = MANIFEST =
 
