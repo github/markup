@@ -42,6 +42,8 @@ end
 
 command(:rest2html, /re?st(\.txt)?/)
 
+command(:willow, /(willow)|(wl)/)
+
 command('asciidoc -s --backend=xhtml11 -o - -', /asciidoc/)
 
 # pod2html is nice enough to generate a full-on HTML document for us,

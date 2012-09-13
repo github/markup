@@ -1,0 +1,141 @@
+#!/usr/bin/env coffee
+
+isArr = (a) -> Array.isArray a
+last = (list) -> list[list.length - 1]
+trimRight = (line) -> line.trimRight()
+
+debug = no
+show =
+  if debug then console.log
+  else -> ''
+
+draw = (line) ->
+  line
+    .replace(/\s/g, '&nbsp;')
+    .replace(/(https?:(\/\/)?\S+)/g, '<a href="$1">$1</a>')
+
+plain = (line) ->
+  line.replace(/>/g,'&gt;')
+    .replace(/</g,'&lt;')
+    .replace(/\t/g,'  ')
+
+mark_line = (line) ->
+  line.replace(/>/g,'&gt;')
+    .replace(/</g,'&lt;')
+    .replace(/\t/g,'  ')
+    .replace(/\s/g, ' ')
+
+fold = (arr) ->
+  show 'arr:: ', arr
+  lines = []
+
+  for line in arr
+    tail = lines.length - 1
+    if line.trim().length is 0
+      if isArr lines[tail]
+        lines[tail].push ''
+      else
+        lines.push ''
+    else if line[0..1] is '  '
+      if (isArr lines[tail])
+        lines[tail].push line[2..]
+      else
+        lines.push [line[2..]]
+    else
+      lines.push (mark_line line)
+
+  ret = []
+  for item in lines
+    if isArr item
+      stack = []
+      while (last item) is ''
+        stack.push ' '
+        item.pop()
+      ret.push (fold item)
+      ret.push space for space in stack
+    else ret.push item
+  show 'ret:: ', ret
+  ret
+
+text = (line) ->
+  show 'text:: ', line
+  mode = 'text'
+  isEsc = no
+  token = ''
+  for c in line
+    show 'c:: ', c
+    if isEsc
+      token += c
+      isEsc = no
+    else
+      if mode is 'text'
+        if c is '#'
+          mode = 'bold'
+          token += '#<b>'
+        else if c is '`'
+          mode = 'code'
+          token += '`<code>'
+        else if c is '\\'
+          isEsc = yes
+        else
+          token += c
+      else if mode is 'bold'
+        if c is '#'
+          mode = 'text'
+          token += '</b>#'
+        else if c is '\\'
+          isEsc = yes
+        else
+          token += c
+      else if mode is 'code'
+        if c is '`'
+          mode = 'text'
+          token += '</code>`'
+        else if c is '\\'
+          isEsc = yes
+        else
+          token += c
+  if mode is 'code'
+    token += '</code>'
+  else if mode is 'bold'
+    token += '</b>'
+  draw token
+
+div = (arr) ->
+  show 'div:: ', arr
+  html = ""
+  for line in arr
+    html +=
+      if isArr line
+        # "<pre><code>  #{div line}</code></pre>"
+        # nested code blocks does not suit github
+        "  #{div line}"
+      else
+        if line is '' then line = ' '
+        "#{draw line}\n"
+  html
+
+render = (str) ->
+  arr = fold str.split('\n').map(trimRight).map(plain)
+  p = ''
+  for line in arr
+    if isArr line
+      p += "<pre><code>#{div line}</code></pre>"
+    else
+      if line is '' then line = ' '
+      p += "<p>#{text line}</p>\n"
+  p
+
+if debug
+  data = """
+  `s#dfd#df` #d1``ss`f#
+    sdfsdf`dfsdf`
+  """
+  show (render data)
+else
+  input_file = ''
+  process.stdin.resume()
+  process.stdin.setEncoding 'utf8'
+  process.stdin.on 'data', (chunk) -> input_file += chunk
+  process.stdin.on 'end', ->
+    process.stdout.write (render input_file)

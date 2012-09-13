@@ -1,0 +1,11 @@
+
+`bold` with `#`
+`code` inline code with `\``
+  block with indent with 2 `space`
+    indent for more blocks
+        and more
+
+  outdent
+
+link http://google.com
+mixed `#\##` #`sdf\`sdf`#
