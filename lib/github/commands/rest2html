@@ -25,6 +25,7 @@ SETTINGS = {
     'raw_enabled': False,
     'strip_comments': True,
     'doctitle_xform': False,
+    'option_limit': 28,
     'report_level': 5,
     'syntax_highlight' : 'none',
     'math_output' : 'latex'
