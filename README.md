@@ -1,120 +1,38 @@
-GitHub Markup
-=============
+# A Location Indicator for iPhone
 
-We use this library on GitHub when rendering your README or any other
-rich text file.
+#### A location indicator for use with MapKit on the iPhone.
 
-Markups
--------
+ 
+ 
 
-The following markups are supported.  The dependencies listed are required if
-you wish to run the library.
+Long before Apple's foray into maps, I had the project which allowed me to play around with the MapKit framework in iOS. I developed the following “location indicator” UI component to eliminate the need for having a “locate-user” button cluttering up your interface. It also allows the user to see where they are in relation to the portion of the map they are viewing, something you normally can’t do if the user’s location is off-screen. I’ve included a simple project showing how the location indicator works.
 
-* [.markdown, .mdown, .md](http://daringfireball.net/projects/markdown/) -- `gem install redcarpet` (https://github.com/vmg/redcarpet)
-* [.textile](http://www.textism.com/tools/textile/) -- `gem install RedCloth`
-* [.rdoc](http://rdoc.sourceforge.net/) -- `gem install rdoc -v 3.6.1`
-* [.org](http://orgmode.org/) -- `gem install org-ruby`
-* [.creole](http://wikicreole.org/) -- `gem install creole`
-* [.mediawiki](http://www.mediawiki.org/wiki/Help:Formatting) -- `gem install wikicloth`
-* [.rst](http://docutils.sourceforge.net/rst.html) -- `easy_install docutils`
-* [.asciidoc](http://www.methods.co.nz/asciidoc/) -- `brew install asciidoc`
-* [.pod](http://search.cpan.org/dist/perl/pod/perlpod.pod) -- `Pod::Simple::HTML`
-  comes with Perl >= 5.10. Lower versions should install Pod::Simple from CPAN.
+The idea is simple, when the user’s location is displayed on the map but scrolled off-screen, the location indicator fades in and points towards the user’s location. The code uses the *mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated* MKMapView delegate method to update the location indicator each time the map is moved and the user’s location remains off-screen.
 
+### How does it work?
 
-Contributing
-------------
+The meat and potatoes of the code is the *(void)animateUserArrow* method. It determines the location of the location indicator, as well as the rotation of the arrow which points towards the user’s location off-screen. This methods calculates where the location indicator should be placed by dividing the in half both horizontally and vertically. It then calculates the x and y differences between the center pixel of the map view and the pixel position of the user’s current location off-screen.
 
-Want to contribute? Great! There are two ways to add markups.
+<img src="http://www.craftmobile.ca/wp-content/uploads/2012/01/location-indicator-design.002.png">
 
+Once we determine which quarter of the screen we are dealing with, we calculate the angle of the line (the one running between the centre point and the user’s location off-screen) to find out which half of the screen quarter the line resides on. We need to know this information in order to figure out which value we need to position the location indicator. In the example below, we know that the indicator’s x-position is at the rightmost visible portion of the screen. What we don’t know is the y-position of the indicator, which we can determine using the angle of the line between the centre point and the user’s location.
 
-### Commands
+<img src="http://www.craftmobile.ca/wp-content/uploads/2012/01/location-indicator-design.003.png">
 
-If your markup is in a language other than Ruby, drop a translator
-script in `lib/github/commands` which accepts input on STDIN and
-returns HTML on STDOUT. See [rest2html][r2h] for an example.
+Similarly, if the line is within the top quadrant we now know the y-position of the indicator. What we don’t know, however, is the x-position. Once again, we kind find this using the previously calculated angle of the triangle shown below.
 
-Once your script is in place, edit `lib/github/markups.rb` and tell
-GitHub Markup about it. Again we look to [rest2html][r2hc] for
-guidance:
+<img src="http://www.craftmobile.ca/wp-content/uploads/2012/01/location-indicator-design.004.png">
 
-    command(:rest2html, /re?st(.txt)?/)
+Once the location indicator is placed, all that’s left to do is determine the arrow rotation. Since the arrow starts pointing north, we determine it’s rotation (in the case of the top-right of the screen at least) by subtracting the aforementioned angle from 90 degrees calculated in radians (the iPhone uses radians, not degrees).  
 
-Here we're telling GitHub Markup of the existence of a `rest2html`
-command which should be used for any file ending in `rest`,
-`rst`, `rest.txt` or `rst.txt`. Any regular expression will do.
+<img src="http://www.craftmobile.ca/wp-content/uploads/2012/01/location-indicator-design.005.png">
 
-Finally add your tests. Create a `README.extension` in `test/markups`
-along with a `README.extension.html`. As you may imagine, the
-`README.extension` should be your known input and the
-`README.extension.html` should be the desired output.
+I know I said that the arrow rotation was the last thing to deal with, and I lied. If we built the component as described above, half of the location indicator would be off-screen. In order to remedy this, we create artificial bounds, which are incorporated into the calculations instead of using the view’s bounds. This way the location indicator is constrained to a smaller rectangle and won’t get cut off.  
 
-Now run the tests: `rake`
+<img src="http://www.craftmobile.ca/wp-content/uploads/2012/01/location-indicator-design.006.png">
 
-If nothing complains, congratulations!
+Hopefully this short set of diagrams gives you enough of an idea of how this component works that you can take a look at the code and appreciate what’s being done in the background. Feel free to ask questions in the comments section below, and I’ll do my best to clarify things if need be.
 
+### Get the code!
 
-### Classes
-
-If your markup can be translated using a Ruby library, that's
-great. Check out `lib/github/markups.rb` for some
-examples. Let's look at Markdown:
-
-    markup(:markdown, /md|mkdn?|markdown/) do |content|
-      Markdown.new(content).to_html
-    end
-
-We give the `markup` method three bits of information: the name of the
-file to `require`, a regular expression for extensions to match, and a
-block to run with unformatted markup which should return HTML.
-
-If you need to monkeypatch a RubyGem or something, check out the
-included RDoc example.
-
-Tests should be added in the same manner as described under the
-`Commands` section.
-
-
-Installation
------------
-
-    gem install github-markup
-
-
-Usage
------
-
-    require 'github/markup'
-    GitHub::Markup.render('README.markdown', "* One\n* Two")
-
-Or, more realistically:
-
-    require 'github/markup'
-    GitHub::Markup.render(file, File.read(file))
-
-
-Testing
--------
-
-To run the tests:
-
-    $ rake
-
-To add tests see the `Commands` section earlier in this
-README.
-
-
-Contributing
-------------
-
-1. Fork it.
-2. Create a branch (`git checkout -b my_markup`)
-3. Commit your changes (`git commit -am "Added Snarkdown"`)
-4. Push to the branch (`git push origin my_markup`)
-5. Open a [Pull Request][1]
-6. Enjoy a refreshing Diet Coke and wait
-
-
-[r2h]: http://github.com/github/markup/tree/master/lib/github/commands/rest2html
-[r2hc]: http://github.com/github/markup/tree/master/lib/github/markups.rb#L13
-[1]: http://github.com/github/markup/pulls
+Please feel free to make use of this code, provided you abide by the included license. If you end up shipping an app that uses the location indicator, I'd love to see it! You can visit www.craftmobile.ca in order to get in touch with me.
