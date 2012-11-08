@@ -2,7 +2,7 @@
 
 <p>Except with more magic added.</p>
 
-<pre lang="haskell"><code>isPrefixOf              :: (Eq a) =&gt; [a] -&gt; [a] -&gt; Bool
+<pre><code class="haskell">isPrefixOf              :: (Eq a) =&gt; [a] -&gt; [a] -&gt; Bool
 isPrefixOf [] _         =  True
 isPrefixOf _  []        =  False
 isPrefixOf (x:xs) (y:ys)=  x == y &amp;&amp; isPrefixOf xs ys
