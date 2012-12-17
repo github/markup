@@ -44,9 +44,11 @@ markup(:literati, /lhs/) do |content|
   Literati.render(content)
 end
 
-command(:rest2html, /re?st(\.txt)?/)
+markup(:asciidoctor, /asc|adoc|asciidoc/) do |content|
+  Asciidoctor::Document.new(content).render
+end
 
-command('asciidoc -s --backend=xhtml11 -o - -', /asc|adoc|asciidoc/)
+command(:rest2html, /re?st(\.txt)?/)
 
 # pod2html is nice enough to generate a full-on HTML document for us,
 # so we return the favor by ripping out the good parts.
