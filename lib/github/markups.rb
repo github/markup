@@ -50,13 +50,5 @@ end
 
 command(:rest2html, /re?st(\.txt)?/)
 
-# pod2html is nice enough to generate a full-on HTML document for us,
-# so we return the favor by ripping out the good parts.
-#
-# Any block passed to `command` will be handed the command's STDOUT for
-# post processing.
-command("/usr/bin/env perl -MPod::Simple::HTML -e Pod::Simple::HTML::go", /pod/) do |rendered|
-  if rendered =~ /<!-- start doc -->\s*(.+)\s*<!-- end doc -->/mi
-    $1
-  end
-end
+command("/usr/bin/env perldoc -MPod::Simple::XHTML -w html_header: -w html_footer:", /pod/)
+
