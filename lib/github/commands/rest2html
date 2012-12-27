@@ -3,7 +3,7 @@
 """A small wrapper file for parsing ReST files at GitHub."""
 
 __author__ = "Jannis Leidel"
-__copyright__ = "Copyright (C) 2008 Jannis Leidel"
+__copyright__ = "Public Domain"
 __license__ = "Public Domain"
 __version__ = "0.1"
 
