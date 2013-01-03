@@ -40,6 +40,26 @@ class GitHubHTMLTranslator(HTMLTranslator):
         else:
             self.body.append(self.starttag(node, 'pre'))
 
+    def visit_image(self, node):
+        """Custom visit_image for using the HTML align attribute for
+        image alignment, since css-classes will be stripped.
+        """
+        HTMLTranslator.visit_image(self, node)
+        if self.body[-1].startswith('<img'):
+            align = None
+
+            if 'align' in node:
+                # image with alignment
+                align = node['align']
+
+            elif node.parent.tagname == 'figure' and 'align' in node.parent:
+                # figure with alignment
+                align = node.parent['align']
+
+            if align:
+                self.body[-1] = self.body[-1].replace(
+                    ' />', ' align="%s" />' % align)
+
 def main():
     """
     Parses the given ReST file or the redirected string input and returns the
