@@ -207,6 +207,23 @@ class GitHubHTMLTranslator(HTMLTranslator):
     def depart_table(self, node):
         self.body.append('</table>\n')
 
+    def visit_image(self, node):
+        """Custom visit_image for using the HTML align attribute for
+        image alignment, since css-classes will be stripped.
+        """
+        HTMLTranslator.visit_image(self, node)
+        if self.body[-1].startswith('<img'):
+            # image with alignment
+            align = node.get('align')
+
+            if align is None and node.parent.tagname == 'figure':
+                # figure with alignment
+                align = node.parent.get('align')
+
+            if align:
+                self.body[-1] = self.body[-1].replace(
+                    ' />', ' style="float: %s" />' % align)
+
     def depart_image(self, node):
         uri = node['uri']
         ext = os.path.splitext(uri)[1].lower()
