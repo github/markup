@@ -45,7 +45,7 @@ markup(:literati, /lhs/) do |content|
 end
 
 markup(:asciidoctor, /asc|adoc|asciidoc/) do |content|
-  Asciidoctor::Document.new(content).render
+  Asciidoctor::Document.new(content, :header_footer => false).render
 end
 
 command(:rest2html, /re?st(\.txt)?/)
