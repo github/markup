@@ -19,6 +19,7 @@ you wish to run the library.
 * [.rst](http://docutils.sourceforge.net/rst.html) -- `easy_install docutils`
 * [.asciidoc](http://www.methods.co.nz/asciidoc/) -- `brew install asciidoc`
 * [.pod](http://search.cpan.org/dist/perl/pod/perlpod.pod) -- `Pod::Simple::HTML`
+* [.trac](http://trac.edgewall.org/wiki/WikiFormatting) -- `gem install trac-wiki`
   comes with Perl >= 5.10. Lower versions should install Pod::Simple from CPAN.
 
 

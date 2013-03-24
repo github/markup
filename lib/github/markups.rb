@@ -5,13 +5,13 @@ if markup('github/markdown', MD_FILES) do |content|
   end
 elsif markup(:redcarpet, MD_FILES) do |content|
     RedcarpetCompat.new(content).to_html
-  end 
+  end
 elsif markup(:rdiscount, MD_FILES) do |content|
     RDiscount.new(content).to_html
-  end 
+  end
 elsif markup(:maruku, MD_FILES) do |content|
     Maruku.new(content).to_html
-  end 
+  end
 elsif markup(:kramdown, MD_FILES) do |content|
     Kramdown::Document.new(content).to_html
   end
@@ -34,6 +34,10 @@ end
 
 markup(:creole, /creole/) do |content|
   Creole.creolize(content)
+end
+
+markup('trac-wiki', /trac/) do |content|
+  TracWiki.render(content)
 end
 
 markup(:wikicloth, /mediawiki|wiki/) do |content|

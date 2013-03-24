@@ -91,6 +91,8 @@ desc
     test/markups/README.rst.txt.html
     test/markups/README.textile
     test/markups/README.textile.html
+    test/markups/README.trac
+    test/markups/README.trac.html
     test/markups/README.txt
     test/markups/README.txt.html
   ]
