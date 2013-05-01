@@ -62,7 +62,7 @@ module GitHub
 
     def renderer(filename)
       @@markups.each do |key, value|
-        if Regexp.compile("\\.(#{key})$") =~ filename
+        if Regexp.compile("\\.(#{key})\\z") =~ filename
           return value
         end
       end
@@ -71,7 +71,7 @@ module GitHub
 
     def renderer_name(filename)
       @@markups.each do |key, value|
-        if Regexp.compile("\\.(#{key})$") =~ filename
+        if Regexp.compile("\\.(#{key})\\z") =~ filename
           return key
         end
       end
