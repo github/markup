@@ -42,8 +42,8 @@ Code in `backticks is not parsed` and...
 
           ok yes
 
-Regular [Markdown](http://example.com/markdown) features, like links
-and unordered lists, are fine:
+Regular [Markdown](http://example.com/markdown) features,
+like links and unordered lists, are fine:
 
   * I
 
