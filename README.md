@@ -8,7 +8,7 @@ Markups
 -------
 
 The following markups are supported.  The dependencies listed are required if
-you wish to run the library.
+you wish to run the library. You can also run `script/bootstrap` to fetch them all.
 
 * [.markdown, .mdown, .md](http://daringfireball.net/projects/markdown/) -- `gem install redcarpet` (https://github.com/vmg/redcarpet)
 * [.textile](http://www.textism.com/tools/textile/) -- `gem install RedCloth`
