@@ -1,0 +1,10 @@
+#!/bin/bash
+
+set -e
+
+# bootstrap gem environment changes
+echo "Bootstrapping gem environment ..."
+
+script/bootstrap --local
+
+rake
