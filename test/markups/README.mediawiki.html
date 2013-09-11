@@ -9,12 +9,12 @@ Using Java from Ruby is JRuby's best-known feature---but you can also go in the 
 <table id="toc" class="toc" summary="Contents"><tr><td><div style="font-weight:bold">Table of Contents</div><ul></ul></td></tr></table>
 
 </p><p>
-<h1> <span class="mw-headline" id="Red_Bridge_JRuby_Embed">Red Bridge (JRuby Embed)</span></h1>
+<h1> <span id="Red_Bridge_JRuby_Embed" class="mw-headline">Red Bridge (JRuby Embed)</span></h1>
 
 JRuby has long had a private embedding API, which was closely tied to the runtime's internals and therefore changed frequently as JRuby evolved. Since version 1.4, however, we have also provided a more stable public API, known as Red Bridge or JRuby Embed. Existing Java programs written to the <a href="javascript:void(0)">legacy API</a> should still work, but we strongly recommend Red Bridge for all new projects.
 
 </p><p>
-<h2> <span class="mw-headline" id="Features_of_Red_Bridge">Features of Red Bridge</span></h2>Red Bridge consists of two layers: Embed Core on the bottom, and implementations of <a href="http://www.jcp.org/en/jsr/detail?id=223">JSR223</a> and <a href="http://jakarta.apache.org/bsf/">BSF</a> on top. Embed Core is JRuby-specific, and can take advantage of much of JRuby's power. JSR223 and BSF are more general interfaces that provide a common ground across scripting languages.
+<h2> <span id="Features_of_Red_Bridge" class="mw-headline">Features of Red Bridge</span></h2>Red Bridge consists of two layers: Embed Core on the bottom, and implementations of <a href="http://www.jcp.org/en/jsr/detail?id=223">JSR223</a> and <a href="http://jakarta.apache.org/bsf/">BSF</a> on top. Embed Core is JRuby-specific, and can take advantage of much of JRuby's power. JSR223 and BSF are more general interfaces that provide a common ground across scripting languages.
 
 </p><p>
 Which API should you use? For projects where Ruby is the only scripting language involved, we recommend Embed Core for the following reasons:
@@ -31,5 +31,5 @@ Which API should you use? For projects where Ruby is the only scripting language
 The full <a href="http://jruby-embed.kenai.com/docs/">API documentation</a> has all the gory details. It's worth talking about a couple of the finer points here.
 
 </p><p>
-<h1> <span class="mw-headline" id="Previous_Embedding_JRuby_Page">Previous Embedding JRuby Page</span></h1>We recommend using Embed Core; however, if you're maintaining code that uses the old API, you can find its documentation on the <a href="javascript:void(0)">legacy embedding</a> page.
+<h1> <span id="Previous_Embedding_JRuby_Page" class="mw-headline">Previous Embedding JRuby Page</span></h1>We recommend using Embed Core; however, if you're maintaining code that uses the old API, you can find its documentation on the <a href="javascript:void(0)">legacy embedding</a> page.
 </p>

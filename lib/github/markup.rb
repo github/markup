@@ -88,6 +88,8 @@ module GitHub
       out.gsub("\r", '')
     rescue Errno::EPIPE
       ""
+    rescue Errno::ENOENT
+        ""
     end
 
     # Define markups
