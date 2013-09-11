@@ -1,0 +1,7 @@
+before_install: sudo apt-get install easy_install docutils
+rvm:
+  - 1.9.3
+  - 2.0.0
+notifications:
+  disabled: true
+bundler_args: --without development
