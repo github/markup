@@ -115,6 +115,6 @@ Contributing
 6. Enjoy a refreshing Diet Coke and wait
 
 
-[r2h]: http://github.com/github/markup/tree/master/lib/github/commands/rest2html
-[r2hc]: http://github.com/github/markup/tree/master/lib/github/markups.rb#L13
+[r2h]: lib/github/commands/rest2html
+[r2hc]: lib/github/markups.rb#L51
 [1]: http://github.com/github/markup/pulls
