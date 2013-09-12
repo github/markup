@@ -13,8 +13,8 @@ Gem::Specification.new do |s|
   ## If your rubyforge_project name is different, then edit it and comment out
   ## the sub! line in the Rakefile
   s.name              = 'github-markup'
-  s.version           = '0.7.5'
-  s.date              = '2012-12-17'
+  s.version           = '0.7.6'
+  s.date              = '2013-09-12'
   s.executables       = ['github-markup']
 
   ## Make sure your summary is short. The description may be as long
@@ -66,6 +66,8 @@ desc
     lib/github/markup.rb
     lib/github/markup/rdoc.rb
     lib/github/markups.rb
+    script/bootstrap
+    script/cibuild
     test/markup_test.rb
     test/markups/README.asciidoc
     test/markups/README.asciidoc.html
@@ -73,6 +75,8 @@ desc
     test/markups/README.creole.html
     test/markups/README.lhs
     test/markups/README.lhs.html
+    test/markups/README.litcoffee
+    test/markups/README.litcoffee.html
     test/markups/README.markdown
     test/markups/README.markdown.html
     test/markups/README.mediawiki
