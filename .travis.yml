@@ -1,4 +1,4 @@
-before_install: sudo apt-get install easy_install docutils
+before_install: easy_install docutils
 rvm:
   - 1.9.3
   - 2.0.0
