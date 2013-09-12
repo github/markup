@@ -1,0 +1,66 @@
+<h2>Literate CoffeeScript Test</h2>
+
+<blockquote>
+<p>Taken from https://github.com/jashkenas/coffee-script/blob/master/test/literate.litcoffee</p>
+</blockquote>
+
+<p>comment comment</p>
+
+<pre><code>test &quot;basic literate CoffeeScript parsing&quot;, ->
+  ok yes
+</code></pre>
+
+<p>now with a...</p>
+
+<pre><code>test &quot;broken up indentation&quot;, ->
+</code></pre>
+
+<p>... broken up ...</p>
+
+<pre><code>  do ->
+</code></pre>
+
+<p>... nested block.</p>
+
+<pre><code>    ok yes
+</code></pre>
+
+<p>Code must be separated from text by a blank line.</p>
+
+<pre><code>test &quot;code blocks must be preceded by a blank line&quot;, ->
+</code></pre>
+
+<p>The next line is part of the text and will not be executed.
+      fail()</p>
+
+<pre><code>  ok yes
+</code></pre>
+
+<p>Code in <code>backticks is not parsed</code> and...</p>
+
+<pre><code>test &quot;comments in indented blocks work&quot;, ->
+  do ->
+    do ->
+      # Regular comment.
+
+      ###
+        Block comment.
+      ###
+
+      ok yes
+</code></pre>
+
+<p>Regular <a href="http://example.com/markdown">Markdown</a> features,
+like links and unordered lists, are fine:</p>
+
+<ul>
+<li><p>I</p></li>
+<li><p>Am</p></li>
+<li><p>A</p></li>
+<li><p>List</p></li>
+</ul>
+
+<p>Tabs work too:</p>
+
+<p>test &quot;tabbed code&quot;, ->
+    ok yes</p>
