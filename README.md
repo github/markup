@@ -8,7 +8,7 @@ Markups
 -------
 
 The following markups are supported.  The dependencies listed are required if
-you wish to run the library.
+you wish to run the library. You can also run `script/bootstrap` to fetch them all.
 
 * [.markdown, .mdown, .md](http://daringfireball.net/projects/markdown/) -- `gem install redcarpet` (https://github.com/vmg/redcarpet)
 * [.textile](http://www.textism.com/tools/textile/) -- `gem install RedCloth`
@@ -115,6 +115,6 @@ Contributing
 6. Enjoy a refreshing Diet Coke and wait
 
 
-[r2h]: http://github.com/github/markup/tree/master/lib/github/commands/rest2html
-[r2hc]: http://github.com/github/markup/tree/master/lib/github/markups.rb#L13
+[r2h]: lib/github/commands/rest2html
+[r2hc]: lib/github/markups.rb#L51
 [1]: http://github.com/github/markup/pulls
