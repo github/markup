@@ -89,7 +89,7 @@ module GitHub
     rescue Errno::EPIPE
       ""
     rescue Errno::ENOENT
-        ""
+      ""
     end
 
     # Define markups
