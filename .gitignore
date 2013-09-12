@@ -2,3 +2,4 @@
 bin
 .bundle
 Gemfile.lock
+vendor/
