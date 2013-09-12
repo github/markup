@@ -1,0 +1,9 @@
+#!/bin/bash
+
+set -e
+
+cd $(dirname "$0")/..
+
+bundle install
+easy_install docutils
+brew install asciidoc
