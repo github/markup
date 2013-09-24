@@ -12,7 +12,10 @@ module GitHub
     def render(filename, content = nil)
       content ||= File.read(filename)
 
-      if proc = renderer(filename)
+      secondlf = content.index("\n", (content.index("\n") or -1) + 1)
+      head = content[0..(secondlf or -1)]
+
+      if proc = renderer(filename, head)
         proc[content]
       else
         content
@@ -60,9 +63,11 @@ module GitHub
       !!renderer(filename)
     end
 
-    def renderer(filename)
+    def renderer(filename, head = nil)
       @@markups.each do |key, value|
         if Regexp.compile("\\.(#{key})$") =~ filename
+          return value
+        elsif head and Regexp.compile("-\*-.*mode: ?(#{key}).*-\*-") =~ head
           return value
         end
       end
