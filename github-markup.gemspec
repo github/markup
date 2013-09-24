@@ -1,3 +1,5 @@
+require File.expand_path("../lib/github-markup", __FILE__)
+
 ## This is the rakegem gemspec template. Make sure you read and understand
 ## all of the comments. Some sections require modification, and others can
 ## be deleted if you don't need them. Once you understand the contents of
@@ -13,8 +15,8 @@ Gem::Specification.new do |s|
   ## If your rubyforge_project name is different, then edit it and comment out
   ## the sub! line in the Rakefile
   s.name              = 'github-markup'
-  s.version           = '0.7.6'
-  s.date              = '2013-09-12'
+  s.version           = GitHub::Markup::VERSION
+  s.date              = '2013-09-23'
   s.executables       = ['github-markup']
 
   ## Make sure your summary is short. The description may be as long
