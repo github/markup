@@ -36,6 +36,10 @@ markup(:creole, /creole/) do |content|
   Creole.creolize(content)
 end
 
+markup('trac-wiki', /trac/) do |content|
+  TracWiki.render(content)
+end
+
 markup(:wikicloth, /mediawiki|wiki/) do |content|
   WikiCloth::WikiCloth.new(:data => content).to_html(:noedit => true)
 end

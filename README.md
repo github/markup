@@ -20,6 +20,7 @@ you wish to run the library. You can also run `script/bootstrap` to fetch them a
 * [.asciidoc, .adoc, .asc](http://www.methods.co.nz/asciidoc/) -- `brew install asciidoc`
 * [.pod](http://search.cpan.org/dist/perl/pod/perlpod.pod) -- `Pod::Simple::HTML`
   comes with Perl >= 5.10. Lower versions should install Pod::Simple from CPAN.
+* [.trac](http://trac.edgewall.org/wiki/WikiFormatting) -- `gem install trac-wiki`
 
 
 Contributing

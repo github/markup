@@ -1,0 +1,100 @@
+= TestTrac =
+
+ * '''bold''', ''' triple quotes !''' can be bold too if prefixed by ! ''', 
+ * ''italic''
+ * '''''bold italic''''' or ''italic and ''' italic bold ''' ''
+ * __underline__
+ * {{{monospace}}} or `monospace` (hence `{{{` or {{{`}}} quoting)
+ * ~~strike-through~~
+ * ^superscript^ 
+ * ,,subscript,,
+ * **also bold**, //italic as well//, and **'' bold italic **'' //(since 0.12)//
+
+'''bold''', ''' triple quotes !''' can be bold too if prefixed by ! ''', 
+
+''italic''
+
+'''''bold italic''''' or ''italic and ''' italic bold ''' ''
+
+__underline__
+
+{{{monospace}}} or `monospace` (hence `{{{` or {{{`}}} quoting)
+
+~~strike-through~~
+
+^superscript^ 
+
+,,subscript,,
+
+**also bold**, //italic as well//, and **'' bold italic **'' //(since 0.12)//
+
+
+== sdfsdfsdf ==
+
+* Item 1
+   * Item 1.1
+      * Item 1.1.1   
+      * Item 1.1.2
+      * Item 1.1.3
+   * Item 1.2
+ * Item 2
+- items can start at the beginning of a line
+  and they can span multiple lines
+  - be careful though to continue the line 
+  with the appropriate indentation, otherwise
+that will start a new paragraph...
+
+ 1. Item 1
+   a. Item 1.a
+   a. Item 1.b
+      i. Item 1.b.i
+      i. Item 1.b.ii
+ 1. Item 2
+And numbered lists can also be restarted
+with an explicit number:
+ 3. Item 3
+
+=== sdfsdfsdf ===
+
+'''bold''', ''italic'', '''''Wikipedia style'''''
+
+`monospaced (''other markup ignored'')`
+
+First paragraph
+on multiple lines.
+
+Second paragraph.
+
+* bullets list
+  on multiple lines
+  1. nested list
+    a. different numbering 
+       styles
+
+term:: definition on
+        multiple lines
+
+{{{
+multiple lines, ''no wiki''
+      white space respected
+}}}
+
+  if there's some leading
+  space the text is quoted
+
+>> ... (I said)
+> (he replied)
+
+||= Table Header =|| Cell ||
+||||  (details below)  ||
+
+
+http://trac.edgewall.org
+
+WikiFormatting (CamelCase)
+
+wiki:WikiFormatting, wiki:"WikiFormatting"
+
+Line [[br]] break 
+Line \\ break
+----
