@@ -12,6 +12,7 @@ you wish to run the library. You can also run `script/bootstrap` to fetch them a
 
 * [.markdown, .mdown, .md](http://daringfireball.net/projects/markdown/) -- `gem install redcarpet` (https://github.com/vmg/redcarpet)
 * [.textile](http://www.textism.com/tools/textile/) -- `gem install RedCloth`
+* [.rd](http://uwabami.github.com/rdtool/) -- `gem install rdtool`
 * [.rdoc](http://rdoc.sourceforge.net/) -- `gem install rdoc -v 3.6.1`
 * [.org](http://orgmode.org/) -- `gem install org-ruby`
 * [.creole](http://wikicreole.org/) -- `gem install creole`

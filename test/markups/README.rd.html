@@ -1,0 +1,54 @@
+<h1><a name="rdtool-0.6.37" id="rdtool-0.6.37">RDtool 0.6.37</a></h1>
+<h2><a name="what-is-rdtool" id="what-is-rdtool">What is RDtool</a></h2>
+<p>RD is Ruby's POD. RDtool is formatter for RD.</p>
+<h2><a name="what-is-changed" id="what-is-changed">What is Changed</a></h2>
+<p>See HISTORY.</p>
+<h2><a name="how-to-install" id="how-to-install">How to Install</a></h2>
+<ol>
+<li><kbd>su</kbd> if you install into public directories.</li>
+<li><kbd>ruby setup.rb</kbd></li>
+<li>If you want to use , utils/rd-mode.el, install it <em>by hand</em>.</li>
+</ol>
+<h2><a name="how-to-use" id="how-to-use">How to use</a></h2>
+<p>Simply,</p>
+<pre>% rd2 rdfile.rd &gt; outputfile</pre>
+<p>If you want to indicate format-library, do</p>
+<pre>% rd2 -r library rdfile.rd &gt; outputfile</pre>
+<p>Use <kbd> rd2 --help </kbd> for more options.</p>
+<p>For options depend on format-library, enter <kbd>--help</kbd> after
+the indication of format-library. For example,</p>
+<pre>% rd2 -r rd/rd2html-lib.rb --help</pre>
+<p>rd2 load "${HOME}/.rd2rc" when it runs.</p>
+<h2><a name="how-to-write-rd?" id="how-to-write-rd?">How to write RD?</a></h2>
+<p>Please read doc/rd-draft.rd.</p>
+<h2><a name="about-bug-report" id="about-bug-report">About bug report</a></h2>
+<p>If you find a bug in RDtool, please add new
+<a href="https://github.com/uwabami/rdtool/issues">issues at gihtub</a>,
+or E-mail me <a href="mailto:uwabami@gfd-dennou.org">&lt;URL:mailto:uwabami@gfd-dennou.org&gt;</a>.</p>
+<h2><a name="copyright-and-license" id="copyright-and-license">Copyright and License</a></h2>
+<p>You can use/re-distribute/change RDtool under Ruby's License or GPL-2+.
+see LICNESE.txt and COPYING.txt. This distribution of RDtool include
+files that are copyrighted by somebody else, and these files can be
+re-distributed under those own license.</p>
+<p>These files include the condition of those licenses in themselves. The
+license information for every files is as follows.</p>
+<pre>Files: */
+  * Copyright: 2004 MoonWolf &lt;moonwolf@moonwolf.com&gt;
+               2011-2012 Youhei SASAKI &lt;uwabami@gfd-dennou.org&gt;
+  * License: Ruby's License or GPL-2+
+Files: lib/rd/rd2man-lib.rb
+  * Copyright: 2000  WATANABE Hirofumi
+               2012 Youhei SASAKI &lt;uwabami@gfd-dennou.org&gt;
+  * License: Ruby's License or GPL-2+
+Files: lib/rd/{head-filter,rd2html-ext-lib,rd2html-ext-opt}.rb
+  * Copyright: 2003 Rubikitch
+  * License: Ruby's License or GPL-2+
+Files: bin/rdswap
+  * Copyright: 1999 C.Hintze
+  * License: Ruby's License or GPL-2+
+Files: setup.rb
+  * Copyright: 2000-2006 Minero Aoki
+  * License: LGPL-2.1
+Files: utils/rd-mode.el
+  * Copyright: 1999 Koji Arai, Toshiro Kuwabara.
+  * License: GPL-2+</pre>

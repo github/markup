@@ -60,3 +60,7 @@ command("/usr/bin/env perl -MPod::Simple::HTML -e Pod::Simple::HTML::go", /pod/)
     $1
   end
 end
+
+markup("github/markup/rd", /rd/) do |content|
+  GitHub::Markup::RD.new(content).to_html
+end
