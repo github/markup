@@ -40,6 +40,14 @@ class GitHubHTMLTranslator(HTMLTranslator):
         else:
             self.body.append(self.starttag(node, 'pre'))
 
+    def visit_table(self, node):
+        classes = ' '.join(['docutils', self.settings.table_style]).strip()
+        self.body.append(
+                self.starttag(node, 'table', CLASS=classes))
+
+    def depart_table(self, node):
+        self.body.append('</table>\n')
+
 def main():
     """
     Parses the given ReST file or the redirected string input and returns the
