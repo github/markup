@@ -12,7 +12,7 @@ module GitHub
     def render(filename, content = nil)
       content ||= File.read(filename)
 
-      if proc = renderer(filename)
+      if proc = renderer(filename, content)
         proc[content]
       else
         content
@@ -56,13 +56,17 @@ module GitHub
       @@markups[regexp] = block
     end
 
-    def can_render?(filename)
-      !!renderer(filename)
+    def can_render?(filename,content=nil)
+      !!renderer(filename,content)
     end
 
-    def renderer(filename)
+    def renderer(filename,content=nil)
+      if content and content.match(/(ex:|vi:|vim:).*(ft|filetype|syn|syntax)=(\w+).*:/)
+        virtual_ext = ".#{$3.strip}"
+      end
       @@markups.each do |key, value|
-        if Regexp.compile("\\.(#{key})$") =~ filename
+        re = Regexp.compile("\\.(#{key})$")
+        if (virtual_ext and re =~ virtual_ext) or (re =~ filename)
           return value
         end
       end
