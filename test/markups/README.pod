@@ -81,6 +81,12 @@ commands:
 
 Lots!
 
+=head2 SEE ALSO
+
+The L<parrot|http://parrot.org/> web page.
+
+L<Task::Parrot> -- a collection of Perl modules to hack on Parrot.
+
 =head2 CONTACT
 
 If you need to contact the Matrixy team, go to the project home page at:
