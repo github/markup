@@ -1,21 +1,21 @@
 MD_FILES = /md|mkdn?|mdwn|mdown|markdown|litcoffee/
 
-if markup('github/markdown', MD_FILES) do |content|
+if markup('github/markdown', MD_FILES, eager: true) do |content|
     GitHub::Markdown.render(content)
   end
-elsif markup(:redcarpet, MD_FILES) do |content|
+elsif markup(:redcarpet, MD_FILES, eager: true) do |content|
     RedcarpetCompat.new(content).to_html
   end
-elsif markup(:rdiscount, MD_FILES) do |content|
+elsif markup(:rdiscount, MD_FILES, eager: true) do |content|
     RDiscount.new(content).to_html
   end
-elsif markup(:maruku, MD_FILES) do |content|
+elsif markup(:maruku, MD_FILES, eager: true) do |content|
     Maruku.new(content).to_html
   end
-elsif markup(:kramdown, MD_FILES) do |content|
+elsif markup(:kramdown, MD_FILES, eager: true) do |content|
     Kramdown::Document.new(content).to_html
   end
-elsif markup(:bluecloth, MD_FILES) do |content|
+elsif markup(:bluecloth, MD_FILES, eager: true) do |content|
     BlueCloth.new(content).to_html
   end
 end
