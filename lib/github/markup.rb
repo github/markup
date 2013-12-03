@@ -93,6 +93,7 @@ module GitHub
     end
 
     # Define markups
-    instance_eval File.read(File.dirname(__FILE__) + '/markups.rb')
+    markups_rb = File.dirname(__FILE__) + '/markups.rb'
+    instance_eval File.read(markups_rb), markups_rb
   end
 end
