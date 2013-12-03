@@ -8,6 +8,14 @@ module GitHub
   module Markup
     extend self
     @@markups = {}
+    @@deferred_markups = []
+
+    def preload!
+      @@deferred_markups.each do |loader|
+        loader.call
+      end
+      @@deferred_markups = []
+    end
 
     def render(filename, content = nil)
       content ||= File.read(filename)
@@ -20,8 +28,16 @@ module GitHub
     end
 
     def markup(file, pattern, &block)
-      require file.to_s
-      add_markup(pattern, &block)
+      loader = proc do
+        require file.to_s
+        add_markup(pattern, &block)
+      end
+      @@deferred_markups << loader
+      add_markup pattern do |*args|
+        @@deferred_markups.delete(loader)
+        loader.call
+        block.call(*args)
+      end
       true
     rescue LoadError
       false
