@@ -27,20 +27,28 @@ module GitHub
       end
     end
 
-    def markup(file, pattern, &block)
+    def markup(file, pattern, opts = {}, &block)
       loader = proc do
-        require file.to_s
-        add_markup(pattern, &block)
+        begin
+          require file.to_s
+          add_markup(pattern, &block)
+          true
+        rescue LoadError
+          false
+        end
       end
-      @@deferred_markups << loader
-      add_markup pattern do |*args|
-        @@deferred_markups.delete(loader)
+
+      if opts[:eager]
         loader.call
-        block.call(*args)
+      else
+        @@deferred_markups << loader
+        add_markup pattern do |*args|
+          @@deferred_markups.delete(loader)
+          loader.call
+          block.call(*args)
+        end
+        true
       end
-      true
-    rescue LoadError
-      false
     end
 
     def command(command, regexp, &block)
