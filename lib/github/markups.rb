@@ -1,6 +1,6 @@
 require "github/markup/markdown"
 
-@@markups << GitHub::Markup::Markdown.new
+markups << GitHub::Markup::Markdown.new
 
 markup(:redcloth, /textile/) do |content|
   RedCloth.new(content).to_html

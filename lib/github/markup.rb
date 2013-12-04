@@ -6,8 +6,12 @@ module GitHub
     extend self
     @@markups = []
 
+    def markups
+      @@markups
+    end
+
     def preload!
-      @@markups.each do |markup|
+      markups.each do |markup|
         markup.load
       end
     end
@@ -23,7 +27,7 @@ module GitHub
     end
 
     def markup(file, pattern, opts = {}, &block)
-      @@markups << GemImplementation.new(pattern, file, &block)
+      markups << GemImplementation.new(pattern, file, &block)
     end
 
     def command(command, regexp, &block)
@@ -31,7 +35,7 @@ module GitHub
         command = file
       end
 
-      @@markups << CommandImplementation.new(regexp, command, &block)
+      markups << CommandImplementation.new(regexp, command, &block)
     end
 
     def can_render?(filename)
@@ -39,7 +43,7 @@ module GitHub
     end
 
     def renderer(filename)
-      @@markups.find { |impl|
+      markups.find { |impl|
         impl.match?(filename)
       }
     end
