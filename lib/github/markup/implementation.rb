@@ -16,7 +16,12 @@ module GitHub
       end
 
       def match?(filename)
-        Regexp.compile("\\.(#{regexp})$") =~ filename
+        file_ext_regexp =~ filename
+      end
+
+    private
+      def file_ext_regexp
+        @file_ext_regexp ||= /\.(#{regexp})\z/
       end
     end
   end
