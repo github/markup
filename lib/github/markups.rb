@@ -1,24 +1,6 @@
-MD_FILES = /md|mkdn?|mdwn|mdown|markdown|litcoffee/
+require "github/markup/markdown"
 
-if markup('github/markdown', MD_FILES) do |content|
-    GitHub::Markdown.render(content)
-  end
-elsif markup(:redcarpet, MD_FILES) do |content|
-    RedcarpetCompat.new(content).to_html
-  end
-elsif markup(:rdiscount, MD_FILES) do |content|
-    RDiscount.new(content).to_html
-  end
-elsif markup(:maruku, MD_FILES) do |content|
-    Maruku.new(content).to_html
-  end
-elsif markup(:kramdown, MD_FILES) do |content|
-    Kramdown::Document.new(content).to_html
-  end
-elsif markup(:bluecloth, MD_FILES) do |content|
-    BlueCloth.new(content).to_html
-  end
-end
+markups << GitHub::Markup::Markdown.new
 
 markup(:redcloth, /textile/) do |content|
   RedCloth.new(content).to_html
