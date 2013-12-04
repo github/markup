@@ -7,7 +7,9 @@ module GitHub
     @@markups = []
 
     def preload!
-      # TODO
+      @@markups.each do |markup|
+        markup.load
+      end
     end
 
     def render(filename, content = nil)
