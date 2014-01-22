@@ -9,7 +9,11 @@ module GitHub
       end
 
       def to_html
-        h = ::RDoc::Markup::ToHtml.new
+        if ::RDoc::VERSION.to_i >= 4
+          h = ::RDoc::Markup::ToHtml.new(::RDoc::Options.new)
+        else
+          h = ::RDoc::Markup::ToHtml.new
+        end
         h.convert(@content)
       end
     end
