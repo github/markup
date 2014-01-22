@@ -1,10 +1,29 @@
 #!/usr/bin/env python
+"""
+rest2html - A small wrapper file for parsing ReST files at GitHub.
 
-"""A small wrapper file for parsing ReST files at GitHub."""
+Written in 2008 by Jannis Leidel <jannis@leidel.info>
+
+Brandon Keepers <bkeepers@github.com>
+Bryan Veloso <bryan@revyver.com>
+Chris Wanstrath <chris@ozmm.org>
+Dave Abrahams <dave@boostpro.com>
+Gasper Zejn <zejn@kiberpipa.org>
+Michael Jones <m.pricejones@gmail.com>
+Sam Whited <sam@samwhited.com>
+Tyler Chung <zonyitoo@gmail.com>
+Vicent Marti <tanoku@gmail.com>
+
+To the extent possible under law, the author(s) have dedicated all copyright
+and related and neighboring rights to this software to the public domain
+worldwide. This software is distributed without any warranty.
+
+You should have received a copy of the CC0 Public Domain Dedication along with
+this software. If not, see <http://creativecommons.org/publicdomain/zero/1.0/>.
+"""
 
 __author__ = "Jannis Leidel"
-__copyright__ = "Public Domain"
-__license__ = "Public Domain"
+__license__ = "CC0"
 __version__ = "0.1"
 
 try:
