@@ -26,7 +26,7 @@ markup(:literati, /lhs/) do |content|
   Literati.render(content)
 end
 
-markup(:asciidoctor, /asc|adoc|asciidoc/) do |content|
+markup(:asciidoctor, /ad|asc|adoc|asciidoc/) do |content|
   Asciidoctor::Document.new(content).render
 end
 
