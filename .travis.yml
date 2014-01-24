@@ -3,7 +3,7 @@ before_install:
   - sudo apt-get install perl-doc
   - curl -L http://cpanmin.us | perl - --sudo App::cpanminus
   - sudo cpanm --installdeps --notest Pod::Simple
-  - "/usr/bin/env perldoc -MPod::Simple::XHTML -w html_header: -w html_footer: test/markups/README.pod"
+  - "/usr/bin/env perldoc -MPod::Simple::XHTML -w html_header: -w html_footer: -T test/markups/README.pod"
 rvm:
   - 1.9.3
   - 2.0.0
