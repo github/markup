@@ -1,4 +1,6 @@
-before_install: sudo pip install docutils
+before_install:
+  - sudo pip install docutils
+  - sudo cpanm --installdeps --notest Pod::Simple
 rvm:
   - 1.9.3
   - 2.0.0
