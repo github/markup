@@ -1,5 +1,5 @@
 before_install:
-  - sudo pip install docutils
+  - sudo pip install docutils cpanminus
   - sudo cpanm --installdeps --notest Pod::Simple
 rvm:
   - 1.9.3
