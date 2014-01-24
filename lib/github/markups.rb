@@ -32,5 +32,5 @@ end
 
 command(:rest2html, /re?st(\.txt)?/)
 
-command("/usr/bin/env perldoc -MPod::Simple::XHTML -w html_header: -w html_footer:", /pod/)
+command("/usr/bin/env perldoc -MPod::Simple::XHTML -w html_header: -w html_footer: -T", /pod/)
 
