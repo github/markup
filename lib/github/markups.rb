@@ -26,8 +26,8 @@ markup(:literati, /lhs/) do |content|
   Literati.render(content)
 end
 
-markup(:asciidoctor, /asc|adoc|asciidoc/) do |content|
-  Asciidoctor::Document.new(content).render
+markup(:asciidoctor, /adoc|asc(iidoc)?/) do |content|
+  Asciidoctor.render(content, :safe => :secure, :attributes => %w(showtitle idprefix idseparator=- env=github env-github source-highlighter=html-pipeline))
 end
 
 command(:rest2html, /re?st(\.txt)?/)

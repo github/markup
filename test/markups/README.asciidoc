@@ -1,2 +1,14 @@
+= Document Title
+
+== First Section
+
 * One
 * Two
+
+== Second Section
+
+NOTE: Here is some source code.
+
+```ruby
+puts "Hello, World!"
+```
