@@ -21,6 +21,30 @@ you wish to run the library. You can also run `script/bootstrap` to fetch them a
 * [.pod](http://search.cpan.org/dist/perl/pod/perlpod.pod) -- `Pod::Simple::HTML`
   comes with Perl >= 5.10. Lower versions should install Pod::Simple from CPAN.
 
+HTML sanitization
+-----------------
+
+HTML rendered by the various markup language processors gets passed through an [HTML sanitization filter](https://github.com/jch/html-pipeline/blob/master/lib/html/pipeline/sanitization_filter.rb) for security reasons. HTML elements not in the whitelist are removed. HTML attributes not in the whitelist are removed from the preserved elements.
+
+The following HTML elements, organized by category, are whitelisted:
+
+* Headings: h1, h2, h3, h4, h5, h6, h7, h8
+* Prose: p, div, blockquote
+* Preformatted: pre
+* Inline: b, i, strong, em, tt, code, ins, del, sup, sub, kbd, samp, q, var
+* Lists: ol, ul, li, dl, dt, dd
+* Tables: table, thead, tbody, tfoot, tr, td, th
+* Breaks: br, hr
+* Ruby (East Asian): ruby, rt, rp
+
+The following attributes, organized by element, are whitelisted:
+
+* a: href (http://, https://, mailto://, github-windows:// and github-mac:// URI schemes and relative paths only)
+* img: src (http:// and https::// URI schemes and relative paths only)
+* div: itemscope, itemtype
+* all: abbr, accept, accept-charset, accesskey, action, align, alt, axis, border, cellpadding, cellspacing, char, charoff, charset, checked, cite, clear, cols, colspan, color, compact, coords, datetime, dir, disabled, enctype, for, frame, headers, height, hreflang, hspace, ismap, label, lang, longdesc, maxlength, media, method, multiple, name, nohref, noshade, nowrap, prompt, readonly, rel, rev, rows, rowspan, rules, scope, selected, shape, size, span, start, summary, tabindex, target, title, type, usemap, valign, value, vspace, width, itemprop
+
+Note that the id attribute is *not* whitelisted.
 
 Contributing
 ------------
