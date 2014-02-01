@@ -1,7 +1,7 @@
 GitHub Markup
 =============
 
-We use this library on GitHub when rendering your README or any other
+We use this library on GitHub when rendering your README (make sure it is .md) or any other
 rich text file.
 
 Markups
