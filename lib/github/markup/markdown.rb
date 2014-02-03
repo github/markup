@@ -25,7 +25,7 @@ module GitHub
       }
 
       def initialize
-        super(/md|mkdn?|mdwn|mdown|markdown|litcoffee/)
+        super(/md|mkdn?|mdwn|mdown|markdown|litcoffee|apib/)
       end
 
       def load
