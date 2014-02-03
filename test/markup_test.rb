@@ -37,6 +37,7 @@ message
     assert_equal true, GitHub::Markup.can_render?('README.markdown')
     assert_equal false, GitHub::Markup.can_render?('README.cmd')
     assert_equal true, GitHub::Markup.can_render?('README.litcoffee')
+    assert_equal true, GitHub::Markup.can_render?('README.apib')
   end
 
   def test_fails_gracefully_on_missing_commands
