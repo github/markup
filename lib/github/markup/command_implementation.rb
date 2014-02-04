@@ -42,10 +42,10 @@ module GitHub
           out = stdout.read
         end
         out.gsub("\r", '')
-      rescue Errno::EPIPE
-        ""
-      rescue Errno::ENOENT
-        ""
+      # rescue Errno::EPIPE
+      #   ""
+      # rescue Errno::ENOENT
+      #   ""
       end
     end
   end
