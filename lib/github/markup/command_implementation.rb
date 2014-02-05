@@ -6,6 +6,7 @@ end
 
 require "github/markup/implementation"
 
+
 module GitHub
   module Markup
     class CommandImplementation < Implementation
