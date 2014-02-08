@@ -11,7 +11,7 @@ markup('github/markup/rdoc', /rdoc/) do |content|
 end
 
 markup('org-ruby', /org/) do |content|
-  Orgmode::Parser.new(content).to_html
+  Orgmode::Parser.new(content, :allow_include_files => false).to_html
 end
 
 markup(:creole, /creole/) do |content|
