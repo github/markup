@@ -1,4 +1,5 @@
-before_install: sudo pip install docutils
+before_install:
+  - sudo pip install docutils
 rvm:
   - 1.9.3
   - 2.0.0
