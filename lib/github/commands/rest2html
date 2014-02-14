@@ -8,6 +8,7 @@ Brandon Keepers <bkeepers@github.com>
 Bryan Veloso <bryan@revyver.com>
 Chris Wanstrath <chris@ozmm.org>
 Dave Abrahams <dave@boostpro.com>
+Garen Torikian <garen@github.com>
 Gasper Zejn <zejn@kiberpipa.org>
 Michael Jones <m.pricejones@gmail.com>
 Sam Whited <sam@samwhited.com>
@@ -50,6 +51,21 @@ SETTINGS = {
 }
 
 class GitHubHTMLTranslator(HTMLTranslator):
+    # removes the <div class="document"> tag wrapped around docs
+    # see also: http://bit.ly/1exfq2h (warning! sourceforge link.)
+    def depart_document(self, node):
+        HTMLTranslator.depart_document(self, node)
+        self.html_body.pop(0)
+        self.html_body.pop()
+
+    # technique for visiting sections, without generating additional divs
+    # see also: http://bit.ly/NHtyRx
+    def visit_section(self, node):
+        self.section_level += 1
+
+    def depart_section(self, node):
+        self.section_level -= 1
+
     def visit_literal_block(self, node):
         classes = node.attributes['classes']
         if len(classes) >= 2 and classes[0] == 'code':
