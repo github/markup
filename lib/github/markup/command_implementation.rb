@@ -1,9 +1,4 @@
-begin
-  require "open3_detach"
-rescue LoadError
-  require "open3"
-end
-
+require "posix-spawn"
 require "github/markup/implementation"
 
 module GitHub
@@ -36,7 +31,7 @@ module GitHub
 
       def execute(command, target)
         out = ''
-        Open3.popen3(command) do |stdin, stdout, _|
+        POSIX::Spawn.popen4(command) do |_, stdin, stdout, _|
           stdin.puts target
           stdin.close
           out = stdout.read
