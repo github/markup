@@ -30,12 +30,17 @@ module GitHub
       end
 
       def execute(command, target)
-        out = ''
-        POSIX::Spawn.popen4(command) do |_, stdin, stdout, _|
-          stdin.puts target
-          stdin.close
-          out = stdout.read
-        end
+        pid, stdin, stdout, stderr = POSIX::Spawn.popen4(*command)
+
+        stdin.puts target
+        stdin.close
+
+        Process.waitpid pid
+
+        out = stdout.read
+        stdout.close
+        stderr.close
+
         out.gsub("\r", '')
       rescue Errno::EPIPE
         ""
