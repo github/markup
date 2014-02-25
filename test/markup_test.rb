@@ -13,7 +13,7 @@ class MarkupTest < Test::Unit::TestCase
 
       expected_file = "#{readme}.html"
       expected = File.read(expected_file).rstrip
-      actual = GitHub::Markup.render(readme, File.read(readme)).rstrip
+      actual = GitHub::Markup.render(readme, File.read(readme)).rstrip.force_encoding("utf-8")
 
       if source != expected
         assert(source != actual, "#{markup} did not render anything")
