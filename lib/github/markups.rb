@@ -37,7 +37,7 @@ command('rest2html', /re?st(\.txt)?/)
 #
 # Any block passed to `command` will be handed the command's STDOUT for
 # post processing.
-command(['/usr/bin/env', 'perl', '-MPod::Simple::HTML', '-e', 'Pod::Simple::HTML::go'], /pod/) do |rendered|
+command('/usr/bin/env perl -MPod::Simple::HTML -e Pod::Simple::HTML::go', /pod/) do |rendered|
   if rendered =~ /<!-- start doc -->\s*(.+)\s*<!-- end doc -->/mi
     $1
   end
