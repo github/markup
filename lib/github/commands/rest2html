@@ -39,6 +39,35 @@ import codecs
 from docutils.core import publish_parts
 from docutils.writers.html4css1 import Writer, HTMLTranslator
 
+# setup blockdiag
+try:
+    from blockdiag.utils.rst.directives import setup as blockdiag_setup
+    blockdiag_setup(format='SVG', nodoctype=True, inline_svg=True,
+                    noviewbox=True, ignore_pil=True)
+except:
+    pass
+# setup seqdiag
+try:
+    from seqdiag.utils.rst.directives import setup as seqdiag_setup
+    seqdiag_setup(format='SVG', nodoctype=True, inline_svg=True,
+                  noviewbox=True, ignore_pil=True)
+except:
+    pass
+# setup actdiag
+try:
+    from actdiag.utils.rst.directives import setup as actdiag_setup
+    actdiag_setup(format='SVG', nodoctype=True, inline_svg=True,
+                  noviewbox=True, ignore_pil=True)
+except:
+    pass
+# setup nwdiag
+try:
+    from nwdiag.utils.rst.directives import setup as nwdiag_setup
+    nwdiag_setup(format='SVG', nodoctype=True, inline_svg=True,
+                 noviewbox=True, ignore_pil=True)
+except:
+    pass
+
 SETTINGS = {
     'cloak_email_addresses': True,
     'file_insertion_enabled': False,
