@@ -1,4 +1,4 @@
-before_install: sudo pip install docutils
+before_install: sudo pip install docutils blockdiag seqdiag actdiag nwdiag
 rvm:
   - 1.9.3
   - 2.0.0

@@ -5,4 +5,4 @@ set -e
 cd $(dirname "$0")/..
 
 bundle install
-easy_install docutils
+easy_install docutils blockdiag seqdiag actdiag nwdiag
