@@ -1,4 +1,5 @@
 source "http://rubygems.org"
+gemspec
 gem "redcarpet"
 gem "RedCloth"
 gem "rdoc", "~>3.6"
