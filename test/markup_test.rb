@@ -54,4 +54,12 @@ message
     actual = GitHub::Markup.render('README.tf', text)
     assert_equal text, actual
   end
+
+  def test_raises_error_if_command_exits_non_zero
+    GitHub::Markup.command('echo "failure message" && false', /fail/)
+    assert GitHub::Markup.can_render?('README.fail')
+    assert_raises GitHub::Markup::CommandError, "failure message" do
+      GitHub::Markup.render('README.fail', "stop swallowing errors")
+    end
+  end
 end
