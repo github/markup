@@ -22,10 +22,6 @@ markup(:wikicloth, /mediawiki|wiki/) do |content|
   WikiCloth::WikiCloth.new(:data => content).to_html(:noedit => true)
 end
 
-markup(:literati, /lhs/) do |content|
-  Literati.render(content)
-end
-
 markup(:asciidoctor, /adoc|asc(iidoc)?/) do |content|
   Asciidoctor.render(content, :safe => :secure, :attributes => %w(showtitle idprefix idseparator=- env=github env-github source-highlighter=html-pipeline))
 end
