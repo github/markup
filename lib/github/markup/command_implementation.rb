@@ -3,7 +3,8 @@ require "github/markup/implementation"
 
 module GitHub
   module Markup
-    CommandError = Class.new(Exception)
+    class CommandError < RuntimeError
+    end
 
     class CommandImplementation < Implementation
       attr_reader :command, :block
