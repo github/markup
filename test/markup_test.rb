@@ -56,10 +56,14 @@ message
   end
 
   def test_raises_error_if_command_exits_non_zero
-    GitHub::Markup.command('echo "failure message" && false', /fail/)
+    GitHub::Markup.command('echo "failure message">&2 && false', /fail/)
     assert GitHub::Markup.can_render?('README.fail')
-    assert_raises GitHub::Markup::CommandError, "failure message" do
+    begin
       GitHub::Markup.render('README.fail', "stop swallowing errors")
+    rescue GitHub::Markup::CommandError => e
+      assert_equal "failure message", e.message
+    else
+      fail "an exception was expected but was not raised"
     end
   end
 end

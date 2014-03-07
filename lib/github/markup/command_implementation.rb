@@ -36,7 +36,7 @@ module GitHub
         if spawn.status.success?
           spawn.out.gsub("\r", '')
         else
-          raise CommandError.new(spawn.err)
+          raise CommandError.new(spawn.err.strip)
         end
       rescue Errno::EPIPE
         ""
