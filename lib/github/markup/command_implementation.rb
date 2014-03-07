@@ -38,10 +38,6 @@ module GitHub
         else
           raise CommandError.new(spawn.err.strip)
         end
-      rescue Errno::EPIPE
-        ""
-      rescue Errno::ENOENT
-        ""
       end
     end
   end
