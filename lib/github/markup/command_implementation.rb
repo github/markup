@@ -3,6 +3,9 @@ require "github/markup/implementation"
 
 module GitHub
   module Markup
+    class CommandError < RuntimeError
+    end
+
     class CommandImplementation < Implementation
       attr_reader :command, :block
 
@@ -31,11 +34,11 @@ module GitHub
 
       def execute(command, target)
         spawn = POSIX::Spawn::Child.new(*command, :input => target)
-        spawn.out.gsub("\r", '')
-      rescue Errno::EPIPE
-        ""
-      rescue Errno::ENOENT
-        ""
+        if spawn.status.success?
+          spawn.out.gsub("\r", '')
+        else
+          raise CommandError.new(spawn.err.strip)
+        end
       end
     end
   end
