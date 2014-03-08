@@ -26,7 +26,7 @@ markup(:asciidoctor, /adoc|asc(iidoc)?/) do |content|
   Asciidoctor.render(content, :safe => :secure, :attributes => %w(showtitle idprefix idseparator=- env=github env-github source-highlighter=html-pipeline))
 end
 
-command('python2 -S rest2html', /re?st(\.txt)?/)
+command("python2 -S #{File.dirname(__FILE__)}/commands/rest2html", /re?st(\.txt)?/)
 
 # pod2html is nice enough to generate a full-on HTML document for us,
 # so we return the favor by ripping out the good parts.
