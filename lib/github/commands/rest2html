@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python2 -S
 """
 rest2html - A small wrapper file for parsing ReST files at GitHub.
 
@@ -27,13 +27,19 @@ __author__ = "Jannis Leidel"
 __license__ = "CC0"
 __version__ = "0.1"
 
+import sys
+
+#fix docutils failing with unicode parameters to CSV-Tabl
+#TODO: remove -S switch and the following 2 lines after switching system to python 3.
+sys.setdefaultencoding('utf-8')
+import site
+
 try:
     import locale
     locale.setlocale(locale.LC_ALL, '')
 except:
     pass
 
-import sys
 import codecs
 
 from docutils.core import publish_parts
