@@ -6,6 +6,26 @@
 <li>More <tt class="docutils literal">code</tt>, hooray</li>
 <li>Somé UTF-8°</li>
 </ol>
+<p>The UTF-8 quote character in this table used to cause python to go boom. Now docutils just displays an error inline so the user can fix it. Upgrading to Python 3 will fix this.</p>
+<div class="system-message">
+<p class="system-message-title">System Message: ERROR/3 (<tt class="docutils">&lt;string&gt;</tt>, line 17)</p>
+<p>Error with CSV data in &quot;csv-table&quot; directive:
+&quot;quotechar&quot; must be an 1-character string</p>
+<pre>
+.. csv-table:: Things that are Awesome (on a scale of 1-11)
+        :quote: ”
+
+        Thing,Awesomeness
+        Icecream, 7
+        Honey Badgers, 10.5
+        Nickelback, -2
+        Iron Man, 10
+        Iron Man 2, 3
+        Tabular Data, 5
+        Made up ratings, 11
+
+</pre>
+</div>
 <table class="docutils">
 <colgroup>
 <col width="19%" />

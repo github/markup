@@ -29,8 +29,8 @@ __version__ = "0.1"
 
 import sys
 
-#fix docutils failing with unicode parameters to CSV-Tabl
-#TODO: remove -S switch and the following 2 lines after switching system to python 3.
+# This fixes docutils failing with unicode parameters to CSV-Table. The -S
+# switch and the following 2 lines can be removed after upgrading to python 3.
 sys.setdefaultencoding('utf-8')
 import site
 
@@ -51,7 +51,7 @@ SETTINGS = {
     'raw_enabled': False,
     'strip_comments': True,
     'doctitle_xform': False,
-    'report_level': 5,
+    'report_level': 3,
     'syntax_highlight' : 'none',
     'math_output' : 'latex'
 }
