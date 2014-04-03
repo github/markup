@@ -1,8 +1,8 @@
 <p class="title">org-ruby</p>
 <table>
   <tr><td>Status:</td><td>Under Development</td></tr>
-  <tr><td>Location:</td><td><a href="http://github.com/bdewey/org-ruby">http://github.com/bdewey/org-ruby</a></td></tr>
-  <tr><td>Version:</td><td>0.5.1</td></tr>
+  <tr><td>Location:</td><td><a href="http://github.com/wallyqs/org-ruby">http://github.com/wallyqs/org-ruby</a></td></tr>
+  <tr><td>Version:</td><td>0.9.0</td></tr>
 </table>
 <h1><span class="heading-number heading-number-1">1</span> Description</h1>
 <p>Helpful Ruby routines for parsing orgmode files. The most
@@ -11,13 +11,28 @@
   conversion. The supplied textile conversion is optimized for
   extracting &#8220;content&#8221; from the orgfile as opposed to &#8220;metadata.&#8221;</p>
 <h1><span class="heading-number heading-number-1">2</span> History</h1>
-<h2><span class="heading-number heading-number-2">2.1</span> 2009-12-30: Version 0.5.1</h2>
+<h2><span class="heading-number heading-number-2">2.1</span> 2014-02-08: Version 0.9.0</h2>
+<ul>
+  <li>Let&#8217;s make sure <code>#+INCLUDE:</code> is not supported</li>
+</ul>
+<ul>
+  <li>And confirm that syntax highlight is supported</li>
+</ul>
+<pre class="src" lang="ruby">
+module GitHub
+  module Markup
+    VERSION = &#39;test&#39;
+    Version = VERSION
+  end
+end
+</pre>
+<h2><span class="heading-number heading-number-2">2.2</span> 2009-12-30: Version 0.5.1</h2>
 <ul>
   <li>Minor enhancement: Recognize lines starting with &#8220;:&#8221; as examples.</li>
   <li>Minor enhancement: Recognize #+BEGIN_SRC as source blocks</li>
   <li>Minor enhancement: Add &#8220;src&#8221; and &#8220;example&#8221; classes to &lt;pre&gt; blocks.</li>
 </ul>
-<h2><span class="heading-number heading-number-2">2.2</span> 2009-12-30: Version 0.5.0</h2>
+<h2><span class="heading-number heading-number-2">2.3</span> 2009-12-30: Version 0.5.0</h2>
 <ul>
   <li>Parse (but not necessarily <b>use</b>) in-buffer settings. The following
     in-buffer settings <b>are</b> used:
@@ -41,7 +56,7 @@
     </ul>
   </li>
 </ul>
-<h2><span class="heading-number heading-number-2">2.3</span> 2009-12-29: Version 0.4.2</h2>
+<h2><span class="heading-number heading-number-2">2.4</span> 2009-12-29: Version 0.4.2</h2>
 <ul>
   <li>Got rid of the extraneous newline at the start of code blocks.</li>
   <li>Everything now shows up in code blocks, even org-mode metadata.</li>
@@ -52,12 +67,12 @@
     </ul>
   </li>
 </ul>
-<h2><span class="heading-number heading-number-2">2.4</span> 2009-12-29: Version 0.4.1</h2>
+<h2><span class="heading-number heading-number-2">2.5</span> 2009-12-29: Version 0.4.1</h2>
 <ul>
   <li>HTML is now escaped by default</li>
   <li>org-mode comments will show up in a code block.</li>
 </ul>
-<h2><span class="heading-number heading-number-2">2.5</span> 2009-12-29: Version 0.4</h2>
+<h2><span class="heading-number heading-number-2">2.6</span> 2009-12-29: Version 0.4</h2>
 <ul>
   <li>The first thing output in HTML gets the class &#8220;title&#8221;</li>
   <li>HTML output is now indented</li>
@@ -70,7 +85,7 @@
     </ul>
   </li>
 </ul>
-<h2><span class="heading-number heading-number-2">2.6</span> 2009-12-27: Version 0.3</h2>
+<h2><span class="heading-number heading-number-2">2.7</span> 2009-12-27: Version 0.3</h2>
 <ul>
   <li>Uses rubypants to get better typography (smart quotes, elipses, etc&#8230;).</li>
   <li>Fixed bugs:
@@ -81,14 +96,14 @@
     </ul>
   </li>
 </ul>
-<h2><span class="heading-number heading-number-2">2.7</span> 2009-12-26: Version 0.2</h2>
+<h2><span class="heading-number heading-number-2">2.8</span> 2009-12-26: Version 0.2</h2>
 <ul>
   <li>Added <code>to_html</code> output on the parser.</li>
   <li>Added support for the full range of inline markup: <b>bold</b>,
     <i>italic</i>, <code>code</code>, <code>verbatim</code>, <span style="text-decoration:underline;">underline</span>, <del>strikethrough</del>.</li>
   <li>Lots of refactoring to make the code more maintainable.</li>
 </ul>
-<h2><span class="heading-number heading-number-2">2.8</span> 2009-12-23: Version 0.1</h2>
+<h2><span class="heading-number heading-number-2">2.9</span> 2009-12-23: Version 0.1</h2>
 <ul>
   <li>Added support for block code, like this:
     <pre class="example">
