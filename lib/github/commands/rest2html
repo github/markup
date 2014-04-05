@@ -52,7 +52,9 @@ SETTINGS = {
     'file_insertion_enabled': False,
     'raw_enabled': False,
     'strip_comments': True,
-    'doctitle_xform': False,
+    'doctitle_xform': True,
+    'sectsubtitle_xform': True,
+    'initial_header_level': 2,
     'report_level': 3,
     'syntax_highlight' : 'none',
     'math_output' : 'latex'
