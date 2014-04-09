@@ -16,7 +16,7 @@ Gem::Specification.new do |s|
   ## the sub! line in the Rakefile
   s.name              = 'github-markup'
   s.version           = GitHub::Markup::VERSION
-  s.date              = '2014-01-28'
+  s.date              = '2014-04-03'
   s.executables       = ['github-markup']
 
   ## Make sure your summary is short. The description may be as long
@@ -79,8 +79,6 @@ desc
     test/markups/README.asciidoc.html
     test/markups/README.creole
     test/markups/README.creole.html
-    test/markups/README.lhs
-    test/markups/README.lhs.html
     test/markups/README.litcoffee
     test/markups/README.litcoffee.html
     test/markups/README.markdown
@@ -109,5 +107,6 @@ desc
   ## Test files will be grabbed from the file list. Make sure the path glob
   ## matches what you actually use.
   s.test_files = s.files.select { |path| path =~ /^test\/test_.*\.rb/ }
-end
 
+  s.add_dependency 'posix-spawn', '~> 0.3.8'
+end

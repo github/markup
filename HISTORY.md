@@ -1,3 +1,13 @@
+## 1.1.1 (2014-04-03)
+
+* Upgrade to org-ruby 0.9.1
+* Set default encoding to UTF-8 for Python 2
+
+## 1.1.0 (2014-03-10)
+
+* Raise GitHub::Markup::CommandError if external command exits with a non-zero status.
+* Remove support for literate Haskell (see #266)
+
 ## 0.5.1 (2010-09-30)
 
 * Support relative path links in rdoc

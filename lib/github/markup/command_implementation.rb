@@ -1,13 +1,11 @@
-begin
-  require "open3_detach"
-rescue LoadError
-  require "open3"
-end
-
+require "posix-spawn"
 require "github/markup/implementation"
 
 module GitHub
   module Markup
+    class CommandError < RuntimeError
+    end
+
     class CommandImplementation < Implementation
       attr_reader :command, :block
 
@@ -35,17 +33,12 @@ module GitHub
       end
 
       def execute(command, target)
-        out = ''
-        Open3.popen3(command) do |stdin, stdout, _|
-          stdin.puts target
-          stdin.close
-          out = stdout.read
+        spawn = POSIX::Spawn::Child.new(*command, :input => target)
+        if spawn.status.success?
+          spawn.out.gsub("\r", '')
+        else
+          raise CommandError.new(spawn.err.strip)
         end
-        out.gsub("\r", '')
-      rescue Errno::EPIPE
-        ""
-      rescue Errno::ENOENT
-        ""
       end
     end
   end
