@@ -11,8 +11,8 @@
 #+STARTUP:    showall
 
  | Status:   | Under Development                 |
- | Location: | [[http://github.com/bdewey/org-ruby]] |
- | Version:  | 0.5.1                             |
+ | Location: | [[http://github.com/wallyqs/org-ruby]] |
+ | Version:  | 0.9.0                             |
 
 * Description
 
@@ -22,8 +22,24 @@
   conversion. The supplied textile conversion is optimized for
   extracting "content" from the orgfile as opposed to "metadata."
 
-
 * History
+
+** 2014-02-08: Version 0.9.0
+
+   - Let's make sure =#+INCLUDE:= is not supported
+
+#+INCLUDE: "./README.txt" src text
+
+   - And confirm that syntax highlight is supported
+
+#+begin_src ruby
+module GitHub
+  module Markup
+    VERSION = 'test'
+    Version = VERSION
+  end
+end
+#+end_src
 
 ** 2009-12-30: Version 0.5.1
 
