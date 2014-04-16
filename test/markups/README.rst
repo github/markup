@@ -1,7 +1,12 @@
 Header 1
 ========
+--------
+Subtitle
+--------
 
 Example text.
+
+.. contents:: Table of Contents
 
 Header 2
 --------

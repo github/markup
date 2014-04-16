@@ -1,4 +1,4 @@
-#!/usr/bin/env python2 -S
+#!/usr/bin/env python
 """
 rest2html - A small wrapper file for parsing ReST files at GitHub.
 
@@ -32,6 +32,7 @@ import os
 
 # This fixes docutils failing with unicode parameters to CSV-Table. The -S
 # switch and the following 2 lines can be removed after upgrading to python 3.
+reload(sys)
 sys.setdefaultencoding('utf-8')
 import site
 
@@ -51,7 +52,9 @@ SETTINGS = {
     'file_insertion_enabled': False,
     'raw_enabled': False,
     'strip_comments': True,
-    'doctitle_xform': False,
+    'doctitle_xform': True,
+    'sectsubtitle_xform': True,
+    'initial_header_level': 2,
     'report_level': 3,
     'syntax_highlight' : 'none',
     'math_output' : 'latex'

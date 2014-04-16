@@ -1,6 +1,13 @@
-<h1>Header 1</h1>
+<h1 class="title">Header 1</h1>
+<h2 class="subtitle" id="subtitle">Subtitle</h2>
 <p>Example text.</p>
-<h2>Header 2</h2>
+<div class="contents topic" id="table-of-contents">
+<p class="topic-title first">Table of Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#header-2" id="id1">Header 2</a></li>
+</ul>
+</div>
+<h2><a class="toc-backref" href="#id1">Header 2</a></h2>
 <ol class="arabic simple">
 <li>Blah blah <tt class="docutils literal">code</tt> blah</li>
 <li>More <tt class="docutils literal">code</tt>, hooray</li>
@@ -8,7 +15,7 @@
 </ol>
 <p>The UTF-8 quote character in this table used to cause python to go boom. Now docutils just displays an error inline so the user can fix it. Upgrading to Python 3 will fix this.</p>
 <div class="system-message">
-<p class="system-message-title">System Message: ERROR/3 (<tt class="docutils">&lt;string&gt;</tt>, line 17)</p>
+<p class="system-message-title">System Message: ERROR/3 (<tt class="docutils">&lt;string&gt;</tt>, line 22)</p>
 <p>Error with CSV data in &quot;csv-table&quot; directive:
 &quot;quotechar&quot; must be an 1-character string</p>
 <pre>
