@@ -21,6 +21,22 @@ you wish to run the library. You can also run `script/bootstrap` to fetch them a
 * [.pod](http://search.cpan.org/dist/perl/pod/perlpod.pod) -- `Pod::Simple::HTML`
   comes with Perl >= 5.10. Lower versions should install Pod::Simple from CPAN.
 
+Installation
+-----------
+
+    gem install github-markup
+
+Usage
+-----
+
+    require 'github/markup'
+    GitHub::Markup.render('README.markdown', "* One\n* Two")
+
+Or, more realistically:
+
+    require 'github/markup'
+    GitHub::Markup.render(file, File.read(file))
+
 HTML sanitization
 -----------------
 
@@ -45,25 +61,6 @@ The following attributes, organized by element, are whitelisted:
 * all: abbr, accept, accept-charset, accesskey, action, align, alt, axis, border, cellpadding, cellspacing, char, charoff, charset, checked, cite, clear, cols, colspan, color, compact, coords, datetime, dir, disabled, enctype, for, frame, headers, height, hreflang, hspace, ismap, label, lang, longdesc, maxlength, media, method, multiple, name, nohref, noshade, nowrap, prompt, readonly, rel, rev, rows, rowspan, rules, scope, selected, shape, size, span, start, summary, tabindex, target, title, type, usemap, valign, value, vspace, width, itemprop
 
 Note that the id attribute is *not* whitelisted.
-
-
-Installation
------------
-
-    gem install github-markup
-
-
-Usage
------
-
-    require 'github/markup'
-    GitHub::Markup.render('README.markdown', "* One\n* Two")
-
-Or, more realistically:
-
-    require 'github/markup'
-    GitHub::Markup.render(file, File.read(file))
-
 
 Contributing
 ------------
