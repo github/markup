@@ -69,7 +69,3 @@ Contributing
 ------------
 
 See [Contributing](CONTRIBUTING.md)
-
-
-[r2h]: lib/github/commands/rest2html
-[r2hc]: lib/github/markups.rb#L51

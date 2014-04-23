@@ -77,3 +77,5 @@ If you are the current maintainer of this gem:
 0. Push the new gem release with `rake release`. If you don't have permission to release to rubygems.org, contact one of the existing owners (`gem owners github-markup`) and ask them to add you.
 
 [1]: http://github.com/github/markup/pulls
+[r2h]: lib/github/commands/rest2html
+[r2hc]: lib/github/markups.rb#L51
