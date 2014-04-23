@@ -1,3 +1,9 @@
+## 1.2.1 (2014-04-23)
+
+* Disable RST warnings [#290](https://github.com/github/markup/pull/290)
+
+[Full changelog](https://github.com/github/markup/compare/v1.2.0...v1.2.1)
+
 ## 1.1.1 (2014-04-03)
 
 * Upgrade to org-ruby 0.9.1
