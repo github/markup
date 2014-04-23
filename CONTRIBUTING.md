@@ -62,4 +62,18 @@ Now run the tests: `rake`
 
 If nothing complains, congratulations!
 
+## Releasing a new version
+
+If you are the current maintainer of this gem:
+
+0. Bump the version number in `lib/github-markup.rb`, adhering to [Semantic Versioning](http://semver.org/)
+0. Update `HISTORY.md`
+0. Test the latest version on GitHub
+  0. Build the new version with `rake build`
+  0. Copy `pkg/github-markup*.gem` to `vendor/cache` in your local checkout of GitHub
+  0. Update the version for `github-markup` in the `Gemfile`
+  0. run `script/bootstrap`
+  0. Run any relevant tests and test it manually from the browser.
+0. Push the new gem release with `rake release`. If you don't have permission to release to rubygems.org, contact one of the existing owners (`gem owners github-markup`) and ask them to add you.
+
 [1]: http://github.com/github/markup/pulls
