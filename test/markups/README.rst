@@ -17,7 +17,7 @@ Header 2
 
 3. Somé UTF-8°
 
-The UTF-8 quote character in this table used to cause python to go boom. Now docutils just displays an error inline so the user can fix it. Upgrading to Python 3 will fix this.
+The UTF-8 quote character in this table used to cause python to go boom. Now docutils just silently ignores it.
 
 .. csv-table:: Things that are Awesome (on a scale of 1-11)
 	:quote: ”
