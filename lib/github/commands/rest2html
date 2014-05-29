@@ -115,6 +115,16 @@ class GitHubHTMLTranslator(HTMLTranslator):
         self.body.append(self.starttag(node, 'img', **atts))
       self.body.append(self.context.pop())
 
+    def visit_system_message(self, node):
+      pass # intentional noop
+
+    # we want to discard most of the <div> fluff that `system_message` gives us: http://bit.ly/1k5wnsb
+    # it should be safe to just manipulate the resulting DOM object
+    def depart_system_message(self, node):
+      self.body[-6] = self.starttag(node, 'div', CLASS='system-error')
+      self.body[-4] = '</div>\n'
+
+
 def main():
     """
     Parses the given ReST file or the redirected string input and returns the

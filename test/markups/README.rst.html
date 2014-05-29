@@ -14,6 +14,23 @@
 <li>Somé UTF-8°</li>
 </ol>
 <p>The UTF-8 quote character in this table used to cause python to go boom. Now docutils just silently ignores it.</p>
+<div class="system-error">
+Error with CSV data in &quot;csv-table&quot; directive:
+&quot;quotechar&quot; must be an 1-character string</div>
+<pre>
+.. csv-table:: Things that are Awesome (on a scale of 1-11)
+        :quote: ”
+
+        Thing,Awesomeness
+        Icecream, 7
+        Honey Badgers, 10.5
+        Nickelback, -2
+        Iron Man, 10
+        Iron Man 2, 3
+        Tabular Data, 5
+        Made up ratings, 11
+
+</pre>
 <table class="docutils">
 <colgroup>
 <col width="19%" />
