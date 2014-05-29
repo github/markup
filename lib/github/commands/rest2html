@@ -55,7 +55,7 @@ SETTINGS = {
     'doctitle_xform': True,
     'sectsubtitle_xform': True,
     'initial_header_level': 2,
-    'report_level': 5,
+    'report_level': 3,
     'syntax_highlight' : 'none',
     'math_output' : 'latex'
 }
