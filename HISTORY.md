@@ -1,3 +1,9 @@
+## 1.3.0 (unreleased)
+
+* Upgrade wikicloth to 0.8.1 [#317](https://github.com/github/markup/pull/317)
+
+[Full changelog](https://github.com/github/markup/compare/v1.2.1...v1.3.0)
+
 ## 1.2.1 (2014-04-23)
 
 * Disable RST warnings [#290](https://github.com/github/markup/pull/290)
