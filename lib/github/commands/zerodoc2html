@@ -24,6 +24,8 @@ import zerodoc.parse
 d, r = zerodoc.parse.parse(sys.stdin.read())
 if d == None:
     sys.exit(1)
-sys.stdout.write(zerodoc.html.write(d, ['ditaa', 'datauri', 'noheaders']))
+sys.stdout.write(zerodoc.html.write(d, ['ditaa', 'datauri', 'noheaders',
+                                        'pygments']))
+# pygments is actually nopygments ...
 sys.stdout.flush()
 sys.exit(0)
