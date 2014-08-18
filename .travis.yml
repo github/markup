@@ -1,4 +1,4 @@
-before_install: sudo pip install docutils zerodoc
+before_install: sudo pip install docutils zerodoc ply
 rvm:
   - 1.9.3
   - 2.0.0
