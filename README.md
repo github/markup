@@ -20,6 +20,9 @@ you wish to run the library. You can also run `script/bootstrap` to fetch them a
 * [.asciidoc, .adoc, .asc](http://asciidoc.org/) -- `gem install asciidoctor` (http://asciidoctor.org)
 * [.pod](http://search.cpan.org/dist/perl/pod/perlpod.pod) -- `Pod::Simple::HTML`
   comes with Perl >= 5.10. Lower versions should install Pod::Simple from CPAN.
+* [.rst](http://docutils.sourceforge.net/rst.html) -- `pip install zerodoc`.
+  Also, rsvg for python needs to be installed (in Debian
+  `apt-get instsall python-rsvg`)
 
 Installation
 -----------
