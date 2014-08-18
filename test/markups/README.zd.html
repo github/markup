@@ -60,12 +60,13 @@ This line contains two referenced links: <a href="http://www.google.com">firstli
 <p>
 Source code is text that will be included verbatim in the output.
 </p>
-<div class="highlight"><pre> <span class="err">#</span><span class="n">include</span> <span class="o">&lt;</span><span class="n">stdio</span><span class="p">.</span><span class="n">h</span><span class="o">&gt;</span>
+<pre>
+ #include &lt;stdio.h&gt;
 
- <span class="kt">int</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
-         <span class="c1">// print hello world 100 times</span>
-         <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">100</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-                 <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Hello, world!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
-         <span class="p">}</span>
- <span class="p">}</span>
-</pre></div>
+ int main() {
+         // print hello world 100 times
+         for (int i = 0; i &lt; 100; i++) {
+                 printf("Hello, world!\n");
+         }
+ }
+</pre>
