@@ -1,107 +1,40 @@
 <h1>
-Zerodoc
+Zerodoc test
 </h1>
 <p>
-Version 0.2.0 Last updated 2014-08-17 pablo@odkq.com
+Blah
 </p>
 <p>
-Zerodoc is a "plain text format" in the spirit of <a href="http://www.methods.co.nz/asciidoc/">asciidoc</a>, <a href="http://search.cpan.org/dist/perl/pod/perlpod.pod">POD</a>,
-<a href="http://docutils.sourceforge.net/rst.html">reStructuredText</a> or <a href="http://daringfireball.net/projects/markdown/">markdown</a>, with an emphasis on simplicity and
-extensibility. Very few formatting options are avaliable, both to
-keep the parser simple and to make it easy to write new generators
-for the whole format.
-</p>
-<p>
-Included are a Python library can be used to translate an input
-file or buffer into a tree that for wich generators can be easily
-written, and a command line tool to call existing generators for
-HTML, reStructuredText (that can then be converted or integrated
-with other tools like Sphinx) and a JSON intermediate representation.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus
+vitae lacus suscipit, auctor magna non, faucibus velit. Vivamus et
+sem id dui egestas imperdiet. Donec interdum eget odio auctor
+volutpat. Suspendisse faucibus, arcu sit amet suscipit rhoncus,
+felis felis dictum turpis, eu facilisis mauris quam in urna. Nulla
+eget purus arcu. Cras ac nunc eros. Aliquam mattis id arcu sed
+tincidunt. Maecenas porta scelerisque placerat.
 </p>
 <h3>Table of contents</h3><ul>
-<li><a href="#36271d26">1. The zerodoc format</a></li>
+<li><a href="#b1dbf462">1. Test a</a></li>
 <ul>
-<li><a href="#e02ee7d9">1.1 Paragraphs and lines</a></li>
-<li><a href="#45f7fe98">1.2 Lists</a></li>
-<li><a href="#cd40f9c0">1.3 Formatting attributes</a></li>
-<li><a href="#d1cb4f32">1.4 Links</a></li>
-<li><a href="#6fbb5a10">1.5 Source code</a></li>
-<li><a href="#9cc85d8e">1.6 Diagrams and images</a></li>
-<ul>
-<li><a href="#eda21b93">1.6.1 ASCIIToSVG ascii-art diagrams</a></li>
-<li><a href="#13a04d53">1.6.2 aafigure ascii-art diagrams</a></li>
-<li><a href="#1cb2de29">1.6.3 ditaa ascii-art diagrams</a></li>
-<li><a href="#f5468106">1.6.4 TikZ diagrams</a></li>
+<li><a href="#72a4b9a4">1.1 Test b</a></li>
+<li><a href="#ca3c31ba">1.2 Test c</a></li>
 </ul>
-<li><a href="#803482df">1.7 Definition lists</a></li>
-<li><a href="#e4226802">1.8 The default zerodoc structure</a></li>
-<ul>
-<li><a href="#f111c19a">1.8.1 Header</a></li>
-<ul>
-<li><a href="#9927c8da">1.8.1.1 Title</a></li>
-<li><a href="#7fab956e">1.8.1.2 Abstract</a></li>
-<li><a href="#418d6102">1.8.1.3 Table of contents</a></li>
+<li><a href="#b3e42262">2. Test d</a></li>
 </ul>
-<li><a href="#15f356b8">1.8.2 Body</a></li>
-</ul>
-</ul>
-<li><a href="#67ee604b">2. Installing zerodoc</a></li>
-<ul>
-<li><a href="#af306dea">2.1 Prerrequisites</a></li>
-<li><a href="#b67de34e">2.2 Installing the library and interpreter</a></li>
-<ul>
-<li><a href="#c4e420f1">2.2.1 Using a git snapshot</a></li>
-<li><a href="#0f005710">2.2.2 Using pypi</a></li>
-</ul>
-</ul>
-<li><a href="#d05bbde1">3. Using the command line converter</a></li>
-<ul>
-<li><a href="#d5cf74ea">3.1 SYNOPSIS</a></li>
-<li><a href="#1d7b6510">3.2 HTML output options</a></li>
-<li><a href="#d7efb604">3.3 reStructuredText output options</a></li>
-<li><a href="#ae67698a">3.4 JSON output options</a></li>
-<li><a href="#7978ac3c">3.5 Confluence output options</a></li>
-</ul>
-</ul>
-<a name="36271d26"></a><h2>1. The zerodoc format</h2><a name="e02ee7d9"></a><h3>1.1 Paragraphs and lines</h3><p>
-Zerodoc files are simple text files organized in paragraphs. A
-paragraph is a group of text lines separated from other paragraphs
-by blank lines. Lists and source code copied *verbatim* can be
-defined. An unintrusive format for links is used, based on
-a references system.
-</p>
-<p>
-Lines are limited to 72 characters for regular (not code 
-or diagrams) text. If you need to put something more into a line
-(for example, a long URL), divide it in two and put a backslash (\)
-with no spaces at the end.
-</p>
-<p>
-Example:
-</p>
-<div class="highlight"><pre> <span class="n">This</span> <span class="n">is</span> <span class="n">a</span> <span class="n">very</span> <span class="kt">long</span> <span class="n">url</span> <span class="n">that</span> <span class="n">needs</span> <span class="n">to</span> <span class="n">be</span> <span class="n">splitted</span> <span class="n">in</span> <span class="n">three</span><span class="o">:</span>
- <span class="nl">http:</span><span class="c1">//www.reallyreallyreallylonguniformresourcelocatorredir\</span>
-<span class="c1"> ection.com/redirectionator.php?theredirectioncode=d72a565ab8\</span>
-<span class="c1"> 7dedf7b5fa84b3ec4b9f11</span>
-</pre></div>
-<p>
-Renders into:
+<a name="b1dbf462"></a><h2>1. Test a</h2><a name="72a4b9a4"></a><h3>1.1 Test b</h3><p>
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus
+vitae lacus suscipit, auctor magna non, faucibus velit. Vivamus et
+sem id dui egestas imperdiet. Donec interdum eget odio auctor
+volutpat. Suspendisse faucibus, arcu sit amet suscipit rhoncus,
+felis felis dictum turpis, eu facilisis mauris quam in urna. Nulla
+eget purus arcu. Cras ac nunc eros. Aliquam mattis id arcu sed
+tincidunt. Maecenas porta scelerisque placerat.
 </p>
 <p>
 This is a very long url that needs to be splitted in three:
 http://www.reallyreallyreallylonguniformresourcelocatorredirection.com/redirectionator.php?theredirectioncode=d72a565ab87dedf7b5fa84b3ec4b9f11
 </p>
-<a name="45f7fe98"></a><h3>1.2 Lists</h3><p>
-Lists are defined as paragrahps prefixed with a dash, and can be
-nested. Example
-</p>
-<div class="highlight"><pre> <span class="o">-</span> <span class="n">The</span> <span class="n">first</span> <span class="n">element</span> <span class="n">in</span> <span class="n">a</span> <span class="n">list</span>
-  <span class="o">-</span> <span class="n">A</span> <span class="n">nested</span> <span class="n">element</span> <span class="n">into</span> <span class="n">the</span> <span class="n">first</span> <span class="n">consisting</span> <span class="n">of</span> <span class="n">two</span> <span class="n">lines</span>
-    <span class="n">that</span> <span class="n">are</span> <span class="n">joined</span> <span class="n">on</span> <span class="n">output</span>
-  <span class="o">-</span> <span class="n">Another</span> <span class="n">nested</span> <span class="n">element</span>
- <span class="o">-</span> <span class="n">The</span> <span class="n">third</span> <span class="n">element</span> <span class="n">in</span> <span class="n">a</span> <span class="n">list</span>
-</pre></div>
-<p>
+<a name="ca3c31ba"></a><h3>1.2 Test c</h3><p>
 Renders into:
 </p>
 <ul>
@@ -113,81 +46,19 @@ Renders into:
 <li>The third element in a list</li>
 </ul>
 <p>
-Backslash joining also occur inside list elements:
-</p>
-<div class="highlight"><pre> <span class="o">-</span> <span class="n">The</span> <span class="n">first</span> <span class="n">element</span> <span class="n">in</span> <span class="n">a</span> <span class="n">list</span><span class="p">.</span> <span class="n">as</span> <span class="n">it</span> <span class="n">have</span> <span class="n">two</span> <span class="n">lines</span>
-   <span class="n">with</span> <span class="n">no</span> <span class="n">backslash</span><span class="p">,</span> <span class="n">an</span> <span class="n">space</span> <span class="n">is</span> <span class="n">inserted</span> <span class="n">between</span> <span class="err">&#39;</span><span class="n">lines</span><span class="err">&#39;</span> <span class="n">and</span> <span class="err">&#39;</span><span class="n">with</span><span class="err">&#39;</span>
- <span class="o">-</span> <span class="n">To</span> <span class="n">join</span> <span class="n">the</span> <span class="n">two</span> <span class="n">lines</span> <span class="n">without</span> <span class="n">adding</span> <span class="n">a</span> <span class="n">space</span> <span class="n">a</span> <span class="n">back</span>\
-   <span class="n">slash</span> <span class="n">is</span> <span class="n">used</span><span class="p">.</span> <span class="n">Note</span> <span class="n">that</span> <span class="n">the</span> <span class="n">two</span> <span class="n">spaces</span> <span class="n">formatting</span> <span class="n">the</span> <span class="n">listline</span> <span class="n">are</span>
-   <span class="n">removed</span>
-</pre></div>
-<p>
-renders into:
-</p>
-<ul>
-<li>The first element in a list. as it have two lines with no backslash, an space is inserted between 'lines' and 'with'</li>
-<li>To join the two lines without adding a space a backslash is used. Note that the two spaces formatting the listline are removed after the backslash</li>
-</ul>
-<p>
-NOTE: There are no numbered lists. In the "phylosophy" of zerodoc,
-numbers can not be omited from the original text nor 'computed'
-because that will make the text less readable than it's processed
-output.
-</p>
-<a name="cd40f9c0"></a><h3>1.3 Formatting attributes</h3><p>
-Some attributes for the text inherited from other common formats and
-email conventions are supported:
-</p>
-<div class="highlight"><pre> <span class="o">-</span> <span class="n">This</span> <span class="n">is</span> <span class="n">an</span> <span class="o">*</span><span class="n">emphasis</span><span class="o">*</span>
- <span class="o">-</span> <span class="n">This</span> <span class="n">is</span> <span class="n">an</span> <span class="n">_underline_</span> <span class="p">(</span><span class="n">cursive</span> <span class="n">on</span> <span class="n">certain</span> <span class="n">displays</span> <span class="n">or</span> <span class="n">formats</span><span class="p">,</span>
-   <span class="n">as</span> <span class="n">in</span> <span class="n">manual</span> <span class="n">pages</span><span class="p">)</span>
- <span class="o">-</span> <span class="n">This</span> <span class="n">is</span> <span class="n">a</span> <span class="err">&#39;</span><span class="n">cursive</span><span class="err">&#39;</span>
-</pre></div>
-<p>
-Renders into:
-</p>
-<ul>
-<li>This is an *emphasis*</li>
-<li>This is an _underline_ (cursive on certain displays or formats, as in manual pages)</li>
-<li>This is a 'cursive'</li>
-</ul>
-<a name="d1cb4f32"></a><h3>1.4 Links</h3><p>
-Links can be included directly in the text along with their destination,
-or referenced first in the text and then 'resolved' in another line.
+2 TEST D
 </p>
 <p>
-Source of a link:
-</p>
-<div class="highlight"><pre> <span class="n">This</span> <span class="err">`</span><span class="n">link</span><span class="err">`</span><span class="o">:</span><span class="n">http</span><span class="o">:</span><span class="c1">//www.google.com will redirect to google</span>
-</pre></div>
-<p>
-Will render as:
+Far link is <a href="http://git-scm.com/">git</a> or <a href="http://docutils.sourceforge.net/rst.html">reStructuredText</a>
 </p>
 <p>
 This <a href="http://www.google.com">link</a> will redirect to google
 </p>
 <p>
-Referenced links are 'resolved' in lists of links. This lists of links
-will be removed from output directly. If the list is contained in a
-section alone, the section is also removed from output. See the
-'References' section at the end of the source code of this document
-for an example. An 'autocontained' example could be:
-</p>
-<div class="highlight"><pre> <span class="n">This</span> <span class="n">line</span> <span class="n">contains</span> <span class="n">two</span> <span class="n">referenced</span> <span class="n">links</span><span class="o">:</span> <span class="err">`</span><span class="n">firstlink</span><span class="err">`</span> <span class="n">and</span> <span class="err">`</span><span class="n">secondlink</span><span class="err">`</span>
-
- <span class="o">-</span> <span class="err">`</span><span class="n">firstlink</span><span class="err">`</span><span class="o">:</span><span class="n">http</span><span class="o">:</span><span class="c1">//www.google.com</span>
- <span class="o">-</span> <span class="err">`</span><span class="n">secondlink</span><span class="err">`</span><span class="o">:</span><span class="n">http</span><span class="o">:</span><span class="c1">//www.google.com</span>
-</pre></div>
-<p>
-Wich renders into:
-</p>
-<p>
 This line contains two referenced links: <a href="http://www.google.com">firstlink</a> and <a href="http://www.google.com">secondlink</a>
 </p>
-<a name="6fbb5a10"></a><h3>1.5 Source code</h3><p>
-Source code is text that will be included verbatim in the output. In
-source code, newlines are meaningful and no limits on line-length are
-imposed. An example:
+<p>
+Source code is text that will be included verbatim in the output.
 </p>
 <div class="highlight"><pre> <span class="err">#</span><span class="n">include</span> <span class="o">&lt;</span><span class="n">stdio</span><span class="p">.</span><span class="n">h</span><span class="o">&gt;</span>
 
@@ -198,394 +69,3 @@ imposed. An example:
          <span class="p">}</span>
  <span class="p">}</span>
 </pre></div>
-<p>
-Source code is identified by one space before the content of
-the first line and one or more spaces in the rest. No tabs can
-be used, so either transform tabs-only source code before pasting
-or use a tool like expand(1) to do it for you. Blank lines are also
-included verbatim, up to the one delimiting the next 'regular'
-paragraph (one that contains text and starts on the first column)
-</p>
-<p>
-To illustrate source code, i am going to paste the source code (yo
-dawg) of the example above, along with the regular paragraph-lines
-sorrounding it:
-</p>
-<div class="highlight"><pre> <span class="n">source</span> <span class="n">code</span><span class="p">,</span> <span class="n">newlines</span> <span class="n">are</span> <span class="n">meaningful</span> <span class="n">and</span> <span class="n">no</span> <span class="n">limits</span> <span class="n">on</span> <span class="n">line</span><span class="o">-</span><span class="n">length</span> <span class="n">are</span>
- <span class="n">imposed</span><span class="p">.</span> <span class="n">An</span> <span class="n">example</span><span class="o">:</span>
- 
-  <span class="err">#</span><span class="n">include</span> <span class="o">&lt;</span><span class="n">stdio</span><span class="p">.</span><span class="n">h</span><span class="o">&gt;</span>
- 
-  <span class="kt">int</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
-          <span class="c1">// print hello world 100 times</span>
-          <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">100</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-                  <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Hello, world!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
-          <span class="p">}</span>
-  <span class="p">}</span>
- 
- <span class="n">Source</span> <span class="n">code</span> <span class="n">is</span> <span class="n">identified</span> <span class="n">by</span> <span class="n">one</span> <span class="n">space</span> <span class="n">before</span> <span class="n">the</span> <span class="n">content</span> <span class="n">of</span>
- <span class="n">the</span> <span class="n">first</span> <span class="n">line</span> <span class="n">and</span> <span class="n">one</span> <span class="n">or</span> <span class="n">more</span> <span class="n">spaces</span> <span class="n">in</span> <span class="n">the</span> <span class="n">rest</span><span class="p">.</span> <span class="n">No</span> <span class="n">tabs</span> <span class="n">can</span>
-
- <span class="n">When</span> <span class="n">pygmentize</span> <span class="n">is</span> <span class="n">used</span><span class="p">,</span> <span class="n">the</span> <span class="k">default</span> <span class="n">language</span> <span class="k">for</span> <span class="n">syntax</span> <span class="n">highlighting</span>
- <span class="n">can</span> <span class="n">be</span> <span class="n">specified</span> <span class="n">in</span> <span class="n">options</span><span class="p">.</span>
-</pre></div>
-<a name="9cc85d8e"></a><h3>1.6 Diagrams and images</h3><p>
-Diagrams can be either included directly in the output, just as
-source code, or optionally converted to images (when this is
-possible, for example in a manual page it does not make sense to
-include images). Diagrams are converted using ditaa, aafigure,
-ascii2svg or tikz depending on the options parsed to the renderer.
-Refer to the <a href="http://packages.python.org/aafigure/manual.html">aafigure manual page</a> or to the <a href="http://ditaa.sourceforge.net/">ditaa website</a> for
-help on this formats.
-</p>
-<p>
-Diagrams are recognized by using TWO or more spaces before the
-first line of them. Anything up to the next 'regular' paragraph
-is considered part of the diagram.
-</p>
-<p>
-Source-code paragraphs and diagrams can not be adjacent; they need
-a 'regular' text paragraph (starting on the first column) between
-them. This makes sense since no diagram can follow source code or
-viceversa without at least an introduction of what the reader is
-seeing.
-</p>
-<a name="eda21b93"></a><h4>1.6.1 ASCIIToSVG ascii-art diagrams</h4><p>
-The default for ascii art diagrams is <a href="https://9vx.org/~dho/a2s/">asciitosvg</a>. As it name implies,
-it converts text to SVG wich is quite convenient. It is written in php.
-Example diagram: (asciitosvg)
-</p>
-<svg width="426px" height="238px" version="1.1"
-  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-  <defs>
-    <filter id="dsFilter" width="150%" height="150%">
-      <feOffset result="offOut" in="SourceGraphic" dx="3" dy="3"/>
-      <feColorMatrix result="matrixOut" in="offOut" type="matrix" values="0.2 0 0 0 0 0 0.2 0 0 0 0 0 0.2 0 0 0 0 0 1 0"/>
-      <feGaussianBlur result="blurOut" in="matrixOut" stdDeviation="3"/>
-      <feBlend in="SourceGraphic" in2="blurOut" mode="normal"/>
-    </filter>
-    <marker id="iPointer"
-      viewBox="0 0 10 10" refX="5" refY="5" 
-      markerUnits="strokeWidth"
-      markerWidth="8" markerHeight="7"
-      orient="auto">
-      <path d="M 10 0 L 10 10 L 0 5 z" />
-    </marker>
-    <marker id="Pointer"
-      viewBox="0 0 10 10" refX="5" refY="5" 
-      markerUnits="strokeWidth"
-      markerWidth="8" markerHeight="7"
-      orient="auto">
-      <path d="M 0 0 L 10 5 L 0 10 z" />
-    </marker>
-  </defs><g id="boxes" stroke="black" stroke-width="2" fill="none" >
-<g id="groupLogo">
-	<path id="pathLogo" filter="url(#dsFilter)" fill="#fff" d="M 31.5 34 Q 31.5 24 41.5 24 L 255.5 24 Q 265.5 24 265.5 34 L 265.5 142 Q 265.5 152 255.5 152 L 41.5 152 Q 31.5 152 31.5 142 Z" />
-	<text x="44.1" y="44.8" id="textLogo" fill="#000" stroke="none" style="font-family:Consolas,Monaco,Anonymous Pro,Anonymous,Bitstream Sans Mono,monospace;font-size:15.2px" >Logo </text>
-
-	<text x="53.1" y="124.8" id="textLogo" fill="#000" stroke="none" style="font-family:Consolas,Monaco,Anonymous Pro,Anonymous,Bitstream Sans Mono,monospace;font-size:15.2px" >ascii </text>
-
-	<text x="143.1" y="124.8" id="textLogo" fill="#000" stroke="none" style="font-family:Consolas,Monaco,Anonymous Pro,Anonymous,Bitstream Sans Mono,monospace;font-size:15.2px" >2</text>
-
-	<text x="206.1" y="124.8" id="textLogo" fill="#000" stroke="none" style="font-family:Consolas,Monaco,Anonymous Pro,Anonymous,Bitstream Sans Mono,monospace;font-size:15.2px" >svg </text>
-
-</g>
-<g id="group2">
-	<path id="path2" filter="url(#dsFilter)" fill="#fff" d="M 49.5 66 Q 49.5 56 59.5 56 L 75.5 56 Q 85.5 56 85.5 46 L 93.5 56 Q 103.5 56 103.5 66 L 103.5 94 Q 103.5 104 93.5 104 L 95.5 104 Q 85.5 104 85.5 94 L 59.5 104 Q 49.5 104 49.5 94 Z" />
-</g>
-<g id="group5">
-	<path id="path5" filter="url(#dsFilter)" fill="#fff" d="M 121.5 66 Q 121.5 56 131.5 56 L 165.5 56 Q 175.5 56 175.5 66 L 175.5 94 Q 175.5 104 165.5 104 L 131.5 104 Q 121.5 104 121.5 94 Z" />
-</g>
-<g id="group7">
-	<path id="path7" filter="url(#dsFilter)" fill="#fff" d="M 193.5 66 Q 193.5 56 203.5 56 L 237.5 56 Q 247.5 56 247.5 66 L 247.5 94 Q 247.5 104 237.5 104 L 203.5 104 Q 193.5 104 193.5 94 Z" />
-</g>
-<g id="group9">
-	<path id="path9" filter="url(#dsFilter)" fill="#fff" d="M 67.5 82 Q 67.5 72 77.5 72 L 75.5 72 Q 85.5 72 85.5 82 L 85.5 78 Q 85.5 88 75.5 88 L 77.5 88 Q 67.5 88 67.5 78 Z" />
-</g>
-</g>
-<g id="lines" stroke="black" stroke-width="2" fill="none" >
-<g id="group153">
-	<path id="path153" stroke-dasharray="5 5" d="M 85.5 168 L 85.5 200 " />
-</g>
-<g id="group199">
-	<path id="path199" marker-end="url(#Pointer)" d="M 121.5 72 L 148.5 72 " />
-</g>
-<g id="group239">
-	<path id="path239" marker-start="url(#iPointer)" d="M 148.5 88 L 175.5 88 " />
-</g>
-<g id="group304">
-	<path id="path304" marker-end="url(#Pointer)" d="M 193.5 88 L 220.5 88 " />
-</g>
-<g id="group342">
-	<path id="path342" marker-start="url(#iPointer)" d="M 220.5 72 L 247.5 72 " />
-</g>
-</g>
-<g id="text" fill="black" style="font-family:Consolas,Monaco,Anonymous Pro,Anonymous,Bitstream Sans Mono,monospace;font-size:15.2px" >
-<text x="35.1" y="172.8" id="text5" fill="#000" >https //9vx.org/~dho/a2s/</text>
-<text x="26.1" y="188.8" id="text6" fill="#000" >[Logo] </text>
-<text x="98.1" y="188.8" id="text7" fill="#000" >{&quot;fill&quot;:&quot;#88d&quot;,&quot;a2s:delref&quot;:true}</text>
-</g>
-</svg>
-<a name="13a04d53"></a><h4>1.6.2 aafigure ascii-art diagrams</h4><p>
-Another format to convert ascii art diagrams to graphics is aafigure. it
-is written in Python and have quite convenient idioms for things like
-sequence diagrams:
-</p>
-<img alt="sample" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAApAAAAFgCAIAAACDrd6DAAAWMklEQVR4nO3df2yU9eHA8T60aUMpsFLIDJANmppOpCAsY2kQsjAkw6nJjDiybNHMP3SBQKKLg8yEZcmQZCEmagIY2AI4KiI6ZEr9MRyNM2JYZ9yQH8KWCJlQhEZ6QFsKz/eP2/fWVKnX0vbu89zr9dfdPb3n+dz103vf3fP0LorjuAgAyG/Dcj0AAODLCTYABECwASAAgg0AARBsAAiAYANAAAQbAAIg2AAQAMEGgAAINgAEQLABIACCDQABEGwACIBgA0AABBsAAiDYABAAwQaAAAg2AARAsAEgAIINAAEQbAAIgGADQAAEGwACUJLrAWQriqJcD4HBFcdxrofwP+Zb4plvDKUBmW/BBLsoz/7AGFh5+IBlviWY+cZQGqj55i1xAAiAYANAAAQbAAIg2AAQAMEGgAAINgAEIPnBzv54+jz8Tw+CY74xlMy3gpKQYB86dOiOO+4YNWrUyJEjb7/99kOHDuV6RP/13e9+t9/XPXDgQElJSP8oXziSN9/+8Ic/3HTTTWVlZXV1dW+88cbAjorrlLz59tRTT02ZMmX48OG1tbW///3vB3ZUCZaEYJ86dWrBggULFy48evTosWPHFi5ceNttt50+fbqv6xmMDy748MMP+3Gtc+fO/e53v/vxj3985cqVAR8S1yl58+3pp59+8sknt23b9tlnn+3cufPpp5/etm3bgI+N/knefHvyySe3bt26ZcuW1tbW3bt379y5c8OGDQM+tmSKA9HLUB999NHVq1d3v+TXv/71o48+mj4dRdGHH374ne98Z8SIEfPnz9+3b9/n19zLvbF58+bp06cPHz586tSpe/bs6bF0586d3/rWt0aMGHHDDTf87Gc/6+jouNaa+3Rvjx49+gc/+EH6jyHLq4Qu325pQc23qVOnHjp0KHP2P//5T1VVVZbXDZT5lpaT+VZTU3P48OHM2U8++WT06NFZXjdQAzXf8mvW9qKXGzx9+vR//vOf3S/5xz/+MX369PTp4uLiuXPnvvbaa21tbQcOHLj55ptffvnlLDexe/fu8ePHNzY2plKpvXv3VldXHz16NLN07969kyZNev3119va2j799NPf/va3d999d/bDzka+PawMnny7pYU539I++eSTMWPGXP968pn5FufNfPv3v/89ceLE619PPhPs/6moqLhw4UL3S9ra2kaOHJm5YkNDQ2ZRY2PjnDlzstzEvHnztm/fnjm7devWJUuWZM5+73vfe+GFF/o97Gzk28PK4Mm3W1qY8y3tN7/5zc9//vPrX08+M9/iPJhvV69ePXLkyG233bZp06brWU/+E+z/GTZs2JUrV7pf0tXVVVxcnLni6dOnM4taW1uv9fbL5zfxla985ezZs5mzZ8+enTBhQubsmDFjzpw50+9hZyPfHlYGT77d0sKcb3Ecr1+/fs6cOe3t7de5njxnvsV5MN/Sb6SvWrXqelYShIGab0k46KyiouLixYvdL7l48WJFRUXmbFVVVeb0yJEjU6lUlmtua2urqqqK/l9VVdWpU6e6Lx09evT1jZ3wJHW+tbe3/+hHP/rTn/60Z8+esrKywdsQfZLU+VZUVHT16tWjR4/+7W9/W79+/aBuKDGSEOyamppjx451v+Rf//rXN77xjczZ7jP4/Pnzo0aNynLNlZWVra2t3Z/gdHV1ZZaOGzeutbX1+sZOeBI5386fP79gwYLa2tqXX355xIgRg7QV+iGR8y0tiqIbb7xx3bp1v/zlLwd1Q4mRhGAvXLhw586d3S/ZtWvX97///czZv/71r5nT77777owZM7Jc86xZs5qamq61dObMmXv37u19DcOGDbt69WqWmyMIyZtvly5duvvuu5ctW7Zq1Sofr5Fvkjffpk6devTo0R7r6etKCtSAvLE+BHoZaktLy9e+9rUNGzZ89tlnbW1tmzdvrqmpOXfuXHppSUnJ7Nmz33777QsXLhw4cKCuru7111/PchN//vOfv/71r7/xxhsXL148ceLEihUrfvrTn2aW/uUvf5kwYcLrr7+eSqVaWlrWrFmzcOHCHmu4+eabd+zYcfny5fPnzzc3Nw/grU6YfLulBTXffvGLX3Q/+KgQmG9x7ubbxo0b6+vr//73v1+6dOnIkSO33377li1bsrxuoAZqvuXXrO1F7zf4yJEjd9xxR0VFRUVFxZ133nns2LH05Z2dnSNHjty/f/+3v/3t4cOHL1iw4N133+3TJl588cW6urrS0tLJkyevWrWqx38i7tixI730hhtuWLZsWVtbW4+rHzp06Ic//GF5efno0aO/+c1vZn9jw31q1T/5dgMLar594QfqZXndQOXbDSyo+RbH8R//+Mebb765tLS0trZ2165d2V8xUAM136J4ED7+ZjBE0eAONY7j4uJib1/nymD/fvvKfEs2842hNFC/X3sO/uvUqVNf/epXcz0KCoX5xlAy35Kh0IN98ODB9vb2Tz/99KmnnvrJT36S6+GQcOYbQ8l8S5hCD/Y999wzatSo2tras2fP/upXv8r1cEg4842hZL4lTH7tyOlFvu1zYmDl2+8338bDwMq332++jYeBZR82ABQQwQaAAAg2AARAsAEgAIINAAEQbAAIgGADQAC+4EP/85Yv/mMomW8MJfONL+W/9fOUD1JgKJlvDCXzrX+8JQ4AARBsAAiAYANAAAQbAAIg2AAQAMEGgAAINgAEQLABIACCDQABEGwACIBgA0AABBsAAiDYABAAwQaAAAg2AARAsAEgAIINAAEQbAAIgGADQAAEGwACINgAEADBBoAACDYABECwASAAgg0AARBsAAiAYANAAAQbAAIg2AAQAMEGgAAINgAEQLABIACCDQABEGwACIBgA0AABBsAAiDYABAAwQaAAJTkegCFLoqivi6K43jQhpPvMvdJId8JQGESbHrK5ycK6TH08iwHIKkEmy+QD20GoDv7sOmbRYsWvfLKK5mzr7322r333ps5+/777991111jxowpLS2dNGnS8uXL29ra0osuXbo0c+bMjRs3VlVVTZgwYd++fc8888y4ceMmTpy4Z8+ezs7OUaNGHT58+NZbbx0+fHh1dfWzzz7bp4Ft2bLllltuKS8vr6ura2xsHJAbC5BHYnIqD39lvW/i9OnT9fX1HR0dcRx3dHTMnj27paUlvejy5cs1NTXHjx+/ePFiZ2fnRx99tHTp0vvvvz+99MqVK2PHjr3zzjvPnDmzbt26m266afHixefOnVu3bt2MGTPiOC4pKZk/f35TU1MqlWpubp4yZUpDQ0OWI9y9e/f48eMbGxtTqdTevXurq6uPHj16nfdDQfFQwFAy3/rHvZZjwQU7juOGhobHH388juM1a9bs2LGjl5/8+OOPq6qquq/5vffei+O4tbW1qKjo4MGD6dNlZWXppc8//3zmh1999dX6+vosRzhv3rzt27dnzm7dunXJkiW93wq68wDKUDLf+ieK7a3MqX4cPzXYv7JsDjq77777li5dun79+k2bNvWyqqtXrxYXF2euGEXRhQsXysvL06fb29vLysrSp+M4jqLozJkzY8eOTf/wuXPnpkyZcurUqS8cYY87obKy8vjx42PGjMlcd9q0aSdPnszyJvP5uxQGj/nWP+61HMvPYH/pJj744IO5c+c2NTVNmzat++UdHR2rV6/etWvXiRMn2traurq60k8MP7/mz5+Ooqirq6u4uDh94eXLlysqKjo6OrIZYUlJyZUrV7pfUlxc3NXVle1tLngeQBlK5lv/OOiM/li7du3u3btXr17d4/LFixd3dna+8MILx44dS6VS7e3tfVptKpXKnG5tbc28Yv5SlZWVra2t3d87UmsgYQSbPnvuueemTZs2Z86c2trabdu2dV/U2Nj42GOP1dTUVFZWlpaW9vVo7bfeeitz+p133rnxxhuzvOKsWbOampr6tC2AsAg2fdPS0rJhw4bly5cXFRWtWLHiiSeeaGlpySytra3dvHnzpUuXTp48uX79+oaGhrFjxx4/fjybNQ8bNmzt2rVvv/32hQsXmpubV65c+fDDD2c5qkceeWTZsmVvvvlmetMrV6584IEH+nHrAPLX4B/XRm/y8FfW+3YXLVq0b9++zA+/9NJL99xzT+Zsc3NzfX19eXn5uHHjHnrooVQq9eCDD5aXl2fW3H0rPU4XFRXt379/1qxZZWVl1dXV3Y/67mVgmaUvvvhiXV1daWnp5MmTV61alf7HM7LkoYChZL71jz3/OZaHB53liuNQcsidz1Ay3/rHW+IAEADBBoAACDYABMC3dZEv7NMaAr5/HcLlFTYABECwASAAgg0AARBsSIgoivrxb/1AKBx0BgmRPjos02wHi0HCCDYkStztS0t7XAIETbAhmZQbEkaww2M/Jf1j5kDQBDs8XifRJ91fYWs2hEuwIZm8Ew4JI9iQKDoNSSXYkBDpVOs0JJVgQ0JINSSbTzoDgAAINgAEQLABIACCDQABEGwACIBgA0AABBsAAiDYABAAwQaAAAg2AARAsAEgAIINAAEQbAAIgGADQAAEGwACINgAEADBBoAACDYABECwASAAgg0AARBsAAiAYANAAAQ7aaIoiqIo16MAYICV5HoADIxMpOM4zu1IABgMgh02nQYoEIIdJJ0GKDSCHZ7uu6jtrgYoEIIdnjiOvcKmfzzDg3AJdpAynVZugAIh2GFTboACIdgJ0aPcsg2QMIKdNFINkEg+6QwAAiDYABAAwQaAANiHDQXkWoc4RFHk6AfIc15hA0AABBsAAiDYABAAwQaAAAg2AARAsAEgAIINAAEQbAAIgGADQAAEGwACINgAEADBBoAACDYABECwASAAvl6TkERRlD7huyCBQiPY9JSJYg/50Mj0GK41QoAEE2y+QD60GYDu7MOmbxYtWvTKK69kzr722mv33ntv5uz7779/1113jRkzprS0dNKkScuXL29ra0svunTp0syZMzdu3FhVVTVhwoR9+/Y988wz48aNmzhx4p49ezo7O0eNGnX48OFbb711+PDh1dXVzz77bJ8GtmXLlltuuaW8vLyurq6xsXFAbixAHonJqTz8lfW+idOnT9fX13d0dMRx3NHRMXv27JaWlvSiy5cv19TUHD9+/OLFi52dnR999NHSpUvvv//+9NIrV66MHTv2zjvvPHPmzLp162666abFixefO3du3bp1M2bMiOO4pKRk/vz5TU1NqVSqubl5ypQpDQ0NWY5w9+7d48ePb2xsTKVSe/fura6uPnr06HXeDwXFQwFDyXzrH/dajgUX7DiOGxoaHn/88TiO16xZs2PHjl5+8uOPP66qquq+5vfeey+O49bW1qKiooMHD6ZPl5WVpZc+//zzmR9+9dVX6+vrsxzhvHnztm/fnjm7devWJUuW9H4r6M4DKEPJfOufKLa3Mqf6cfzUYP/Ksjno7L777lu6dOn69es3bdrUy6quXr1aXFycuWIURRcuXCgvL0+fbm9vLysrS5+O4ziKojNnzowdOzb9w+fOnZsyZcqpU6e+cIQ97oTKysrjx4+PGTMmc91p06adPHkyy5vM5+9SGDzmW/+413IsP4P9pZv44IMP5s6d29TUNG3atO6Xd3R0rF69eteuXSdOnGhra+vq6ko/Mfz8mj9/Ooqirq6u4uLi9IWXL1+uqKjo6OjIZoQlJSVXrlzpfklxcXFXV1e2t7ngeQBlKJlv/eOgM/pj7dq1u3fvXr16dY/LFy9e3NnZ+cILLxw7diyVSrW3t/dptalUKnO6tbU184r5S1VWVra2tnZ/70itgYQRbPrsueeemzZt2pw5c2pra7dt29Z9UWNj42OPPVZTU1NZWVlaWtrXo7XfeuutzOl33nnnxhtvzPKKs2bNampq6tO2AMIi2PRNS0vLhg0bli9fXlRUtGLFiieeeKKlpSWztLa2dvPmzZcuXTp58uT69esbGhrGjh17/PjxbNY8bNiwtWvXvv322xcuXGhubl65cuXDDz+c5ageeeSRZcuWvfnmm+lNr1y58oEHHujHrQPIX4N/XBu9ycNfWe/bXbRo0b59+zI//NJLL91zzz2Zs83NzfX19eXl5ePGjXvooYdSqdSDDz5YXl6eWXP3rfQ4XVRUtH///lmzZpWVlVVXV3c/6ruXgWWWvvjii3V1daWlpZMnT161alX6H8/IkocChpL51j/2/OdYHh50liuOQ8khdz5DyXzrH2+JA0AABBsAAiDYABAA39ZFvrBPCxKml2N08vlrfPOWV9iAR0kIgGADQAAEGwACINgA9FkURf34GAmuh4POAOiz9HEPmWY7DGIICDYA/RR3+5LcHpcw4AQbgOul3ENAsMNjvxGQ/zxSDTjBDo/nrUDe6v4KW7MHlmADcL28Ez4EBBuAftLpoSTYAPRZOtU6PZQEG4A+k+qh55POACAAgg0AARBswL/MQgDsw86xa+0HiqLILiIAMrzCBoAACDYABECwASAAgg0AARBsAAiAYANAAAQbAAIg2AAQAMEGgAAINgAEQLABIACCDQABEGwACIBgA0AAfL1mjvXyPcTXWuRrN+k38w3C5RU2AARAsAEgAIINAAEQbEiIKIp62UUNhM5BZ5AQ6aPDMs12sBgkjGBDomQ6rdyQMIINyaTckDCCHR77KekfM4f8F8oszcnTX8EOj9dJ9En3V9ihPBpSsIJ4fMvV35FgQzJ5JxwSRrAhUXQakkqwISHSqdZpSCrBhoSQakg2n3QGAAEQbAAIgGADQAAEGwACINgAEADBBoAACDYABECwASAAgg0AARBsAAiAYANAAAQbAAIg2AAQAMEGgAAINgAEQLABIACCDQABEGwACIBgA0AASnI9gEIXx/EXXh5F0bUWQb+ZbxAur7ABIACCDQABEGwAwhBFURRFuR5FztiHDUBey0S6wI+0EGwA8pFO9yDYAOQRnb4WwQYgX3TfRV3Iu6u/kGADkC/iOPYK+1oEG4A8kum0cvcg2ADkI+XuQbAByGs9yl2w2RZsAMJQsKlO80lnABAAwQaAAHhLPMd6+UfDay0q8DeFAAqTV9iAZ4EQAMEGgAAINgAEQLCTpsC/LxYgqRx0lhA+CQgg2QQ7bDoNUCAEO0g6DVBoBDs8vi8WoAAJdnh8XywQBK8oBpZgB8m3zgEUGsEOm3IDFAjBTgjfFwuQbIKdNFINkEg+6QwAAiDYABAAwQb8+w0EwD5sAAbFtQ6piaLI0Tb94BU2AARAsAEgAIINAAEQbAAIgGADQAAEGwACINgAEADBBoAACDYABECwASAAgg0AARBsAAiAYANAAAQbAAIg2AAQAN+HnWO+LxaAbHiFDQABEGwACIBgA0AABBsAAiDYABAAwQaAAAg2AARAsAEgAIINAAEQbAAIgGADQAAEGwACINgAEADBBoAACDYABECwASAAgg0AARBsAAiAYANAAAQbAAIg2AAQAMEGgAAINgAEQLABIACCDQABEGwACIBgA0AABBsAAiDYABAAwQaAAAg2AAQgiuM412MAAL6EV9gAEADBBoAACDYABECwASAAgg0AARBsAAiAYANAAAQbAAIg2AAQAMEGgAAINgAEQLABIACCDQABEGwACMD/ARLW1qJZFjC5AAAAAElFTkSuQmCC">
-<a name="1cb2de29"></a><h4>1.6.3 ditaa ascii-art diagrams</h4><p>
-Another common format for ascii art diagrams is ditaa. It does not
-support svg output.
-</p>
-<div class="highlight"><pre> <span class="n">This</span> <span class="n">is</span> <span class="n">the</span> <span class="n">source</span> <span class="n">code</span> <span class="n">of</span> <span class="n">the</span> <span class="n">following</span> <span class="n">paragraph</span>
- <span class="p">(</span><span class="n">diagram</span> <span class="n">taken</span> <span class="n">from</span> <span class="n">the</span> <span class="err">`</span><span class="n">ditaa</span> <span class="n">website</span><span class="err">`</span><span class="o">:</span>
- 
- <span class="n">Example</span> <span class="n">diagram</span><span class="o">:</span> <span class="p">(</span><span class="n">ditaa</span><span class="p">)</span>
-
- <span class="o">+--------+</span>   <span class="o">+-------+</span>    <span class="o">+-------+</span>
- <span class="o">|</span>        <span class="o">|</span> <span class="o">--+</span> <span class="n">ditaa</span> <span class="o">+--&gt;</span> <span class="o">|</span>       <span class="o">|</span>
- <span class="o">|</span>  <span class="n">Text</span>  <span class="o">|</span>   <span class="o">+-------+</span>    <span class="o">|</span><span class="n">diagram</span><span class="o">|</span>
- <span class="o">|</span><span class="n">Document</span><span class="o">|</span>   <span class="o">|!</span><span class="n">magic</span><span class="o">!|</span>    <span class="o">|</span>       <span class="o">|</span>
- <span class="o">|</span>     <span class="p">{</span><span class="n">d</span><span class="p">}</span><span class="o">|</span>   <span class="o">|</span>       <span class="o">|</span>    <span class="o">|</span>       <span class="o">|</span>
- <span class="o">+---+----+</span>   <span class="o">+-------+</span>    <span class="o">+-------+</span>
-      <span class="o">:</span>                         <span class="o">^</span>
-      <span class="o">|</span>       <span class="n">Lots</span> <span class="n">of</span> <span class="n">work</span>      <span class="o">|</span>
-      <span class="o">+-------------------------+</span>
-</pre></div>
-<p>
-This is the source code of the following paragraph
-(diagram taken from the <a href="http://ditaa.sourceforge.net/">ditaa website</a>
-</p>
-<img alt="sample" src="data:image/png;base64,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Kdays540xcayK64JOSzii+yQnUfKThmQRqZ6T7/00kvOD3Y4P3pSOZcOHTqovZy3SmSvvvrqQw895OXl5fxowuHDh/v06WMmW9dRSs3uTna3LKdOsZad9aQpNpZdMU7IUVh8kR2y4+diZSj89ojC/Z6QA9khOwKM7EqNkpyQA9khOwKM7EqNkpyQA9khOwKM7Ghn+gKyI8DIjnYmCsiOACM72pkoIDsCjOxoZ6KA7JAdskN2RAHZITuigOyIArIj/EQB2SE7ZEcnJArIDtkhOzoh3QzZITsCjOxoZ/oCsiPAyI52JgrIjgAjO9qZKCA7AozsaGeigOwA2SE7ooDsCD9RQHZEAdkRfqKA7JAdsismjhw5smzZso8//njQoEFdu3Z98skn69evXzsfderU0abmzZv36tVryJAh48aNmzNnTmRk5B390z9kh+yIArIrUQ4cODBlypTu3bs/9NBDlSpVatSoUadOnV566aU333xz7NixEydO/OKLL2bOnDlr1qxvv/1Wf2fn8tlnn33yyScjRowYMGBAz54927RpIy3qcF9f3xYtWvTv33/SpEkbNmxw/DtBZIfsiAKyKx1OnTr1+eefK0Ez/+NKqZxWf/jhh4ULFwYHByswK1asCAkJWbVq1a+//rp27dp169b9lg8VatOaNWu0j/YMDQ1dsGDBhAkThg8fLnvKm97e3g0bNuzTp8/UqVN3796N7JAdUUB2JUdycvLrr78uxzVr1uydd95Rvvbjjz8uXrxYwVi5cuXq1aulsIiIiN9//33Lli3btm3bsWNHVFRUdHT0H7n8eRuzqnJt1T7bt2/funXr5s2bdaAODw8Plwelvy+//FJX6dy5s7+/f9WqVbWgrFAhR3bIjijYVnbVqlVTjjN9+vS//vqrVFpcudWLL75YvXr1Z599dvLkyfPmzVMet2TJEjlOqZkiIVXJWVKYQhIXF7dnz57ExMSkpKS///57//79B/KhQm3at2+f9tGe8fHxuoRqFxMTIxtKgjqbjGn0J4fqch9++OHzzz8v8VWpUiUsLExX1P4pKSkl1gnr1atXriyhcLuh7IiCzWV34sQJ5VDKqjS+8/X17dq169ixY5X+WHywVSzk5ORodBkUFKRsrlu3brKthquLFi1S6yvz0mh006ZNkZGRCoNUtXfvXilM2d+RI0fS09OPHTuml52RkZGZ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">
-<p>
-Note that there are two spaces before the first +---
-</p>
-<a name="f5468106"></a><h4>1.6.4 TikZ diagrams</h4><p>
-A Tikz diagram (from the Tikz examples)
-</p>
-<p>
-LaTeX source code for that Tikz chunk:
-</p>
-<div class="highlight"><pre> <span class="err">\</span><span class="n">begin</span><span class="p">{</span><span class="n">tikzpicture</span><span class="p">}[</span><span class="k">auto</span><span class="p">,</span><span class="n">node</span> <span class="n">distance</span><span class="o">=</span><span class="mi">3</span><span class="n">cm</span><span class="p">,</span>
-   <span class="n">thick</span><span class="p">,</span><span class="n">main</span> <span class="n">node</span><span class="o">/</span><span class="p">.</span><span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="n">circle</span><span class="p">,</span><span class="n">fill</span><span class="o">=</span><span class="n">blue</span><span class="o">!</span><span class="mi">20</span><span class="p">,</span><span class="n">draw</span><span class="p">,</span>
-   <span class="n">font</span><span class="o">=</span><span class="err">\</span><span class="n">sffamily</span><span class="err">\</span><span class="n">Large</span><span class="err">\</span><span class="n">bfseries</span><span class="p">}]</span>
- 
-   <span class="err">\</span><span class="n">node</span><span class="p">[</span><span class="n">main</span> <span class="n">node</span><span class="p">]</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span><span class="mi">1</span><span class="p">};</span>
-   <span class="err">\</span><span class="n">node</span><span class="p">[</span><span class="n">main</span> <span class="n">node</span><span class="p">]</span> <span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="p">[</span><span class="n">below</span> <span class="n">left</span> <span class="n">of</span><span class="o">=</span><span class="mi">1</span><span class="p">]</span> <span class="p">{</span><span class="mi">2</span><span class="p">};</span>
-   <span class="err">\</span><span class="n">node</span><span class="p">[</span><span class="n">main</span> <span class="n">node</span><span class="p">]</span> <span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="p">[</span><span class="n">below</span> <span class="n">right</span> <span class="n">of</span><span class="o">=</span><span class="mi">2</span><span class="p">]</span> <span class="p">{</span><span class="mi">3</span><span class="p">};</span>
-   <span class="err">\</span><span class="n">node</span><span class="p">[</span><span class="n">main</span> <span class="n">node</span><span class="p">]</span> <span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="p">[</span><span class="n">below</span> <span class="n">right</span> <span class="n">of</span><span class="o">=</span><span class="mi">1</span><span class="p">]</span> <span class="p">{</span><span class="mi">4</span><span class="p">};</span>
- 
-   <span class="err">\</span><span class="n">path</span><span class="p">[</span><span class="n">every</span> <span class="n">node</span><span class="o">/</span><span class="p">.</span><span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="n">font</span><span class="o">=</span><span class="err">\</span><span class="n">sffamily</span><span class="err">\</span><span class="n">small</span><span class="p">}]</span>
-     <span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="n">edge</span> <span class="n">node</span> <span class="p">[</span><span class="n">left</span><span class="p">]</span> <span class="p">{</span><span class="mf">0.6</span><span class="p">}</span> <span class="p">(</span><span class="mi">4</span><span class="p">)</span>
-         <span class="n">edge</span> <span class="p">[</span><span class="n">bend</span> <span class="n">right</span><span class="p">]</span> <span class="n">node</span><span class="p">[</span><span class="n">left</span><span class="p">]</span> <span class="p">{</span><span class="mf">0.3</span><span class="p">}</span> <span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-         <span class="n">edge</span> <span class="p">[</span><span class="n">loop</span> <span class="n">above</span><span class="p">]</span> <span class="n">node</span> <span class="p">{</span><span class="mf">0.1</span><span class="p">}</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-     <span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="n">edge</span> <span class="n">node</span> <span class="p">[</span><span class="n">right</span><span class="p">]</span> <span class="p">{</span><span class="mf">0.4</span><span class="p">}</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-         <span class="n">edge</span> <span class="n">node</span> <span class="p">{</span><span class="mf">0.3</span><span class="p">}</span> <span class="p">(</span><span class="mi">4</span><span class="p">)</span>
-         <span class="n">edge</span> <span class="p">[</span><span class="n">loop</span> <span class="n">left</span><span class="p">]</span> <span class="n">node</span> <span class="p">{</span><span class="mf">0.4</span><span class="p">}</span> <span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-         <span class="n">edge</span> <span class="p">[</span><span class="n">bend</span> <span class="n">right</span><span class="p">]</span> <span class="n">node</span><span class="p">[</span><span class="n">left</span><span class="p">]</span> <span class="p">{</span><span class="mf">0.1</span><span class="p">}</span> <span class="p">(</span><span class="mi">3</span><span class="p">)</span>
-     <span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="n">edge</span> <span class="n">node</span> <span class="p">[</span><span class="n">right</span><span class="p">]</span> <span class="p">{</span><span class="mf">0.8</span><span class="p">}</span> <span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-         <span class="n">edge</span> <span class="p">[</span><span class="n">bend</span> <span class="n">right</span><span class="p">]</span> <span class="n">node</span><span class="p">[</span><span class="n">right</span><span class="p">]</span> <span class="p">{</span><span class="mf">0.2</span><span class="p">}</span> <span class="p">(</span><span class="mi">4</span><span class="p">)</span>
-     <span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="n">edge</span> <span class="n">node</span> <span class="p">[</span><span class="n">left</span><span class="p">]</span> <span class="p">{</span><span class="mf">0.2</span><span class="p">}</span> <span class="p">(</span><span class="mi">3</span><span class="p">)</span>
-         <span class="n">edge</span> <span class="p">[</span><span class="n">loop</span> <span class="n">right</span><span class="p">]</span> <span class="n">node</span> <span class="p">{</span><span class="mf">0.6</span><span class="p">}</span> <span class="p">(</span><span class="mi">4</span><span class="p">)</span>
-         <span class="n">edge</span> <span class="p">[</span><span class="n">bend</span> <span class="n">right</span><span class="p">]</span> <span class="n">node</span><span class="p">[</span><span class="n">right</span><span class="p">]</span> <span class="p">{</span><span class="mf">0.2</span><span class="p">}</span> <span class="p">(</span><span class="mi">1</span><span class="p">);</span>
- <span class="err">\</span><span class="n">end</span><span class="p">{</span><span class="n">tikzpicture</span><span class="p">}</span>
-</pre></div>
-<p>
-1.6.6 Diagram tagging and autodetection
-</p>
-<p>
-As with source code, the type of diagram is autodetected for Tikz and
-gnuplot diagrams. This detection can be overriden by specifing it in
-the first line of the diagram, between parenthesis.
-</p>
-<a name="803482df"></a><h3>1.7 Definition lists</h3><p>
-A definition list is a list of terms and corresponding definitions.
-It usually renders (in HTML, man pages, ReST) in the text of the
-definition indented with respect to the title. It is useful for
-documenting functions and command line parameters.
-</p>
-<p>
-Following is an example:
-</p>
-<div class="highlight"><pre> <span class="n">man</span> <span class="n">ls</span>
-     <span class="n">Display</span> <span class="n">the</span> <span class="n">manual</span> <span class="n">page</span> <span class="k">for</span> <span class="n">the</span> <span class="n">item</span> <span class="p">(</span><span class="n">program</span><span class="p">)</span> <span class="n">ls</span><span class="p">.</span>
- <span class="n">man</span> <span class="o">-</span><span class="n">a</span> <span class="n">intro</span>
-     <span class="n">Display</span><span class="p">,</span>  <span class="n">in</span>  <span class="n">succession</span><span class="p">,</span> <span class="n">all</span> <span class="n">of</span> <span class="n">the</span> <span class="n">available</span> <span class="n">intro</span> <span class="n">manual</span>
-     <span class="n">pages</span> <span class="n">contained</span> <span class="n">within</span> <span class="n">the</span> <span class="n">manual</span><span class="p">.</span>  <span class="n">It</span> <span class="n">is</span> <span class="n">possible</span>
-     <span class="n">to</span> <span class="n">quit</span> <span class="n">between</span> <span class="n">successive</span> <span class="n">displays</span> <span class="n">or</span> <span class="n">skip</span> <span class="n">any</span> <span class="n">of</span> <span class="n">them</span><span class="p">.</span>
-</pre></div>
-<p>
-that renders into:
-</p>
-<dl><dt>man ls
-<dd>    Display the manual page for the item (program) ls.
-</dl><dl><dt>man -a intro
-<dd>    Display,  in  succession, all of the available intro manual
-    pages contained within the manual.  It is possible
-    to quit between successive displays or skip any of them.
-</dl><a name="e4226802"></a><h3>1.8 The default zerodoc structure</h3><a name="f111c19a"></a><h4>1.8.1 Header</h4><p>
-The header in a zerodoc document contains the title, an optional
-abstract and a table of contents. The table of contents needs to
-be updated by hand (this is different from other well known text
-formats but allow zerodoc to have free-form titles (no --- nor
-~~~ nor any other form of markup is needed):
-</p>
-<div class="highlight"><pre> <span class="n">This</span> <span class="n">is</span> <span class="n">the</span> <span class="n">title</span><span class="p">,</span> <span class="n">that</span> <span class="n">can</span> <span class="n">spawn</span> <span class="n">several</span>
- <span class="n">lines</span>
-
- <span class="n">This</span> <span class="n">are</span> <span class="n">one</span> <span class="n">or</span> <span class="n">several</span> <span class="n">paragraphs</span> <span class="n">of</span> <span class="n">abstract</span>
-
- <span class="mf">1.</span> <span class="n">Title</span> <span class="mi">1</span>
- <span class="mf">2.</span> <span class="n">Title</span> <span class="mi">2</span>
-</pre></div>
-<a name="9927c8da"></a><h5>1.8.1.1 Title</h5><p>
-The title can spawn several lines (a whole paragraph) that will be
-joined together on output
-</p>
-<p>
-The table of contents can be prefixed by a 'Table of conents' line
-that will be recognized automatically as the TOC title. If that line
-is not present, it will also be ommited on the transformed output.
-</p>
-<a name="7fab956e"></a><h5>1.8.1.2 Abstract</h5><p>
-The abstract is a group of paragraphs that appear before the Table
-of content.
-</p>
-<a name="418d6102"></a><h5>1.8.1.3 Table of contents</h5><p>
-The table of contents is a list of the titles of the different
-sections, for example
-</p>
-<div class="highlight"><pre> <span class="o">-</span> <span class="mf">1.</span> <span class="n">Section</span> <span class="n">one</span>
- <span class="o">-</span> <span class="mf">2.</span> <span class="n">Section</span> <span class="n">two</span>
- <span class="o">-</span> <span class="mf">3.</span> <span class="n">Third</span> <span class="n">section</span>
-</pre></div>
-<p>
-Will define the table of contents of a document, if found in the
-header (after the abstract). If a title listed here is not found
-in the document, an error is yielded.
-</p>
-<a name="15f356b8"></a><h4>1.8.2 Body</h4><p>
-The body is formed by several paragraphs. Paragraphs are divided
-into sections by lines with titles. The lines with titles should
-appear in the TOC and should have the same content as the TOC.
-Optionally they can be in uppercase for clarity. As the transformed
-document usually will have better ways to emphasize the title, 
-the lowercase format used in the TOC will be used regardless of
-uppercase being used. For example, the next section of this document
-starts with
-</p>
-<div class="highlight"><pre> <span class="mf">2.</span> <span class="n">INSTALLING</span> <span class="n">ZERODOC</span>
-
- <span class="mf">2.1</span> <span class="n">Prerrequisites</span>
-</pre></div>
-<p>
-And in the TOC the pertinent lines appear as:
-</p>
-<div class="highlight"><pre> <span class="o">--</span> <span class="n">toc</span> <span class="n">fragment</span> <span class="o">--</span>
-   <span class="o">-</span> <span class="mf">1.7.1.3</span> <span class="n">Table</span> <span class="n">of</span> <span class="n">contents</span>
-  <span class="o">-</span> <span class="mf">1.7.2</span> <span class="n">Body</span>
- <span class="o">-</span> <span class="mf">2.</span> <span class="n">Installing</span> <span class="n">zerodoc</span>
-  <span class="o">-</span> <span class="mf">2.1</span> <span class="n">Prerrequisites</span>
-</pre></div>
-<p>
-As you can see on the start of the next section, the title appears
-in lowercase (as in the TOC above)
-</p>
-<a name="67ee604b"></a><h2>2. Installing zerodoc</h2><a name="af306dea"></a><h3>2.1 Prerrequisites</h3><p>
-Zerodoc needs Python (2.6 or newer) the Python PLY 'lex and yacc'
-utilities (2.5 or newer) and distutils for installation. Aditionally
-when generating diagrams, the programs to parse them need to be
-installed as well.
-</p>
-<p>
-As an example, in a GNU/Linux Debian 6.0 'Squeeze' system, the
-requirements can be installed using:
-</p>
-<div class="highlight"><pre> <span class="err">#</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">python</span><span class="o">-</span><span class="n">ply</span> <span class="n">python</span><span class="o">-</span><span class="n">aafigure</span> <span class="n">ditaa</span>
-</pre></div>
-<p>
-To generate diagrams with gnuplot or tikz, install the pertinent
-packages
-</p>
-<div class="highlight"><pre> <span class="err">#</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">gnuplot</span>
-
- <span class="err">#</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">texlive</span><span class="o">-</span><span class="n">picture</span>
-</pre></div>
-<a name="b67de34e"></a><h3>2.2 Installing the library and interpreter</h3><a name="c4e420f1"></a><h4>2.2.1 Using a git snapshot</h4><p>
-Clone the github repository using
-</p>
-<div class="highlight"><pre> <span class="err">$</span> <span class="n">git</span> <span class="n">clone</span> <span class="n">git</span><span class="o">:</span><span class="c1">//github.com/odkq/zerodoc.git</span>
-</pre></div>
-<p>
-Change to the zerodoc dir and call setup.py as root
-</p>
-<div class="highlight"><pre> <span class="err">$</span> <span class="n">cd</span> <span class="n">zerodoc</span><span class="o">/</span>
- <span class="err">$</span> <span class="n">sudo</span> <span class="p">.</span><span class="o">/</span><span class="n">setup</span><span class="p">.</span><span class="n">py</span> <span class="n">install</span>
-</pre></div>
-<a name="0f005710"></a><h4>2.2.2 Using pypi</h4><a name="d05bbde1"></a><h2>3. Using the command line converter</h2><p>
-zerodoc - converts a zerodoc text file to HTML and many
-other formats
-</p>
-<a name="d5cf74ea"></a><h3>3.1 SYNOPSIS</h3><p>
-Usage: zerodoc [options]
-</p>
-<p>
-Options:
-</p>
-<p>
--h, --help show this help message and exit
-</p>
-<p>
--f FORMAT, --format=FORMAT Output format. If ommited, 'html'
-</p>
-<p>
--o OPTIONS, --options=OPTIONS Options for format renderer
-</p>
-<p>
--i FILE, --input=FILE Use &lt;filename&gt; as input file. If ommited, use stdin.
-</p>
-<p>
--O FILE, --output=FILE Use &lt;filename&gt; as output file. If ommited,use stdout.
-</p>
-<a name="1d7b6510"></a><h3>3.2 HTML output options</h3><dl><dt>ditaa
-<dd>    Use ditaa to format diagrams. When this option
-    is used, you can specify the path of the ditaa
-    .jar file with jarpath:&lt;path&gt;. If jarpath is
-    ommited, 'ditta' will be called (you can install
-    a command-line ditta wraper in Debian and others
-    with apt-get install ditaa)
-</dl><dl><dt>jarpath:&lt;path&gt;
-<dd>    Location of the .jar path (there is no default,
-    'java' must be in the $PATH)
-</dl><dl><dt>aafigure
-<dd>   Use aafigure to format diagrams
-</dl><dl><dt>svg
-<dd>   Prefer svg in output when applicable (when the 
-   converter outputs it and when the rendered format allows
-   for scalable graphics)
-</dl><dl><dt>datauri
-<dd>   Do not generate image files, embbed the images
-   directly in the HTML using `DataURIscheme`
-</dl><a name="d7efb604"></a><h3>3.3 reStructuredText output options</h3><dl><dt>notoc
-<dd>    Usually `reStructuredText` processors attach their own index in the
-    side (`sphinx-doc`, for example). In that case, you better do not
-    output the toc (it is still used to get section titles)
-</dl><a name="ae67698a"></a><h3>3.4 JSON output options</h3><p>
-Json output has no options. It's output is the json render of the
-parsed tree with no interpretation whatsoever
-</p>
-<a name="7978ac3c"></a><h3>3.5 Confluence output options</h3><dl><dt>ditaa, jarpath, aafigure, datauri
-<dd>    With the same meaning as in the HTML output options
-</dl><p>
-You can specify an output file, and paste it by hand into
-the confluence 'edition' formulary, or you can make zerodoc client
-upload it directly with this options:
-</p>
-<dl><dt>folder:&lt;folder&gt;
-<dd>    Folder (path) for the uploaded document
-</dl><dl><dt>user:&lt;user&gt;
-<dd>    User to use
-</dl><dl><dt>passwd:&lt;passd&gt;
-<dd>    Password
-</dl><dl><dt>host:&lt;host&gt;
-<dd>    Host
-</dl>
