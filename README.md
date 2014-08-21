@@ -57,7 +57,7 @@ The following HTML elements, organized by category, are whitelisted:
 | Inline | `b`, `i`, `strong`, `em`, `tt`, `code`, `ins`, `del`, `sup`, `sub`, `kbd`, `samp`, `q`, `var`
 | Lists | `ol`, `ul`, `li`, `dl`, `dt`, `dd`
 | Tables | `table`, `thead`, `tbody`, `tfoot`, `tr`, `td`, `th`
-| Breaks | `br`, `hr
+| Breaks | `br`, `hr`
 | Ruby (East Asian) | `ruby`, `rt`, `rp`
 
 The following attributes, organized by element, are whitelisted:
