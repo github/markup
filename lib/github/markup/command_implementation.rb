@@ -1,4 +1,9 @@
-require "posix-spawn"
+if RUBY_PLATFORM == 'java' 
+  require "open3"
+else
+  require "posix-spawn"
+end
+
 require "github/markup/implementation"
 
 module GitHub
@@ -31,15 +36,36 @@ module GitHub
           rendered
         end
       end
-
-      def execute(command, target)
-        spawn = POSIX::Spawn::Child.new(*command, :input => target)
-        if spawn.status.success?
-          spawn.out.gsub("\r", '')
-        else
-          raise CommandError.new(spawn.err.strip)
+      
+      if RUBY_PLATFORM == 'java'
+        def execute(command, target)
+          output = Open3.popen3(*command) do |stdin, stdout, stderr, wait_thr|
+            stdin.puts target
+            stdin.close
+            if wait_thr.value.success?
+              stdout.readlines
+            else
+              raise CommandError.new(stderr.readlines.join('').strip)
+            end
+          end
+          sanitize(output.join(''))
+        end
+      else
+        def execute(command, target)
+          spawn = POSIX::Spawn::Child.new(*command, :input => target)
+          if spawn.status.success?
+            sanitize(spawn.out)
+          else
+            raise CommandError.new(spawn.err.strip)
+          end
+          
         end
       end
+      
+      def sanitize(input)
+        input.gsub("\r", '')
+      end
+      
     end
   end
 end

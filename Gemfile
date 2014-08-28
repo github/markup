@@ -1,6 +1,8 @@
 source "http://rubygems.org"
 gemspec
-gem "redcarpet"
+
+gem "redcarpet", :platforms => :ruby
+gem "kramdown", :platforms => :jruby
 gem "RedCloth"
 gem "rdoc", "~>3.6"
 gem "org-ruby", "= 0.9.1.gh"

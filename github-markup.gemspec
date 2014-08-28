@@ -16,5 +16,5 @@ Gem::Specification.new do |s|
   s.test_files    = s.files.grep(%r{^(test|spec|features)/})
   s.require_paths = %w[lib]
 
-  s.add_dependency "posix-spawn", "~> 0.3.8"
+  s.add_dependency "posix-spawn", "~> 0.3.8" unless RUBY_PLATFORM == 'java'
 end
