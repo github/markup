@@ -2,6 +2,34 @@ $LOAD_PATH.unshift File.dirname(__FILE__) + "/../lib"
 
 require 'github/markup'
 require 'test/unit'
+require 'nokogiri'
+require 'nokogiri/diff'
+
+def normalize_html(text)
+  text.strip!
+  text.gsub!(/\s\s+/,' ')
+  text.gsub!(/\p{Pi}|\p{Pf}|&amp;quot;/u,'"')
+  text.gsub!("\u2026",'...')
+  text
+end
+
+def assert_html_equal(expected, actual, msg = nil)
+  assert_block(msg) do
+    expected_doc = Nokogiri::HTML(expected) {|config| config.noblanks}
+    actual_doc   = Nokogiri::HTML(actual) {|config| config.noblanks}
+
+    expected_doc.search('//text()').each {|node| node.content = normalize_html node.content}
+    actual_doc.search('//text()').each {|node| node.content = normalize_html node.content}
+
+    expected_doc.diff(actual_doc) do |change, node|
+      if change != ' ' && !node.blank? then
+        if change == "+"
+          break unless node.to_html =~ /id="*"/
+        end
+      end
+    end
+  end
+end
 
 class MarkupTest < Test::Unit::TestCase
   Dir['test/markups/README.*'].each do |readme|
@@ -25,9 +53,8 @@ class MarkupTest < Test::Unit::TestCase
         f.read
       end
 
-      assert expected == actual, <<message
-#{File.basename expected_file}'s contents don't match command output:
-#{diff}
+      assert_html_equal expected, actual, <<message
+#{markup}
 message
     end
   end
