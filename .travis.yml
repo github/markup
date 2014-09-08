@@ -3,6 +3,8 @@ rvm:
   - 1.9.3
   - 2.0.0
   - 2.1.1
+jdk:
+  - oraclejdk7
+  - openjdk7
 notifications:
   disabled: true
-bundler_args: --without development
