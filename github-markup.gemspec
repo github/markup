@@ -17,4 +17,6 @@ Gem::Specification.new do |s|
   s.require_paths = %w[lib]
 
   s.add_dependency "posix-spawn", "~> 0.3.8" unless RUBY_PLATFORM == 'java'
+  s.add_development_dependency 'nokogiri', '~> 1.6.1'
+  s.add_development_dependency 'nokogiri-diff', '~> 0.2.0'
 end
