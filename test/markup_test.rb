@@ -54,7 +54,8 @@ class MarkupTest < Test::Unit::TestCase
       end
 
       assert_html_equal expected, actual, <<message
-#{markup}
+#{File.basename expected_file}'s contents are not html equal to output:
+#{diff}
 message
     end
   end
