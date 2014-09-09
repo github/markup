@@ -68,6 +68,7 @@ message
   end
 
   def test_raises_error_if_command_exits_non_zero
+    skip("Skipping this test on JRuby until https://github.com/jruby/jruby/issues/1947 is fixed.") if RUBY_PLATFORM == 'java'
     GitHub::Markup.command('echo "failure message">&2 && false', /fail/)
     assert GitHub::Markup.can_render?('README.fail')
     begin
