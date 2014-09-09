@@ -32,6 +32,8 @@ end
 
 command("python2 -S #{Shellwords.escape(File.dirname(__FILE__))}/commands/rest2html", /re?st(\.txt)?/)
 
+command("python2 #{File.dirname(__FILE__)}/commands/zerodoc2html", /zd$/)
+
 # pod2html is nice enough to generate a full-on HTML document for us,
 # so we return the favor by ripping out the good parts.
 #
@@ -42,3 +44,4 @@ command('/usr/bin/env perl -MPod::Simple::HTML -e Pod::Simple::HTML::go', /pod/)
     $1
   end
 end
+

@@ -1,0 +1,72 @@
+Zerodoc test
+============
+
+Blah
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus
+vitae lacus suscipit, auctor magna non, faucibus velit. Vivamus et
+sem id dui egestas imperdiet. Donec interdum eget odio auctor
+volutpat. Suspendisse faucibus, arcu sit amet suscipit rhoncus,
+felis felis dictum turpis, eu facilisis mauris quam in urna. Nulla
+eget purus arcu. Cras ac nunc eros. Aliquam mattis id arcu sed
+tincidunt. Maecenas porta scelerisque placerat.
+
+Table of contents
+
+- 1. Test a
+ - 1.1 Test b
+ - 1.2 Test c
+- 2. Test d
+
+1. TEST A
+---------
+
+1.1 TEST B
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus
+vitae lacus suscipit, auctor magna non, faucibus velit. Vivamus et
+sem id dui egestas imperdiet. Donec interdum eget odio auctor
+volutpat. Suspendisse faucibus, arcu sit amet suscipit rhoncus,
+felis felis dictum turpis, eu facilisis mauris quam in urna. Nulla
+eget purus arcu. Cras ac nunc eros. Aliquam mattis id arcu sed
+tincidunt. Maecenas porta scelerisque placerat.
+
+This is a very long url that needs to be splitted in three:
+http://www.reallyreallyreallylonguniformresourcelocatorredir\
+ection.com/redirectionator.php?theredirectioncode=d72a565ab8\
+7dedf7b5fa84b3ec4b9f11
+
+1.2 TEST C
+
+Renders into:
+
+- The first element in a list
+ - A nested element into the first consisting of two lines
+   that are joined on output
+ - Another nested element
+- The third element in a list
+
+2 TEST D
+
+Far link is `git` or `reStructuredText`
+
+This `link`:http://www.google.com will redirect to google
+
+This line contains two referenced links: `firstlink` and `secondlink`
+
+- `firstlink`:http://www.google.com
+- `secondlink`:http://www.google.com
+
+Source code is text that will be included verbatim in the output.
+
+ #include <stdio.h>
+
+ int main() {
+         // print hello world 100 times
+         for (int i = 0; i < 100; i++) {
+                 printf("Hello, world!\n");
+         }
+ }
+
+- `git`:http://git-scm.com/
+- `reStructuredText`:http://docutils.sourceforge.net/rst.html
