@@ -21,11 +21,10 @@ def assert_html_equal(expected, actual, msg = nil)
     expected_doc.search('//text()').each {|node| node.content = normalize_html node.content}
     actual_doc.search('//text()').each {|node| node.content = normalize_html node.content}
 
+    ignore_changes = {"+" => Regexp.union(/^\s*id=".*"\s*$/), "-" => nil}
     expected_doc.diff(actual_doc) do |change, node|
       if change != ' ' && !node.blank? then
-        if change == "+"
-          break unless node.to_html =~ /id="*"/
-        end
+        break unless node.to_html =~ ignore_changes[change]
       end
     end
   end
