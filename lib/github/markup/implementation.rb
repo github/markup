@@ -21,7 +21,7 @@ module GitHub
 
     private
       def file_ext_regexp
-        @file_ext_regexp ||= /\.(#{regexp})\z/i
+        @file_ext_regexp ||= /\.(#{regexp})\z/
       end
     end
   end
