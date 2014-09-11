@@ -36,6 +36,7 @@ message
     assert_equal false, GitHub::Markup.can_render?('README.html')
     assert_equal true, GitHub::Markup.can_render?('README.markdown')
     assert_equal true, GitHub::Markup.can_render?('README.rmd')
+    assert_equal true, GitHub::Markup.can_render?('README.Rmd')
     assert_equal false, GitHub::Markup.can_render?('README.cmd')
     assert_equal true, GitHub::Markup.can_render?('README.litcoffee')
   end
