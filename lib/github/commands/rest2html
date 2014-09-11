@@ -55,7 +55,7 @@ SETTINGS = {
     'doctitle_xform': True,
     'sectsubtitle_xform': True,
     'initial_header_level': 2,
-    'report_level': 5,
+    'report_level': 3,
     'syntax_highlight' : 'none',
     'math_output' : 'latex',
     'field_name_limit': 50,
@@ -115,6 +115,19 @@ class GitHubHTMLTranslator(HTMLTranslator):
         # add on `img` with attributes
         self.body.append(self.starttag(node, 'img', **atts))
       self.body.append(self.context.pop())
+
+    def visit_system_message(self, node):
+      pass # intentional noop
+
+    # we want to discard most of the <div> fluff that `system_message` gives us: http://bit.ly/1k5wnsb
+    # it should be safe to just manipulate the resulting DOM object
+    def depart_system_message(self, node):
+      atts = {}
+      atts['class'] = 'system-error'
+      atts['data-markup-message'] = 'rst-system-error'
+      self.body[-6] = self.starttag(node, 'div', **atts)
+      self.body[-4] = '</div>\n'
+
 
 def main():
     """
