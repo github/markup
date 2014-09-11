@@ -46,3 +46,12 @@ Source          https://github.com/tony/pullv
 
 .. image:: https://scan.coverity.com/projects/621/badge.svg
 	:alt: Coverity Scan Build Status
+
+Field list
+----------
+
+:123456789 123456789 123456789 123456789 123456789 1: Uh-oh! This name is too long!
+:123456789 123456789 123456789 123456789 1234567890: this is a long name,
+	but no problem!
+:123456789 12345: this is not so long, but long enough for the default!
+:123456789 1234: this should work even with the default :)

@@ -57,7 +57,8 @@ SETTINGS = {
     'initial_header_level': 2,
     'report_level': 5,
     'syntax_highlight' : 'none',
-    'math_output' : 'latex'
+    'math_output' : 'latex',
+    'field_name_limit': 50,
 }
 
 class GitHubHTMLTranslator(HTMLTranslator):

@@ -35,7 +35,7 @@ module GitHub
       def execute(command, target)
         spawn = POSIX::Spawn::Child.new(*command, :input => target)
         if spawn.status.success?
-          spawn.out.gsub("\r", '')
+          spawn.out.gsub("\r", '').force_encoding(target.encoding)
         else
           raise CommandError.new(spawn.err.strip)
         end
