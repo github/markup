@@ -1,3 +1,5 @@
+# encoding: UTF-8
+
 $LOAD_PATH.unshift File.dirname(__FILE__) + "/../lib"
 
 require 'github/markup'
@@ -51,5 +53,10 @@ message
     else
       fail "an exception was expected but was not raised"
     end
+  end
+
+  def test_preserve_markup
+    content = "Noël"
+    assert_equal content.encoding.name, GitHub::Markup.render('Foo.rst', content).encoding.name
   end
 end
