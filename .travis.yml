@@ -7,20 +7,20 @@ rvm:
   - jruby-head
 jdk:
   - oraclejdk7
-  - openjdk7
+  - oraclejdk8
 matrix:
   exclude:
     - rvm: 1.9.3
       jdk: oraclejdk7 
     - rvm: 1.9.3
-      jdk: openjdk7
+      jdk: oraclejdk8
     - rvm: 2.0.0
       jdk: oraclejdk7 
     - rvm: 2.0.0
-      jdk: openjdk7
+      jdk: oraclejdk8
     - rvm: 2.1.1
       jdk: oraclejdk7 
     - rvm: 2.1.1
-      jdk: openjdk7
+      jdk: oraclejdk8
 notifications:
   disabled: true
