@@ -48,21 +48,21 @@ module GitHub
               raise CommandError.new(stderr.readlines.join('').strip)
             end
           end
-          sanitize(output.join(''))
+          sanitize(output.join(''), target.encoding)
         end
       else
         def execute(command, target)
           spawn = POSIX::Spawn::Child.new(*command, :input => target)
           if spawn.status.success?
-            sanitize(spawn.out)
+            sanitize(spawn.out, target.encoding)
           else
             raise CommandError.new(spawn.err.strip)
           end
         end
       end
       
-      def sanitize(input)
-        input.gsub("\r", '').force_encoding(target.encoding)
+      def sanitize(input, encoding)
+        input.gsub("\r", '').force_encoding(encoding)
       end
       
     end
