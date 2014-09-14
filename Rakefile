@@ -14,4 +14,4 @@ task :console do
   sh "irb -I lib -r bundler/setup -r github/markup"
 end
 
-task :default => :test
+task :default
