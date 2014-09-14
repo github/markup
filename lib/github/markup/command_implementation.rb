@@ -58,12 +58,11 @@ module GitHub
           else
             raise CommandError.new(spawn.err.strip)
           end
-          
         end
       end
       
       def sanitize(input)
-        input.gsub("\r", '')
+        input.gsub("\r", '').force_encoding(target.encoding)
       end
       
     end

@@ -1,3 +1,5 @@
+# encoding: UTF-8
+
 $LOAD_PATH.unshift File.dirname(__FILE__) + "/../lib"
 
 require 'github/markup'
@@ -62,6 +64,8 @@ message
   def test_knows_what_it_can_and_cannot_render
     assert_equal false, GitHub::Markup.can_render?('README.html')
     assert_equal true, GitHub::Markup.can_render?('README.markdown')
+    assert_equal true, GitHub::Markup.can_render?('README.rmd')
+    assert_equal true, GitHub::Markup.can_render?('README.Rmd')
     assert_equal false, GitHub::Markup.can_render?('README.cmd')
     assert_equal true, GitHub::Markup.can_render?('README.litcoffee')
   end
@@ -76,5 +80,10 @@ message
     else
       fail "an exception was expected but was not raised"
     end
+  end
+
+  def test_preserve_markup
+    content = "Noël"
+    assert_equal content.encoding.name, GitHub::Markup.render('Foo.rst', content).encoding.name
   end
 end

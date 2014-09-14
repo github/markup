@@ -1,3 +1,13 @@
+## 1.3.0 (2014-09-11)
+
+* Extend the field limit for tables to 50 characters for RST [#306](https://github.com/github/markup/pull/306)
+* Add `.mkdn` as a supported markdown extension [#308](https://github.com/github/markup/pull/308)
+* Upgrade wikicloth to 0.8.1 [#317](https://github.com/github/markup/pull/317)
+* Force encoding of posix-spawn output [#338](https://github.com/github/markup/pull/338)
+* Add `.rmd` as a supported markdown extension [#343](https://github.com/github/markup/pull/343)
+
+[Full changelog](https://github.com/github/markup/compare/v1.2.1...v1.3.0)
+
 ## 1.2.1 (2014-04-23)
 
 * Disable RST warnings [#290](https://github.com/github/markup/pull/290)
