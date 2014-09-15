@@ -38,8 +38,9 @@ class MarkupTest < Test::Unit::TestCase
     markup = readme.split('/').last.gsub(/^README\./, '')
 
     define_method "test_#{markup}" do
-      source = File.read(readme)
+      skip "Skipping MediaWiki test because wikicloth is currently not compatible with JRuby." if markup == "mediawiki" && RUBY_PLATFORM == "java"
 
+      source = File.read(readme)
       expected_file = "#{readme}.html"
       expected = File.read(expected_file).rstrip
       actual = GitHub::Markup.render(readme, File.read(readme)).rstrip.force_encoding("utf-8")
