@@ -17,6 +17,10 @@ module GitHub
         end
         h.convert(content)
       end
+
+      def name
+        "rdoc"
+      end
     end
   end
 end

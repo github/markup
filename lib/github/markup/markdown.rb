@@ -44,6 +44,10 @@ module GitHub
         @renderer.call(content)
       end
 
+      def name
+        "markdown"
+      end
+
     private
       def try_require(file)
         require file

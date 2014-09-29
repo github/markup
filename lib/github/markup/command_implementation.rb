@@ -7,12 +7,13 @@ module GitHub
     end
 
     class CommandImplementation < Implementation
-      attr_reader :command, :block
+      attr_reader :command, :block, :name
 
-      def initialize(regexp, command, &block)
+      def initialize(regexp, command, name, &block)
         super regexp
         @command = command.to_s
         @block = block
+        @name = name
       end
 
       def render(content)

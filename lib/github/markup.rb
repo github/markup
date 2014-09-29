@@ -30,12 +30,12 @@ module GitHub
       markups << GemImplementation.new(pattern, file, &block)
     end
 
-    def command(command, regexp, &block)
+    def command(command, regexp, name, &block)
       if File.exists?(file = File.dirname(__FILE__) + "/commands/#{command}")
         command = file
       end
 
-      markups << CommandImplementation.new(regexp, command, &block)
+      markups << CommandImplementation.new(regexp, command, name, &block)
     end
 
     def can_render?(filename)

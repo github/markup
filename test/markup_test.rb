@@ -43,8 +43,20 @@ message
     assert_equal true, GitHub::Markup.can_render?('README.litcoffee')
   end
 
+  def test_each_render_has_a_name
+    assert_equal "markdown", GitHub::Markup.renderer('README.md').name
+    assert_equal "redcloth", GitHub::Markup.renderer('README.textile').name
+    assert_equal "rdoc", GitHub::Markup.renderer('README.rdoc').name
+    assert_equal "org-ruby", GitHub::Markup.renderer('README.org').name
+    assert_equal "creole", GitHub::Markup.renderer('README.creole').name
+    assert_equal "wikicloth", GitHub::Markup.renderer('README.wiki').name
+    assert_equal "asciidoctor", GitHub::Markup.renderer('README.adoc').name
+    assert_equal "restructuredtext", GitHub::Markup.renderer('README.rst').name
+    assert_equal "pod", GitHub::Markup.renderer('README.pod').name
+  end
+
   def test_raises_error_if_command_exits_non_zero
-    GitHub::Markup.command('echo "failure message">&2 && false', /fail/)
+    GitHub::Markup.command('echo "failure message">&2 && false', /fail/, "fail")
     assert GitHub::Markup.can_render?('README.fail')
     begin
       GitHub::Markup.render('README.fail', "stop swallowing errors")
