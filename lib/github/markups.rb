@@ -1,4 +1,5 @@
 require "github/markup/markdown"
+require "github/markup/rdoc"
 require "shellwords"
 
 markups << GitHub::Markup::Markdown.new
@@ -7,9 +8,7 @@ markup(:redcloth, /textile/) do |content|
   RedCloth.new(content).to_html
 end
 
-markup('github/markup/rdoc', /rdoc/) do |content|
-  GitHub::Markup::RDoc.new(content).to_html
-end
+markups << GitHub::Markup::RDoc.new
 
 markup('org-ruby', /org/) do |content|
   Orgmode::Parser.new(content, { 
