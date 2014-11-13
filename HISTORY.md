@@ -1,3 +1,9 @@
+## 1.3.1 (2014-11-13)
+
+* Fix name error when trying to use newer versions of RedCarpet [#387](https://github.com/github/markup/pull/387)
+
+[Full changelog](https://github.com/github/markup/compare/v1.3.0...v1.3.1)
+
 ## 1.3.0 (2014-09-11)
 
 * Extend the field limit for tables to 50 characters for RST [#306](https://github.com/github/markup/pull/306)
