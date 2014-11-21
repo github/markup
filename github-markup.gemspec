@@ -17,4 +17,5 @@ Gem::Specification.new do |s|
   s.require_paths = %w[lib]
 
   s.add_dependency "posix-spawn", "~> 0.3.8"
+  s.add_dependency 'minitest', '~> 5.4.3'
 end
