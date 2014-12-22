@@ -4,8 +4,20 @@ $LOAD_PATH.unshift File.dirname(__FILE__) + "/../lib"
 
 require 'github/markup'
 require 'minitest/autorun'
+require 'html/pipeline'
 
 class MarkupTest < Minitest::Test
+  class MarkupFilter < HTML::Pipeline::Filter
+    def call
+      filename = context[:filename]
+      GitHub::Markup.render(filename, File.read(filename)).rstrip.force_encoding("utf-8")
+    end
+  end
+
+  Pipeline = HTML::Pipeline.new [
+    MarkupFilter
+  ]
+
   Dir['test/markups/README.*'].each do |readme|
     next if readme =~ /html$/
     markup = readme.split('/').last.gsub(/^README\./, '')
@@ -15,7 +27,7 @@ class MarkupTest < Minitest::Test
 
       expected_file = "#{readme}.html"
       expected = File.read(expected_file).rstrip
-      actual = GitHub::Markup.render(readme, File.read(readme)).rstrip.force_encoding("utf-8")
+      actual = Pipeline.to_html(nil, :filename => readme)
 
       if source != expected
         assert(source != actual, "#{markup} did not render anything")

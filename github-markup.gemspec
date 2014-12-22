@@ -18,4 +18,6 @@ Gem::Specification.new do |s|
 
   s.add_dependency "posix-spawn", "~> 0.3.8"
   s.add_development_dependency 'minitest', '~> 5.4.3'
+  s.add_development_dependency 'html-pipeline', '~> 1.0'
+  s.add_development_dependency 'sanitize'
 end
