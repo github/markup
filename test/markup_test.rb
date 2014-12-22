@@ -10,12 +10,13 @@ class MarkupTest < Minitest::Test
   class MarkupFilter < HTML::Pipeline::Filter
     def call
       filename = context[:filename]
-      GitHub::Markup.render(filename, File.read(filename)).rstrip.force_encoding("utf-8")
+      GitHub::Markup.render(filename, File.read(filename)).strip.force_encoding("utf-8")
     end
   end
 
   Pipeline = HTML::Pipeline.new [
-    MarkupFilter
+    MarkupFilter,
+    HTML::Pipeline::SanitizationFilter
   ]
 
   Dir['test/markups/README.*'].each do |readme|
