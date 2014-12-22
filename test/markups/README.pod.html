@@ -1,20 +1,14 @@
-<a name='___top' class='dummyTopAnchor' ></a>
+<a name="___top"></a>
 
-<h1><a class='u' href='#___top' title='click to go to top of document'
-name="Matrixy"
->Matrixy</a></h1>
+<h1><a href="#___top" title="click to go to top of document" name="Matrixy">Matrixy</a></h1>
 
-<h2><a class='u' href='#___top' title='click to go to top of document'
-name="INTRODUCTION"
->INTRODUCTION</a></h2>
+<h2><a href="#___top" title="click to go to top of document" name="INTRODUCTION">INTRODUCTION</a></h2>
 
 <p>This is a port of the MATLAB/Octave programming language to Parrot.
 See the ROADMAP file for more information on the status of this project,
 and what else needs to be done.</p>
 
-<h2><a class='u' href='#___top' title='click to go to top of document'
-name="ABOUT"
->ABOUT</a></h2>
+<h2><a href="#___top" title="click to go to top of document" name="ABOUT">ABOUT</a></h2>
 
 <p>Primary goals are:</p>
 
@@ -22,9 +16,7 @@ name="ABOUT"
 <p>=item* Create a working compiler that understands the majority of the MATLAB/Octave programming language.</p>
 </blockquote>
 
-<h2><a class='u' href='#___top' title='click to go to top of document'
-name="IMPLEMENTATION"
->IMPLEMENTATION</a></h2>
+<h2><a href="#___top" title="click to go to top of document" name="IMPLEMENTATION">IMPLEMENTATION</a></h2>
 
 <p>This project is broken into three primary components:</p>
 
@@ -42,7 +34,7 @@ several helper functions used by the parser are located in <code>src/internals</
 These functions are,
 currently,
 written primarily in PIR.
-Function names prefixed with an underscore are &#34;private&#34; functions for use with the parser.
+Function names prefixed with an underscore are "private" functions for use with the parser.
 Other functions should have names which are the same as names for regular MATLAB or Octave functions,
 since they will be available to the HLL.
 These are also separated into different namespaces depending on visibility and utility.</p>
@@ -51,15 +43,11 @@ These are also separated into different namespaces depending on visibility and u
 or mostly M with some inline PIR code in <code>toolbox/</code>.</p>
 </blockquote>
 
-<h2><a class='u' href='#___top' title='click to go to top of document'
-name="DEPENDENCIES"
->DEPENDENCIES</a></h2>
+<h2><a href="#___top" title="click to go to top of document" name="DEPENDENCIES">DEPENDENCIES</a></h2>
 
 <p>Matrixy depends on these dependencies:</p>
 
-<h3><a class='u' href='#___top' title='click to go to top of document'
-name="Parrot"
->Parrot</a></h3>
+<h3><a href="#___top" title="click to go to top of document" name="Parrot">Parrot</a></h3>
 
 <p>To get a proper version of Parrot to build Matrixy,
 you will need to check out and build Parrot from source:</p>
@@ -67,42 +55,31 @@ you will need to check out and build Parrot from source:</p>
 <pre>    svn co http://svn.parrot.org/parrot/trunk parrot
     cd parrot
     perl Configure.pl
-    make &#38;&#38; make test &#38;&#38; make install-dev</pre>
+    make &amp;&amp; make test &amp;&amp; make install-dev</pre>
 
-<h3><a class='u' href='#___top' title='click to go to top of document'
-name="Parrot-Linear-Algebra"
->Parrot-Linear-Algebra</a></h3>
+<h3><a href="#___top" title="click to go to top of document" name="Parrot-Linear-Algebra">Parrot-Linear-Algebra</a></h3>
 
 <p>The linear algebra package for Parrot is available separately and provides functionality required by Matrixy. This includes matrix data types and matrix manipulation libraries</p>
 
-<h2><a class='u' href='#___top' title='click to go to top of document'
-name="BUILDING"
->BUILDING</a></h2>
+<h2><a href="#___top" title="click to go to top of document" name="BUILDING">BUILDING</a></h2>
 
 <p>Once all dependencies are in place, you can build Matrixy using this sequence of commands:</p>
 
 <pre>    perl Configure.pl
     nmake test</pre>
 
-<h2><a class='u' href='#___top' title='click to go to top of document'
-name="TODO"
->TODO</a></h2>
+<h2><a href="#___top" title="click to go to top of document" name="TODO">TODO</a></h2>
 
 <pre>    * Parser
     * Standard Builtins
     * Test against Octave Test Suite.</pre>
 
-<h2><a class='u' href='#___top' title='click to go to top of document'
-name="BUGS"
->BUGS</a></h2>
+<h2><a href="#___top" title="click to go to top of document" name="BUGS">BUGS</a></h2>
 
 <p>Lots!</p>
 
-<h2><a class='u' href='#___top' title='click to go to top of document'
-name="CONTACT"
->CONTACT</a></h2>
+<h2><a href="#___top" title="click to go to top of document" name="CONTACT">CONTACT</a></h2>
 
 <p>If you need to contact the Matrixy team, go to the project home page at:</p>
 
 <p>www.github.com\Whiteknight\matrixy</p>
-
