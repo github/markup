@@ -31,7 +31,7 @@ module GitHub
     end
 
     def command(command, regexp, &block)
-      if File.exists?(file = File.dirname(__FILE__) + "/commands/#{command}")
+      if File.exist?(file = File.dirname(__FILE__) + "/commands/#{command}")
         command = file
       end
 
