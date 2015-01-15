@@ -37,7 +37,16 @@ module GitHub
         end
       end
       
-      if RUBY_PLATFORM == 'java'
+      if defined?(Posix::Spawn)
+        def execute(command, target)
+          spawn = POSIX::Spawn::Child.new(*command, :input => target)
+          if spawn.status.success?
+            sanitize(spawn.out, target.encoding)
+          else
+            raise CommandError.new(spawn.err.strip)
+          end
+        end
+      else
         def execute(command, target)
           output = Open3.popen3(*command) do |stdin, stdout, stderr, wait_thr|
             stdin.puts target
@@ -49,15 +58,6 @@ module GitHub
             end
           end
           sanitize(output.join(''), target.encoding)
-        end
-      else
-        def execute(command, target)
-          spawn = POSIX::Spawn::Child.new(*command, :input => target)
-          if spawn.status.success?
-            sanitize(spawn.out, target.encoding)
-          else
-            raise CommandError.new(spawn.err.strip)
-          end
         end
       end
       
