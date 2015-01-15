@@ -15,7 +15,6 @@ Gem::Specification.new do |s|
   s.executables   = s.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
   s.test_files    = s.files.grep(%r{^(test|spec|features)/})
   s.require_paths = %w[lib]
-  s.extensions    = "ext/mkrf_conf.rb"
 
   # See ext/mkrf_conf.rb for platform-specific dependencies
   s.add_development_dependency 'minitest', '~> 5.4.3'
