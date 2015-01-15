@@ -1,3 +1,4 @@
+language: ruby
 before_install: sudo pip install docutils
 script: bundle exec rake test
 rvm:
@@ -17,4 +18,4 @@ matrix:
     - rvm: 2.1.1
       jdk: oraclejdk7 
 notifications:
-  disabled: true
+  email: false

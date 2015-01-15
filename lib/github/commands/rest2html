@@ -86,6 +86,14 @@ class GitHubHTMLTranslator(HTMLTranslator):
         else:
             self.body.append(self.starttag(node, 'pre'))
 
+    # always wrap two-backtick rst inline literals in <code>, not <tt>
+    # this also avoids the generation of superfluous <span> tags
+    def visit_literal(self, node):
+        self.body.append(self.starttag(node, 'code', suffix=''))
+
+    def depart_literal(self, node):
+        self.body.append('</code>')
+
     def visit_table(self, node):
         classes = ' '.join(['docutils', self.settings.table_style]).strip()
         self.body.append(
