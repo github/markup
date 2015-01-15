@@ -7,15 +7,6 @@ rvm:
   - 2.1.1
   - jruby-19mode
 jdk:
-  - oraclejdk7
   - oraclejdk8
-matrix:
-  exclude:
-    - rvm: 1.9.3
-      jdk: oraclejdk7 
-    - rvm: 2.0.0
-      jdk: oraclejdk7 
-    - rvm: 2.1.1
-      jdk: oraclejdk7 
 notifications:
   email: false
