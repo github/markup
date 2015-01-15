@@ -17,20 +17,21 @@ def normalize_html(text)
 end
 
 def assert_html_equal(expected, actual, msg = nil)
-  assert_block(msg) do
-    expected_doc = Nokogiri::HTML(expected) {|config| config.noblanks}
-    actual_doc   = Nokogiri::HTML(actual) {|config| config.noblanks}
+    assertion = Proc.new do
+      expected_doc = Nokogiri::HTML(expected) {|config| config.noblanks}
+      actual_doc   = Nokogiri::HTML(actual) {|config| config.noblanks}
 
-    expected_doc.search('//text()').each {|node| node.content = normalize_html node.content}
-    actual_doc.search('//text()').each {|node| node.content = normalize_html node.content}
+      expected_doc.search('//text()').each {|node| node.content = normalize_html node.content}
+      actual_doc.search('//text()').each {|node| node.content = normalize_html node.content}
 
-    ignore_changes = {"+" => Regexp.union(/^\s*id=".*"\s*$/), "-" => nil}
-    expected_doc.diff(actual_doc) do |change, node|
-      if change != ' ' && !node.blank? then
-        break unless node.to_html =~ ignore_changes[change]
+      ignore_changes = {"+" => Regexp.union(/^\s*id=".*"\s*$/), "-" => nil}
+      expected_doc.diff(actual_doc) do |change, node|
+        if change != ' ' && !node.blank? then
+          break unless node.to_html =~ ignore_changes[change]
+        end
       end
     end
-  end
+    assert(assertion.call, msg)
 end
 
 class MarkupTest < Minitest::Test

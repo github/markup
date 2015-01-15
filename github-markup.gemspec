@@ -20,7 +20,7 @@ Gem::Specification.new do |s|
   # See ext/mkrf_conf.rb for platform-specific dependencies
   s.add_development_dependency 'minitest', '~> 5.4.3'
   s.add_development_dependency 'html-pipeline', '~> 1.0'
-  s.add_development_dependency 'sanitize', '~> 3.0'
+  s.add_development_dependency 'sanitize', '~> 2.1.0'
   s.add_development_dependency 'nokogiri', '~> 1.6.1'
   s.add_development_dependency 'nokogiri-diff', '~> 0.2.0'
 end
