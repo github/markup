@@ -1,7 +1,7 @@
-if RUBY_PLATFORM == 'java' 
-  require "open3"
-else
+begin
   require "posix-spawn"
+rescue LoadError
+  require "open3"
 end
 
 require "github/markup/implementation"
