@@ -16,7 +16,6 @@ Gem::Specification.new do |s|
   s.test_files    = s.files.grep(%r{^(test|spec|features)/})
   s.require_paths = %w[lib]
 
-  # See ext/mkrf_conf.rb for platform-specific dependencies
   s.add_development_dependency 'minitest', '~> 5.4.3'
   s.add_development_dependency 'html-pipeline', '~> 1.0'
   s.add_development_dependency 'sanitize', '~> 2.1.0'
