@@ -53,12 +53,12 @@ Finally add your [tests](#testing).
 
 To run the tests:
 
-    $ rake test
+    $ rake
 
 When adding support for a new markup library, create a `README.extension` in `test/markups` along with a `README.extension.html`. As you may imagine, the `README.extension` should be your known input and the
 `README.extension.html` should be the desired output.
 
-Now run the tests: `rake test`
+Now run the tests: `rake`
 
 If nothing complains, congratulations!
 

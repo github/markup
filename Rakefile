@@ -1,5 +1,7 @@
 #!/usr/bin/env rake
 
+require "bundler/gem_tasks"
+
 require 'rake/testtask'
 Rake::TestTask.new(:test) do |test|
   test.libs << 'lib' << 'test'
@@ -12,4 +14,4 @@ task :console do
   sh "irb -I lib -r bundler/setup -r github/markup"
 end
 
-task :default
+task :default => :test
