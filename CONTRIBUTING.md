@@ -1,6 +1,15 @@
 # Contributing
 
-Want to contribute? Great!
+This library's only job is to decide which markup format to use and call out to an external library to convert the markup to HTML (see the [README](README.md) for more information on how markup is rendered on GitHub.com).
+
+If you are having an issue with:
+
+* **Syntax highlighting** - see [github/linguist](https://github.com/github/linguist#syntax-highlighting) for more information about syntax highlighting.
+* **Markdown on GitHub** - contact support@github.com to report issues with markdown processing.
+
+Anything else - [search open issues](https://github.com/github/markup/issues) or create an issue and and we'll help point you in the right direction.
+
+## Submitting a Pull Request
 
 1. Fork it.
 2. Create a branch (`git checkout -b my_markup`)
@@ -9,7 +18,7 @@ Want to contribute? Great!
 5. Open a [Pull Request][1]
 6. Enjoy a refreshing Diet Coke and wait
 
-### Testing
+## Testing
 
 To run the tests:
 
