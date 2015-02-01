@@ -52,9 +52,9 @@ The following HTML elements, organized by category, are whitelisted:
 |Type | Elements
 |------|----------
 |Headings | `h1`, `h2`, `h3`, `h4`, `h5`, `h6`, `h7`, `h8`
-|Prose |  `p`, `div`, `blockquote`
+|Prose |  `p`, `div`, `blockquote`, `summary`, `details`
 |Formatted | `pre`
-| Inline | `b`, `i`, `strong`, `em`, `tt`, `code`, `ins`, `del`, `sup`, `sub`, `kbd`, `samp`, `q`, `var`
+| Inline | `a`, `img`, `b`, `i`, `strong`, `em`, `tt`, `code`, `ins`, `del`, `sup`, `sub`, `kbd`, `samp`, `q`, `var`, `s`, `strike`
 | Lists | `ol`, `ul`, `li`, `dl`, `dt`, `dd`
 | Tables | `table`, `thead`, `tbody`, `tfoot`, `tr`, `td`, `th`
 | Breaks | `br`, `hr`
@@ -67,6 +67,6 @@ The following attributes, organized by element, are whitelisted:
 | `a` | `href` (`http://`, `https://`, `mailto://`, `github-windows://`, and `github-mac://` URI schemes and relative paths only)
 | `img` | `src` (`http://` and `https://` URI schemes and relative paths only)
 | `div` | `itemscope`, `itemtype`
-| All | `abbr`, `accept`, `accept-charset`, `accesskey`, `action`, `align`, `alt`, `axis`, `border`, `cellpadding`, `cellspacing`, `char`, `charoff`, `charset`, `checked`, `cite`, `clear`, `cols`, `colspan`, `color`, `compact`, `coords`, `datetime`, `dir`, `disabled`, `enctype`, `for`, `frame`, `headers`, `height`, `hreflang`, `hspace`, `ismap`, `label`, `lang`, `longdesc`, `maxlength`, `media`, `method`, `multiple`, `name`, `nohref`, `noshade`, `nowrap`, `prompt`, `readonly`, `rel`, `rev`, `rows`, `rowspan`, `rules`, `scope`, `selected`, `shape`, `size`, `span`, `start`, `summary`, `tabindex`, `target`, `title`, `type`, `usemap`, `valign`, `value`, `vspace`, `width`, `itemprop`
+| All | `abbr`, `accept`, `accept-charset`, `accesskey`, `action`, `align`, `alt`, `axis`, `border`, `cellpadding`, `cellspacing`, `char`, `charoff`, `charset`, `checked`, `cite`, `clear`, `cols`, `colspan`, `color`, `compact`, `coords`, `datetime`, `dir`, `disabled`, `enctype`, `for`, `frame`, `headers`, `height`, `hreflang`, `hspace`, `ismap`, `label`, `lang`, `longdesc`, `maxlength`, `media`, `method`, `multiple`, `name`, `nohref`, `noshade`, `nowrap`, `open`, `prompt`, `readonly`, `rel`, `rev`, `rows`, `rowspan`, `rules`, `scope`, `selected`, `shape`, `size`, `span`, `start`, `summary`, `tabindex`, `target`, `title`, `type`, `usemap`, `valign`, `value`, `vspace`, `width`, `itemprop`
 
 Note that the `id` attribute is *not* whitelisted.
