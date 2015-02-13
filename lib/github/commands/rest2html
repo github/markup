@@ -66,8 +66,8 @@ class GitHubHTMLTranslator(HTMLTranslator):
     # see also: http://bit.ly/1exfq2h (warning! sourceforge link.)
     def depart_document(self, node):
         HTMLTranslator.depart_document(self, node)
-        self.html_body.pop(0)
-        self.html_body.pop()
+        self.html_body.pop(0) # pop the starting <div> off
+        self.html_body.pop() # pop the ending </div> off
 
     # technique for visiting sections, without generating additional divs
     # see also: http://bit.ly/NHtyRx
