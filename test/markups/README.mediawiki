@@ -6,6 +6,9 @@ __TOC__
 
 = Red Bridge (JRuby Embed) =
 
+<tt>one-<two</tt>
+<pre>a-b</pre>
+
 JRuby has long had a private embedding API, which was closely tied to the runtime's internals and therefore changed frequently as JRuby evolved. Since version 1.4, however, we have also provided a more stable public API, known as Red Bridge or JRuby Embed. Existing Java programs written to the [[DirectJRubyEmbedding|legacy API]] should still work, but we strongly recommend Red Bridge for all new projects.
 
 == Features of Red Bridge ==
