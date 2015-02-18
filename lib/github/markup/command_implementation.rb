@@ -36,8 +36,8 @@ module GitHub
           rendered
         end
       end
-      
-      if defined?(Posix::Spawn)
+
+      if defined?(POSIX::Spawn)
         def execute(command, target)
           spawn = POSIX::Spawn::Child.new(*command, :input => target)
           if spawn.status.success?
@@ -60,11 +60,11 @@ module GitHub
           sanitize(output.join(''), target.encoding)
         end
       end
-      
+
       def sanitize(input, encoding)
         input.gsub("\r", '').force_encoding(encoding)
       end
-      
+
     end
   end
 end
