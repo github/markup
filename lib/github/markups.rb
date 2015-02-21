@@ -42,3 +42,10 @@ command('/usr/bin/env perl -MPod::Simple::HTML -e Pod::Simple::HTML::go', /pod/)
     $1
   end
 end
+
+command("/bin/sh #{Shellwords.escape(File.dirname(__FILE__))}/commands/Rd2html", /Rd/) do |rendered|
+  # Strip away HTML header / footer
+  if rendered =~ /<body>(.+)<\/body>/mi
+    $1
+  end
+end

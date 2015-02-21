@@ -1,0 +1,6 @@
+#!/bin/sh
+TMPFILE="/tmp/Rd2html.$$.tmp"
+
+cat > ${TMPFILE}
+/usr/bin/env R CMD Rdconv --type=html ${TMPFILE}
+rm -- ${TMPFILE}

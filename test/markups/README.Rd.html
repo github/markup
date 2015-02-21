@@ -1,0 +1,55 @@
+<table width="100%" summary="page for load"><tr>
+<td>load</td>
+<td align="right">R Documentation</td>
+</tr></table>
+
+<h2>Reload Saved Datasets</h2>
+
+<h3>Description</h3>
+
+<p>Reload the datasets written to a file with the function
+<code>save</code>.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+load(file, envir = parent.frame())
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>file</code></td>
+<td>
+<p>a connection or a character string giving the
+name of the file to load.</p>
+</td></tr>
+<tr valign="top"><td><code>envir</code></td>
+<td>
+<p>the environment where the data should be
+loaded.</p>
+</td></tr>
+</table>
+
+
+<h3>See Also</h3>
+
+<p><code>save</code>.
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+## save all data
+save(list = ls(), file= "all.RData")
+
+## restore the saved values to the current environment
+load("all.RData")
+
+## restore the saved values to the workspace
+load("all.RData", .GlobalEnv)
+</pre>
