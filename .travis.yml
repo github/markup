@@ -1,5 +1,7 @@
 language: ruby
-before_install: sudo pip install docutils
+before_install:
+  - sudo pip install docutils
+  - sudo apt-get install -qq r-base-core
 rvm:
   - 1.9.3
   - 2.0.0
