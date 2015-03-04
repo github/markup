@@ -6,13 +6,13 @@
 
 <p>comment comment</p>
 
-<pre><code>test &quot;basic literate CoffeeScript parsing&quot;, -&gt;
+<pre><code>test "basic literate CoffeeScript parsing", -&gt;
   ok yes
 </code></pre>
 
 <p>now with a...</p>
 
-<pre><code>test &quot;broken up indentation&quot;, -&gt;
+<pre><code>test "broken up indentation", -&gt;
 </code></pre>
 
 <p>... broken up ...</p>
@@ -27,7 +27,7 @@
 
 <p>Code must be separated from text by a blank line.</p>
 
-<pre><code>test &quot;code blocks must be preceded by a blank line&quot;, -&gt;
+<pre><code>test "code blocks must be preceded by a blank line", -&gt;
 </code></pre>
 
 <p>The next line is part of the text and will not be executed.
@@ -38,7 +38,7 @@
 
 <p>Code in <code>backticks is not parsed</code> and...</p>
 
-<pre><code>test &quot;comments in indented blocks work&quot;, -&gt;
+<pre><code>test "comments in indented blocks work", -&gt;
   do -&gt;
     do -&gt;
       # Regular comment.
@@ -62,5 +62,5 @@ like links and unordered lists, are fine:</p>
 
 <p>Tabs work too:</p>
 
-<p>test &quot;tabbed code&quot;, -&gt;
+<p>test "tabbed code", -&gt;
     ok yes</p>
