@@ -4,7 +4,7 @@ This library's only job is to decide which markup format to use and call out to 
 
 If you are having an issue with:
 
-* **Syntax highlighting** - see [github/linguist](https://github.com/github/linguist/blob/master/CONTRIBUTING.md#fixing-syntax-highlighting) for more information about syntax highlighting.
+* **Syntax highlighting** - see [github/linguist](https://github.com/github/linguist/blob/master/CONTRIBUTING.md#fixing-syntax-highlighting)
 * **Markdown on GitHub** - contact support@github.com
 * **Styling issues on GitHub** - contact support@github.com
 
