@@ -12,14 +12,10 @@ markup('github/markup/rdoc', /rdoc/) do |content|
 end
 
 markup('org-ruby', /org/) do |content|
-  Orgmode::Parser.new(content, { 
-                        :allow_include_files => false, 
+  Orgmode::Parser.new(content, {
+                        :allow_include_files => false,
                         :skip_syntax_highlight => true
                       }).to_html
-end
-
-markup(:creole, /creole/) do |content|
-  Creole.creolize(content)
 end
 
 markup(:wikicloth, /mediawiki|wiki/) do |content|

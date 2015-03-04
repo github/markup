@@ -21,7 +21,6 @@ you wish to run the library. You can also run `script/bootstrap` to fetch them a
 * [.textile](http://www.textism.com/tools/textile/) -- `gem install RedCloth`
 * [.rdoc](http://rdoc.sourceforge.net/) -- `gem install rdoc -v 3.6.1`
 * [.org](http://orgmode.org/) -- `gem install org-ruby`
-* [.creole](http://wikicreole.org/) -- `gem install creole`
 * [.mediawiki, .wiki](http://www.mediawiki.org/wiki/Help:Formatting) -- `gem install wikicloth`
 * [.rst](http://docutils.sourceforge.net/rst.html) -- `easy_install docutils`
 * [.asciidoc, .adoc, .asc](http://asciidoc.org/) -- `gem install asciidoctor` (http://asciidoctor.org)
