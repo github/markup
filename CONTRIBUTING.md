@@ -5,7 +5,8 @@ This library's only job is to decide which markup format to use and call out to 
 If you are having an issue with:
 
 * **Syntax highlighting** - see [github/linguist](https://github.com/github/linguist/blob/master/CONTRIBUTING.md#fixing-syntax-highlighting) for more information about syntax highlighting.
-* **Markdown on GitHub** - contact support@github.com to report issues with markdown processing.
+* **Markdown on GitHub** - contact support@github.com
+* **Styling issues on GitHub** - contact support@github.com
 
 Anything else - [search open issues](https://github.com/github/markup/issues) or create an issue and and we'll help point you in the right direction.
 
