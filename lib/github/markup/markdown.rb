@@ -8,7 +8,7 @@ module GitHub
           GitHub::Markdown.render(content)
         },
         "redcarpet" => proc { |content|
-          RedcarpetCompat.new(content).to_html
+          Redcarpet::Markdown.new(Redcarpet::Render::HTML).render(content)
         },
         "rdiscount" => proc { |content|
           RDiscount.new(content).to_html

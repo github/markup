@@ -66,12 +66,15 @@ class GitHubHTMLTranslator(HTMLTranslator):
     # see also: http://bit.ly/1exfq2h (warning! sourceforge link.)
     def depart_document(self, node):
         HTMLTranslator.depart_document(self, node)
-        self.html_body.pop(0)
-        self.html_body.pop()
+        self.html_body.pop(0) # pop the starting <div> off
+        self.html_body.pop() # pop the ending </div> off
 
     # technique for visiting sections, without generating additional divs
     # see also: http://bit.ly/NHtyRx
+    # the a is to support ::contents with ::sectnums: http://git.io/N1yC
     def visit_section(self, node):
+        id_attribute = node.attributes['ids'][0]
+        self.body.append('<a name="%s"></a>\n' % id_attribute)
         self.section_level += 1
 
     def depart_section(self, node):
@@ -85,6 +88,14 @@ class GitHubHTMLTranslator(HTMLTranslator):
             self.body.append(self.starttag(node, 'pre', lang=language))
         else:
             self.body.append(self.starttag(node, 'pre'))
+
+    # always wrap two-backtick rst inline literals in <code>, not <tt>
+    # this also avoids the generation of superfluous <span> tags
+    def visit_literal(self, node):
+        self.body.append(self.starttag(node, 'code', suffix=''))
+
+    def depart_literal(self, node):
+        self.body.append('</code>')
 
     def visit_table(self, node):
         classes = ' '.join(['docutils', self.settings.table_style]).strip()

@@ -16,5 +16,9 @@ Gem::Specification.new do |s|
   s.test_files    = s.files.grep(%r{^(test|spec|features)/})
   s.require_paths = %w[lib]
 
-  s.add_dependency "posix-spawn", "~> 0.3.8"
+  s.add_development_dependency 'minitest', '~> 5.4.3'
+  s.add_development_dependency 'html-pipeline', '~> 1.0'
+  s.add_development_dependency 'sanitize', '~> 2.1.0'
+  s.add_development_dependency 'nokogiri', '~> 1.6.1'
+  s.add_development_dependency 'nokogiri-diff', '~> 0.2.0'
 end

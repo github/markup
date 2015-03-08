@@ -1,4 +1,9 @@
-require "posix-spawn"
+begin
+  require "posix-spawn"
+rescue LoadError
+  require "open3"
+end
+
 require "github/markup/implementation"
 
 module GitHub
@@ -33,14 +38,34 @@ module GitHub
         end
       end
 
-      def execute(command, target)
-        spawn = POSIX::Spawn::Child.new(*command, :input => target)
-        if spawn.status.success?
-          spawn.out.gsub("\r", '').force_encoding(target.encoding)
-        else
-          raise CommandError.new(spawn.err.strip)
+      if defined?(POSIX::Spawn)
+        def execute(command, target)
+          spawn = POSIX::Spawn::Child.new(*command, :input => target)
+          if spawn.status.success?
+            sanitize(spawn.out, target.encoding)
+          else
+            raise CommandError.new(spawn.err.strip)
+          end
+        end
+      else
+        def execute(command, target)
+          output = Open3.popen3(*command) do |stdin, stdout, stderr, wait_thr|
+            stdin.puts target
+            stdin.close
+            if wait_thr.value.success?
+              stdout.readlines
+            else
+              raise CommandError.new(stderr.readlines.join('').strip)
+            end
+          end
+          sanitize(output.join(''), target.encoding)
         end
       end
+
+      def sanitize(input, encoding)
+        input.gsub("\r", '').force_encoding(encoding)
+      end
+
     end
   end
 end

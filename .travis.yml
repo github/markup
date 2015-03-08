@@ -1,8 +1,11 @@
+language: ruby
 before_install: sudo pip install docutils
 rvm:
   - 1.9.3
   - 2.0.0
   - 2.1.1
+  - jruby-19mode
+jdk:
+  - oraclejdk8
 notifications:
-  disabled: true
-bundler_args: --without development
+  email: false
