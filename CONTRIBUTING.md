@@ -6,7 +6,7 @@ If you are having an issue with:
 
 * **Syntax highlighting** - see [github/linguist](https://github.com/github/linguist/blob/master/CONTRIBUTING.md#fixing-syntax-highlighting)
 * **Markdown on GitHub** - contact support@github.com
-* **Styling issues on GitHub** - contact support@github.com
+* **Styling issues on GitHub** - see [primer/markdown](https://github.com/primer/markdown)
 
 Anything else - [search open issues](https://github.com/github/markup/issues) or create an issue and and we'll help point you in the right direction.
 
