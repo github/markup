@@ -2,6 +2,19 @@ require "github/markup/command_implementation"
 require "github/markup/gem_implementation"
 
 module GitHub
+  module Markups
+    # all of supported markups:
+    MARKUP_ASCIIDOC = :asciidoc
+    MARKUP_CREOLE = :creole
+    MARKUP_MARKDOWN = :markdown
+    MARKUP_MEDIAWIKI = :mediawiki
+    MARKUP_ORG = :org
+    MARKUP_POD = :pod
+    MARKUP_RDOC = :rdoc
+    MARKUP_RST = :rst
+    MARKUP_TEXTILE = :textile
+  end
+  
   module Markup
     extend self
     
@@ -42,10 +55,10 @@ module GitHub
     end
     
     def markup(symbol, file, pattern, opts = {}, &block)
-      markup(symbol, GemImplementation.new(pattern, file, &block))
+      markup_impl(symbol, GemImplementation.new(pattern, file, &block))
     end
     
-    def markup(symbol, impl)
+    def markup_impl(symbol, impl)
       if markups.has_key?(symbol)
         raise ArgumentError, "The '#{symbol}' symbol is already defined."
       end
@@ -57,7 +70,7 @@ module GitHub
         command = file
       end
 
-      markup(symbol, CommandImplementation.new(regexp, command, name, &block))
+      markup_impl(symbol, CommandImplementation.new(regexp, command, name, &block))
     end
 
     def can_render?(filename)
