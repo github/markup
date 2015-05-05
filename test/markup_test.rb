@@ -98,7 +98,7 @@ message
   end
   
   def test_rendering_by_symbol
-    assert_equal "<b>test</b>", GitHub::Markup.render(GitHub::Markups::MARKUP_MARKDOWN, '**test**')
+    assert_equal '<p><code>test</code></p>', GitHub::Markup.render_s(GitHub::Markups::MARKUP_MARKDOWN, '`test`').strip
   end
 
   def test_raises_error_if_command_exits_non_zero

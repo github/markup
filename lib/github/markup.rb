@@ -44,7 +44,7 @@ module GitHub
       end
     end
     
-    def render(symbol, content)
+    def render_s(symbol, content)
       if content.nil?
         raise ArgumentError, 'Can not render a nil.'
       elsif markups.has_key?(symbol)
