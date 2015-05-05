@@ -31,18 +31,24 @@ you wish to run the library. You can also run `script/bootstrap` to fetch them a
 Installation
 -----------
 
-    gem install github-markup
+```
+gem install github-markup
+```
 
 Usage
 -----
 
-    require 'github/markup'
-    GitHub::Markup.render('README.markdown', "* One\n* Two")
+```ruby
+require 'github/markup'
+GitHub::Markup.render('README.markdown', "* One\n* Two")
+```
 
 Or, more realistically:
 
-    require 'github/markup'
-    GitHub::Markup.render(file, File.read(file))
+```ruby
+require 'github/markup'
+GitHub::Markup.render(file, File.read(file))
+```
 
 Contributing
 ------------
