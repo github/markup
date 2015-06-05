@@ -57,3 +57,5 @@ Field list
 :123456789 1234: this should work even with the default :)
 
 someone@somewhere.org
+
+Press :kbd:`Ctrl+C` to quit
