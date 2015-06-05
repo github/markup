@@ -55,3 +55,5 @@ Field list
 	but no problem!
 :123456789 12345: this is not so long, but long enough for the default!
 :123456789 1234: this should work even with the default :)
+
+someone@somewhere.org

@@ -48,7 +48,7 @@ from docutils.core import publish_parts
 from docutils.writers.html4css1 import Writer, HTMLTranslator
 
 SETTINGS = {
-    'cloak_email_addresses': True,
+    'cloak_email_addresses': False,
     'file_insertion_enabled': False,
     'raw_enabled': False,
     'strip_comments': True,
