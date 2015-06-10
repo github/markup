@@ -44,11 +44,13 @@ except:
 
 import codecs
 
+from docutils import nodes
+from docutils.parsers.rst import roles
 from docutils.core import publish_parts
 from docutils.writers.html4css1 import Writer, HTMLTranslator
 
 SETTINGS = {
-    'cloak_email_addresses': True,
+    'cloak_email_addresses': False,
     'file_insertion_enabled': False,
     'raw_enabled': False,
     'strip_comments': True,
@@ -127,6 +129,10 @@ class GitHubHTMLTranslator(HTMLTranslator):
         self.body.append(self.starttag(node, 'img', **atts))
       self.body.append(self.context.pop())
 
+def kbd(name, rawtext, text, lineno, inliner, options=None, content=None):
+
+  return [nodes.raw('', '<kbd>%s</kbd>' % text, format='html')], []
+
 def main():
     """
     Parses the given ReST file or the redirected string input and returns the
@@ -144,6 +150,8 @@ def main():
 
     writer = Writer()
     writer.translator_class = GitHubHTMLTranslator
+
+    roles.register_canonical_role('kbd', kbd)
 
     parts = publish_parts(text, writer=writer, settings_overrides=SETTINGS)
     if 'html_body' in parts:
