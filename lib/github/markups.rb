@@ -17,10 +17,6 @@ markup('org-ruby', /org/) do |content|
                       }).to_html
 end
 
-markup(:creole, /creole/) do |content|
-  Creole.creolize(content)
-end
-
 markup(:wikicloth, /mediawiki|wiki/) do |content|
   WikiCloth::WikiCloth.new(:data => content).to_html(:noedit => true)
 end
