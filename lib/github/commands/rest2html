@@ -48,6 +48,59 @@ from docutils import nodes
 from docutils.parsers.rst import roles
 from docutils.core import publish_parts
 from docutils.writers.html4css1 import Writer, HTMLTranslator
+from docutils.parsers.rst.states import Body
+from docutils import nodes
+
+# By default, docutils provides two choices for unknown directives:
+#  - Show errors if the reporting level is high enough
+#  - Silently do not display them otherwise
+# Comments are not displayed, either.
+
+# This code monkey-patches docutils to show preformatted lines
+# in both these cases.
+
+# Recommended practice for repositories with rst files:
+#  - If github is the preferred viewer for the rst files (e.g. README.rst),
+#    then design the files to properly display for github.  E.g., do not
+#    include unknown directives or restructuredText comments.
+#  - If github is NOT the preferred viewer for the rst files (e.g.
+#    the files are designed to be used with sphinx extensions at readthedocs)
+#    then include a restructuredText comment at the top of the file
+#    explaining that the document will display much more nicely with its
+#    preferred viewer, e.g. at readthedocs.
+
+original_behavior = False  # Documents original docutils behavior
+
+def unknown_directive(self, type_name):
+    lineno = self.state_machine.abs_line_number()
+    indented, indent, offset, blank_finish = \
+        self.state_machine.get_first_known_indented(0, strip_indent=False)
+    text = '\n'.join(indented)
+    if original_behavior:
+        error = self.reporter.error(
+              'Unknown directive type "%s".' % type_name,
+              nodes.literal_block(text, text), line=lineno)
+        return [error], blank_finish
+    else:
+        return [nodes.literal_block(text, text)], blank_finish
+
+def comment(self, match):
+    if not match.string[match.end():].strip() \
+            and self.state_machine.is_next_line_blank(): # an empty comment?
+        return [nodes.comment()], 1 # "A tiny but practical wart."
+    indented, indent, offset, blank_finish = \
+            self.state_machine.get_first_known_indented(match.end())
+    while indented and not indented[-1].strip():
+        indented.trim_end()
+    text = '\n'.join(indented)
+    if original_behavior:
+        return [nodes.comment(text, text)], blank_finish
+    else:
+        return [nodes.literal_block(text, text)], blank_finish
+
+Body.comment = comment
+Body.unknown_directive = unknown_directive
+
 
 SETTINGS = {
     'cloak_email_addresses': False,
