@@ -83,7 +83,9 @@ def unknown_directive(self, type_name):
               nodes.literal_block(text, text), line=lineno)
         return [error], blank_finish
     elif github_display:
-        return [nodes.literal_block(text, text)], blank_finish
+        cls = ['unknown_directive']
+        result = [nodes.literal_block(text, text, classes=cls)]
+        return result, blank_finish
     else:
         return [nodes.comment(text, text)], blank_finish
 
@@ -104,7 +106,9 @@ def comment(self, match):
             if len(indented) == 1:
                 return [nodes.comment()], 1
             text = '\n'.join(indented[1:])
-            return [nodes.literal_block(text, text)], blank_finish
+            cls = ['github_comment']
+            result = [nodes.literal_block(text, text, classes=cls)]
+            return result, blank_finish
     text = '\n'.join(indented)
     return [nodes.comment(text, text)], blank_finish
 
