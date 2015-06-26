@@ -70,6 +70,7 @@ from docutils import nodes
 #    preferred viewer, e.g. at readthedocs.
 
 original_behavior = False  # Documents original docutils behavior
+github_display = True
 
 def unknown_directive(self, type_name):
     lineno = self.state_machine.abs_line_number()
@@ -81,8 +82,10 @@ def unknown_directive(self, type_name):
               'Unknown directive type "%s".' % type_name,
               nodes.literal_block(text, text), line=lineno)
         return [error], blank_finish
-    else:
+    elif github_display:
         return [nodes.literal_block(text, text)], blank_finish
+    else:
+        return [nodes.comment(text, text)], blank_finish
 
 def comment(self, match):
     if not match.string[match.end():].strip() \
@@ -92,11 +95,18 @@ def comment(self, match):
             self.state_machine.get_first_known_indented(match.end())
     while indented and not indented[-1].strip():
         indented.trim_end()
+    if not original_behavior:
+        firstline = ''.join(indented[:1]).split()
+        if ' '.join(firstline[:2]) == 'github display':
+            if len(firstline) == 3 and firstline[2] in ('on', 'off'):
+                global github_display
+                github_display = firstline[2] == 'on'
+            if len(indented) == 1:
+                return [nodes.comment()], 1
+            text = '\n'.join(indented[1:])
+            return [nodes.literal_block(text, text)], blank_finish
     text = '\n'.join(indented)
-    if original_behavior:
-        return [nodes.comment(text, text)], blank_finish
-    else:
-        return [nodes.literal_block(text, text)], blank_finish
+    return [nodes.comment(text, text)], blank_finish
 
 Body.comment = comment
 Body.unknown_directive = unknown_directive
