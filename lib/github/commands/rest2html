@@ -52,7 +52,7 @@ from docutils.writers.html4css1 import Writer, HTMLTranslator
 SETTINGS = {
     'cloak_email_addresses': False,
     'file_insertion_enabled': False,
-    'raw_enabled': False,
+    'raw_enabled': True,
     'strip_comments': True,
     'doctitle_xform': True,
     'sectsubtitle_xform': True,
