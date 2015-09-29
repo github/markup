@@ -22,7 +22,9 @@ markup(:creole, /creole/) do |content|
 end
 
 markup(:wikicloth, /mediawiki|wiki/) do |content|
-  WikiCloth::WikiCloth.new(:data => content).to_html(:noedit => true)
+  wikicloth = WikiCloth::WikiCloth.new(:data => content)
+  WikiCloth::WikiBuffer::HTMLElement::ESCAPED_TAGS << 'tt'
+  wikicloth.to_html(:noedit => true)
 end
 
 markup(:asciidoctor, /adoc|asc(iidoc)?/) do |content|

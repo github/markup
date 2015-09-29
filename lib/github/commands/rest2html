@@ -45,7 +45,8 @@ except:
 import codecs
 
 from docutils import nodes
-from docutils.parsers.rst import roles
+from docutils.parsers.rst import directives, roles
+from docutils.parsers.rst.directives.body import CodeBlock
 from docutils.core import publish_parts
 from docutils.writers.html4css1 import Writer, HTMLTranslator
 
@@ -62,6 +63,17 @@ SETTINGS = {
     'math_output': 'latex',
     'field_name_limit': 50,
 }
+
+
+class DoctestDirective(CodeBlock):
+    """Render Sphinx 'doctest:: [group]' blocks as 'code:: python'
+    """
+
+    def run(self):
+        """Discard any doctest group argument, render contents as python code
+        """
+        self.arguments = ['python']
+        return super(DoctestDirective, self).run()
 
 
 class GitHubHTMLTranslator(HTMLTranslator):
@@ -156,6 +168,9 @@ def main():
     writer.translator_class = GitHubHTMLTranslator
 
     roles.register_canonical_role('kbd', kbd)
+
+    # Render source code in Sphinx doctest blocks
+    directives.register_directive('doctest', DoctestDirective)
 
     parts = publish_parts(text, writer=writer, settings_overrides=SETTINGS)
     if 'html_body' in parts:
