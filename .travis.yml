@@ -1,6 +1,5 @@
 language: ruby
 sudo: false
-before_install: pip install docutils
 rvm:
   - 2.0.0
   - 2.1.1
@@ -11,3 +10,7 @@ notifications:
   email: false
 git:
   depth: 10
+addons:
+  apt:
+    packages:
+    - python-docutils
