@@ -9,3 +9,5 @@ jdk:
   - oraclejdk8
 notifications:
   email: false
+git:
+  depth: 10
