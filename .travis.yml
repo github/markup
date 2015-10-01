@@ -1,5 +1,6 @@
 language: ruby
-before_install: sudo pip install docutils
+sudo: false
+before_install: pip install docutils
 rvm:
   - 2.0.0
   - 2.1.1
