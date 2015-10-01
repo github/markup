@@ -72,3 +72,8 @@ Field list
 someone@somewhere.org
 
 Press :kbd:`Ctrl+C` to quit
+
+
+.. raw:: html
+
+    <p><strong>RAW HTML!</strong></p><style> p {color:blue;} </style>
