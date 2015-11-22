@@ -66,12 +66,15 @@ class GitHubHTMLTranslator(HTMLTranslator):
     # see also: http://bit.ly/1exfq2h (warning! sourceforge link.)
     def depart_document(self, node):
         HTMLTranslator.depart_document(self, node)
-        self.html_body.pop(0)
-        self.html_body.pop()
+        self.html_body.pop(0) # pop the starting <div> off
+        self.html_body.pop() # pop the ending </div> off
 
     # technique for visiting sections, without generating additional divs
     # see also: http://bit.ly/NHtyRx
+    # the a is to support ::contents with ::sectnums: http://git.io/N1yC
     def visit_section(self, node):
+        id_attribute = node.attributes['ids'][0]
+        self.body.append('<a name="%s"></a>\n' % id_attribute)
         self.section_level += 1
 
     def depart_section(self, node):
