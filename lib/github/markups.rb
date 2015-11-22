@@ -18,10 +18,6 @@ markup('org-ruby', /org/) do |content|
                       }).to_html
 end
 
-markup(:creole, /creole/) do |content|
-  Creole.creolize(content)
-end
-
 markup(:wikicloth, /mediawiki|wiki/) do |content|
   wikicloth = WikiCloth::WikiCloth.new(:data => content)
   WikiCloth::WikiBuffer::HTMLElement::ESCAPED_TAGS << 'tt'
