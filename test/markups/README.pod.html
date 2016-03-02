@@ -12,36 +12,36 @@ and what else needs to be done.</p>
 
 <p>Primary goals are:</p>
 
-<blockquote>
-<p>=item* Create a working compiler that understands the majority of the MATLAB/Octave programming language.</p>
-</blockquote>
+<ul>
+<li>Create a working compiler that understands the majority of the MATLAB/Octave programming language.</li>
+</ul>
 
 <h2><a href="#___top" title="click to go to top of document" name="IMPLEMENTATION">IMPLEMENTATION</a></h2>
 
 <p>This project is broken into three primary components:</p>
 
-<blockquote>
-<p>=item* The first is the parser,
+<ul>
+<li>The first is the parser,
 located in the <code>src/parser/</code> directory.
 The parser proper is composed of three source files,
 <em>grammar.pg</em> which is a Perl6Grammar file,
 and <em>actions.pm</em> which is the associated actions file written in NQP,
 and <em>grammar-oper.pm</em> which is the operator precidence parser.
 In addition,
-several helper functions used by the parser are located in <code>src/internals</code>.</p>
+several helper functions used by the parser are located in <code>src/internals</code>.</li>
 
-<p>=item* The second component is the library of builtin functions in the <code>src/builtins/</code> directory.
+<li>The second component is the library of builtin functions in the <code>src/builtins/</code> directory.
 These functions are,
 currently,
 written primarily in PIR.
 Function names prefixed with an underscore are "private" functions for use with the parser.
 Other functions should have names which are the same as names for regular MATLAB or Octave functions,
 since they will be available to the HLL.
-These are also separated into different namespaces depending on visibility and utility.</p>
+These are also separated into different namespaces depending on visibility and utility.</li>
 
-<p>=item* A number of library functions are written in M,
-or mostly M with some inline PIR code in <code>toolbox/</code>.</p>
-</blockquote>
+<li>A number of library functions are written in M,
+or mostly M with some inline PIR code in <code>toolbox/</code>.</li>
+</ul>
 
 <h2><a href="#___top" title="click to go to top of document" name="DEPENDENCIES">DEPENDENCIES</a></h2>
 
