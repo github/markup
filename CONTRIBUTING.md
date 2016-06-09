@@ -1,15 +1,15 @@
 # Contributing
 
 This project adheres to the [Open Code of Conduct][code-of-conduct]. By participating, you are expected to honor this code.
-[code-of-conduct]: http://todogroup.org/opencodeofconduct/#GitHub%20Markup/opensource@github.com
+[code-of-conduct]: http://github.com/github-flavored-markdown/
 
 This library's only job is to decide which markup format to use and call out to an external library to convert the markup to HTML (see the [README](README.md) for more information on how markup is rendered on GitHub.com).
 
 If you are having an issue with:
 
-* **Syntax highlighting** - see [github/linguist](https://github.com/github/linguist/blob/master/CONTRIBUTING.md#fixing-syntax-highlighting)
+* **Syntax highlighting** - see [github/linguist](https://github.com/xaxadmin/linguist/blob/master/CONTRIBUTING.md#fixing-syntax-highlighting)
 * **Markdown on GitHub** - contact support@github.com
-* **Styling issues on GitHub** - see [primer/markdown](https://github.com/primer/markdown)
+* **Styling issues on GitHub** - see [xaxadmin/markdown](https://github.com/xaxadmin/markdown)
 
 Anything else - [search open issues](https://github.com/github/markup/issues) or create an issue and and we'll help point you in the right direction.
 
@@ -34,7 +34,7 @@ If nothing complains, congratulations!
 
 If you are the current maintainer of this gem:
 
-0. Bump the version number in `lib/github-markup.rb`, adhering to [Semantic Versioning](http://semver.org/)
+0. Bump the version number in `lib/github-markup.rb`, adhering to [Semantic Versioning](https://github.com/github/markup/)
 0. Update `HISTORY.md`
 0. Test the latest version on GitHub
   0. Build the new version with `rake build`
@@ -44,6 +44,6 @@ If you are the current maintainer of this gem:
   0. Run any relevant tests and test it manually from the browser.
 0. Push the new gem release with `rake release`. If you don't have permission to release to rubygems.org, contact one of the existing owners (`gem owners github-markup`) and ask them to add you.
 
-[1]: http://github.com/github/markup/pulls
-[r2h]: lib/github/commands/rest2html
-[r2hc]: lib/github/markups.rb#L51
+[1]: http://github.com/xaxadmin/markup/pulls
+[r2h]: lib/github/commands/rest2xml
+[r2hc]: lib/github/markups.rb
