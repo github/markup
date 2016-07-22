@@ -9,7 +9,8 @@ notifications:
   email: false
 git:
   depth: 10
-before_install: sudo pip install docutils
+sudo: false
+# before_install: sudo pip install docutils
 cache:
   - bundler
   - pip
