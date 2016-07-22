@@ -13,3 +13,6 @@ before_install: sudo pip install docutils
 cache:
   - bundler
   - pip
+env:
+  global:
+    - "JRUBY_OPTS=-Xcext.enabled=true"
