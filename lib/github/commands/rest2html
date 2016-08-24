@@ -31,9 +31,11 @@ import sys
 import os
 
 # This fixes docutils failing with unicode parameters to CSV-Table. The -S
-# switch and the following 2 lines can be removed after upgrading to python 3.
-reload(sys)
-sys.setdefaultencoding('utf-8')
+# switch and the following 3 lines can be removed after upgrading to python 3.
+if sys.version_info[0] < 3:
+    reload(sys)
+    sys.setdefaultencoding('utf-8')
+
 import site
 
 try:
