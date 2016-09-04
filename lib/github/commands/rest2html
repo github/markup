@@ -46,7 +46,7 @@ import codecs
 
 from docutils import nodes
 from docutils.parsers.rst import directives, roles
-from docutils.parsers.rst.directives.body import CodeBlock
+from docutils.parsers.rst.directives.body import CodeBlock, Directive
 from docutils.core import publish_parts
 from docutils.writers.html4css1 import Writer, HTMLTranslator
 
@@ -64,6 +64,18 @@ SETTINGS = {
     'field_name_limit': 50,
 }
 
+default_highlight_language = None
+
+class HighlightDirective(Directive):
+    required_arguments = 1
+    optional_arguments = 1
+    option_spec = {}
+    def run(self):
+        """Track the default syntax highlighting language
+        """
+        global default_highlight_language
+        default_highlight_language = self.arguments[0]
+        return []
 
 class DoctestDirective(CodeBlock):
     """Render Sphinx 'doctest:: [group]' blocks as 'code:: python'
@@ -102,6 +114,8 @@ class GitHubHTMLTranslator(HTMLTranslator):
             language = classes[1]
             del classes[:]
             self.body.append(self.starttag(node, 'pre', lang=language))
+        elif default_highlight_language is not None:
+            self.body.append(self.starttag(node, 'pre', lang=default_highlight_language))
         else:
             self.body.append(self.starttag(node, 'pre'))
 
@@ -171,6 +185,9 @@ def main():
 
     # Render source code in Sphinx doctest blocks
     directives.register_directive('doctest', DoctestDirective)
+
+    # Set default highlight language
+    directives.register_directive('highlight', HighlightDirective)
 
     parts = publish_parts(text, writer=writer, settings_overrides=SETTINGS)
     if 'html_body' in parts:
