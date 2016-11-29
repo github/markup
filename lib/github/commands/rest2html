@@ -105,6 +105,9 @@ class GitHubHTMLTranslator(HTMLTranslator):
         else:
             self.body.append(self.starttag(node, 'pre'))
 
+    def visit_doctest_block(self, node):
+        self.body.append(self.starttag(node, 'pre', lang='pycon'))
+
     # always wrap two-backtick rst inline literals in <code>, not <tt>
     # this also avoids the generation of superfluous <span> tags
     def visit_literal(self, node):
