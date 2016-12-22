@@ -139,9 +139,9 @@ class GitHubHTMLTranslator(HTMLTranslator):
 
             # toss off `object` tag
             self.body.pop()
-        # add on `img` with attributes
+            # add on `img` with attributes
             self.body.append(self.starttag(node, 'img', **atts))
-        self.body.append(self.context.pop())
+        HTMLTranslator.depart_image(self, node)
 
 
 def kbd(name, rawtext, text, lineno, inliner, options=None, content=None):
