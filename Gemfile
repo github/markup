@@ -11,3 +11,4 @@ gem "creole", "~>0.3.6"
 gem "wikicloth", "=0.8.1", :platforms => :ruby
 gem "asciidoctor", "= 1.5.2"
 gem "rake"
+gem "rinku", '~> 1'
