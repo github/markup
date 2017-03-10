@@ -5,7 +5,7 @@ module GitHub
     class Markdown < Implementation
       MARKDOWN_GEMS = {
         "commonmarker" => proc { |content|
-          CommonMarker.render_html(content, :default, [:tagfilter, :autolink, :table, :strikethrough])
+          CommonMarker.render_html(content, :DEFAULT, [:tagfilter, :autolink, :table, :strikethrough])
         },
         "github/markdown" => proc { |content|
           GitHub::Markdown.render(content)
