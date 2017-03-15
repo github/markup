@@ -1,23 +1,47 @@
-<p class="title">org-ruby</p>
+<h1>org-ruby</h1>
 <table>
-  <tr><td>Status:</td><td>Under Development</td></tr>
-  <tr><td>Location:</td><td><a href="http://github.com/bdewey/org-ruby">http://github.com/bdewey/org-ruby</a></td></tr>
-  <tr><td>Version:</td><td>0.5.1</td></tr>
+  <tr>
+<td>Status:</td>
+<td>Under Development</td>
+</tr>
+  <tr>
+<td>Location:</td>
+<td><a href="http://github.com/wallyqs/org-ruby">http://github.com/wallyqs/org-ruby</a></td>
+</tr>
+  <tr>
+<td>Version:</td>
+<td>0.9.0</td>
+</tr>
 </table>
-<h1><span class="heading-number heading-number-1">1</span> Description</h1>
+<h1>1 Description</h1>
 <p>Helpful Ruby routines for parsing orgmode files. The most
   significant thing this library does today is convert orgmode files
   to textile. Currently, you cannot do much to customize the
   conversion. The supplied textile conversion is optimized for
-  extracting &#8220;content&#8221; from the orgfile as opposed to &#8220;metadata.&#8221;</p>
-<h1><span class="heading-number heading-number-1">2</span> History</h1>
-<h2><span class="heading-number heading-number-2">2.1</span> 2009-12-30: Version 0.5.1</h2>
+  extracting “content” from the orgfile as opposed to “metadata.”</p>
+<h1>2 History</h1>
+<h2>2.1 2014-02-08: Version 0.9.0</h2>
 <ul>
-  <li>Minor enhancement: Recognize lines starting with &#8220;:&#8221; as examples.</li>
-  <li>Minor enhancement: Recognize #+BEGIN_SRC as source blocks</li>
-  <li>Minor enhancement: Add &#8220;src&#8221; and &#8220;example&#8221; classes to &lt;pre&gt; blocks.</li>
+  <li>Let’s make sure <code>#+INCLUDE:</code> is not supported</li>
 </ul>
-<h2><span class="heading-number heading-number-2">2.2</span> 2009-12-30: Version 0.5.0</h2>
+<ul>
+  <li>And confirm that syntax highlight is supported</li>
+</ul>
+<pre lang="ruby">
+module GitHub
+  module Markup
+    VERSION = 'test'
+    Version = VERSION
+  end
+end
+</pre>
+<h2>2.2 2009-12-30: Version 0.5.1</h2>
+<ul>
+  <li>Minor enhancement: Recognize lines starting with “:” as examples.</li>
+  <li>Minor enhancement: Recognize #+BEGIN_SRC as source blocks</li>
+  <li>Minor enhancement: Add “src” and “example” classes to &lt;pre&gt; blocks.</li>
+</ul>
+<h2>2.3 2009-12-30: Version 0.5.0</h2>
 <ul>
   <li>Parse (but not necessarily <b>use</b>) in-buffer settings. The following
     in-buffer settings <b>are</b> used:
@@ -32,7 +56,7 @@
         the tree to export</li>
     </ul>
   </li>
-  <li>Rewrite &#8220;file:(blah).org&#8221; links to &#8220;http:(blah).html&#8221; links. This
+  <li>Rewrite “file:(blah).org” links to “http:(blah).html” links. This
     makes the inter-links to other org-mode files work.</li>
   <li>Uses &lt;th&gt; tags inside table rows that precede table separators.</li>
   <li>Bugfixes:
@@ -41,7 +65,7 @@
     </ul>
   </li>
 </ul>
-<h2><span class="heading-number heading-number-2">2.3</span> 2009-12-29: Version 0.4.2</h2>
+<h2>2.4 2009-12-29: Version 0.4.2</h2>
 <ul>
   <li>Got rid of the extraneous newline at the start of code blocks.</li>
   <li>Everything now shows up in code blocks, even org-mode metadata.</li>
@@ -52,59 +76,59 @@
     </ul>
   </li>
 </ul>
-<h2><span class="heading-number heading-number-2">2.4</span> 2009-12-29: Version 0.4.1</h2>
+<h2>2.5 2009-12-29: Version 0.4.1</h2>
 <ul>
   <li>HTML is now escaped by default</li>
   <li>org-mode comments will show up in a code block.</li>
 </ul>
-<h2><span class="heading-number heading-number-2">2.5</span> 2009-12-29: Version 0.4</h2>
+<h2>2.6 2009-12-29: Version 0.4</h2>
 <ul>
-  <li>The first thing output in HTML gets the class &#8220;title&#8221;</li>
+  <li>The first thing output in HTML gets the class “title”</li>
   <li>HTML output is now indented</li>
   <li>Proper support for multi-paragraph list items.
     <p>See? This paragraph is part of the last bullet.</p>
   </li>
   <li>Fixed bugs:
     <ul>
-      <li>&#8220;rake spec&#8221; wouldn&#8217;t work on Linux. Needed &#8220;require &#8216;rubygems&#8217;&#8221;.</li>
+      <li>“rake spec” wouldn’t work on Linux. Needed “require ‘rubygems’”.</li>
     </ul>
   </li>
 </ul>
-<h2><span class="heading-number heading-number-2">2.6</span> 2009-12-27: Version 0.3</h2>
+<h2>2.7 2009-12-27: Version 0.3</h2>
 <ul>
-  <li>Uses rubypants to get better typography (smart quotes, elipses, etc&#8230;).</li>
+  <li>Uses rubypants to get better typography (smart quotes, elipses, etc…).</li>
   <li>Fixed bugs:
     <ul>
       <li>Tables and lists did not get properly closed at the end of file</li>
-      <li>You couldn&#8217;t do inline formatting inside table cells</li>
+      <li>You couldn’t do inline formatting inside table cells</li>
       <li>Characters in PRE blocks were not HTML escaped.</li>
     </ul>
   </li>
 </ul>
-<h2><span class="heading-number heading-number-2">2.7</span> 2009-12-26: Version 0.2</h2>
+<h2>2.8 2009-12-26: Version 0.2</h2>
 <ul>
   <li>Added <code>to_html</code> output on the parser.</li>
   <li>Added support for the full range of inline markup: <b>bold</b>,
-    <i>italic</i>, <code>code</code>, <code>verbatim</code>, <span style="text-decoration:underline;">underline</span>, <del>strikethrough</del>.</li>
+    <i>italic</i>, <code>code</code>, <code>verbatim</code>, underline, <del>strikethrough</del>.</li>
   <li>Lots of refactoring to make the code more maintainable.</li>
 </ul>
-<h2><span class="heading-number heading-number-2">2.8</span> 2009-12-23: Version 0.1</h2>
+<h2>2.9 2009-12-23: Version 0.1</h2>
 <ul>
   <li>Added support for block code, like this:
-    <pre class="example">
+    <pre>
   def flush!
-  @logger.debug &quot;FLUSH ==========&gt; #{@output_type}&quot;
+  @logger.debug "FLUSH ==========&gt; #{@output_type}"
   if (@output_type == :blank) then
-    @output &lt;&lt; &quot;\n&quot;
+    @output &lt;&lt; "\n"
   elsif (@buffer.length &gt; 0) then
     if @cancel_modifier then
-      @output &lt;&lt; &quot;p. &quot; if @output_type == :paragraph
+      @output &lt;&lt; "p. " if @output_type == :paragraph
       @cancel_modifier = false
     end
     @output &lt;&lt; @paragraph_modifier if (@paragraph_modifier and not sticky_modifier?)
-    @output &lt;&lt; @buffer.textile_substitution &lt;&lt; &quot;\n&quot;
+    @output &lt;&lt; @buffer.textile_substitution &lt;&lt; "\n"
   end
-  @buffer = &quot;&quot;
+  @buffer = ""
 end
     </pre>
   </li>

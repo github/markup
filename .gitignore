@@ -1,6 +1,5 @@
 *.pyc
 pkg/
-bin
 .bundle
 Gemfile.lock
 vendor/
