@@ -23,7 +23,7 @@ end
 
 markup(:wikicloth, /mediawiki|wiki/) do |content|
   wikicloth = WikiCloth::WikiCloth.new(:data => content)
-  WikiCloth::WikiBuffer::HTMLElement::ESCAPED_TAGS << 'tt'
+  WikiCloth::WikiBuffer::HTMLElement::ESCAPED_TAGS << 'tt' unless WikiCloth::WikiBuffer::HTMLElement::ESCAPED_TAGS.include?('tt')
   wikicloth.to_html(:noedit => true)
 end
 
