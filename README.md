@@ -25,8 +25,9 @@ you wish to run the library. You can also run `script/bootstrap` to fetch them a
 * [.mediawiki, .wiki](http://www.mediawiki.org/wiki/Help:Formatting) -- `gem install wikicloth`
 * [.rst](http://docutils.sourceforge.net/rst.html) -- `easy_install docutils`
 * [.asciidoc, .adoc, .asc](http://asciidoc.org/) -- `gem install asciidoctor` (http://asciidoctor.org)
-* [.pod](http://search.cpan.org/dist/perl/pod/perlpod.pod) -- `Pod::Simple::HTML`
-  comes with Perl >= 5.10. Lower versions should install [Pod::Simple](http://search.cpan.org/~dwheeler/Pod-Simple-3.28/lib/Pod/Simple.pod) from CPAN.
+* [.pod](http://search.cpan.org/dist/perl/pod/perlpod.pod) -- `Pod::Simple::XHTML`
+  comes with Perl >= 5.10. Lower versions should install Pod::Simple from CPAN.
+
 
 Installation
 -----------

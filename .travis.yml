@@ -9,7 +9,11 @@ notifications:
   email: false
 git:
   depth: 10
-before_install: sudo pip install docutils
+before_install:
+  - sudo apt-get install perl
+  - curl -L http://cpanmin.us | perl - --sudo App::cpanminus
+  - sudo cpanm --installdeps --notest Pod::Simple
+  - sudo pip install docutils
 cache:
   - bundler
   - pip

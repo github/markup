@@ -6,7 +6,7 @@ module GitHub
   module Markup
     class RDoc < Implementation
       def initialize
-        super /rdoc/
+        super(/rdoc/)
       end
 
       def render(content)

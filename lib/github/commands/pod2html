@@ -1,0 +1,15 @@
+#!/usr/bin/env perl
+
+use strict;
+use Pod::Simple::XHTML 3.11;
+
+my $p = Pod::Simple::XHTML->new;
+$p->html_header('');
+$p->html_footer('');
+$p->perldoc_url_prefix('http://metacpan.org/search?q=');
+$p->strip_verbatim_indent(sub {
+    my $lines = shift;
+    (my $indent = $lines->[0]) =~ s/\S.*//;
+    return $indent;
+});
+$p->parse_from_file(shift);
