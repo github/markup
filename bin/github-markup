@@ -5,7 +5,7 @@ require 'github/markup'
 
 if ARGV.size < 1
   print "usage: #$0 FILE [ FILES ... ]\n"
-  exit
+  exit 1
 end
 
 sources = []
@@ -15,13 +15,13 @@ ARGV.each { |s|
     file = File.open( s, "r" )
     sources.push [ s, file ]
   rescue Exception => e
-    print "error: #{e.message}\n"
+    $stderr.print "error: #{e.message}\n"
+    exit 1
   ensure
   end
 }
 
-sources.each { |s|
-  name,file = s
+sources.each { |name, file|
   print GitHub::Markup.render( name, file.read )
   file.close
 }
