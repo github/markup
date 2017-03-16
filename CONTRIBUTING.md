@@ -1,12 +1,15 @@
 # Contributing
 
+This project adheres to the [Open Code of Conduct][code-of-conduct]. By participating, you are expected to honor this code.
+[code-of-conduct]: http://todogroup.org/opencodeofconduct/#GitHub%20Markup/opensource@github.com
+
 This library's only job is to decide which markup format to use and call out to an external library to convert the markup to HTML (see the [README](README.md) for more information on how markup is rendered on GitHub.com).
 
 If you are having an issue with:
 
 * **Syntax highlighting** - see [github/linguist](https://github.com/github/linguist/blob/master/CONTRIBUTING.md#fixing-syntax-highlighting)
 * **Markdown on GitHub** - contact support@github.com
-* **Styling issues on GitHub** - contact support@github.com
+* **Styling issues on GitHub** - see [primer/markdown](https://github.com/primer/markdown)
 
 Anything else - [search open issues](https://github.com/github/markup/issues) or create an issue and and we'll help point you in the right direction.
 

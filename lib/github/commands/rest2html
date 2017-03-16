@@ -44,30 +44,112 @@ except:
 
 import codecs
 
+from docutils import nodes
+from docutils.parsers.rst import directives, roles
+from docutils.parsers.rst.directives.body import CodeBlock
 from docutils.core import publish_parts
 from docutils.writers.html4css1 import Writer, HTMLTranslator
+from docutils.parsers.rst.states import Body
+from docutils import nodes
+
+# By default, docutils provides two choices for unknown directives:
+#  - Show errors if the reporting level is high enough
+#  - Silently do not display them otherwise
+# Comments are not displayed, either.
+
+# This code monkey-patches docutils to show preformatted lines
+# in both these cases.
+
+# Recommended practice for repositories with rst files:
+#  - If github is the preferred viewer for the rst files (e.g. README.rst),
+#    then design the files to properly display for github.  E.g., do not
+#    include unknown directives or restructuredText comments.
+#  - If github is NOT the preferred viewer for the rst files (e.g.
+#    the files are designed to be used with sphinx extensions at readthedocs)
+#    then include a restructuredText comment at the top of the file
+#    explaining that the document will display much more nicely with its
+#    preferred viewer, e.g. at readthedocs.
+
+original_behavior = False  # Documents original docutils behavior
+github_display = True
+
+def unknown_directive(self, type_name):
+    lineno = self.state_machine.abs_line_number()
+    indented, indent, offset, blank_finish = \
+        self.state_machine.get_first_known_indented(0, strip_indent=False)
+    text = '\n'.join(indented)
+    if original_behavior:
+        error = self.reporter.error(
+              'Unknown directive type "%s".' % type_name,
+              nodes.literal_block(text, text), line=lineno)
+        return [error], blank_finish
+    elif github_display:
+        cls = ['unknown_directive']
+        result = [nodes.literal_block(text, text, classes=cls)]
+        return result, blank_finish
+    else:
+        return [nodes.comment(text, text)], blank_finish
+
+def comment(self, match):
+    if not match.string[match.end():].strip() \
+            and self.state_machine.is_next_line_blank(): # an empty comment?
+        return [nodes.comment()], 1 # "A tiny but practical wart."
+    indented, indent, offset, blank_finish = \
+            self.state_machine.get_first_known_indented(match.end())
+    while indented and not indented[-1].strip():
+        indented.trim_end()
+    if not original_behavior:
+        firstline = ''.join(indented[:1]).split()
+        if ' '.join(firstline[:2]) == 'github display':
+            if len(firstline) == 3 and firstline[2] in ('on', 'off'):
+                global github_display
+                github_display = firstline[2] == 'on'
+            if len(indented) == 1:
+                return [nodes.comment()], 1
+            text = '\n'.join(indented[1:])
+            cls = ['github_comment']
+            result = [nodes.literal_block(text, text, classes=cls)]
+            return result, blank_finish
+    text = '\n'.join(indented)
+    return [nodes.comment(text, text)], blank_finish
+
+Body.comment = comment
+Body.unknown_directive = unknown_directive
+
 
 SETTINGS = {
-    'cloak_email_addresses': True,
+    'cloak_email_addresses': False,
     'file_insertion_enabled': False,
-    'raw_enabled': False,
+    'raw_enabled': True,
     'strip_comments': True,
     'doctitle_xform': True,
-    'sectsubtitle_xform': True,
     'initial_header_level': 2,
     'report_level': 5,
-    'syntax_highlight' : 'none',
-    'math_output' : 'latex',
+    'syntax_highlight': 'none',
+    'math_output': 'latex',
     'field_name_limit': 50,
 }
 
+
+class DoctestDirective(CodeBlock):
+    """Render Sphinx 'doctest:: [group]' blocks as 'code:: python'
+    """
+
+    def run(self):
+        """Discard any doctest group argument, render contents as python code
+        """
+        self.arguments = ['python']
+        return super(DoctestDirective, self).run()
+
+
 class GitHubHTMLTranslator(HTMLTranslator):
+
     # removes the <div class="document"> tag wrapped around docs
     # see also: http://bit.ly/1exfq2h (warning! sourceforge link.)
     def depart_document(self, node):
         HTMLTranslator.depart_document(self, node)
-        self.html_body.pop(0) # pop the starting <div> off
-        self.html_body.pop() # pop the ending </div> off
+        self.html_body.pop(0)  # pop the starting <div> off
+        self.html_body.pop()   # pop the ending </div> off
 
     # technique for visiting sections, without generating additional divs
     # see also: http://bit.ly/NHtyRx
@@ -89,6 +171,9 @@ class GitHubHTMLTranslator(HTMLTranslator):
         else:
             self.body.append(self.starttag(node, 'pre'))
 
+    def visit_doctest_block(self, node):
+        self.body.append(self.starttag(node, 'pre', lang='pycon'))
+
     # always wrap two-backtick rst inline literals in <code>, not <tt>
     # this also avoids the generation of superfluous <span> tags
     def visit_literal(self, node):
@@ -100,32 +185,38 @@ class GitHubHTMLTranslator(HTMLTranslator):
     def visit_table(self, node):
         classes = ' '.join(['docutils', self.settings.table_style]).strip()
         self.body.append(
-                self.starttag(node, 'table', CLASS=classes))
+            self.starttag(node, 'table', CLASS=classes))
 
     def depart_table(self, node):
         self.body.append('</table>\n')
 
     def depart_image(self, node):
-      uri = node['uri']
-      ext = os.path.splitext(uri)[1].lower()
-      # we need to swap RST's use of `object` with `img` tags
-      # see http://git.io/5me3dA
-      if ext == ".svg":
-        # preserve essential attributes
-        atts = {}
-        for attribute, value in  node.attributes.items():
-          # we have no time for empty values
-          if value:
-            if attribute == "uri":
-              atts['src'] = value
-            else:
-              atts[attribute] = value
+        uri = node['uri']
+        ext = os.path.splitext(uri)[1].lower()
+        # we need to swap RST's use of `object` with `img` tags
+        # see http://git.io/5me3dA
+        if ext == ".svg":
+            # preserve essential attributes
+            atts = {}
+            for attribute, value in node.attributes.items():
+                # we have no time for empty values
+                if value:
+                    if attribute == "uri":
+                        atts['src'] = value
+                    else:
+                        atts[attribute] = value
 
-        # toss off `object` tag
-        self.body.pop()
-        # add on `img` with attributes
-        self.body.append(self.starttag(node, 'img', **atts))
-      self.body.append(self.context.pop())
+            # toss off `object` tag
+            self.body.pop()
+            # add on `img` with attributes
+            self.body.append(self.starttag(node, 'img', **atts))
+        HTMLTranslator.depart_image(self, node)
+
+
+def kbd(name, rawtext, text, lineno, inliner, options=None, content=None):
+
+    return [nodes.raw('', '<kbd>%s</kbd>' % text, format='html')], []
+
 
 def main():
     """
@@ -137,13 +228,18 @@ def main():
     """
     try:
         text = codecs.open(sys.argv[1], 'r', 'utf-8').read()
-    except IOError: # given filename could not be found
+    except IOError:  # given filename could not be found
         return ''
-    except IndexError: # no filename given
+    except IndexError:  # no filename given
         text = sys.stdin.read()
 
     writer = Writer()
     writer.translator_class = GitHubHTMLTranslator
+
+    roles.register_canonical_role('kbd', kbd)
+
+    # Render source code in Sphinx doctest blocks
+    directives.register_directive('doctest', DoctestDirective)
 
     parts = publish_parts(text, writer=writer, settings_overrides=SETTINGS)
     if 'html_body' in parts:

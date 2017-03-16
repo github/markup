@@ -1,7 +1,5 @@
 language: ruby
-before_install: sudo pip install docutils
 rvm:
-  - 1.9.3
   - 2.0.0
   - 2.1.1
   - jruby-19mode
@@ -9,3 +7,19 @@ jdk:
   - oraclejdk8
 notifications:
   email: false
+git:
+  depth: 10
+before_install:
+  - sudo apt-get install perl
+  - curl -L http://cpanmin.us | perl - --sudo App::cpanminus
+  - sudo cpanm --installdeps --notest Pod::Simple
+  - sudo pip install docutils
+cache:
+  - bundler
+  - pip
+env:
+  global:
+    - "JRUBY_OPTS=-Xcext.enabled=true"
+matrix:
+ allow_failures:
+   - rvm: jruby-19mode

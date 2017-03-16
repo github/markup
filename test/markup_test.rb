@@ -75,7 +75,7 @@ class MarkupTest < Minitest::Test
 message
     end
   end
-
+  
   def test_knows_what_it_can_and_cannot_render
     assert_equal false, GitHub::Markup.can_render?('README.html')
     assert_equal true, GitHub::Markup.can_render?('README.markdown')
@@ -96,9 +96,13 @@ message
     assert_equal "restructuredtext", GitHub::Markup.renderer('README.rst').name
     assert_equal "pod", GitHub::Markup.renderer('README.pod').name
   end
+  
+  def test_rendering_by_symbol
+    assert_equal '<p><code>test</code></p>', GitHub::Markup.render_s(GitHub::Markups::MARKUP_MARKDOWN, '`test`').strip
+  end
 
   def test_raises_error_if_command_exits_non_zero
-    GitHub::Markup.command('test/fixtures/fail.sh', /fail/, 'fail')
+    GitHub::Markup.command(:doesntmatter, 'test/fixtures/fail.sh', /fail/, 'fail')
     assert GitHub::Markup.can_render?('README.fail')
     begin
       GitHub::Markup.render('README.fail', "stop swallowing errors")
