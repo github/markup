@@ -31,9 +31,11 @@ import sys
 import os
 
 # This fixes docutils failing with unicode parameters to CSV-Table. The -S
-# switch and the following 2 lines can be removed after upgrading to python 3.
-reload(sys)
-sys.setdefaultencoding('utf-8')
+# switch and the following 3 lines can be removed after upgrading to python 3.
+if sys.version_info[0] < 3:
+    reload(sys)
+    sys.setdefaultencoding('utf-8')
+
 import site
 
 try:
@@ -43,6 +45,7 @@ except:
     pass
 
 import codecs
+import io
 
 from docutils import nodes
 from docutils.parsers.rst import directives, roles
@@ -231,7 +234,11 @@ def main():
     except IOError:  # given filename could not be found
         return ''
     except IndexError:  # no filename given
-        text = sys.stdin.read()
+        if sys.version_info[0] < 3: # python 2.x
+            text = sys.stdin.read()
+        else: # python 3
+            input_stream = io.TextIOWrapper(sys.stdin.buffer, encoding='utf-8')
+            text = input_stream.read()
 
     writer = Writer()
     writer.translator_class = GitHubHTMLTranslator
@@ -254,5 +261,9 @@ def main():
     return ''
 
 if __name__ == '__main__':
-    sys.stdout.write("%s%s" % (main(), "\n"))
+    if sys.version_info[0] < 3: # python 2.x
+        sys.stdout.write("%s%s" % (main(), "\n"))
+    else: # python 3
+        output_stream = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
+        output_stream.write("%s%s" % (main(), "\n"))
     sys.stdout.flush()
