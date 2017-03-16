@@ -44,6 +44,9 @@ The UTF-8 quote character in this table used to cause python to go boom. Now doc
 	>>> some_function()
 	'result'
 
+>>> some_function()
+'result'
+
 ==============  ==========================================================
 Travis          http://travis-ci.org/tony/pullv
 Docs            http://pullv.rtfd.org
