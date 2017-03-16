@@ -2,16 +2,34 @@ require "github/markup/command_implementation"
 require "github/markup/gem_implementation"
 
 module GitHub
+  module Markups
+    # all of supported markups:
+    MARKUP_ASCIIDOC = :asciidoc
+    MARKUP_CREOLE = :creole
+    MARKUP_MARKDOWN = :markdown
+    MARKUP_MEDIAWIKI = :mediawiki
+    MARKUP_ORG = :org
+    MARKUP_POD = :pod
+    MARKUP_RDOC = :rdoc
+    MARKUP_RST = :rst
+    MARKUP_TEXTILE = :textile
+  end
+  
   module Markup
     extend self
-    @@markups = []
+    
+    @@markups = {}
 
     def markups
       @@markups
     end
+    
+    def markup_impls
+      markups.values
+    end
 
     def preload!
-      markups.each do |markup|
+      markup_impls.each do |markup|
         markup.load
       end
     end
@@ -25,17 +43,34 @@ module GitHub
         content
       end
     end
-
-    def markup(file, pattern, opts = {}, &block)
-      markups << GemImplementation.new(pattern, file, &block)
+    
+    def render_s(symbol, content)
+      if content.nil?
+        raise ArgumentError, 'Can not render a nil.'
+      elsif markups.has_key?(symbol)
+        markups[symbol].render(content)
+      else
+        content
+      end
+    end
+    
+    def markup(symbol, file, pattern, opts = {}, &block)
+      markup_impl(symbol, GemImplementation.new(pattern, file, &block))
+    end
+    
+    def markup_impl(symbol, impl)
+      if markups.has_key?(symbol)
+        raise ArgumentError, "The '#{symbol}' symbol is already defined."
+      end
+      markups[symbol] = impl
     end
 
-    def command(command, regexp, name, &block)
+    def command(symbol, command, regexp, name, &block)
       if File.exist?(file = File.dirname(__FILE__) + "/commands/#{command}")
         command = file
       end
 
-      markups << CommandImplementation.new(regexp, command, name, &block)
+      markup_impl(symbol, CommandImplementation.new(regexp, command, name, &block))
     end
 
     def can_render?(filename)
@@ -43,7 +78,7 @@ module GitHub
     end
 
     def renderer(filename)
-      markups.find { |impl|
+      markup_impls.find { |impl|
         impl.match?(filename)
       }
     end

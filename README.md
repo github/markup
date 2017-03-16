@@ -39,17 +39,30 @@ gem install github-markup
 Usage
 -----
 
+Basic form:
+
 ```ruby
 require 'github/markup'
-GitHub::Markup.render('README.markdown', "* One\n* Two")
+
+GitHub::Markup.render('README.markdown', '* One\n* Two')
 ```
 
-Or, more realistically:
+More realistic form:
 
 ```ruby
 require 'github/markup'
+
 GitHub::Markup.render(file, File.read(file))
 ```
+
+And a convenience form:
+
+```ruby
+require 'github/markup'
+
+GitHub::Markup.render_s(GitHub::Markups::MARKUP_MARKDOWN, '* One\n* Two')
+```
+
 
 Contributing
 ------------
