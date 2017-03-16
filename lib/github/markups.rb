@@ -22,11 +22,14 @@ markup(::GitHub::Markups::MARKUP_CREOLE, :creole, /creole/) do |content|
 end
 
 markup(::GitHub::Markups::MARKUP_MEDIAWIKI, :wikicloth, /mediawiki|wiki/) do |content|
-  WikiCloth::WikiCloth.new(:data => content).to_html(:noedit => true)
+  wikicloth = WikiCloth::WikiCloth.new(:data => content)
+  WikiCloth::WikiBuffer::HTMLElement::ESCAPED_TAGS << 'tt' unless WikiCloth::WikiBuffer::HTMLElement::ESCAPED_TAGS.include?('tt')
+  wikicloth.to_html(:noedit => true)
 end
 
 markup(::GitHub::Markups::MARKUP_ASCIIDOC, :asciidoctor, /adoc|asc(iidoc)?/) do |content|
-  Asciidoctor.render(content, :safe => :secure, :attributes => %w(showtitle idprefix idseparator=- env=github env-github source-highlighter=html-pipeline))
+  Asciidoctor::Compliance.unique_id_start_index = 1
+  Asciidoctor.convert(content, :safe => :secure, :attributes => %w(showtitle=@ idprefix idseparator=- env=github env-github source-highlighter=html-pipeline))
 end
 
 command(
@@ -36,13 +39,4 @@ command(
   "restructuredtext"
 )
 
-# pod2html is nice enough to generate a full-on HTML document for us,
-# so we return the favor by ripping out the good parts.
-#
-# Any block passed to `command` will be handed the command's STDOUT for
-# post processing.
-command(::GitHub::Markups::MARKUP_POD, '/usr/bin/env perl -MPod::Simple::HTML -e Pod::Simple::HTML::go', /pod/, "pod") do |rendered|
-  if rendered =~ /<!-- start doc -->\s*(.+)\s*<!-- end doc -->/mi
-    $1
-  end
-end
+command(::GitHub::Markups::MARKUP_POD, :pod2html, /pod/, "pod")

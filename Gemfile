@@ -9,5 +9,6 @@ gem "rdoc", "~>3.6"
 gem "org-ruby", "= 0.9.9"
 gem "creole", "~>0.3.6"
 gem "wikicloth", "=0.8.1", :platforms => :ruby
-gem "asciidoctor", "= 0.1.4"
+gem "asciidoctor", "= 1.5.2"
 gem "rake"
+gem "rinku", '~> 1'

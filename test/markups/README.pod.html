@@ -1,84 +1,72 @@
-<a name="___top"></a>
+<h1>Matrixy</h1>
 
-<h1><a href="#___top" title="click to go to top of document" name="Matrixy">Matrixy</a></h1>
+<h2>INTRODUCTION</h2>
 
-<h2><a href="#___top" title="click to go to top of document" name="INTRODUCTION">INTRODUCTION</a></h2>
+<p>This is a port of the MATLAB/Octave programming language to Parrot. See the ROADMAP file for more information on the status of this project, and what else needs to be done.</p>
 
-<p>This is a port of the MATLAB/Octave programming language to Parrot.
-See the ROADMAP file for more information on the status of this project,
-and what else needs to be done.</p>
-
-<h2><a href="#___top" title="click to go to top of document" name="ABOUT">ABOUT</a></h2>
+<h2>ABOUT</h2>
 
 <p>Primary goals are:</p>
 
-<blockquote>
-<p>=item* Create a working compiler that understands the majority of the MATLAB/Octave programming language.</p>
-</blockquote>
+<ul>
 
-<h2><a href="#___top" title="click to go to top of document" name="IMPLEMENTATION">IMPLEMENTATION</a></h2>
+<li><p>Create a working compiler that understands the majority of the MATLAB/Octave programming language.</p>
+
+</li>
+</ul>
+
+<h2>IMPLEMENTATION</h2>
 
 <p>This project is broken into three primary components:</p>
 
-<blockquote>
-<p>=item* The first is the parser,
-located in the <code>src/parser/</code> directory.
-The parser proper is composed of three source files,
-<em>grammar.pg</em> which is a Perl6Grammar file,
-and <em>actions.pm</em> which is the associated actions file written in NQP,
-and <em>grammar-oper.pm</em> which is the operator precidence parser.
-In addition,
-several helper functions used by the parser are located in <code>src/internals</code>.</p>
+<ul>
 
-<p>=item* The second component is the library of builtin functions in the <code>src/builtins/</code> directory.
-These functions are,
-currently,
-written primarily in PIR.
-Function names prefixed with an underscore are "private" functions for use with the parser.
-Other functions should have names which are the same as names for regular MATLAB or Octave functions,
-since they will be available to the HLL.
-These are also separated into different namespaces depending on visibility and utility.</p>
+<li><p>The first is the parser, located in the <code>src/parser/</code> directory. The parser proper is composed of three source files, <i>grammar.pg</i> which is a Perl6Grammar file, and <i>actions.pm</i> which is the associated actions file written in NQP, and <i>grammar-oper.pm</i> which is the operator precidence parser. In addition, several helper functions used by the parser are located in <code>src/internals</code>.</p>
 
-<p>=item* A number of library functions are written in M,
-or mostly M with some inline PIR code in <code>toolbox/</code>.</p>
-</blockquote>
+</li>
+<li><p>The second component is the library of builtin functions in the <code>src/builtins/</code> directory. These functions are, currently, written primarily in PIR. Function names prefixed with an underscore are &quot;private&quot; functions for use with the parser. Other functions should have names which are the same as names for regular MATLAB or Octave functions, since they will be available to the HLL. These are also separated into different namespaces depending on visibility and utility.</p>
 
-<h2><a href="#___top" title="click to go to top of document" name="DEPENDENCIES">DEPENDENCIES</a></h2>
+</li>
+<li><p>A number of library functions are written in M, or mostly M with some inline PIR code in <code>toolbox/</code>.</p>
+
+</li>
+</ul>
+
+<h2>DEPENDENCIES</h2>
 
 <p>Matrixy depends on these dependencies:</p>
 
-<h3><a href="#___top" title="click to go to top of document" name="Parrot">Parrot</a></h3>
+<h3>Parrot</h3>
 
-<p>To get a proper version of Parrot to build Matrixy,
-you will need to check out and build Parrot from source:</p>
+<p>To get a proper version of Parrot to build Matrixy, you will need to check out and build Parrot from source:</p>
 
-<pre>    svn co http://svn.parrot.org/parrot/trunk parrot
-    cd parrot
-    perl Configure.pl
-    make &amp;&amp; make test &amp;&amp; make install-dev</pre>
+<pre><code>svn co http://svn.parrot.org/parrot/trunk parrot
+cd parrot
+perl Configure.pl
+make &amp;&amp; make test &amp;&amp; make install-dev</code></pre>
 
-<h3><a href="#___top" title="click to go to top of document" name="Parrot-Linear-Algebra">Parrot-Linear-Algebra</a></h3>
+<h3>Parrot-Linear-Algebra</h3>
 
 <p>The linear algebra package for Parrot is available separately and provides functionality required by Matrixy. This includes matrix data types and matrix manipulation libraries</p>
 
-<h2><a href="#___top" title="click to go to top of document" name="BUILDING">BUILDING</a></h2>
+<h2>BUILDING</h2>
 
 <p>Once all dependencies are in place, you can build Matrixy using this sequence of commands:</p>
 
-<pre>    perl Configure.pl
-    nmake test</pre>
+<pre><code>perl Configure.pl
+nmake test</code></pre>
 
-<h2><a href="#___top" title="click to go to top of document" name="TODO">TODO</a></h2>
+<h2>TODO</h2>
 
-<pre>    * Parser
-    * Standard Builtins
-    * Test against Octave Test Suite.</pre>
+<pre><code>* Parser
+* Standard Builtins
+* Test against Octave Test Suite.</code></pre>
 
-<h2><a href="#___top" title="click to go to top of document" name="BUGS">BUGS</a></h2>
+<h2>BUGS</h2>
 
 <p>Lots!</p>
 
-<h2><a href="#___top" title="click to go to top of document" name="CONTACT">CONTACT</a></h2>
+<h2>CONTACT</h2>
 
 <p>If you need to contact the Matrixy team, go to the project home page at:</p>
 
