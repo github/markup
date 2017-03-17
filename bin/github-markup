@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-$LOAD_PATH.unshift File.dirname(__FILE__) + "/../lib"
+$LOAD_PATH.unshift File.dirname(File.realpath(__FILE__)) + "/../lib"
 require 'github/markup'
 
 if ARGV[0] && File.exists?(file = ARGV[0])
