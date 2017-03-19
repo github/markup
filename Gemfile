@@ -12,3 +12,4 @@ gem "wikicloth", "=0.8.3"
 gem "asciidoctor", "= 1.5.2"
 gem "rake"
 gem "rinku", '~> 1'
+gem "github-linguist", ">= 4.7.5"
