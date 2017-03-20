@@ -86,7 +86,7 @@ module GitHub
 
     def language(filename, content)
       blob = Linguist::Blob.new(filename, content)
-      return Linguist.detect(blob)
+      return Linguist.detect(blob, allow_empty: true)
     end
 
     # Define markups
