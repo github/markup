@@ -15,8 +15,8 @@ module GitHub
     class CommandImplementation < Implementation
       attr_reader :command, :block, :name
 
-      def initialize(languages, command, name, &block)
-        super languages
+      def initialize(regexp, command, name, &block)
+        super regexp
         @command = command.to_s
         @block = block
         @name = name

@@ -1,10 +1,10 @@
 module GitHub
   module Markup
     class Implementation
-      attr_reader :languages
+      attr_reader :regexp
 
-      def initialize(languages)
-        @languages = languages
+      def initialize(regexp)
+        @regexp = regexp
       end
 
       def load
@@ -15,8 +15,13 @@ module GitHub
         raise NotImplementedError, "subclasses of GitHub::Markup::Implementation must define #render"
       end
 
-      def match?(language)
-        languages.include? language
+      def match?(filename)
+        file_ext_regexp =~ filename
+      end
+
+    private
+      def file_ext_regexp
+        @file_ext_regexp ||= /\.(#{regexp})\z/
       end
     end
   end

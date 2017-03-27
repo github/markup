@@ -77,24 +77,24 @@ message
   end
   
   def test_knows_what_it_can_and_cannot_render
-    assert_equal false, GitHub::Markup.can_render?('README.html', '<h1>Title</h1>')
-    assert_equal true, GitHub::Markup.can_render?('README.markdown', '=== Title')
-    assert_equal true, GitHub::Markup.can_render?('README.rmd', '=== Title')
-    assert_equal true, GitHub::Markup.can_render?('README.Rmd', '=== Title')
-    assert_equal false, GitHub::Markup.can_render?('README.cmd', 'echo 1')
-    assert_equal true, GitHub::Markup.can_render?('README.litcoffee', 'Title')
+    assert_equal false, GitHub::Markup.can_render?('README.html')
+    assert_equal true, GitHub::Markup.can_render?('README.markdown')
+    assert_equal true, GitHub::Markup.can_render?('README.rmd')
+    assert_equal true, GitHub::Markup.can_render?('README.Rmd')
+    assert_equal false, GitHub::Markup.can_render?('README.cmd')
+    assert_equal true, GitHub::Markup.can_render?('README.litcoffee')
   end
 
   def test_each_render_has_a_name
-    assert_equal "markdown", GitHub::Markup.renderer('README.md', '=== Title').name
-    assert_equal "redcloth", GitHub::Markup.renderer('README.textile', '* One').name
-    assert_equal "rdoc", GitHub::Markup.renderer('README.rdoc', '* One').name
-    assert_equal "org-ruby", GitHub::Markup.renderer('README.org', '* Title').name
-    assert_equal "creole", GitHub::Markup.renderer('README.creole', '= Title =').name
-    assert_equal "wikicloth", GitHub::Markup.renderer('README.wiki', '<h1>Title</h1>').name
-    assert_equal "asciidoctor", GitHub::Markup.renderer('README.adoc', '== Title').name
-    assert_equal "restructuredtext", GitHub::Markup.renderer('README.rst', 'Title').name
-    assert_equal "pod", GitHub::Markup.renderer('README.pod', '=begin').name
+    assert_equal "markdown", GitHub::Markup.renderer('README.md').name
+    assert_equal "redcloth", GitHub::Markup.renderer('README.textile').name
+    assert_equal "rdoc", GitHub::Markup.renderer('README.rdoc').name
+    assert_equal "org-ruby", GitHub::Markup.renderer('README.org').name
+    assert_equal "creole", GitHub::Markup.renderer('README.creole').name
+    assert_equal "wikicloth", GitHub::Markup.renderer('README.wiki').name
+    assert_equal "asciidoctor", GitHub::Markup.renderer('README.adoc').name
+    assert_equal "restructuredtext", GitHub::Markup.renderer('README.rst').name
+    assert_equal "pod", GitHub::Markup.renderer('README.pod').name
   end
   
   def test_rendering_by_symbol
@@ -102,10 +102,10 @@ message
   end
 
   def test_raises_error_if_command_exits_non_zero
-    GitHub::Markup.command(:doesntmatter, 'test/fixtures/fail.sh', [Linguist::Language['Java']], 'fail')
-    assert GitHub::Markup.can_render?('README.java', 'stop swallowing errors')
+    GitHub::Markup.command(:doesntmatter, 'test/fixtures/fail.sh', /fail/, 'fail')
+    assert GitHub::Markup.can_render?('README.fail')
     begin
-      GitHub::Markup.render('README.java', "stop swallowing errors")
+      GitHub::Markup.render('README.fail', "stop swallowing errors")
     rescue GitHub::Markup::CommandError => e
       assert_equal "failure message", e.message
     else

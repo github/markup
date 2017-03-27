@@ -37,7 +37,7 @@ module GitHub
     def render(filename, content = nil)
       content ||= File.read(filename)
 
-      if impl = renderer(filename, content)
+      if impl = renderer(filename)
         impl.render(content)
       else
         content
@@ -53,9 +53,9 @@ module GitHub
         content
       end
     end
-
-    def markup(symbol, gem_name, pattern, opts = {}, &block)
-      markup_impl(symbol, GemImplementation.new(pattern, gem_name, &block))
+    
+    def markup(symbol, file, pattern, opts = {}, &block)
+      markup_impl(symbol, GemImplementation.new(pattern, file, &block))
     end
     
     def markup_impl(symbol, impl)
@@ -65,28 +65,22 @@ module GitHub
       markups[symbol] = impl
     end
 
-    def command(symbol, command, languages, name, &block)
+    def command(symbol, command, regexp, name, &block)
       if File.exist?(file = File.dirname(__FILE__) + "/commands/#{command}")
         command = file
       end
 
-      markup_impl(symbol, CommandImplementation.new(languages, command, name, &block))
+      markup_impl(symbol, CommandImplementation.new(regexp, command, name, &block))
     end
 
-    def can_render?(filename, content)
-      !!renderer(filename, content)
+    def can_render?(filename)
+      !!renderer(filename)
     end
 
-    def renderer(filename, content)
-      language = language(filename, content)
+    def renderer(filename)
       markup_impls.find { |impl|
-        impl.match?(language)
+        impl.match?(filename)
       }
-    end
-
-    def language(filename, content)
-      blob = Linguist::Blob.new(filename, content)
-      return Linguist.detect(blob, allow_empty: true)
     end
 
     # Define markups

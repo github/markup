@@ -28,7 +28,7 @@ module GitHub
       }
 
       def initialize
-        super([Linguist::Language["Markdown"], Linguist::Language["RMarkdown"], Linguist::Language["Literate CoffeeScript"]])
+        super(/md|rmd|mkdn?|mdwn|mdown|markdown|litcoffee/i)
       end
 
       def load
