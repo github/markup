@@ -5,8 +5,8 @@ module GitHub
     class GemImplementation < Implementation
       attr_reader :gem_name, :renderer
 
-      def initialize(regexp, gem_name, &renderer)
-        super regexp
+      def initialize(languages, gem_name, &renderer)
+        super languages
         @gem_name = gem_name.to_s
         @renderer = renderer
       end
