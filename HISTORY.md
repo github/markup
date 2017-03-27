@@ -1,3 +1,20 @@
+## 1.5.0 - 2017-03-27
+
+### Added
+
+* Re-introduce [#537](https://github.com/github/markup/pull/537) to detect language of markup document  
+  However `github-linguist` is optional and this gem will fallback to extensions for detection.  
+
+[Full changelog](https://github.com/github/markup/compare/v1.4.9...v1.5.0)
+
+## 1.4.9 - 2017-03-27
+
+### Changed
+
+* Reverted [#537](https://github.com/github/markup/pull/537) to avoid extra dependencies
+
+[Full changelog](https://github.com/github/markup/compare/v1.4.8...v1.4.9)
+
 ## 1.3.3 (2015-02-17)
 
 * Address a slight typo with `POSIX` [#456](https://github.com/github/markup/pull/456)
