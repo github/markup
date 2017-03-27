@@ -6,7 +6,7 @@ module GitHub
   module Markup
     class RDoc < Implementation
       def initialize
-        super([Linguist::Language["RDoc"]])
+        super(/rdoc/, ["RDoc"])
       end
 
       def render(content)

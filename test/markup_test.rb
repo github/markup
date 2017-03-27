@@ -102,7 +102,7 @@ message
   end
 
   def test_raises_error_if_command_exits_non_zero
-    GitHub::Markup.command(:doesntmatter, 'test/fixtures/fail.sh', [Linguist::Language['Java']], 'fail')
+    GitHub::Markup.command(:doesntmatter, 'test/fixtures/fail.sh', /fail/, ['Java'], 'fail')
     assert GitHub::Markup.can_render?('README.java', 'stop swallowing errors')
     begin
       GitHub::Markup.render('README.java', "stop swallowing errors")
