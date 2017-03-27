@@ -24,4 +24,5 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'sanitize', '~> 2.1', '>= 2.1.0'
   s.add_development_dependency 'nokogiri', '1.6.8.1'
   s.add_development_dependency 'nokogiri-diff', '~> 0.2.0'
+  s.add_development_dependency "github-linguist", "~> 5.0", ">= 5.0.8"
 end
