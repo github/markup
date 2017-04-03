@@ -17,9 +17,9 @@ module GitHub
         @loaded = true
       end
 
-      def render(content)
+      def render(filename, content)
         load
-        renderer.call(content)
+        renderer.call(filename, content)
       end
 
       def name

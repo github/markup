@@ -44,7 +44,7 @@ module GitHub
         raise LoadError, "no suitable markdown gem found"
       end
 
-      def render(content)
+      def render(filename, content)
         load
         @renderer.call(content)
       end

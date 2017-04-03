@@ -22,7 +22,7 @@ module GitHub
         @name = name
       end
 
-      def render(content)
+      def render(filename, content)
         rendered = execute(command, content)
         rendered = rendered.to_s.empty? ? content : rendered
         call_block(rendered, content)

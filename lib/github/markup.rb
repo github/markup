@@ -44,7 +44,7 @@ module GitHub
       content ||= File.read(filename)
 
       if impl = renderer(filename, content)
-        impl.render(content)
+        impl.render(filename, content)
       else
         content
       end
@@ -54,7 +54,7 @@ module GitHub
       if content.nil?
         raise ArgumentError, 'Can not render a nil.'
       elsif markups.has_key?(symbol)
-        markups[symbol].render(content)
+        markups[symbol].render(nil, content)
       else
         content
       end

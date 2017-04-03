@@ -4,30 +4,30 @@ require "shellwords"
 
 markup_impl(::GitHub::Markups::MARKUP_MARKDOWN, ::GitHub::Markup::Markdown.new)
 
-markup(::GitHub::Markups::MARKUP_TEXTILE, :redcloth, /textile/, ["Textile"]) do |content|
+markup(::GitHub::Markups::MARKUP_TEXTILE, :redcloth, /textile/, ["Textile"]) do |filename, content|
   RedCloth.new(content).to_html
 end
 
 markup_impl(::GitHub::Markups::MARKUP_RDOC, GitHub::Markup::RDoc.new)
 
-markup(::GitHub::Markups::MARKUP_ORG, 'org-ruby', /org/, ["Org"]) do |content|
+markup(::GitHub::Markups::MARKUP_ORG, 'org-ruby', /org/, ["Org"]) do |filename, content|
   Orgmode::Parser.new(content, {
                         :allow_include_files => false,
                         :skip_syntax_highlight => true
                       }).to_html
 end
 
-markup(::GitHub::Markups::MARKUP_CREOLE, :creole, /creole/, ["Creole"]) do |content|
+markup(::GitHub::Markups::MARKUP_CREOLE, :creole, /creole/, ["Creole"]) do |filename, content|
   Creole.creolize(content)
 end
 
-markup(::GitHub::Markups::MARKUP_MEDIAWIKI, :wikicloth, /mediawiki|wiki/, ["MediaWiki"]) do |content|
+markup(::GitHub::Markups::MARKUP_MEDIAWIKI, :wikicloth, /mediawiki|wiki/, ["MediaWiki"]) do |filename, content|
   wikicloth = WikiCloth::WikiCloth.new(:data => content)
   WikiCloth::WikiBuffer::HTMLElement::ESCAPED_TAGS << 'tt' unless WikiCloth::WikiBuffer::HTMLElement::ESCAPED_TAGS.include?('tt')
   wikicloth.to_html(:noedit => true)
 end
 
-markup(::GitHub::Markups::MARKUP_ASCIIDOC, :asciidoctor, /adoc|asc(iidoc)?/, ["AsciiDoc"]) do |content|
+markup(::GitHub::Markups::MARKUP_ASCIIDOC, :asciidoctor, /adoc|asc(iidoc)?/, ["AsciiDoc"]) do |filename, content|
   Asciidoctor::Compliance.unique_id_start_index = 1
   Asciidoctor.convert(content, :safe => :secure, :attributes => %w(showtitle=@ idprefix idseparator=- outfilesuffix=.adoc env=github env-github source-highlighter=html-pipeline))
 end
