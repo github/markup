@@ -1,3 +1,11 @@
+## 1.6.0 - 2017-04-03
+
+### Changed
+
+* Added filename argument to all renderers for additional context
+* Removed superfluous `rinku` dependency [#1035](https://github.com/github/markup/pull/1035)
+* Enable source-to-source navigation for `.adoc` AsciiDoc files, plus additional attributes passed through [#1039](https://github.com/github/markup/pull/1039) and [#1041](https://github.com/github/markup/pull/1041)
+
 ## 1.5.0 - 2017-03-27
 
 ### Added
