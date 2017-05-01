@@ -6,18 +6,20 @@ end
 
 require "github/markup/implementation"
 
+
 module GitHub
   module Markup
     class CommandError < RuntimeError
     end
 
     class CommandImplementation < Implementation
-      attr_reader :command, :block
+      attr_reader :command, :block, :name
 
-      def initialize(regexp, command, &block)
-        super regexp
+      def initialize(languages, command, name, &block)
+        super languages
         @command = command.to_s
         @block = block
+        @name = name
       end
 
       def render(content)
@@ -36,8 +38,8 @@ module GitHub
           rendered
         end
       end
-      
-      if defined?(Posix::Spawn)
+
+      if defined?(POSIX::Spawn)
         def execute(command, target)
           spawn = POSIX::Spawn::Child.new(*command, :input => target)
           if spawn.status.success?
@@ -60,11 +62,11 @@ module GitHub
           sanitize(output.join(''), target.encoding)
         end
       end
-      
+
       def sanitize(input, encoding)
         input.gsub("\r", '').force_encoding(encoding)
       end
-      
+
     end
   end
 end
