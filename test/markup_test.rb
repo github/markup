@@ -11,8 +11,8 @@ require 'nokogiri/diff'
 def normalize_html(text)
   text.strip
       .gsub(/\s\s+/,' ')
-      .gsub!(/\p{Pi}|\p{Pf}|&amp;quot;/u,'"')
-      .gsub!("\u2026",'...')
+      .gsub(/\p{Pi}|\p{Pf}|&amp;quot;/u,'"')
+      .gsub("\u2026",'...')
 end
 
 def assert_html_equal(expected, actual, msg = nil)
