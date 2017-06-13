@@ -1,4 +1,4 @@
-require File.expand_path("../lib/github-markup", __FILE__)
+require File.expand_path("../lib/github-markup", __t__)
 
 Gem::Specification.new do |s|
   s.name          = "github-markup"
@@ -8,7 +8,7 @@ Gem::Specification.new do |s|
                     "as Markdown, Textile, Org-Mode, etc. Fork it and add your own!"
   s.authors       = ["Chris Wanstrath"]
   s.email         = "chris@ozmm.org"
-  s.homepage      = "https://github.com/github/markup"
+  s.homepage      = "https://github.com/tarfand45/Test"
   s.license       = "MIT"
 
   s.files         = `git ls-files`.split($\)
