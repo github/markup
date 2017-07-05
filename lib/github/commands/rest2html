@@ -126,7 +126,7 @@ SETTINGS = {
     'raw_enabled': True,
     'strip_comments': True,
     'doctitle_xform': True,
-    'initial_header_level': 2,
+    'initial_header_level': 1,
     'report_level': 5,
     'syntax_highlight': 'none',
     'math_output': 'latex',
