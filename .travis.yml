@@ -1,8 +1,11 @@
 language: ruby
 rvm:
   - 2.0.0
-  - 2.1.1
-  - jruby-19mode
+  - 2.1.10
+  - 2.2.7
+  - 2.3.4
+  - 2.4.1
+  - jruby-9.1.9.0
 jdk:
   - oraclejdk8
 notifications:
@@ -25,4 +28,4 @@ env:
     - "JRUBY_OPTS=-Xcext.enabled=true"
 matrix:
  allow_failures:
-   - rvm: jruby-19mode
+   - rvm: jruby-9.1.9.0
