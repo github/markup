@@ -230,8 +230,7 @@ class GitHubHTMLTranslator(HTMLTranslator):
         HTMLTranslator.depart_image(self, node)
 
 
-def kbd(name, rawtext, text, lineno, inliner, options=None, content=None):
-
+def kbd(name, rawtext, text, lineno, inliner, options={}, content=[]):
     return [nodes.raw('', '<kbd>%s</kbd>' % text, format='html')], []
 
 
