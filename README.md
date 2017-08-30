@@ -21,7 +21,7 @@ you wish to run the library. You can also run `script/bootstrap` to fetch them a
 
 * [.markdown, .mdown, .mkdn, .md](http://daringfireball.net/projects/markdown/) -- `gem install commonmarker` (https://github.com/gjtorikian/commonmarker)
 * [.textile](https://www.promptworks.com/textile) -- `gem install RedCloth`
-* [.rdoc](https://rdoc.github.io/rdoc/) -- `gem install rdoc -v 3.6.1`
+* [.rdoc](https://ruby.github.io/rdoc/) -- `gem install rdoc -v 3.6.1`
 * [.org](http://orgmode.org/) -- `gem install org-ruby`
 * [.creole](http://wikicreole.org/) -- `gem install creole`
 * [.mediawiki, .wiki](http://www.mediawiki.org/wiki/Help:Formatting) -- `gem install wikicloth`
