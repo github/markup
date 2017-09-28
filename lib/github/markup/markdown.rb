@@ -35,13 +35,10 @@ module GitHub
 
       def load
         return if @renderer
-        MARKDOWN_GEMS.each do |gem_name, renderer|
-          if try_require(gem_name)
-            @renderer = renderer
-            return
-          end
-        end
-        raise LoadError, "no suitable markdown gem found"
+        @renderer = proc { |content|
+          CommonMarker.render_html(content, :GITHUB_PRE_LANG, [:tagfilter, :autolink, :table, :strikethrough])
+        }
+        return
       end
 
       def render(filename, content)
