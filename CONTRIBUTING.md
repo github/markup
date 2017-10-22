@@ -10,7 +10,7 @@ If you are having an issue with:
 
 * **Syntax highlighting** - see [github/linguist](https://github.com/github/linguist/blob/master/CONTRIBUTING.md#fixing-syntax-highlighting)
 * **Markdown on GitHub** - contact support@github.com
-* **Styling issues on GitHub** - see [primer/markdown](https://github.com/primer/markdown)
+* **Styling issues on GitHub** - see [primer-markdown](https://github.com/primer/primer-css/tree/master/modules/primer-markdown) module in the [primer/primer-css](https://github.com/primer/primer-css) repository
 
 Anything else - [search open issues](https://github.com/github/markup/issues) or create an issue and and we'll help point you in the right direction.
 
