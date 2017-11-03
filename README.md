@@ -19,7 +19,7 @@ Markups
 The following markups are supported.  The dependencies listed are required if
 you wish to run the library. You can also run `script/bootstrap` to fetch them all.
 
-* [.markdown, .mdown, .mkdn, .md](http://daringfireball.net/projects/markdown/) -- `gem install commonmarker` (https://github.com/gjtorikian/commonmarker). GitHub uses CommonMarker for rendering Markdown.
+* [.markdown, .mdown, .mkdn, .md](http://daringfireball.net/projects/markdown/) -- `gem install commonmarker` (https://github.com/gjtorikian/commonmarker)
 * [.textile](https://www.promptworks.com/textile) -- `gem install RedCloth` (https://github.com/jgarber/redcloth)
 * [.rdoc](https://ruby.github.io/rdoc/) -- `gem install rdoc -v 3.6.1`
 * [.org](http://orgmode.org/) -- `gem install org-ruby` (https://github.com/wallyqs/org-ruby)
