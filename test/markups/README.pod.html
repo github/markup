@@ -21,7 +21,7 @@
 
 <ul>
 
-<li><p>The first is the parser, located in the <code>src/parser/</code> directory. The parser proper is composed of three source files, <i>grammar.pg</i> which is a Perl6Grammar file, and <i>actions.pm</i> which is the associated actions file written in NQP, and <i>grammar-oper.pm</i> which is the operator precidence parser. In addition, several helper functions used by the parser are located in <code>src/internals</code>.</p>
+<li><p>The first is the parser, located in the <code>src/parser/</code> directory. The parser proper is composed of three source files, <i>grammar.pg</i> which is a Perl6Grammar file, and <i>actions.pm</i> which is the associated actions file written in NQP, and <i>grammar-oper.pm</i> which is the operator precedence parser. In addition, several helper functions used by the parser are located in <code>src/internals</code>.</p>
 
 </li>
 <li><p>The second component is the library of builtin functions in the <code>src/builtins/</code> directory. These functions are, currently, written primarily in PIR. Function names prefixed with an underscore are &quot;private&quot; functions for use with the parser. Other functions should have names which are the same as names for regular MATLAB or Octave functions, since they will be available to the HLL. These are also separated into different namespaces depending on visibility and utility.</p>

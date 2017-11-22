@@ -26,7 +26,7 @@ This project is broken into three primary components:
 =item * The first is the parser, located in the C<src/parser/> directory. The
 parser proper is composed of three source files, F<grammar.pg> which is a
 Perl6Grammar file, and F<actions.pm> which is the associated actions file
-written in NQP, and F<grammar-oper.pm> which is the operator precidence parser.
+written in NQP, and F<grammar-oper.pm> which is the operator precedence parser.
 In addition, several helper functions used by the parser are located in
 C<src/internals>.
 
