@@ -4,7 +4,7 @@ $LOAD_PATH.unshift File.dirname(File.realpath(__FILE__)) + "/../lib"
 require 'github/markup'
 
 if ARGV.size < 1
-  print "usage: #$0 FILE [ FILES ... ]\n"
+  print "usage: #{File.basename($0)} FILE [ FILES ... ]\n"
   exit 1
 end
 
