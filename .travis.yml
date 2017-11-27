@@ -1,4 +1,4 @@
-dist: precise
+dist: trusty
 sudo: required
 language: ruby
 rvm:
@@ -15,10 +15,8 @@ notifications:
 git:
   depth: 10
 before_install:
-  - sudo apt-get install perl
-  - sudo add-apt-repository --yes ppa:kalakris/cmake
   - sudo apt-get update -qq
-  - sudo apt-get install cmake
+  - sudo apt-get install perl
   - curl -L http://cpanmin.us | perl - --sudo App::cpanminus
   - sudo cpanm --installdeps --notest Pod::Simple
   - sudo pip install docutils
