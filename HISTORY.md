@@ -1,3 +1,10 @@
+## 1.6.2 - 2017-11-27
+
+### Changed
+
+* Only report basename in usage [#1131](https://github.com/github/markup/pull/1131)
+* rest2html parameter signature fix [#1082](https://github.com/github/markup/pull/1082)
+
 ## 1.6.1 - 2017-07-25
 
 ### Changed
