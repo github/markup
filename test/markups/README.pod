@@ -1,3 +1,4 @@
+# -*- mode: perl; -*-
 =head1 Matrixy
 
 =head2 INTRODUCTION
