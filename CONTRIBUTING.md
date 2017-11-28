@@ -23,6 +23,10 @@ Anything else - [search open issues](https://github.com/github/markup/issues) or
 5. Open a [Pull Request][1]
 6. Enjoy a refreshing Diet Coke and wait
 
+**dependencies**
+
+You can run `script/bootstrap.contrib` to fetch them all.
+
 ## Testing
 
 To run the tests:
