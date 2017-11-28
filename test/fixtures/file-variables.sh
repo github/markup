@@ -1,5 +1,6 @@
 #!/bin/bash
 
+t=1
 ./lib/github/commands/pod2html <( cat - <<EOF
 =pod
 
@@ -11,7 +12,8 @@ Test
 
 # -*- mode: perl; -*-
 EOF
-) | grep -q '<h1 id="NAME">' || { echo "not ok 1"; exit 1; } && { echo "ok 1"; }
+) | grep -q '<h1 id="NAME">' || { echo "not ok $t"; exit 1; } && { echo "ok $t"; }
+let t=($t + 1)
 
 ./lib/github/commands/pod2html <( cat - <<EOF
 #!/usr/bin/perl
@@ -25,4 +27,5 @@ Test
 
 =cut
 EOF
-) | grep -q '<h1 id="NAME">' || { echo "not ok 2"; exit 1; } && { echo "ok 2"; }
+) | grep -q '<h1 id="NAME">' || { echo "not ok $t"; exit 1; } && { echo "ok $t"; }
+let t=($t + 1)

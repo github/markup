@@ -51,4 +51,4 @@ command(
   "restructuredtext"
 )
 
-command(::GitHub::Markups::MARKUP_POD, :pod2html, /pod/, ["Pod"], "pod")
+command(::GitHub::Markups::MARKUP_POD, :pod2html, /pod/, ["Pod", "Perl"], "pod")
