@@ -40,10 +40,11 @@ module GitHub
       end
     end
 
-    def render(filename, content = nil)
+    def render(filename, content = nil, symlink = nil)
       content ||= File.read(filename)
+      symlink = (File.symlink?(filename) rescue false) if symlink.nil?
 
-      if impl = renderer(filename, content)
+      if impl = renderer(filename, content, symlink)
         impl.render(filename, content)
       else
         content
@@ -79,20 +80,20 @@ module GitHub
       markup_impl(symbol, CommandImplementation.new(regexp, languages, command, name, &block))
     end
 
-    def can_render?(filename, content)
-      !!renderer(filename, content)
+    def can_render?(filename, content, symlink = false)
+      !!renderer(filename, content, symlink)
     end
 
-    def renderer(filename, content)
-      language = language(filename, content)
+    def renderer(filename, content, symlink = false)
+      language = language(filename, content, symlink)
       markup_impls.find { |impl|
         impl.match?(filename, language)
       }
     end
 
-    def language(filename, content)
+    def language(filename, content, symlink = false)
       if defined?(::Linguist)
-        blob = Linguist::Blob.new(filename, content)
+        blob = Linguist::Blob.new(filename, content, symlink: symlink)
         return Linguist.detect(blob, allow_empty: true)
       end
     end

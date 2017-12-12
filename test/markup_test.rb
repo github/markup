@@ -104,7 +104,7 @@ message
     GitHub::Markup.command(:doesntmatter, 'test/fixtures/fail.sh', /fail/, ['Java'], 'fail')
     assert GitHub::Markup.can_render?('README.java', 'stop swallowing errors')
     begin
-      GitHub::Markup.render('README.java', "stop swallowing errors")
+      GitHub::Markup.render('README.java', "stop swallowing errors", false)
     rescue GitHub::Markup::CommandError => e
       assert_equal "failure message", e.message
     else
