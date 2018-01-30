@@ -1,3 +1,10 @@
+## 1.7.0 - 2018-01-30
+
+### Changed
+
+* Updates for Linguist v6 [#1139](https://github.com/github/markup/pull/1139)
+* Update to Nokogiri ~> 1.8; drop support for Ruby 2.0 [#1156](https://github.com/github/markup/pull/1156)
+
 ## 1.6.2 - 2017-11-27
 
 ### Changed
