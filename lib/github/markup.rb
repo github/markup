@@ -40,10 +40,7 @@ module GitHub
       end
     end
 
-    def render(filename, content = nil, symlink = nil)
-      content ||= File.read(filename)
-      symlink = (File.symlink?(filename) rescue false) if symlink.nil?
-
+    def render(filename, content, symlink = false)
       if impl = renderer(filename, content, symlink)
         impl.render(filename, content)
       else
