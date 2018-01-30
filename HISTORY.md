@@ -1,3 +1,7 @@
+## 2.0.0 - 2018-01-31
+
+* Remove filesystem access [#1157](https://github.com/github/markup/pull/1157)
+
 ## 1.7.0 - 2018-01-30
 
 ### Changed
