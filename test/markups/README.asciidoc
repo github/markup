@@ -5,10 +5,21 @@
 * One
 * Two
 
-== Second Section
+Refer to <<another-section>> or <<another-section-1>>.
+
+Navigate from {docname}{outfilesuffix} to <<another-document#,another document>>.
+
+== Another Section
 
 NOTE: Here is some source code.
 
 ```ruby
 puts "Hello, World!"
 ```
+
+* [ ] todo
+* [x] done
+
+== Another Section
+
+content
