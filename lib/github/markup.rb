@@ -74,7 +74,6 @@ module GitHub
       if File.exist?(file = File.dirname(__FILE__) + "/commands/#{command}")
         command = file
       end
-
       markup_impl(symbol, CommandImplementation.new(regexp, languages, command, name, &block))
     end
 

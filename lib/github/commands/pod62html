@@ -1,5 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env perl6
 
-echo "Processing "
-echo "$1"
-perl6 --doc=HTML "$1"
+use v6;
+
+use Pod::To::HTML;
+put Pod::To::HTML.render(slurp);
