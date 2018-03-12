@@ -38,6 +38,14 @@ Installation
 gem install github-markup
 ```
 
+or
+
+```
+bundle install
+```
+
+from this directory
+
 Usage
 -----
 

@@ -1,0 +1,3 @@
+#!/bin/bash
+
+perl6 --doc=HTML "$1"
