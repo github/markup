@@ -16,7 +16,7 @@ git:
 before_install:
   - sudo apt-get update -qq
   - sudo apt-get install perl
-  - wget -O /tmp/perl6.deb https://nxadm.github.io/rakudo-pkg/latest-release.html?os=ubuntu&version=14.04&arch=amd64   && sudo dpkg -i /tmp/perl6.deb && install-zef-as-user && zef install Pod::To::HTML
+  - wget -O /tmp/perl6.deb https://github.com/nxadm/rakudo-pkg/releases/download/v2018.02.1/rakudo-pkg-Ubuntu14.04_2018.02.1-01_amd64.deb  && sudo dpkg -i /tmp/perl6.deb && install-zef-as-user && zef install Pod::To::HTML
   - curl -L http://cpanmin.us | perl - --sudo App::cpanminus
   - sudo cpanm --installdeps --notest Pod::Simple
   - sudo pip install docutils
