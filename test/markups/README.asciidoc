@@ -5,10 +5,19 @@
 * One
 * Two
 
-== Second Section
+Refer to <<another-section>> or <<another-section-1>>.
+
+== Another Section
 
 NOTE: Here is some source code.
 
 ```ruby
 puts "Hello, World!"
 ```
+
+* [ ] todo
+* [x] done
+
+== Another Section
+
+content
