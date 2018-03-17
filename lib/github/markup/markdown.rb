@@ -4,6 +4,9 @@ module GitHub
   module Markup
     class Markdown < Implementation
       MARKDOWN_GEMS = {
+        "commonmarker" => proc { |content|
+          CommonMarker.render_html(content, :GITHUB_PRE_LANG, [:tagfilter, :autolink, :table, :strikethrough])
+        },
         "github/markdown" => proc { |content|
           GitHub::Markdown.render(content)
         },
@@ -25,7 +28,9 @@ module GitHub
       }
 
       def initialize
-        super(/md|rmd|mkdn?|mdwn|mdown|markdown|litcoffee/i)
+        super(
+          /md|rmd|mkdn?|mdwn|mdown|markdown|litcoffee/i,
+          ["Markdown", "RMarkdown", "Literate CoffeeScript"])
       end
 
       def load
@@ -39,7 +44,7 @@ module GitHub
         raise LoadError, "no suitable markdown gem found"
       end
 
-      def render(content)
+      def render(filename, content)
         load
         @renderer.call(content)
       end

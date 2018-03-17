@@ -6,10 +6,10 @@ module GitHub
   module Markup
     class RDoc < Implementation
       def initialize
-        super /rdoc/
+        super(/rdoc/, ["RDoc"])
       end
 
-      def render(content)
+      def render(filename, content)
         if ::RDoc::VERSION.to_i >= 4
           h = ::RDoc::Markup::ToHtml.new(::RDoc::Options.new)
         else

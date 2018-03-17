@@ -7,6 +7,8 @@
 
 Refer to <<another-section>> or <<another-section-1>>.
 
+Navigate from {docname}{outfilesuffix} to <<another-document#,another document>>.
+
 == Another Section
 
 NOTE: Here is some source code.
