@@ -8,6 +8,7 @@
 <li><a href="#field-list">Field list</a></li>
 </ul>
 </div>
+<a name="header-2"></a>
 <h2><a href="#id1">Header 2</a></h2>
 <ol>
 <li>Blah blah <code>code</code> blah</li>
@@ -15,6 +16,16 @@
 <li>Somé UTF-8°</li>
 </ol>
 <p>The UTF-8 quote character in this table used to cause python to go boom. Now docutils just silently ignores it.</p>
+<pre>
+A block of code
+</pre>
+<pre lang="python">
+python.code('hooray')
+</pre>
+<pre lang="python">
+&gt;&gt;&gt; some_function()
+'result'
+</pre>
 <table>
 
 
@@ -46,6 +57,7 @@
 <a href="https://scan.coverity.com/projects/621"><img alt="Coverity Scan Build Status" src="https://scan.coverity.com/projects/621/badge.svg">
 </a>
 <img alt="Coverity Scan Build Status" src="https://scan.coverity.com/projects/621/badge.svg">
+<a name="field-list"></a>
 <h2><a href="#id2">Field list</a></h2>
 <table frame="void" rules="none">
 
@@ -71,3 +83,33 @@ but no problem!</td>
 </tr>
 </tbody>
 </table>
+
+<p><a href="mailto:someone@somewhere.org">someone@somewhere.org</a></p>
+
+<p>Press <kbd>Ctrl+C</kbd> to quit</p>
+
+<p><strong>RAW HTML!</strong></p> p {color:blue;}
+
+<h2><a href="#id3">First</a></h2>
+<ol>
+<li>foo (should be 1.)</li>
+<li>bar (should be 2.)</li>
+</ol>
+<a name="second"></a>
+<h2><a href="#id4">Second</a></h2>
+<ol class="loweralpha">
+<li>foo (should be a.)</li>
+<li>bar (should be b.)</li>
+</ol>
+<a name="third"></a>
+<h2><a href="#id5">Third</a></h2>
+<ol class="loweralpha">
+<li>foo (should be (a))</li>
+<li>bar (should be (b))</li>
+</ol>
+<a name="forth"></a>
+<h2><a href="#id6">Forth</a></h2>
+<ol class="loweralpha">
+<li>foo (should be a))</li>
+<li>bar (should be b))</li>
+</ol>

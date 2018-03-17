@@ -21,6 +21,10 @@ module GitHub
         load
         renderer.call(content)
       end
+
+      def name
+        gem_name
+      end
     end
   end
 end
