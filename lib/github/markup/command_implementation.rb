@@ -6,6 +6,7 @@ end
 
 require "github/markup/implementation"
 
+
 module GitHub
   module Markup
     class CommandError < RuntimeError
@@ -14,14 +15,14 @@ module GitHub
     class CommandImplementation < Implementation
       attr_reader :command, :block, :name
 
-      def initialize(regexp, command, name, &block)
-        super regexp
+      def initialize(regexp, languages, command, name, &block)
+        super(regexp, languages)
         @command = command.to_s
         @block = block
         @name = name
       end
 
-      def render(content)
+      def render(filename, content)
         rendered = execute(command, content)
         rendered = rendered.to_s.empty? ? content : rendered
         call_block(rendered, content)
