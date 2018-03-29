@@ -52,3 +52,4 @@ command(
 )
 
 command(::GitHub::Markups::MARKUP_POD, :pod2html, /pod/, ["Pod"], "pod")
+command(::GitHub::Markups::MARKUP_POD6, :pod62html, /pod6/, ["Pod6"], "pod6")

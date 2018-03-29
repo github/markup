@@ -16,6 +16,7 @@ module GitHub
     MARKUP_MEDIAWIKI = :mediawiki
     MARKUP_ORG = :org
     MARKUP_POD = :pod
+    MARKUP_POD6 = :pod6
     MARKUP_RDOC = :rdoc
     MARKUP_RST = :rst
     MARKUP_TEXTILE = :textile
