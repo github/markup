@@ -1,0 +1,13 @@
+#!/usr/bin/env perl6
+
+use v6.c;
+
+use Pod::To::HTML;
+
+sub MAIN()
+{
+  Pod::To::HTML.render(
+    $*IN.slurp,
+    default-title => 'Readme',
+  ).say;
+}
