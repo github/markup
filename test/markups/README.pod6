@@ -1,0 +1,27 @@
+=begin pod
+
+=TITLE Document Title
+
+=comment This is a comment
+
+=head1 First Section
+
+=item One
+=item Two
+
+Refer to L<Another section|#Another_Section>.
+
+=head1 Another Section
+
+NOTE: Here is some source code.
+
+    MAIN() {
+      say "Hello GitHub!"
+    }
+
+=item ☐ todo
+=item ☑ done
+
+content
+
+=end pod
