@@ -19,6 +19,7 @@ module GitHub
     MARKUP_RDOC = :rdoc
     MARKUP_RST = :rst
     MARKUP_TEXTILE = :textile
+    MARKUP_MANPAGE = :manpage
   end
 
   module Markup
