@@ -1,3 +1,3 @@
 #!/bin/sh
 what=${1:--}
-cat "$what" | mandoc -Kutf-8 -Thtml | xmlstarlet tr $(dirname "$0")/man2html.xslt
+cat "$what" | mandoc -Kutf-8 -Thtml | xmlstarlet tr $(dirname "$0")/man2html.xslt | sed 's/<\/\?html>//g' | sed 's/<\/\?body>//g'
