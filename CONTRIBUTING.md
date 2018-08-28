@@ -2,9 +2,9 @@
 
 Contributions to this project are [released](https://help.github.com/articles/github-terms-of-service/#6-contributions-under-repository-license) to the public under the [project's open source license](LICENSE).
 
-This project adheres to the [Open Code of Conduct][code-of-conduct]. By participating, you are expected to honor this code.
+This project adheres to a [Code of Conduct][code-of-conduct]. By participating, you are expected to honor this code.
 
-[code-of-conduct]: http://todogroup.org/opencodeofconduct/#GitHub%20Markup/opensource@github.com
+[code-of-conduct]: CODE_OF_CONDUCT.md
 
 This library's only job is to decide which markup format to use and call out to an external library to convert the markup to HTML (see the [README](README.md) for more information on how markup is rendered on GitHub.com).
 
