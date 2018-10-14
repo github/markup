@@ -1,4 +1,4 @@
-# encoding: UTF-8
+# encoding: utf-8
 
 $LOAD_PATH.unshift File.dirname(__FILE__) + "/../lib"
 
@@ -78,8 +78,6 @@ message
   def test_knows_what_it_can_and_cannot_render
     assert_equal false, GitHub::Markup.can_render?('README.html', '<h1>Title</h1>')
     assert_equal true, GitHub::Markup.can_render?('README.markdown', '=== Title')
-    assert_equal true, GitHub::Markup.can_render?('README.rmd', '=== Title')
-    assert_equal true, GitHub::Markup.can_render?('README.Rmd', '=== Title')
     assert_equal false, GitHub::Markup.can_render?('README.cmd', 'echo 1')
     assert_equal true, GitHub::Markup.can_render?('README.litcoffee', 'Title')
   end
