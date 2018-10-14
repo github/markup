@@ -1,3 +1,7 @@
+## 2.0.2 - 2018-10-15
+
+* Don't render rmd files as Markdown [#1235](https://github.com/github/markup/pull/1235)
+
 ## 2.0.1 - 2018-06-29
 
 * Create anchor for every =item directive in POD files [#1165](https://github.com/github/markup/pull/1165)
