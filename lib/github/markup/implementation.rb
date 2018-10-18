@@ -16,7 +16,7 @@ module GitHub
         # no-op by default
       end
 
-      def render(filename, content)
+      def render(filename, content, options: {})
         raise NotImplementedError, "subclasses of GitHub::Markup::Implementation must define #render"
       end
 

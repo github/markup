@@ -9,7 +9,7 @@ module GitHub
         super(/rdoc/, ["RDoc"])
       end
 
-      def render(filename, content)
+      def render(filename, content, options: {})
         if ::RDoc::VERSION.to_i >= 4
           h = ::RDoc::Markup::ToHtml.new(::RDoc::Options.new)
         else
