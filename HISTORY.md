@@ -1,3 +1,8 @@
+## 3.0.0 - 2018-10-18
+
+* Allow passing options through to CommonMarker [#1236](https://github.com/github/markup/pull/1236)
+* Symlink option is now a keyword arg [#1236](https://github.com/github/markup/pull/1236)
+
 ## 2.0.2 - 2018-10-15
 
 * Don't render rmd files as Markdown [#1235](https://github.com/github/markup/pull/1235)
