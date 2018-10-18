@@ -12,14 +12,14 @@ module GitHub
       end
 
       def load
-        return if @loaded
+        return if defined?(@loaded) && @loaded
         require gem_name
         @loaded = true
       end
 
-      def render(filename, content)
+      def render(filename, content, options: {})
         load
-        renderer.call(filename, content)
+        renderer.call(filename, content, options: options)
       end
 
       def name
