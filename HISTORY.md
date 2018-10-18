@@ -1,3 +1,7 @@
+## 3.0.1 - 2018-10-19
+
+* Remove linguist-detected RMarkdown files from the Markdown renderer [#1237](https://github.com/github/markup/pull/1237)
+
 ## 3.0.0 - 2018-10-18
 
 * Allow passing options through to CommonMarker [#1236](https://github.com/github/markup/pull/1236)
