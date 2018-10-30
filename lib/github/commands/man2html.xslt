@@ -1,57 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <!-- Default: match anything and apply templates to it -->
+  <xsl:template match="node()|@*">
+    <xsl:copy>
+        <xsl:apply-templates select="node()|@*"/>
+    </xsl:copy>
+  </xsl:template>
 
-    <xsl:template match="head">
-    </xsl:template>
+  <!-- Turn these into breaks -->
+  <xsl:template match="div[@class='Pp']">
+    <br/><br/>
+  </xsl:template>
 
-    <xsl:template match="table[@class='head']">
-        <header>
-            <xsl:apply-templates select="tr/td|text()" />
-        </header>
-    </xsl:template>
+  <!-- Headers don't need to be linking to themselves -->
+  <xsl:template match="a[@class='permalink']">
+    <xsl:copy-of select="text()"></xsl:copy-of>
+  </xsl:template>
 
-    <xsl:template match="td[@class='head-ltitle']">
-	<p align="center"><b><xsl:copy-of select="text()"></xsl:copy-of></b></p>
-    </xsl:template>
-    <xsl:template match="td[@class='head-vol']">
-      <xsl:if test="string-length(.)>0">
-	<p align="center"><xsl:copy-of select="text()"></xsl:copy-of></p>
-      </xsl:if>
-    </xsl:template>
-    <xsl:template match="td[@class='head-rtitle']">
-    </xsl:template>
+  <!-- The rest is ported styles from mandoc default CSS -->
+  <xsl:template match="table[@class='head']|table[@class='foot']">
+    <xsl:copy>
+      <xsl:attribute name="style">width: 100%;</xsl:attribute>
+      <xsl:apply-templates />
+    </xsl:copy>
+  </xsl:template>
 
-    <xsl:template match="table[@class='foot']">
-<hr />
-      <footer>
-        <xsl:apply-templates select="tr/td|text()" />
-      </footer>
-    </xsl:template>
+  <xsl:template match="td[@class='head-rtitle']|td[@class='foot-os']">
+    <xsl:copy>
+      <xsl:attribute name="style">text-align: right;</xsl:attribute>
+      <xsl:apply-templates />
+    </xsl:copy>
+  </xsl:template>
 
-    <xsl:template match="td[@class='foot-date']">
-		<p>Date: <xsl:copy-of select="text()"></xsl:copy-of></p>
-    </xsl:template>
-    <xsl:template match="td[@class='foot-os']">
-		<p>OS: <xsl:copy-of select="text()"></xsl:copy-of></p>
-    </xsl:template>
+  <xsl:template match="td[@class='head-vol']">
+    <xsl:copy>
+      <xsl:attribute name="style">text-align: center;</xsl:attribute>
+      <xsl:apply-templates />
+    </xsl:copy>
+  </xsl:template>
 
-    <xsl:template match="h1[@class='Sh']/a[@class='selflink']">
-        <xsl:copy-of select="text()"></xsl:copy-of>
-    </xsl:template>
+  <xsl:template match="div[@class='Nd']|div[@class='Bf']|div[@class='Op']">
+    <xsl:copy>
+      <xsl:attribute name="style">display: inline;</xsl:attribute>
+      <xsl:apply-templates />
+    </xsl:copy>
+  </xsl:template>
 
-<!-- //
-    <xsl:template match="h1">
-        <h2><xsl:value-of select="."/></h2>
-    </xsl:template>
-// -->
+  <xsl:template match="span[@class='Pa']|span[@class='Ad']">
+    <xsl:copy>
+      <xsl:attribute name="style">font-style: italic;</xsl:attribute>
+      <xsl:apply-templates />
+    </xsl:copy>
+  </xsl:template>
 
-    <xsl:template match="node()|@*">
-        <xsl:copy>
-            <xsl:apply-templates select="node()|@*"/>
-        </xsl:copy>
-    </xsl:template>
+  <xsl:template match="span[@class='Ms']|dl[@class='BL-diag']/dt">
+    <xsl:copy>
+      <xsl:attribute name="style">font-weight: bold;</xsl:attribute>
+      <xsl:apply-templates />
+    </xsl:copy>
+  </xsl:template>
 
-<!-- //
-    </xsl:template>
-// -->
+  <xsl:template match="code[@class='Nm']|code[@class='Fl']|code[@class='Cm']|code[@class='Ic']|code[@class='In']|code[@class='Fd']|code[@class='Fn']|code[@class='Cd']">
+    <xsl:copy>
+      <xsl:attribute name="style">font-weight: bold; font-family: inherit;</xsl:attribute>
+      <xsl:apply-templates />
+    </xsl:copy>
+  </xsl:template>
 </xsl:stylesheet>

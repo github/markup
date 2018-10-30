@@ -74,7 +74,7 @@ class MarkupTest < Minitest::Test
 message
     end
   end
-  
+
   def test_knows_what_it_can_and_cannot_render
     assert_equal false, GitHub::Markup.can_render?('README.html', '<h1>Title</h1>')
     assert_equal true, GitHub::Markup.can_render?('README.markdown', '=== Title')
@@ -92,8 +92,9 @@ message
     assert_equal "asciidoctor", GitHub::Markup.renderer('README.adoc', '== Title').name
     assert_equal "restructuredtext", GitHub::Markup.renderer('README.rst', 'Title').name
     assert_equal "pod", GitHub::Markup.renderer('README.pod', '=begin').name
+    assert_equal "manpage", GitHub::Markup.renderer('README.mdoc', '.Dd $Mdocdate: March 23 1981 $').name
   end
-  
+
   def test_rendering_by_symbol
     assert_equal '<p><code>test</code></p>', GitHub::Markup.render_s(GitHub::Markups::MARKUP_MARKDOWN, '`test`').strip
   end
