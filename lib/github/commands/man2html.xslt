@@ -7,9 +7,19 @@
     </xsl:copy>
   </xsl:template>
 
-  <!-- Turn these into breaks -->
+  <!-- Strip all the attributes off of these -->
+  <xsl:template match="h1">
+    <h1><xsl:apply-templates /></h1>
+  </xsl:template>
+
+  <!-- Turn these into paragraphs -->
   <xsl:template match="div[@class='Pp']">
-    <br/><br/>
+    <p><xsl:apply-templates /></p>
+  </xsl:template>
+
+  <!-- Indent these -->
+  <xsl:template match="div[@class='Bd-indent' or @class='Bd Bd-indent']">
+    <ul><xsl:apply-templates /></ul>
   </xsl:template>
 
   <!-- Headers don't need to be linking to themselves -->
@@ -17,34 +27,62 @@
     <xsl:apply-templates />
   </xsl:template>
 
-  <!-- Remove the header table -->
-  <xsl:template match="table[@class='head']" />
+  <!-- Pull the manual-text div out -->
+  <xsl:template match="div[@class='manual-text']">
+    <xsl:apply-templates />
+  </xsl:template>
 
   <!-- These were display: inline, so just give the content -->
-  <xsl:template match="div[@class='Nd']|div[@class='Bf']|div[@class='Op']">
+  <xsl:template match="div[@class='Nd' or @class='Bf' or @class='Op']">
     <xsl:apply-templates />
   </xsl:template>
 
   <!-- These were display: italic -->
-  <xsl:template match="span[@class='Pa']|span[@class='Ad']">
+  <xsl:template match="span[@class='Pa' or @class='Ad']">
     <em><xsl:apply-templates /></em>
   </xsl:template>
 
   <!-- These were font-weight: bold -->
-  <xsl:template match="span[@class='Ms']|dl[@class='BL-diag']/dt">
-    <strong><xsl:apply-templates /></strong>
+  <xsl:template match="span[@class='Ms']">
+    <b><xsl:apply-templates /></b>
   </xsl:template>
 
-  <!-- These were font-weight: bold -->
-  <xsl:template match="code[@class='Nm']|code[@class='Fl']|code[@class='Cm']|code[@class='Ic']|code[@class='In']|code[@class='Fd']|code[@class='Fn']|code[@class='Cd']">
-    <strong><tt><xsl:apply-templates /></tt></strong>
+  <xsl:template match="dl[@class='BL-diag']/dt">
+    <b><xsl:apply-templates /></b>
   </xsl:template>
 
+  <xsl:template match="code[@class='Nm' or @class='Fl' or @class='Cm' or @class='Ic' or @class='In' or @class='Fd' or @class='Fn' or @class='Cd']">
+    <b><code><xsl:apply-templates /></code></b>
+  </xsl:template>
+
+  <!-- Remove header table -->
+  <xsl:template match="table[@class='head']"/>
+
+  <!-- Reformat footer table and pull some header stuff into it -->
   <xsl:template match="table[@class='foot']">
-    <xsl:apply-templates select="tr/td[@class='foot-date']" />
+    <hr/>
+    <table>
+      <xsl:apply-templates select="//td[text() and text() != '()' and @class='head-ltitle']"/>
+      <xsl:apply-templates select="//td[text() and text() != '()' and @class='head-vol']"/>
+      <xsl:apply-templates select="//td[text() and text() != '()' and @class='foot-os']"/>
+      <xsl:apply-templates select="//td[text() and text() != '()' and @class='foot-date']"/>
+    </table>
+  </xsl:template>
+
+  <!-- Turn head header/footer cells into rows -->
+  <xsl:template match="td[@class='head-ltitle']">
+    <tr><td><em>Title:</em></td><td><xsl:apply-templates /></td></tr>
+  </xsl:template>
+
+  <xsl:template match="td[@class='head-vol']">
+    <tr><td><em>Volume:</em></td><td><xsl:apply-templates /></td></tr>
   </xsl:template>
 
   <xsl:template match="td[@class='foot-date']">
-    <p><strong>Date:<xsl:copy-of select="text()" /></strong></p>
+    <tr><td><em>Date:</em></td><td><xsl:apply-templates /></td></tr>
+  </xsl:template>
+
+  <xsl:template match="td[@class='foot-os']">
+    <tr><td><em>Manual:</em></td><td><xsl:apply-templates /></td></tr>
   </xsl:template>
 </xsl:stylesheet>
