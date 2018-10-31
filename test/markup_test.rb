@@ -92,7 +92,7 @@ message
     assert_equal "asciidoctor", GitHub::Markup.renderer('README.adoc', '== Title').name
     assert_equal "restructuredtext", GitHub::Markup.renderer('README.rst', 'Title').name
     assert_equal "pod", GitHub::Markup.renderer('README.pod', '=begin').name
-    assert_equal "manpage", GitHub::Markup.renderer('README.mdoc', '.Dd $Mdocdate: March 23 1981 $').name
+    assert_equal "manpage", GitHub::Markup.renderer('README.man', '.Dd $Mdocdate: March 23 1981 $').name
   end
 
   def test_rendering_by_symbol
