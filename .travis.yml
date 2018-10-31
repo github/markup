@@ -14,8 +14,9 @@ notifications:
 git:
   depth: 10
 before_install:
+  - sudo add-apt-repository ppa:jordemort/mandoc -y
   - sudo apt-get update -qq
-  - sudo apt-get install perl
+  - sudo apt-get install mandoc perl xmlstarlet
   - curl -L http://cpanmin.us | perl - --sudo App::cpanminus
   - sudo cpanm --installdeps --notest Pod::Simple
   - sudo pip install docutils
