@@ -14,56 +14,37 @@
 
   <!-- Headers don't need to be linking to themselves -->
   <xsl:template match="a[@class='permalink']">
-    <xsl:copy-of select="text()"></xsl:copy-of>
+    <xsl:apply-templates />
   </xsl:template>
 
-  <!-- The rest is ported styles from mandoc default CSS -->
-  <xsl:template match="table[@class='head']|table[@class='foot']">
-    <xsl:copy>
-      <xsl:attribute name="style">width: 100%;</xsl:attribute>
-      <xsl:apply-templates />
-    </xsl:copy>
-  </xsl:template>
+  <!-- Remove the header table -->
+  <xsl:template match="table[@class='head']" />
 
-  <xsl:template match="td[@class='head-rtitle']|td[@class='foot-os']">
-    <xsl:copy>
-      <xsl:attribute name="style">text-align: right;</xsl:attribute>
-      <xsl:apply-templates />
-    </xsl:copy>
-  </xsl:template>
-
-  <xsl:template match="td[@class='head-vol']">
-    <xsl:copy>
-      <xsl:attribute name="style">text-align: center;</xsl:attribute>
-      <xsl:apply-templates />
-    </xsl:copy>
-  </xsl:template>
-
+  <!-- These were display: inline, so just give the content -->
   <xsl:template match="div[@class='Nd']|div[@class='Bf']|div[@class='Op']">
-    <xsl:copy>
-      <xsl:attribute name="style">display: inline;</xsl:attribute>
-      <xsl:apply-templates />
-    </xsl:copy>
+    <xsl:apply-templates />
   </xsl:template>
 
+  <!-- These were display: italic -->
   <xsl:template match="span[@class='Pa']|span[@class='Ad']">
-    <xsl:copy>
-      <xsl:attribute name="style">font-style: italic;</xsl:attribute>
-      <xsl:apply-templates />
-    </xsl:copy>
+    <em><xsl:apply-templates /></em>
   </xsl:template>
 
+  <!-- These were font-weight: bold -->
   <xsl:template match="span[@class='Ms']|dl[@class='BL-diag']/dt">
-    <xsl:copy>
-      <xsl:attribute name="style">font-weight: bold;</xsl:attribute>
-      <xsl:apply-templates />
-    </xsl:copy>
+    <strong><xsl:apply-templates /></strong>
   </xsl:template>
 
+  <!-- These were font-weight: bold -->
   <xsl:template match="code[@class='Nm']|code[@class='Fl']|code[@class='Cm']|code[@class='Ic']|code[@class='In']|code[@class='Fd']|code[@class='Fn']|code[@class='Cd']">
-    <xsl:copy>
-      <xsl:attribute name="style">font-weight: bold; font-family: inherit;</xsl:attribute>
-      <xsl:apply-templates />
-    </xsl:copy>
+    <strong><tt><xsl:apply-templates /></tt></strong>
+  </xsl:template>
+
+  <xsl:template match="table[@class='foot']">
+    <xsl:apply-templates select="tr/td[@class='foot-date']" />
+  </xsl:template>
+
+  <xsl:template match="td[@class='foot-date']">
+    <p><strong>Date:<xsl:copy-of select="text()" /></strong></p>
   </xsl:template>
 </xsl:stylesheet>
