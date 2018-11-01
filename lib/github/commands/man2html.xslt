@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <!-- //
+    Based on the HTML output and default stylesheet of mandoc 1.14.4
+    YMMV with other versions of mandoc
+  // -->
+
   <!-- Default: match anything and apply templates to it -->
   <xsl:template match="node()|@*">
     <xsl:copy>
