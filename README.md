@@ -30,7 +30,7 @@ you wish to run the library. You can also run `script/bootstrap` to fetch them a
 * [.pod](http://search.cpan.org/dist/perl/pod/perlpod.pod) -- `Pod::Simple::XHTML`
   comes with Perl >= 5.10. Lower versions should install Pod::Simple from CPAN.
 * [.pod6](https://docs.perl6.org/language/pod) -- No additional
-  dependency. 
+  dependency beyond perl6 `Pod::To::HTML` (in stdlib)
 
 Installation
 -----------
