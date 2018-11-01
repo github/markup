@@ -29,7 +29,7 @@ you wish to run the library. You can also run `script/bootstrap` to fetch them a
 * [.asciidoc, .adoc, .asc](http://asciidoc.org/) -- `gem install asciidoctor` (http://asciidoctor.org)
 * [.pod](http://search.cpan.org/dist/perl/pod/perlpod.pod) -- `Pod::Simple::XHTML`
   comes with Perl >= 5.10. Lower versions should install Pod::Simple from CPAN.
-
+* [.mdoc](http://mandoc.bsd.lv/man/mdoc.7.html), [.man](http://mandoc.bsd.lv/man/man.7.html) -- `apt-get` or `brew install mandoc xmlstarlet` (http://mandoc.bsd.lv/ http://xmlstar.sourceforge.net/)
 
 Installation
 -----------
