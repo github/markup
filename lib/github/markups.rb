@@ -53,4 +53,4 @@ command(
 
 command(::GitHub::Markups::MARKUP_POD, :pod2html, /pod/, ["Pod"], "pod")
 
-command(::GitHub::Markups::MARKUP_MANPAGE, :man2html, /(?:[1-9][a-z]*|0p|n|man|mdoc)(?:\.in)?/, ["Roff"], "manpage")
+command(::GitHub::Markups::MARKUP_MANPAGE, :man2html, /(?:[1-9](?![0-9])[a-z_0-9]*|0p|n|man|mdoc)(?:\.in)?/, ["Roff"], "manpage")
