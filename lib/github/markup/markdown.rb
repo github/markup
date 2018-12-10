@@ -4,33 +4,34 @@ module GitHub
   module Markup
     class Markdown < Implementation
       MARKDOWN_GEMS = {
-        "commonmarker" => proc { |content|
-          CommonMarker.render_html(content, :GITHUB_PRE_LANG, [:tagfilter, :autolink, :table, :strikethrough])
+        "commonmarker" => proc { |content, options: {}|
+          commonmarker_opts = [:GITHUB_PRE_LANG].concat(options.fetch(:commonmarker_opts, []))
+          CommonMarker.render_html(content, commonmarker_opts, [:tagfilter, :autolink, :table, :strikethrough])
         },
-        "github/markdown" => proc { |content|
+        "github/markdown" => proc { |content, options: {}|
           GitHub::Markdown.render(content)
         },
-        "redcarpet" => proc { |content|
+        "redcarpet" => proc { |content, options: {}|
           Redcarpet::Markdown.new(Redcarpet::Render::HTML).render(content)
         },
-        "rdiscount" => proc { |content|
+        "rdiscount" => proc { |content, options: {}|
           RDiscount.new(content).to_html
         },
-        "maruku" => proc { |content|
+        "maruku" => proc { |content, options: {}|
           Maruku.new(content).to_html
         },
-        "kramdown" => proc { |content|
+        "kramdown" => proc { |content, options: {}|
           Kramdown::Document.new(content).to_html
         },
-        "bluecloth" => proc { |content|
+        "bluecloth" => proc { |content, options: {}|
           BlueCloth.new(content).to_html
         },
       }
 
       def initialize
         super(
-          /md|rmd|mkdn?|mdwn|mdown|markdown|litcoffee/i,
-          ["Markdown", "RMarkdown", "Literate CoffeeScript"])
+          /md|mkdn?|mdwn|mdown|markdown|litcoffee/i,
+          ["Markdown", "Literate CoffeeScript"])
       end
 
       def load
@@ -44,9 +45,9 @@ module GitHub
         raise LoadError, "no suitable markdown gem found"
       end
 
-      def render(filename, content)
+      def render(filename, content, options: {})
         load
-        @renderer.call(content)
+        @renderer.call(content, options: options)
       end
 
       def name

@@ -1,3 +1,20 @@
+## 3.0.1 - 2018-10-19
+
+* Remove linguist-detected RMarkdown files from the Markdown renderer [#1237](https://github.com/github/markup/pull/1237)
+
+## 3.0.0 - 2018-10-18
+
+* Allow passing options through to CommonMarker [#1236](https://github.com/github/markup/pull/1236)
+* Symlink option is now a keyword arg [#1236](https://github.com/github/markup/pull/1236)
+
+## 2.0.2 - 2018-10-15
+
+* Don't render rmd files as Markdown [#1235](https://github.com/github/markup/pull/1235)
+
+## 2.0.1 - 2018-06-29
+
+* Create anchor for every =item directive in POD files [#1165](https://github.com/github/markup/pull/1165)
+
 ## 2.0.0 - 2018-01-31
 
 * Remove filesystem access [#1157](https://github.com/github/markup/pull/1157)

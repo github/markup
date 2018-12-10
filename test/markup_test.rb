@@ -76,8 +76,6 @@ message
   def test_knows_what_it_can_and_cannot_render
     assert_equal false, GitHub::Markup.can_render?('README.html', '<h1>Title</h1>')
     assert_equal true, GitHub::Markup.can_render?('README.markdown', '=== Title')
-    assert_equal true, GitHub::Markup.can_render?('README.rmd', '=== Title')
-    assert_equal true, GitHub::Markup.can_render?('README.Rmd', '=== Title')
     assert_equal false, GitHub::Markup.can_render?('README.cmd', 'echo 1')
     assert_equal true, GitHub::Markup.can_render?('README.litcoffee', 'Title')
   end
@@ -102,7 +100,7 @@ message
     GitHub::Markup.command(:doesntmatter, 'test/fixtures/fail.sh', /fail/, ['Java'], 'fail')
     assert GitHub::Markup.can_render?('README.java', 'stop swallowing errors')
     begin
-      GitHub::Markup.render('README.java', "stop swallowing errors", false)
+      GitHub::Markup.render('README.java', "stop swallowing errors", symlink: false)
     rescue GitHub::Markup::CommandError => e
       assert_equal "failure message", e.message
     else
@@ -113,5 +111,10 @@ message
   def test_preserve_markup
     content = "Noël"
     assert_equal content.encoding.name, GitHub::Markup.render('Foo.rst', content).encoding.name
+  end
+
+  def test_commonmarker_options
+    assert_equal "<p>hello <!-- raw HTML omitted --> world</p>\n", GitHub::Markup.render("test.md", "hello <bad> world")
+    assert_equal "<p>hello <bad> world</p>\n", GitHub::Markup.render("test.md", "hello <bad> world", options: {commonmarker_opts: [:UNSAFE]})
   end
 end
