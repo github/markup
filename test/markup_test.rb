@@ -90,6 +90,7 @@ message
     assert_equal "asciidoctor", GitHub::Markup.renderer('README.adoc', '== Title').name
     assert_equal "restructuredtext", GitHub::Markup.renderer('README.rst', 'Title').name
     assert_equal "pod", GitHub::Markup.renderer('README.pod', '=head1').name
+    assert_equal "pod6", GitHub::Markup.renderer('README.pod6', '=begin pod').name
   end
   
   def test_rendering_by_symbol

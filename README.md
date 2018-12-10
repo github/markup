@@ -45,7 +45,7 @@ or
 bundle install
 ```
 
-from this directory
+from this directory.
 
 Usage
 -----

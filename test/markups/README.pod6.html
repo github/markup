@@ -1,35 +1,28 @@
 
-  About the Docs
-  
-  
-    /* code gets the browser-default font
-     * kbd gets a slightly less common monospace font
-     * samp gets the hard pixelly fonts
-     */
-    kbd { font-family: "Droid Sans Mono", "Luxi Mono", "Inconsolata", monospace }
-    samp { font-family: "Terminus", "Courier", "Lucida Console", monospace }
-    /* WHATWG HTML frowns on the use of &lt;u&gt; because it looks like a link,
-     * so we make it not look like one.
-     */
-    u { text-decoration: none }
-    .nested {
-        margin-left: 3em;
-    }
-    // footnote things:
-    aside, u { opacity: 0.7 }
-    a[id^="fn-"]:target { background: #ff0 }
-  
-  
-  
-  
 
-
-<div></div>
-
-
-<h1>About the Docs</h1>
-<p>Meta-documentation</p>
- 
+    
+        About the Docs
+        
+        
+        kbd { font-family: "Droid Sans Mono", "Luxi Mono", "Inconsolata", monospace }
+        samp { font-family: "Terminus", "Courier", "Lucida Console", monospace }
+        u { text-decoration: none }
+        .nested {
+            margin-left: 3em;
+        }
+        aside, u { opacity: 0.7 }
+        a[id^="fn-"]:target { background: #ff0 }
+        
+        
+        
+        
+    
+    
+    <div></div>
+    
+    <h1>About the Docs</h1>
+    <p>Meta-documentation</p>
+     
 <table>
 <h2>Table of Contents</h2>
             <tr>
@@ -52,24 +45,24 @@
 </table>
  
 
-<div>
-<p>This document collection represents the on-going effort to document the Perl 6 programming language with the goals of being: comprehensive; easy to use; easy to navigate; and useful to both newcomers and experienced Perl 6 programmers.</p>
+    <div>
+    <p>This document collection represents the on-going effort to document the Perl 6 programming language with the goals of being: comprehensive; easy to use; easy to navigate; and useful to both newcomers and experienced Perl 6 programmers.</p>
 <p>An HTML version of the documentation is located online at <a href="https://docs.perl6.org">https://docs.perl6.org</a>.</p>
 <p>The official source for this documentation is located at <a href="https://github.com/perl6/doc">perl6/doc on GitHub</a>.</p>
-<p>This particular document is a quick overview of the process described in more detail in <a href="https://github.com/perl6/doc/blob/master/CONTRIBUTING.md">CONTRIBUTING on GitHub</a>. This document also provides a short introduction to writing Perl 6 Pod files, which can be rendered into HTML and other formats.</p>
+<p>This particular document is a quick overview of the process described in more detail in <a href="https://github.com/perl6/doc/blob/master/CONTRIBUTING.md">CONTRIBUTING on GitHub</a>. This document also provides a short introduction to writing Perl 6 Pod files, which can be rendered into HTML and other formats.</p>
 <h1><a href="#___top" title="go to top of document">Structure</a></h1>
-<p>All of the documentation is written in Perl 6 Pod and kept in the <code>doc/</code> directory, and the <code>doc/Language/</code> and <code>doc/Type/</code> sub-directories. These files are processed as collections of definitions or "documentables", which are then post-processed and linked together.</p>
+<p>All of the documentation is written in Perl 6 Pod and kept in the <code>doc/</code> directory, and the <code>doc/Language/</code> and <code>doc/Type/</code> sub-directories. These files are processed as collections of definitions or "documentables", which are then post-processed and linked together.</p>
 <h1><a href="#___top" title="go to top of document">Generating HTML from Pod</a></h1>
 <p>To generate HTML from the Pod files, you'll need:</p>
 <ul>
 <li>
-<p>A recent version of the Rakudo Perl 6 compiler</p>
+<p>A recent version of the Rakudo Perl 6 compiler</p>
 </li>
 <li>
-<p>The Perl 6 modules Pod::To::HTML, Pod::To::BigPage, and URI::Escape (can be installed via <a href="https://github.com/ugexe/zef">zef</a>).</p>
+<p>The Perl 6 modules Pod::To::HTML, Pod::To::BigPage, and URI::Escape (can be installed via <a href="https://github.com/ugexe/zef">zef</a>).</p>
 </li>
 <li>
-<p><strong>Optional</strong>: <a href="http://graphviz.org">GraphViz</a>, for creating graphs of the relationships between Perl 6 types</p>
+<p><strong>Optional</strong>: <a href="http://graphviz.org">GraphViz</a>, for creating graphs of the relationships between Perl 6 types</p>
 </li>
 <li>
 <p><strong>Optional</strong>: <a href="https://github.com/atom/highlights">Atom Highlights</a> and <a href="https://atom.io/packages/language-perl6">language-perl6</a>, for syntax highlighting</p>
@@ -78,13 +71,13 @@
 <p>To generate the documentation into the <code>html/</code> folder, run:</p>
 <pre>perl6 htmlify.p6
 </pre>
-<p>To host the documentation from a web server, have Perl 5 and Mojolicious::Lite installed, then run:</p>
+<p>To host the documentation from a web server, have Perl 5 and Mojolicious::Lite installed, then run:</p>
 <pre>perl app.pl daemon
 </pre>
 <h1><a href="#___top" title="go to top of document">Contributing</a></h1>
-<p>The documentation is written in Perl 6 Pod.</p>
-<p>For a quick introduction to Perl 6 Pod, see <a href="https://docs.perl6.org/language/pod">Perl 6 Pod</a>.</p>
-<p>For full details about the Perl 6 Pod specification, see <a href="https://design.perl6.org/S26.html">Synopsis 26, Documentation</a>.</p>
+<p>The documentation is written in Perl 6 Pod.</p>
+<p>For a quick introduction to Perl 6 Pod, see <a href="https://docs.perl6.org/language/pod">Perl 6 Pod</a>.</p>
+<p>For full details about the Perl 6 Pod specification, see <a href="https://design.perl6.org/S26.html">Synopsis 26, Documentation</a>.</p>
 <h2><a href="#___top" title="go to top of document">Adding definitions</a></h2>
 <p>Documentables can be defined using an <code>=headN</code> Pod directive, where <code>N</code> is greater than zero (e.g., <code>=head1</code>, <code>=head2</code>, …).</p>
 <p>All of the paragraphs and blocks following that directive, up until the next directive of the same level, will be considered part of the documentable. So, in:</p>
@@ -155,4 +148,7 @@ is always considered a definition)
 </ul>
 <p>Notice that text after a pipe ('|') has no formatting. Also note that <strong> C&lt;&gt; </strong> preserves spaces and treats text as verbatim.</p>
 
-</div>
+    </div>
+    
+    
+    
