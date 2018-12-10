@@ -3,4 +3,8 @@
 use v6;
 
 use Pod::To::HTML;
-put Pod::To::HTML.render(slurp);
+
+$_ = Pod::To::HTML.render(slurp);
+s:s{\<\!doctype html\>.*\<div id\=\"___top\"\>\<\/div\>\s*} = "";
+s:s{\s*\<\/div\>\s*\<\/body\>\s*\<\/html\>\s*} = "";
+.put;
