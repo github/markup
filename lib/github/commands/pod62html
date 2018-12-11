@@ -1,7 +1,7 @@
 #!/usr/bin/env perl6
 
 use v6;
-
+use lib $*PROGRAM.IO.parent.add: '../../../vendor/Pod-To-HTML';
 use Pod::To::HTML;
 
 $_ = Pod::To::HTML.render(slurp);
