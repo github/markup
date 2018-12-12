@@ -1,3 +1,7 @@
+## 3.0.2 - 2018-12-12
+
+* Add support for POD6 [#1173](https://github.com/github/markup/pull/1173)
+
 ## 3.0.1 - 2018-10-19
 
 * Remove linguist-detected RMarkdown files from the Markdown renderer [#1237](https://github.com/github/markup/pull/1237)
