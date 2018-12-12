@@ -19,6 +19,7 @@ module GitHub
     MARKUP_RDOC = :rdoc
     MARKUP_RST = :rst
     MARKUP_TEXTILE = :textile
+    MARKUP_POD6 = :pod6
   end
 
   module Markup

@@ -12,6 +12,7 @@ Gem::Specification.new do |s|
   s.license       = "MIT"
 
   s.files         = `git ls-files`.split($\)
+  s.files        += Dir['vendor/Pod-To-HTML/**/*']
   s.executables   = s.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
   s.test_files    = s.files.grep(%r{^(test|spec|features)/})
   s.require_paths = %w[lib]
@@ -23,5 +24,5 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'sanitize', '~> 2.1', '>= 2.1.0'
   s.add_development_dependency 'nokogiri', '~> 1.8.1'
   s.add_development_dependency 'nokogiri-diff', '~> 0.2.0'
-  s.add_development_dependency "github-linguist", "~> 6.0"
+  s.add_development_dependency "github-linguist", ">= 7.1.3"
 end

@@ -14,8 +14,11 @@ notifications:
 git:
   depth: 10
 before_install:
+  - sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 379CE192D401AB61
+  - echo "deb https://dl.bintray.com/nxadm/rakudo-pkg-debs `lsb_release -cs` main" | sudo tee -a /etc/apt/sources.list.d/rakudo-pkg.list
   - sudo apt-get update -qq
-  - sudo apt-get install perl
+  - sudo apt-get install perl rakudo-pkg
+  - export PATH=$PATH:/.perl6/bin:/opt/rakudo-pkg/bin && install-zef-as-user && zef install Pod::To::HTML
   - curl -L http://cpanmin.us | perl - --sudo App::cpanminus
   - sudo cpanm --installdeps --notest Pod::Simple
   - sudo pip install docutils

@@ -1,0 +1,151 @@
+=begin pod 
+
+=TITLE About the Docs
+
+=SUBTITLE Meta-documentation
+
+This document collection represents the on-going effort to document the Perl 6 programming
+language with the goals of being: comprehensive; easy to use; easy to
+navigate; and useful to both newcomers and experienced Perl 6
+programmers.
+
+An HTML version of the documentation is located online at
+L<https://docs.perl6.org>.
+
+The official source for this documentation is located at L<perl6/doc on
+GitHub|https://github.com/perl6/doc>.
+
+This particular document is a quick overview of the process
+described in more detail in L<CONTRIBUTING on GitHub|https://github.com/perl6/doc/blob/master/CONTRIBUTING.md>.
+This document also provides a short introduction to writing Perl 6
+Pod files, which can be rendered into HTML and other formats.
+
+=head1 Structure
+
+All of the documentation is written in Perl 6 Pod and kept in the C<doc/>
+directory, and the C<doc/Language/> and C<doc/Type/> sub-directories.
+These files are processed as collections of definitions or
+"documentables", which are then post-processed and linked together.
+
+=head1 Generating HTML from Pod
+
+To generate HTML from the Pod files, you'll need:
+
+=item A recent version of the Rakudo Perl 6 compiler
+
+=item The Perl 6 modules Pod::To::HTML, Pod::To::BigPage, and URI::Escape
+(can be installed via L<zef|https://github.com/ugexe/zef>).
+
+=item B<Optional>: L<GraphViz|http://graphviz.org>, for creating graphs
+of the relationships between Perl 6 types
+
+=item B<Optional>: L<Atom Highlights|https://github.com/atom/highlights> and L<language-perl6|https://atom.io/packages/language-perl6>, for syntax
+highlighting
+
+To generate the documentation into the C<html/> folder, run:
+
+=begin code :lang<shell>
+perl6 htmlify.p6
+=end code
+
+To host the documentation from a web server, have Perl 5
+and Mojolicious::Lite installed, then run:
+
+=begin code :lang<shell>
+perl app.pl daemon
+=end code
+
+=head1 Contributing
+
+The documentation is written in Perl 6 Pod.
+
+For a quick introduction to Perl 6 Pod, see L<Perl 6 Pod|https://docs.perl6.org/language/pod>.
+
+For full details about the Perl 6 Pod specification, see L<Synopsis 26, Documentation|https://design.perl6.org/S26.html>.
+
+=head2 Adding definitions
+
+Documentables can be defined using an C<=headN> Pod directive, where
+C<N> is greater than zero (e.g., C<=head1>, C<=head2>, …).
+
+All of the paragraphs and blocks following that directive, up until the
+next directive of the same level, will be considered part of the
+documentable. So, in:
+
+=begin code :allow<R> :skip-test
+=head2 R<My Definition>
+
+Some paragraphs, followed by some code:
+
+    my Code $examples = "amazing";
+
+Mind === blown.
+
+=head3 Minor details about R<My Definition>
+
+It's fantastic.
+
+=head2 And now, for something completely different
+
+…
+
+=end code
+
+The documentable R<My Definition> extends down to the C<=head2 And now…>.
+
+Documentables may contain other documentables. Class documentables, for
+example, often contain the methods the class implements.
+
+Definitions must be in one of the following forms to be recognized as
+the start of a documentable named, say, þ.  First the code in the document source:
+
+=begin code :skip-test
+
+=item X<C<How to use the þ infix> | infix,þ> (This a special case, which
+is always considered a definition)
+
+=item C<The þ Infix>
+
+=item B<The C<þ> Infix>
+
+=item C<Infix þ>
+
+=item B<Infix C<þ>>
+
+=item C<trait is cached> (A special case for the L<trait|/language/functions#Traits> documentables)
+
+=end code
+
+Then the results on the rendered page:
+
+=item X<C<How to use the þ infix> | infix,þ> (This is a special case, which
+is always considered a definition)
+
+=item C<The þ Infix>
+
+=item B<The C<þ> Infix>
+
+=item C<Infix þ>
+
+=item B<Infix C<þ>>
+
+=item C<trait is cached> (A special case for the L<trait|/language/functions#Traits> documentables)
+
+These items should now be searchable by using the search field in the HTML docs.
+
+You can add emphasis with bold (B<V< B<> >>) or italicized (B<V< I<> >>),
+with or without code formatting (B<V< C<> >>).  Due to current parser limitations,
+special steps have to be taken to use B<V< X<> >> with other formatting codes; for example:
+
+=begin code :skip-test
+=item X<B<foo>|foo> a fancy subroutine
+=end code
+
+renders like this
+
+=item X<B<foo>|foo> a fancy subroutine
+
+Notice that text after a pipe ('|') has no formatting. Also note that B<V< C<> >>
+preserves spaces and treats text as verbatim.
+=end pod
+
