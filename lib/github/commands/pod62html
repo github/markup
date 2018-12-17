@@ -5,6 +5,7 @@ use v6;
 use lib $*PROGRAM.IO.parent.add: '../../../vendor/p6-pod-load';
 use lib $*PROGRAM.IO.parent.add: '../../../vendor/Pod-To-HTML';
 use lib $*PROGRAM.IO.parent.add: '../../../vendor/uri';
+use lib $*PROGRAM.IO.parent.add: '../../../vendor/p6-Template-Mustache';
 
 use Pod::Load;
 use Pod::To::HTML;

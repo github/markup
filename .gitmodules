@@ -7,3 +7,6 @@
 [submodule "vendor/uri"]
 	path = vendor/uri
 	url = https://github.com/perl6-community-modules/uri
+[submodule "vendor/p6-Template-Mustache"]
+	path = vendor/p6-Template-Mustache
+	url = https://github.com/softmoth/p6-Template-Mustache
