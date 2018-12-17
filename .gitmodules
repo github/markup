@@ -4,3 +4,6 @@
 [submodule "vendor/p6-pod-load"]
 	path = vendor/p6-pod-load
 	url = https://github.com/JJ/p6-pod-load
+[submodule "vendor/uri"]
+	path = vendor/uri
+	url = https://github.com/perl6-community-modules/uri
