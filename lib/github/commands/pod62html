@@ -1,11 +1,15 @@
 #!/usr/bin/env perl6
 
 use v6;
+
+use lib $*PROGRAM.IO.parent.add: '../../../vendor/p6-pod-load';
+use Pod::Load;
+
 use lib $*PROGRAM.IO.parent.add: '../../../vendor/Pod-To-HTML';
 use Pod::To::HTML;
 
-$_ = Pod::To::HTML.render(slurp);
+$_ = Pod::To::HTML.render(load(slurp));
 s:s{'<!doctype html>' .* '<div id="___top"></div>' \s*} = "";
 s:s{\s* '</div>' \s* '</body>' \s* '</html>' \s*} = "";
-s:s{'<div class="pod-body' <-[>]>* '>'} = "";
+s:s{'<div class="pod-body' <-[>]>* '>' \s*} = "";
 .put;

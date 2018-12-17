@@ -1,3 +1,6 @@
 [submodule "vendor/Pod-To-HTML"]
 	path = vendor/Pod-To-HTML
 	url = https://github.com/perl6/Pod-To-HTML
+[submodule "vendor/p6-pod-load"]
+	path = vendor/p6-pod-load
+	url = https://github.com/JJ/p6-pod-load
