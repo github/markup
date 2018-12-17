@@ -1,3 +1,7 @@
+## 3.0.3 - 2018-12-17
+
+* Temporarily remove support for POD6 [#1248](https://github.com/github/markup/pull/1248)
+
 ## 3.0.2 - 2018-12-12
 
 * Add support for POD6 [#1173](https://github.com/github/markup/pull/1173)
