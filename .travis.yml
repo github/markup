@@ -6,9 +6,6 @@ rvm:
   - 2.2.7
   - 2.3.4
   - 2.4.1
-  - jruby-9.1.9.0
-jdk:
-  - oraclejdk8
 notifications:
   email: false
 git:
@@ -28,6 +25,3 @@ cache:
 env:
   global:
     - "JRUBY_OPTS=-Xcext.enabled=true"
-matrix:
- allow_failures:
-   - rvm: jruby-9.1.9.0
