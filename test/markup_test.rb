@@ -72,7 +72,7 @@ class MarkupTest < Minitest::Test
 message
     end
   end
-  
+
   def test_knows_what_it_can_and_cannot_render
     assert_equal false, GitHub::Markup.can_render?('README.html', '<h1>Title</h1>')
     assert_equal true, GitHub::Markup.can_render?('README.markdown', '=== Title')
@@ -92,7 +92,7 @@ message
     assert_equal "pod", GitHub::Markup.renderer('README.pod', '=head1').name
     assert_equal "pod6", GitHub::Markup.renderer('README.pod6', '=begin pod').name
   end
-  
+
   def test_rendering_by_symbol
     assert_equal '<p><code>test</code></p>', GitHub::Markup.render_s(GitHub::Markups::MARKUP_MARKDOWN, '`test`').strip
   end
@@ -117,5 +117,8 @@ message
   def test_commonmarker_options
     assert_equal "<p>hello <!-- raw HTML omitted --> world</p>\n", GitHub::Markup.render("test.md", "hello <bad> world")
     assert_equal "<p>hello <bad> world</p>\n", GitHub::Markup.render("test.md", "hello <bad> world", options: {commonmarker_opts: [:UNSAFE]})
+
+    assert_equal "<p>hello <!-- raw HTML omitted --> world</p>\n", GitHub::Markup.render_s(GitHub::Markups::MARKUP_MARKDOWN, "hello <bad> world")
+    assert_equal "<p>hello <bad> world</p>\n", GitHub::Markup.render_s(GitHub::Markups::MARKUP_MARKDOWN, "hello <bad> world", options: {commonmarker_opts: [:UNSAFE]})
   end
 end
