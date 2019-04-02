@@ -1,3 +1,8 @@
+## 3.0.4 - 2019-04-03
+
+* Expose options in #render_s [#1249](https://github.com/github/markup/pull/1249)
+* Upgrade to Asciidoctor 2.0.x [#1264](https://github.com/github/markup/pull/1264)
+
 ## 3.0.3 - 2018-12-17
 
 * Temporarily remove support for POD6 [#1248](https://github.com/github/markup/pull/1248)
