@@ -32,6 +32,7 @@ markup(::GitHub::Markups::MARKUP_ASCIIDOC, :asciidoctor, /adoc|asc(iidoc)?/, ["A
     'showtitle' => '@',
     'idprefix' => '',
     'idseparator' => '-',
+    'sectanchors' => nil,
     'docname' => File.basename(filename, (extname = File.extname(filename))),
     'docfilesuffix' => extname,
     'outfilesuffix' => extname,
