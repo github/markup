@@ -6,7 +6,8 @@ module GitHub
       MARKDOWN_GEMS = {
         "commonmarker" => proc { |content, options: {}|
           commonmarker_opts = [:GITHUB_PRE_LANG].concat(options.fetch(:commonmarker_opts, []))
-          CommonMarker.render_html(content, commonmarker_opts, [:tagfilter, :autolink, :table, :strikethrough])
+          commonmarker_exts = options.fetch(:commonmarker_exts, [:tagfilter, :autolink, :table, :strikethrough])
+          CommonMarker.render_html(content, commonmarker_opts, commonmarker_exts)
         },
         "github/markdown" => proc { |content, options: {}|
           GitHub::Markdown.render(content)
