@@ -121,7 +121,10 @@ message
     assert_equal "<p>hello <!-- raw HTML omitted --> world</p>\n", GitHub::Markup.render_s(GitHub::Markups::MARKUP_MARKDOWN, "hello <bad> world")
     assert_equal "<p>hello <bad> world</p>\n", GitHub::Markup.render_s(GitHub::Markups::MARKUP_MARKDOWN, "hello <bad> world", options: {commonmarker_opts: [:UNSAFE]})
 
-    assert_equal "&lt;style>.red{color: #ff2727;}&lt;/style>\n", GitHub::Markup.render("test.md", "<style>.red{color: #ff2727;}</style>", options: {commonmarker_opts: [:UNSAFE]})
-    assert_equal "<style>.red{color: #ff2727;}</style>\n", GitHub::Markup.render_s(GitHub::Markups::MARKUP_MARKDOWN, "<style>.red{color: #ff2727;}</style>", options: {commonmarker_opts: [:UNSAFE], commonmarker_exts: [:autolink, :table, :strikethrough]})
+    assert_equal "&lt;style>.red{color: red;}&lt;/style>\n", GitHub::Markup.render("test.md", "<style>.red{color: red;}</style>", options: {commonmarker_opts: [:UNSAFE]})
+    assert_equal "<style>.red{color: red;}</style>\n", GitHub::Markup.render("test.md", "<style>.red{color: red;}</style>", options: {commonmarker_opts: [:UNSAFE], commonmarker_exts: [:autolink, :table, :strikethrough]})
+
+    assert_equal "&lt;style>.red{color: red;}&lt;/style>\n", GitHub::Markup.render_s(GitHub::Markups::MARKUP_MARKDOWN, "<style>.red{color: red;}</style>", options: {commonmarker_opts: [:UNSAFE]})
+    assert_equal "<style>.red{color: red;}</style>\n", GitHub::Markup.render_s(GitHub::Markups::MARKUP_MARKDOWN, "<style>.red{color: red;}</style>", options: {commonmarker_opts: [:UNSAFE], commonmarker_exts: [:autolink, :table, :strikethrough]})
   end
 end
