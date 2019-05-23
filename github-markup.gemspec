@@ -4,8 +4,10 @@ Gem::Specification.new do |s|
   s.name          = "github-markup"
   s.version       = GitHub::Markup::VERSION
   s.summary       = "The code GitHub uses to render README.markup"
-  s.description   = "This gem is used by GitHub to render any fancy markup such " +
-                    "as Markdown, Textile, Org-Mode, etc. Fork it and add your own!"
+  s.description   = <<~DESC
+    This gem is used by GitHub to render any fancy markup such as Markdown,
+    Textile, Org-Mode, etc. Fork it and add your own!
+  DESC
   s.authors       = ["Chris Wanstrath"]
   s.email         = "chris@ozmm.org"
   s.homepage      = "https://github.com/github/markup"
