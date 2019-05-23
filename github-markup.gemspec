@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.summary       = "The code GitHub uses to render README.markup"
   s.description   = <<~DESC
     This gem is used by GitHub to render any fancy markup such as Markdown,
-    Textile,Org-Mode, etc. Fork it and add your own!
+    Textile, Org-Mode, etc. Fork it and add your own!
   DESC
   s.authors       = ["Chris Wanstrath"]
   s.email         = "chris@ozmm.org"
