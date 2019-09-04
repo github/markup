@@ -33,13 +33,16 @@ markup(::GitHub::Markups::MARKUP_ASCIIDOC, :asciidoctor, /adoc|asc(iidoc)?/, ["A
     'idprefix' => '',
     'idseparator' => '-',
     'sectanchors' => nil,
-    'docname' => File.basename(filename, (extname = File.extname(filename))),
-    'docfilesuffix' => extname,
-    'outfilesuffix' => extname,
     'env' => 'github',
     'env-github' => '',
     'source-highlighter' => 'html-pipeline'
   }
+  if filename
+    attributes['docname']       = File.basename(filename, (extname = File.extname(filename)))
+    attributes['docfilesuffix'] = attributes['outfilesuffix'] = extname
+  else
+    attributes['outfilesuffix'] = '.adoc'
+  end
   Asciidoctor::Compliance.unique_id_start_index = 1
   Asciidoctor.convert(content, :safe => :secure, :attributes => attributes)
 end
