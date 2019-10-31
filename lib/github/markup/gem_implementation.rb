@@ -5,21 +5,25 @@ module GitHub
     class GemImplementation < Implementation
       attr_reader :gem_name, :renderer
 
-      def initialize(regexp, gem_name, &renderer)
-        super regexp
+      def initialize(regexp, languages, gem_name, &renderer)
+        super(regexp, languages)
         @gem_name = gem_name.to_s
         @renderer = renderer
       end
 
       def load
-        return if @loaded
+        return if defined?(@loaded) && @loaded
         require gem_name
         @loaded = true
       end
 
-      def render(content)
+      def render(filename, content, options: {})
         load
-        renderer.call(content)
+        renderer.call(filename, content, options: options)
+      end
+
+      def name
+        gem_name
       end
     end
   end

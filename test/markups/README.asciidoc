@@ -1,14 +1,27 @@
 = Document Title
+// sectanchors will be ignored
+:sectanchors:
 
 == First Section
 
 * One
 * Two
 
-== Second Section
+Refer to <<another-section>> or <<another-section-1>>.
+
+Navigate from {docname}{outfilesuffix} to xref:another-document.asciidoc[another document].
+
+== Another Section
 
 NOTE: Here is some source code.
 
 ```ruby
 puts "Hello, World!"
 ```
+
+* [ ] todo
+* [x] done
+
+== Another Section
+
+content

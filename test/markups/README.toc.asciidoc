@@ -1,0 +1,15 @@
+= Document Title
+:toc:
+:toc-title: Contents
+
+== Section A
+
+=== Subsection A-1
+
+=== Subsection A-2
+
+== Section B
+
+=== Subsection B-1
+
+=== Subsection B-2
