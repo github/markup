@@ -4,4 +4,7 @@ pkg/
 Gemfile.lock
 .project
 .buildpath
-*~ 
+*~
+.python-version
+.ruby-version
+vendor
