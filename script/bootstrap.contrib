@@ -5,8 +5,8 @@ set -e
 cd $(dirname "$0")/..
 
 bundle install --path vendor/bundle
-virtualenv vendor/python && source vendor/python/bin/activate
-pip install docutils
+python2 -m virtualenv vendor/python && source vendor/python/bin/activate
+python2 -m pip install docutils
 
 echo ""
 echo "*** DONE ***"
