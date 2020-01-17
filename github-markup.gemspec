@@ -22,7 +22,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'rake', '~> 12'
   s.add_development_dependency 'activesupport', '~> 4.0'
   s.add_development_dependency 'minitest', '~> 5.4', '>= 5.4.3'
-  s.add_development_dependency 'html-pipeline', '~> 1.0'
+  s.add_development_dependency 'html-pipeline', '~> 2.12'
   s.add_development_dependency 'sanitize', '>= 4.6.3'
   s.add_development_dependency 'nokogiri', '~> 1.8.1'
   s.add_development_dependency 'nokogiri-diff', '~> 0.2.0'
