@@ -16,6 +16,12 @@ before_install:
   - sudo apt-get update -qq
   - sudo apt-get install perl rakudo-pkg
   - export PATH=$PATH:/.perl6/bin:/opt/rakudo-pkg/bin
+  - export NVM_DIR=/usr/local/nvm
+  - export NODE_VERSION=12.16.1
+  - sudo mkdir -p $NVM_DIR
+  - sudo curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.1/install.sh | bash
+  - export PATH=$NVM_DIR/versions/node/v$NODE_VERSION/bin:$PATH
+  - sudo npm install -g pod6@0.0.20
   - curl -L http://cpanmin.us | perl - --sudo App::cpanminus
   - sudo cpanm --installdeps --notest Pod::Simple
   - sudo pip install docutils
