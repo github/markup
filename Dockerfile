@@ -10,7 +10,24 @@ RUN apt-get update -qq
 RUN apt-get install -y \
     perl rakudo-pkg curl git build-essential python python-pip \
     libssl-dev libreadline-dev zlib1g-dev \
-    libicu-dev cmake pkg-config
+    libicu-dev cmake3 pkg-config
+
+
+#####################################
+# npm, nvm & yarn:
+#####################################
+
+# nvm environment variables
+ENV NVM_DIR /usr/local/nvm
+# latest LTS version
+ENV NODE_VERSION 12.16.1
+# node
+RUN mkdir -p $NVM_DIR
+RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.1/install.sh | bash
+
+ENV PATH $NVM_DIR/versions/node/v$NODE_VERSION/bin:$PATH
+RUN npm install -g pod6@0.0.20
+
 
 ENV PATH $PATH:/opt/rakudo-pkg/bin
 RUN install-zef-as-user && zef install Pod::To::HTML
