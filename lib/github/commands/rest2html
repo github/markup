@@ -223,8 +223,8 @@ class GitHubHTMLTranslator(HTMLTranslator):
                     else:
                         atts[attribute] = value
 
-            # Inside references, SVG images must not add a newline,
-            # the default suffix for starttag method (see https://git.io/JJsh3)
+            # inside references, SVG images must not add a newline,
+            # the default suffix for starttag method
             if node.parent.tagname == "reference":
                 atts["suffix"] = ""
 
