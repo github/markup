@@ -22,7 +22,7 @@ before_install:
   - sudo mkdir -p $NVM_DIR
   - curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.1/install.sh | sudo bash
   - export PATH=$NVM_DIR/versions/node/v$NODE_VERSION/bin:$PATH
-  - sudo env PATH=$NVM_DIR/versions/node/v$NODE_VERSION/bin:$PATH npm install -g pod6@0.0.20
+  - sudo env PATH=$NVM_DIR/versions/node/v$NODE_VERSION/bin:$PATH npm install -g pod6@0.0.24
   - curl -L http://cpanmin.us | perl - --sudo App::cpanminus
   - sudo cpanm --installdeps --notest Pod::Simple
   - sudo pip install docutils

@@ -26,7 +26,7 @@ RUN mkdir -p $NVM_DIR
 RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.1/install.sh | bash
 
 ENV PATH $NVM_DIR/versions/node/v$NODE_VERSION/bin:$PATH
-RUN npm install -g pod6@0.0.20
+RUN npm install -g pod6@0.0.24
 
 
 ENV PATH $PATH:/opt/rakudo-pkg/bin
