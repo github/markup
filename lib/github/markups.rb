@@ -49,7 +49,7 @@ end
 
 command(
   ::GitHub::Markups::MARKUP_RST,
-  "python2 -S #{Shellwords.escape(File.dirname(__FILE__))}/commands/rest2html",
+  "python -S #{Shellwords.escape(File.dirname(__FILE__))}/commands/rest2html",
   /re?st(\.txt)?/,
   ["reStructuredText"],
   "restructuredtext"
