@@ -45,7 +45,7 @@ bundle install
 
 from this directory.
 
-# Usage
+## Usage
 --------
 
 Basic form:
