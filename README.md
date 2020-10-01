@@ -1,5 +1,5 @@
 ## GitHub Markup
-=============
+----------------
 
 This library is the **first step** of a journey that every markup file in a repository goes on before it is rendered on GitHub.com:
 
@@ -14,7 +14,7 @@ Please note that **only the first step** is covered by this gem — the rest hap
 Please see our [contributing guidelines](CONTRIBUTING.md) before reporting an issue.
 
 ## Markups
--------
+----------------
 
 The following markups are supported.  The dependencies listed are required if
 you wish to run the library. You can also run `script/bootstrap` to fetch them all.
