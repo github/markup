@@ -14,7 +14,7 @@ Please note that **only the first step** is covered by this gem — the rest hap
 Please see our [contributing guidelines](CONTRIBUTING.md) before reporting an issue.
 
 ## Markups
-----------------
+----------
 
 The following markups are supported.  The dependencies listed are required if
 you wish to run the library. You can also run `script/bootstrap` to fetch them all.
@@ -31,7 +31,7 @@ you wish to run the library. You can also run `script/bootstrap` to fetch them a
   comes with Perl >= 5.10. Lower versions should install Pod::Simple from CPAN.
 
 ## Installation
------------
+---------------
 
 ```
 gem install github-markup
@@ -45,8 +45,8 @@ bundle install
 
 from this directory.
 
-## Usage
------
+# Usage
+--------
 
 Basic form:
 
