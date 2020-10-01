@@ -1,4 +1,4 @@
-GitHub Markup
+## GitHub Markup
 =============
 
 This library is the **first step** of a journey that every markup file in a repository goes on before it is rendered on GitHub.com:
@@ -13,7 +13,7 @@ Please note that **only the first step** is covered by this gem — the rest hap
 
 Please see our [contributing guidelines](CONTRIBUTING.md) before reporting an issue.
 
-Markups
+## Markups
 -------
 
 The following markups are supported.  The dependencies listed are required if
@@ -30,7 +30,7 @@ you wish to run the library. You can also run `script/bootstrap` to fetch them a
 * [.pod](http://search.cpan.org/dist/perl/pod/perlpod.pod) -- `Pod::Simple::XHTML`
   comes with Perl >= 5.10. Lower versions should install Pod::Simple from CPAN.
 
-Installation
+## Installation
 -----------
 
 ```
@@ -45,7 +45,7 @@ bundle install
 
 from this directory.
 
-Usage
+## Usage
 -----
 
 Basic form:
@@ -73,7 +73,7 @@ GitHub::Markup.render_s(GitHub::Markups::MARKUP_MARKDOWN, "* One\n* Two")
 ```
 
 
-Contributing
+## Contributing
 ------------
 
 See [Contributing](CONTRIBUTING.md).
