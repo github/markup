@@ -32,13 +32,17 @@ markup(::GitHub::Markups::MARKUP_ASCIIDOC, :asciidoctor, /adoc|asc(iidoc)?/, ["A
     'showtitle' => '@',
     'idprefix' => '',
     'idseparator' => '-',
-    'docname' => File.basename(filename, (extname = File.extname(filename))),
-    'docfilesuffix' => extname,
-    'outfilesuffix' => extname,
+    'sectanchors' => nil,
     'env' => 'github',
     'env-github' => '',
     'source-highlighter' => 'html-pipeline'
   }
+  if filename
+    attributes['docname']       = File.basename(filename, (extname = File.extname(filename)))
+    attributes['docfilesuffix'] = attributes['outfilesuffix'] = extname
+  else
+    attributes['outfilesuffix'] = '.adoc'
+  end
   Asciidoctor::Compliance.unique_id_start_index = 1
   Asciidoctor.convert(content, :safe => :secure, :attributes => attributes)
 end
@@ -51,6 +55,7 @@ command(
   "restructuredtext"
 )
 
+command(::GitHub::Markups::MARKUP_POD6, :pod62html, /pod6/, ["Pod 6"], "pod6")
 command(::GitHub::Markups::MARKUP_POD, :pod2html, /pod/, ["Pod"], "pod")
 
 command(::GitHub::Markups::MARKUP_MANPAGE, :man2html, /(?:[1-9](?![0-9])[a-z_0-9]*|0p|n|man|mdoc)(?:\.in)?/, ["Roff"], "manpage")

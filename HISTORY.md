@@ -1,3 +1,16 @@
+## 3.0.4 - 2019-04-03
+
+* Expose options in #render_s [#1249](https://github.com/github/markup/pull/1249)
+* Upgrade to Asciidoctor 2.0.x [#1264](https://github.com/github/markup/pull/1264)
+
+## 3.0.3 - 2018-12-17
+
+* Temporarily remove support for POD6 [#1248](https://github.com/github/markup/pull/1248)
+
+## 3.0.2 - 2018-12-12
+
+* Add support for POD6 [#1173](https://github.com/github/markup/pull/1173)
+
 ## 3.0.1 - 2018-10-19
 
 * Remove linguist-detected RMarkdown files from the Markdown renderer [#1237](https://github.com/github/markup/pull/1237)

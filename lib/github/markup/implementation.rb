@@ -8,7 +8,11 @@ module GitHub
         @regexp = regexp
 
         if defined?(::Linguist)
-          @languages = languages.map {|l| Linguist::Language[l]}
+          @languages = languages.map do |l|
+            lang = Linguist::Language[l]
+            raise "no match for language #{l.inspect}" if lang.nil?
+            lang
+          end
         end
       end
 
