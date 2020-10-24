@@ -66,10 +66,10 @@ class MarkupTest < Minitest::Test
         f.close_write
         f.read
       end
-      assert_html_equal expected, actual, <<message
-#{File.basename expected_file}'s contents are not html equal to output:
-#{diff}
-message
+      assert_html_equal expected, actual, <<~message
+        #{File.basename expected_file}'s contents are not html equal to output:
+        #{diff}
+        message
     end
   end
 
