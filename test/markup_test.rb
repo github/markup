@@ -89,7 +89,6 @@ class MarkupTest < Minitest::Test
     assert_equal "wikicloth", GitHub::Markup.renderer('README.wiki', '<h1>Title</h1>').name
     assert_equal "asciidoctor", GitHub::Markup.renderer('README.adoc', '== Title').name
     assert_equal "restructuredtext", GitHub::Markup.renderer('README.rst', 'Title').name
-    assert_equal "manpage", GitHub::Markup.renderer('README.man', '.Dd $Mdocdate: March 23 1981 $').name
     assert_equal "pod", GitHub::Markup.renderer('README.pod', '=head1').name
     assert_equal "pod6", GitHub::Markup.renderer('README.pod6', '=begin pod').name
   end
