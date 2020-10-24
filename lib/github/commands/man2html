@@ -1,16 +1,11 @@
 #!/usr/bin/env bash
 set -e
 
-# write the input to a tempfile first so we can look at it
-TEMPFILE="$(mktemp)"
-# shellcheck disable=SC2064
-trap "rm -f $TEMPFILE" EXIT
-cat "$@" > "$TEMPFILE"
-
-# bail out if ths doesn't look like roff
-grep -q '^[\.'\''][ \t]*[A-Za-z]\{2\}' "$TEMPFILE"
-
 # process it, and print everything from the first <h1> to </body>
-mandoc -Thtml -Ofragment "$TEMPFILE" \
- | xmlstarlet tr --html --omit-decl  "$(dirname "$0")/man2html.xslt" - \
- | awk '/<h1/{flag=1}/<\/body>/{flag=0}flag'
+mandoc -Thtml -Ofragment "$@" \
+| xml -q tr --html --omit-decl  "$(dirname "$0")/man2html.xslt" - \
+| awk '
+	/<h1/      { flag = 1 }
+	/<\/body>/ { flag = 0 }
+	flag
+'
