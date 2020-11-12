@@ -25,15 +25,24 @@ Anything else - [search open issues](https://github.com/github/markup/issues) or
 5. Open a [Pull Request][1]
 6. Enjoy a refreshing Diet Coke and wait
 
-**dependencies**
+**Dependencies**
+
+Markup requires Ruby 2.3.4 or later.
 
 You can run `script/bootstrap.contrib` to fetch them all.
 
+The bootstrap script requires `python2` to support `docutils` markup.
+
 ## Testing
 
-To run the tests:
+If you installed the dependencies using `gem install`, you can run the tests
+using:
 
     $ rake
+
+Or, if you installed using `bundle install`:
+
+    $ bundle exec rake
 
 If nothing complains, congratulations!
 
