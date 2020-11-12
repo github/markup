@@ -1,3 +1,8 @@
+## 3.0.5 - 2020-11-12
+
+* Add commonmarker_exts to commonmarker options [#1268](https://github.com/github/markup/pull/1268)
+* Check whether filename is set when rendering Asciidoc. [#1290](https://github.com/github/markup/pull/1290)
+
 ## 3.0.4 - 2019-04-03
 
 * Expose options in #render_s [#1249](https://github.com/github/markup/pull/1249)
