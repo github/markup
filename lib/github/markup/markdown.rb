@@ -13,7 +13,7 @@ module GitHub
           GitHub::Markdown.render(content)
         },
         "redcarpet" => proc { |content, options: {}|
-          Redcarpet::Markdown.new(Redcarpet::Render::HTML.new(options)).render(content)
+          Redcarpet::Markdown.new(Redcarpet::Render::HTML.new(options), fenced_code_blocks: true).render(content)
         },
         "rdiscount" => proc { |content, options: {}|
           RDiscount.new(content).to_html
