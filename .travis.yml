@@ -2,10 +2,11 @@ dist: trusty
 sudo: required
 language: ruby
 rvm:
-  - 2.1.10
-  - 2.2.7
-  - 2.3.4
-  - 2.4.1
+  - 2.3.8
+  - 2.4.9
+  - 2.5.7
+  - 2.6.5
+  - 2.7.0
 notifications:
   email: false
 git:
