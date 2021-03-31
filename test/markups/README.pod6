@@ -1,0 +1,53 @@
+=begin pod
+=head1 Title
+=head2 Subtitle
+      
+=for code :allow(B)
+This I<is> a B<text>
+
+  =alias PROGNAME    Earl Irradiatem Evermore
+  =alias VENDOR      4D Kingdoms
+  =alias TERMS_URLS  =item L<http://www.4dk.com/eie>
+  =                  =item L<http://www.4dk.co.uk/eie.io/>
+  =                  =item L<http://www.fordecay.ch/canttouchthis>
+  
+  The use of A<PROGNAME> is U<subject> to the terms and conditions
+  laid out by A<VENDOR>, as specified at:
+  
+       A<TERMS_URLS>
+
+=para
+Use a C<for> loop instead.N<The Raku C<for> loop is far more
+powerful than its Perl 5 predecessor.> Preferably with an explicit
+iterator variable.
+
+Options B<are>:
+
+=item1  Animal
+=item2     Vertebrate
+=item2     Invertebrate
+
+=item1  Phase
+=item2     Solid
+=item2     Liquid
+=item2     Gas
+=item2     I<Chocolate>
+
+I<Table>
+
+=begin table :caption('Super table!')
+                        Secret
+        Superhero       Identity          Superpower
+        =============   ===============   ===================
+        The Shoveller   Eddie Stevens     King Arthur's
+                                          singing shovel
+
+        Blue Raja       Geoffrey Smith    Master of cutlery
+
+        Mr Furious      Roy Orson         Ticking time bomb
+                                          of fury
+
+        The Bowler      Carol Pinnsler    Haunted bowling ball
+
+=end table
+=end pod

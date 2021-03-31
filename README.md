@@ -29,6 +29,7 @@ you wish to run the library. You can also run `script/bootstrap` to fetch them a
 * [.asciidoc, .adoc, .asc](http://asciidoc.org/) -- `gem install asciidoctor` (http://asciidoctor.org)
 * [.pod](http://search.cpan.org/dist/perl/pod/perlpod.pod) -- `Pod::Simple::XHTML`
   comes with Perl >= 5.10. Lower versions should install Pod::Simple from CPAN.
+* [.pod6, .rakudoc](https://docs.raku.org/language/pod) -- `npm install pod6` (https://github.com/zag/js-pod6)
 
 Installation
 -----------
