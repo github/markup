@@ -1,3 +1,7 @@
+## 4.0.0 - 2021-03-31
+
+* Drop support for Python 2 in RST rendering [#1456](https://github.com/github/markup/pull/1456)
+
 ## 3.0.5 - 2020-11-12
 
 * Add commonmarker_exts to commonmarker options [#1268](https://github.com/github/markup/pull/1268)
@@ -72,8 +76,8 @@
 
 ### Added
 
-* Re-introduce [#537](https://github.com/github/markup/pull/537) to detect language of markup document  
-  However `github-linguist` is optional and this gem will fallback to extensions for detection.  
+* Re-introduce [#537](https://github.com/github/markup/pull/537) to detect language of markup document
+  However `github-linguist` is optional and this gem will fallback to extensions for detection.
 
 [Full changelog](https://github.com/github/markup/compare/v1.4.9...v1.5.0)
 
