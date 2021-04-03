@@ -19,51 +19,51 @@ module GitHub
     MARKUP_RDOC = :rdoc
     MARKUP_RST = :rst
     MARKUP_TEXTILE = :textile
+    MARKUP_POD6 = :pod6
   end
-  
+
   module Markup
     extend self
-    
+
     @@markups = {}
 
     def markups
       @@markups
     end
-    
+
     def markup_impls
       markups.values
     end
 
     def preload!
-      markup_impls.each do |markup|
-        markup.load
-      end
+      markup_impls.each(&:load)
     end
 
-    def render(filename, content, symlink = false)
-      if impl = renderer(filename, content, symlink)
-        impl.render(filename, content)
+    def render(filename, content, symlink: false, options: {})
+      if (impl = renderer(filename, content, symlink: symlink))
+        impl.render(filename, content, options: options)
       else
         content
       end
     end
-    
-    def render_s(symbol, content)
-      if content.nil?
-        raise ArgumentError, 'Can not render a nil.'
-      elsif markups.has_key?(symbol)
-        markups[symbol].render(nil, content)
+
+    def render_s(symbol, content, options: {})
+      raise ArgumentError, 'Can not render a nil.' if content.nil?
+
+      if markups.key?(symbol)
+        markups[symbol].render(nil, content, options: options)
       else
         content
       end
     end
 
     def markup(symbol, gem_name, regexp, languages, opts = {}, &block)
-      markup_impl(symbol, GemImplementation.new(regexp, languages, gem_name, &block))
+      impl = GemImplementation.new(regexp, languages, gem_name, &block)
+      markup_impl(symbol, impl)
     end
-    
+
     def markup_impl(symbol, impl)
-      if markups.has_key?(symbol)
+      if markups.key?(symbol)
         raise ArgumentError, "The '#{symbol}' symbol is already defined."
       end
       markups[symbol] = impl
@@ -74,25 +74,26 @@ module GitHub
         command = file
       end
 
-      markup_impl(symbol, CommandImplementation.new(regexp, languages, command, name, &block))
+      impl = CommandImplementation.new(regexp, languages, command, name, &block)
+      markup_impl(symbol, impl)
     end
 
-    def can_render?(filename, content, symlink = false)
-      !!renderer(filename, content, symlink)
+    def can_render?(filename, content, symlink: false)
+      renderer(filename, content, symlink: symlink) != nil
     end
 
-    def renderer(filename, content, symlink = false)
-      language = language(filename, content, symlink)
-      markup_impls.find { |impl|
+    def renderer(filename, content, symlink: false)
+      language = language(filename, content, symlink: symlink)
+      markup_impls.find do |impl|
         impl.match?(filename, language)
-      }
+      end
     end
 
-    def language(filename, content, symlink = false)
-      if defined?(::Linguist)
-        blob = Linguist::Blob.new(filename, content, symlink: symlink)
-        return Linguist.detect(blob, allow_empty: true)
-      end
+    def language(filename, content, symlink: false)
+      return unless defined?(::Linguist)
+
+      blob = Linguist::Blob.new(filename, content, symlink: symlink)
+      Linguist.detect(blob, allow_empty: true)
     end
 
     # Define markups

@@ -1,0 +1,58 @@
+name: CI
+on: [push, pull_request]
+
+env:
+  JRUBY_OPTS: -Xcext.enabled=true
+
+jobs:
+  build:
+    name: "Test / Ruby ${{ matrix.ruby }}"
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        ruby:
+          - "2.4"
+          - "2.5"
+          - "2.6"
+          - "2.7"
+      fail-fast: false
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 10
+
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby }}
+          bundler-cache: true
+
+      - uses: actions/setup-python@v2
+        with:
+          # This should match lib/github/markups.rb GitHub::Markups::MARKUP_RST
+          python-version: '3.x'
+
+      - uses: actions/cache@v2
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip
+
+      - name: Install Perl dependencies
+        run: |
+          curl -1sLf \
+            'https://dl.cloudsmith.io/public/nxadm-pkgs/rakudo-pkg/setup.deb.sh' \
+            | sudo -E bash
+          sudo apt-get update -qq
+          sudo apt-get install perl rakudo-pkg
+
+          curl -L http://cpanmin.us | perl - --sudo App::cpanminus
+          sudo cpanm --installdeps --notest Pod::Simple
+
+      - name: Install Python dependencies
+        run: python -m pip install docutils
+
+      - name: Run rake
+        run: |
+          export PATH=$PATH:/.perl6/bin:/opt/rakudo-pkg/bin
+          bundle exec rake

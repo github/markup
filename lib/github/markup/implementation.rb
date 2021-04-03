@@ -8,7 +8,11 @@ module GitHub
         @regexp = regexp
 
         if defined?(::Linguist)
-          @languages = languages.map {|l| Linguist::Language[l]}
+          @languages = languages.map do |l|
+            lang = Linguist::Language[l]
+            raise "no match for language #{l.inspect}" if lang.nil?
+            lang
+          end
         end
       end
 
@@ -16,7 +20,7 @@ module GitHub
         # no-op by default
       end
 
-      def render(filename, content)
+      def render(filename, content, options: {})
         raise NotImplementedError, "subclasses of GitHub::Markup::Implementation must define #render"
       end
 

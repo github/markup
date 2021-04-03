@@ -39,6 +39,12 @@ The UTF-8 quote character in this table used to cause python to go boom. Now doc
 
 	python.code('hooray')
 
+.. code:: python
+	:caption: An ignored Sphinx option
+	:made-up-option: An ignored made up option
+
+	python.code('hello world')
+
 .. doctest:: ignored
 
 	>>> some_function()

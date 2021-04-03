@@ -1,4 +1,4 @@
-# encoding: UTF-8
+# encoding: utf-8
 
 $LOAD_PATH.unshift File.dirname(__FILE__) + "/../lib"
 
@@ -52,7 +52,6 @@ class MarkupTest < Minitest::Test
 
     define_method "test_#{markup}" do
       skip "Skipping MediaWiki test because wikicloth is currently not compatible with JRuby." if markup == "mediawiki" && RUBY_PLATFORM == "java"
-
       source = File.read(readme)
       expected_file = "#{readme}.html"
       expected = File.read(expected_file).rstrip
@@ -67,19 +66,16 @@ class MarkupTest < Minitest::Test
         f.close_write
         f.read
       end
-
       assert_html_equal expected, actual, <<message
 #{File.basename expected_file}'s contents are not html equal to output:
 #{diff}
 message
     end
   end
-  
+
   def test_knows_what_it_can_and_cannot_render
     assert_equal false, GitHub::Markup.can_render?('README.html', '<h1>Title</h1>')
     assert_equal true, GitHub::Markup.can_render?('README.markdown', '=== Title')
-    assert_equal true, GitHub::Markup.can_render?('README.rmd', '=== Title')
-    assert_equal true, GitHub::Markup.can_render?('README.Rmd', '=== Title')
     assert_equal false, GitHub::Markup.can_render?('README.cmd', 'echo 1')
     assert_equal true, GitHub::Markup.can_render?('README.litcoffee', 'Title')
   end
@@ -93,18 +89,22 @@ message
     assert_equal "wikicloth", GitHub::Markup.renderer('README.wiki', '<h1>Title</h1>').name
     assert_equal "asciidoctor", GitHub::Markup.renderer('README.adoc', '== Title').name
     assert_equal "restructuredtext", GitHub::Markup.renderer('README.rst', 'Title').name
-    assert_equal "pod", GitHub::Markup.renderer('README.pod', '=begin').name
+    assert_equal "pod", GitHub::Markup.renderer('README.pod', '=head1').name
+    assert_equal "pod6", GitHub::Markup.renderer('README.pod6', '=begin pod').name
   end
-  
+
   def test_rendering_by_symbol
-    assert_equal '<p><code>test</code></p>', GitHub::Markup.render_s(GitHub::Markups::MARKUP_MARKDOWN, '`test`').strip
+    markup = '`test`'
+    result = /<p><code>test<\/code><\/p>/
+    assert_match result, GitHub::Markup.render_s(GitHub::Markups::MARKUP_MARKDOWN, markup).strip
+    assert_match result, GitHub::Markup.render_s(GitHub::Markups::MARKUP_ASCIIDOC, markup).split.join
   end
 
   def test_raises_error_if_command_exits_non_zero
     GitHub::Markup.command(:doesntmatter, 'test/fixtures/fail.sh', /fail/, ['Java'], 'fail')
     assert GitHub::Markup.can_render?('README.java', 'stop swallowing errors')
     begin
-      GitHub::Markup.render('README.java', "stop swallowing errors", false)
+      GitHub::Markup.render('README.java', "stop swallowing errors", symlink: false)
     rescue GitHub::Markup::CommandError => e
       assert_equal "failure message", e.message
     else
@@ -115,5 +115,19 @@ message
   def test_preserve_markup
     content = "Noël"
     assert_equal content.encoding.name, GitHub::Markup.render('Foo.rst', content).encoding.name
+  end
+
+  def test_commonmarker_options
+    assert_equal "<p>hello <!-- raw HTML omitted --> world</p>\n", GitHub::Markup.render("test.md", "hello <bad> world")
+    assert_equal "<p>hello <bad> world</p>\n", GitHub::Markup.render("test.md", "hello <bad> world", options: {commonmarker_opts: [:UNSAFE]})
+
+    assert_equal "<p>hello <!-- raw HTML omitted --> world</p>\n", GitHub::Markup.render_s(GitHub::Markups::MARKUP_MARKDOWN, "hello <bad> world")
+    assert_equal "<p>hello <bad> world</p>\n", GitHub::Markup.render_s(GitHub::Markups::MARKUP_MARKDOWN, "hello <bad> world", options: {commonmarker_opts: [:UNSAFE]})
+
+    assert_equal "&lt;style>.red{color: red;}&lt;/style>\n", GitHub::Markup.render("test.md", "<style>.red{color: red;}</style>", options: {commonmarker_opts: [:UNSAFE]})
+    assert_equal "<style>.red{color: red;}</style>\n", GitHub::Markup.render("test.md", "<style>.red{color: red;}</style>", options: {commonmarker_opts: [:UNSAFE], commonmarker_exts: [:autolink, :table, :strikethrough]})
+
+    assert_equal "&lt;style>.red{color: red;}&lt;/style>\n", GitHub::Markup.render_s(GitHub::Markups::MARKUP_MARKDOWN, "<style>.red{color: red;}</style>", options: {commonmarker_opts: [:UNSAFE]})
+    assert_equal "<style>.red{color: red;}</style>\n", GitHub::Markup.render_s(GitHub::Markups::MARKUP_MARKDOWN, "<style>.red{color: red;}</style>", options: {commonmarker_opts: [:UNSAFE], commonmarker_exts: [:autolink, :table, :strikethrough]})
   end
 end

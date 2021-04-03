@@ -1,3 +1,38 @@
+## 4.0.0 - 2021-03-31
+
+* Drop support for Python 2 in RST rendering [#1456](https://github.com/github/markup/pull/1456)
+
+## 3.0.5 - 2020-11-12
+
+* Add commonmarker_exts to commonmarker options [#1268](https://github.com/github/markup/pull/1268)
+* Check whether filename is set when rendering Asciidoc. [#1290](https://github.com/github/markup/pull/1290)
+
+## 3.0.4 - 2019-04-03
+
+* Expose options in #render_s [#1249](https://github.com/github/markup/pull/1249)
+* Upgrade to Asciidoctor 2.0.x [#1264](https://github.com/github/markup/pull/1264)
+
+## 3.0.3 - 2018-12-17
+
+* Temporarily remove support for POD6 [#1248](https://github.com/github/markup/pull/1248)
+
+## 3.0.2 - 2018-12-12
+
+* Add support for POD6 [#1173](https://github.com/github/markup/pull/1173)
+
+## 3.0.1 - 2018-10-19
+
+* Remove linguist-detected RMarkdown files from the Markdown renderer [#1237](https://github.com/github/markup/pull/1237)
+
+## 3.0.0 - 2018-10-18
+
+* Allow passing options through to CommonMarker [#1236](https://github.com/github/markup/pull/1236)
+* Symlink option is now a keyword arg [#1236](https://github.com/github/markup/pull/1236)
+
+## 2.0.2 - 2018-10-15
+
+* Don't render rmd files as Markdown [#1235](https://github.com/github/markup/pull/1235)
+
 ## 2.0.1 - 2018-06-29
 
 * Create anchor for every =item directive in POD files [#1165](https://github.com/github/markup/pull/1165)
@@ -41,8 +76,8 @@
 
 ### Added
 
-* Re-introduce [#537](https://github.com/github/markup/pull/537) to detect language of markup document  
-  However `github-linguist` is optional and this gem will fallback to extensions for detection.  
+* Re-introduce [#537](https://github.com/github/markup/pull/537) to detect language of markup document
+  However `github-linguist` is optional and this gem will fallback to extensions for detection.
 
 [Full changelog](https://github.com/github/markup/compare/v1.4.9...v1.5.0)
 

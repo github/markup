@@ -47,7 +47,7 @@ except:
 import codecs
 import io
 
-from docutils import nodes
+from docutils import nodes, utils
 from docutils.parsers.rst import directives, roles
 from docutils.parsers.rst.directives.body import CodeBlock, Directive
 from docutils.core import publish_parts
@@ -75,6 +75,35 @@ from docutils import nodes
 
 original_behavior = False  # Documents original docutils behavior
 github_display = True
+
+def extract_extension_options(field_list, option_spec):
+    """
+    Overrides `utils.extract_extension_options` and inlines
+    `utils.assemble_option_dict` to make it ignore unknown options passed to
+    directives (i.e. ``:caption:`` for ``.. code-block:``).
+    """
+
+    dropped = set()
+    options = {}
+    for name, value in utils.extract_options(field_list):
+        convertor = option_spec.get(name)
+        if name in options or name in dropped:
+            raise utils.DuplicateOptionError('duplicate option "%s"' % name)
+
+        # silently drop unknown options as long as they are not duplicates
+        if convertor is None:
+            dropped.add(name)
+            continue
+
+        # continue as before
+        try:
+            options[name] = convertor(value)
+        except (ValueError, TypeError) as detail:
+            raise detail.__class__('(option: "%s"; value: %r)\n%s'
+                                   % (name, value, ' '.join(detail.args)))
+    return options
+
+utils.extract_extension_options = extract_extension_options
 
 def unknown_directive(self, type_name):
     lineno = self.state_machine.abs_line_number()
