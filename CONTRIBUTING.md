@@ -11,6 +11,7 @@ This library's only job is to decide which markup format to use and call out to 
 If you are having an issue with:
 
 * **Syntax highlighting** - see [github/linguist](https://github.com/github/linguist/blob/master/CONTRIBUTING.md#fixing-syntax-highlighting)
+
 * **Markdown on GitHub** - contact support@github.com
 * **Styling issues on GitHub** - see [primer-markdown](https://github.com/primer/primer-css/tree/master/modules/primer-markdown) module in the [primer/primer-css](https://github.com/primer/primer-css) repository
 
