@@ -250,9 +250,11 @@ class GitHubHTMLTranslator(HTMLTranslator):
                 align = node.parent.get('align')
 
             if align:
-                self.body[-1] = self.body[-1].replace(
-                    ' />', ' style="float: %s" />' % align
-                )
+                if ' style="' in self.body[-1]:
+                    old, new = ' style="', ' style="float: %s; ' % align
+                else:
+                    old, new = ' />', ' style="float: %s" />' % align
+                self.body[-1] = self.body[-1].replace(old, new)
 
     def depart_image(self, node):
         uri = node['uri']
