@@ -1,0 +1,15 @@
+#!/bin/bash
+
+set -e
+
+cd $(dirname "$0")/..
+
+bundle install --path vendor/bundle
+virtualenv vendor/python && source vendor/python/bin/activate
+pip install docutils
+
+echo ""
+echo "*** DONE ***"
+echo ""
+echo "activate python environment with 'source vendor/python/bin/activate'"
+echo "run tests with 'bundle exec rake'"
