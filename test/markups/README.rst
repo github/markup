@@ -82,6 +82,8 @@ someone@somewhere.org
 
 Press :kbd:`Ctrl+C` to quit
 
+.. image:: foo.png
+   :align: right
 
 .. raw:: html
 
