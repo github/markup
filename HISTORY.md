@@ -1,3 +1,6 @@
+## 4.0.1 - 2022-03-07
+* Update to commonmarker 0.23.4; See [Version Changelog](https://github.com/gjtorikian/commonmarker/blob/main/CHANGELOG.md#v0234-2022-03-03)
+
 ## 4.0.0 - 2021-03-31
 
 * Drop support for Python 2 in RST rendering [#1456](https://github.com/github/markup/pull/1456)
