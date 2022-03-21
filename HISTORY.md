@@ -1,5 +1,5 @@
 ## 4.0.1 - 2022-03-07
-* Update to commonmarker 0.23.4; See [Version Changelog](https://github.com/gjtorikian/commonmarker/blob/main/CHANGELOG.md#v0234-2022-03-03)
+* Update to commonmarker 0.18.3; There isn't a version on RubyGems for this, so this is pointing to a [tag version on GitHub](https://github.com/gjtorikian/commonmarker/blob/v0.18.3/commonmarker.gemspec)
 
 ## 4.0.0 - 2021-03-31
 
