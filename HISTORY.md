@@ -1,3 +1,6 @@
+## 4.0.1 - 2022-03-07
+* Update to commonmarker 0.18.3; There isn't a version on RubyGems for this, so this is pointing to a [tag version on GitHub](https://github.com/gjtorikian/commonmarker/blob/v0.18.3/commonmarker.gemspec)
+
 ## 4.0.0 - 2021-03-31
 
 * Drop support for Python 2 in RST rendering [#1456](https://github.com/github/markup/pull/1456)
