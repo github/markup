@@ -1,46 +1,59 @@
 require "github/markup/markdown"
+require "github/markup/rdoc"
 require "shellwords"
 
-markups << GitHub::Markup::Markdown.new
+markup_impl(::GitHub::Markups::MARKUP_MARKDOWN, ::GitHub::Markup::Markdown.new)
 
-markup(:redcloth, /textile/) do |content|
+markup(::GitHub::Markups::MARKUP_TEXTILE, :redcloth, /textile/, ["Textile"]) do |filename, content, options: {}|
   RedCloth.new(content).to_html
 end
 
-markup('github/markup/rdoc', /rdoc/) do |content|
-  GitHub::Markup::RDoc.new(content).to_html
-end
+markup_impl(::GitHub::Markups::MARKUP_RDOC, GitHub::Markup::RDoc.new)
 
-markup('org-ruby', /org/) do |content|
+markup(::GitHub::Markups::MARKUP_ORG, 'org-ruby', /org/, ["Org"]) do |filename, content, options: {}|
   Orgmode::Parser.new(content, {
                         :allow_include_files => false,
                         :skip_syntax_highlight => true
                       }).to_html
 end
 
-markup(:creole, /creole/) do |content|
+markup(::GitHub::Markups::MARKUP_CREOLE, :creole, /creole/, ["Creole"]) do |filename, content, options: {}|
   Creole.creolize(content)
 end
 
-markup(:wikicloth, /mediawiki|wiki/) do |content|
+markup(::GitHub::Markups::MARKUP_MEDIAWIKI, :wikicloth, /mediawiki|wiki/, ["MediaWiki"]) do |filename, content, options: {}|
   wikicloth = WikiCloth::WikiCloth.new(:data => content)
-  WikiCloth::WikiBuffer::HTMLElement::ESCAPED_TAGS << 'tt'
+  WikiCloth::WikiBuffer::HTMLElement::ESCAPED_TAGS << 'tt' unless WikiCloth::WikiBuffer::HTMLElement::ESCAPED_TAGS.include?('tt')
   wikicloth.to_html(:noedit => true)
 end
 
-markup(:asciidoctor, /adoc|asc(iidoc)?/) do |content|
-  Asciidoctor.render(content, :safe => :secure, :attributes => %w(showtitle idprefix idseparator=- env=github env-github source-highlighter=html-pipeline))
-end
-
-command("python2 -S #{Shellwords.escape(File.dirname(__FILE__))}/commands/rest2html", /re?st(\.txt)?/)
-
-# pod2html is nice enough to generate a full-on HTML document for us,
-# so we return the favor by ripping out the good parts.
-#
-# Any block passed to `command` will be handed the command's STDOUT for
-# post processing.
-command('/usr/bin/env perl -MPod::Simple::HTML -e Pod::Simple::HTML::go', /pod/) do |rendered|
-  if rendered =~ /<!-- start doc -->\s*(.+)\s*<!-- end doc -->/mi
-    $1
+markup(::GitHub::Markups::MARKUP_ASCIIDOC, :asciidoctor, /adoc|asc(iidoc)?/, ["AsciiDoc"]) do |filename, content, options: {}|
+  attributes = {
+    'showtitle' => '@',
+    'idprefix' => '',
+    'idseparator' => '-',
+    'sectanchors' => nil,
+    'env' => 'github',
+    'env-github' => '',
+    'source-highlighter' => 'html-pipeline'
+  }
+  if filename
+    attributes['docname']       = File.basename(filename, (extname = File.extname(filename)))
+    attributes['docfilesuffix'] = attributes['outfilesuffix'] = extname
+  else
+    attributes['outfilesuffix'] = '.adoc'
   end
+  Asciidoctor::Compliance.unique_id_start_index = 1
+  Asciidoctor.convert(content, :safe => :secure, :attributes => attributes)
 end
+
+command(
+  ::GitHub::Markups::MARKUP_RST,
+  "python3 #{Shellwords.escape(File.dirname(__FILE__))}/commands/rest2html",
+  /re?st(\.txt)?/,
+  ["reStructuredText"],
+  "restructuredtext"
+)
+
+command(::GitHub::Markups::MARKUP_POD6, :pod62html, /pod6/, ["Pod 6"], "pod6")
+command(::GitHub::Markups::MARKUP_POD, :pod2html, /pod/, ["Pod"], "pod")

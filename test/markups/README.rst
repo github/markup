@@ -31,6 +31,28 @@ The UTF-8 quote character in this table used to cause python to go boom. Now doc
 	Tabular Data, 5
 	Made up ratings, 11
 
+.. code::
+
+	A block of code
+
+.. code:: python
+
+	python.code('hooray')
+
+.. code:: python
+	:caption: An ignored Sphinx option
+	:made-up-option: An ignored made up option
+
+	python.code('hello world')
+
+.. doctest:: ignored
+
+	>>> some_function()
+	'result'
+
+>>> some_function()
+'result'
+
 ==============  ==========================================================
 Travis          http://travis-ci.org/tony/pullv
 Docs            http://pullv.rtfd.org
@@ -55,3 +77,12 @@ Field list
 	but no problem!
 :123456789 12345: this is not so long, but long enough for the default!
 :123456789 1234: this should work even with the default :)
+
+someone@somewhere.org
+
+Press :kbd:`Ctrl+C` to quit
+
+
+.. raw:: html
+
+    <p><strong>RAW HTML!</strong></p><style> p {color:blue;} </style>
