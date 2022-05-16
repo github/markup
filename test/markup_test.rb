@@ -8,6 +8,8 @@ require 'html/pipeline'
 require 'nokogiri'
 require 'nokogiri/diff'
 
+require 'kramdown'
+
 def normalize_html(text)
   text.strip
       .gsub(/\s\s+/,' ')
@@ -116,7 +118,14 @@ message
     content = "Noël"
     assert_equal content.encoding.name, GitHub::Markup.render('Foo.rst', content).encoding.name
   end
-
+  
+  def test_kramdown_options
+    content = "# Test\n"
+    kramdown_implementation = GitHub::Markup::Markdown::MARKDOWN_GEMS['kramdown'] 
+    assert_equal "<h1 id=\"test\">Test</h1>\n", kramdown_implementation.call(content)
+    assert_equal "<h1>Test</h1>\n", kramdown_implementation.call(content, options: {:kramdown_opts => { :auto_ids=>false}})
+  end
+  
   def test_commonmarker_options
     assert_equal "<p>hello <!-- raw HTML omitted --> world</p>\n", GitHub::Markup.render("test.md", "hello <bad> world")
     assert_equal "<p>hello <bad> world</p>\n", GitHub::Markup.render("test.md", "hello <bad> world", options: {commonmarker_opts: [:UNSAFE]})
@@ -130,4 +139,5 @@ message
     assert_equal "&lt;style>.red{color: red;}&lt;/style>\n", GitHub::Markup.render_s(GitHub::Markups::MARKUP_MARKDOWN, "<style>.red{color: red;}</style>", options: {commonmarker_opts: [:UNSAFE]})
     assert_equal "<style>.red{color: red;}</style>\n", GitHub::Markup.render_s(GitHub::Markups::MARKUP_MARKDOWN, "<style>.red{color: red;}</style>", options: {commonmarker_opts: [:UNSAFE], commonmarker_exts: [:autolink, :table, :strikethrough]})
   end
+  
 end
