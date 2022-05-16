@@ -22,7 +22,8 @@ module GitHub
           Maruku.new(content).to_html
         },
         "kramdown" => proc { |content, options: {}|
-          Kramdown::Document.new(content).to_html
+          puts options.inspect
+          Kramdown::Document.new(content, options.fetch(:kramdown_opts, {})).to_html
         },
         "bluecloth" => proc { |content, options: {}|
           BlueCloth.new(content).to_html
