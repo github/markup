@@ -1,7 +1,12 @@
 GitHub Markup
+Marcação do GitHub
+Marcado de GitHub
+
 =============
 
 This library is the **first step** of a journey that every markup file in a repository goes on before it is rendered on GitHub.com:
+Esta biblioteca é a **primeira etapa** de uma jornada que cada arquivo de marcação em um repositório segue antes de ser renderizado no GitHub.com:
+Esta biblioteca es el **primer paso** de un viaje que cada archivo de marcado en un repositorio realiza antes de ser renderizado en GitHub.com:
 
 1. `github-markup` selects an _underlying library_ to convert the raw markup to HTML. See the list of [supported markup formats](#markups) below.
 1. The HTML is sanitized, aggressively removing things that could harm you and your kin—such as `script` tags, inline-styles, and `class` or `id` attributes.
@@ -10,14 +15,24 @@ This library is the **first step** of a journey that every markup file in a repo
 1. The resulting HTML is rendered on GitHub.com.
 
 Please note that **only the first step** is covered by this gem — the rest happens on GitHub.com.  In particular, `markup` itself does no sanitization of the resulting HTML, as it expects that to be covered by whatever pipeline is consuming the HTML.
+Observe que **apenas a primeira etapa** é coberta por esta joia — o resto acontece no GitHub.com. Em particular, a própria `marcação` não limpa o HTML resultante, pois espera que seja coberto por qualquer pipeline que esteja consumindo o HTML.
+Tenga en cuenta que **solo el primer paso** está cubierto por esta gema; el resto ocurre en GitHub.com. En particular, el "marcado" en sí mismo no limpia el HTML resultante, ya que espera que sea cubierto por cualquier tubería que esté consumiendo el HTML.
 
 Please see our [contributing guidelines](CONTRIBUTING.md) before reporting an issue.
+Consulte nossas [diretrizes de contribuição](CONTRIBUTING.md) antes de relatar um problema.
+Revise nuestras [directrices de contribución](CONTRIBUTING.md) antes de informar un problema.
 
 Markups
+Marcações
+Marcas
 -------
 
 The following markups are supported.  The dependencies listed are required if
 you wish to run the library. You can also run `script/bootstrap` to fetch them all.
+As seguintes marcações são suportadas. As dependências listadas são necessárias se
+você deseja executar a biblioteca. Você também pode executar `script/bootstrap` para buscá-los todos.
+Se admiten las siguientes etiquetas. Las dependencias enumeradas son necesarias si
+desea ejecutar la biblioteca. También puede ejecutar `script/bootstrap` para obtenerlos todos.
 
 * [.markdown, .mdown, .mkdn, .md](http://daringfireball.net/projects/markdown/) -- `gem install commonmarker` (https://github.com/gjtorikian/commonmarker)
 * [.textile](https://www.promptworks.com/textile) -- `gem install RedCloth` (https://github.com/jgarber/redcloth)
@@ -31,6 +46,9 @@ you wish to run the library. You can also run `script/bootstrap` to fetch them a
   comes with Perl >= 5.10. Lower versions should install Pod::Simple from CPAN.
 
 Installation
+Instalação
+Instalación
+
 -----------
 
 ```
@@ -46,6 +64,9 @@ bundle install
 from this directory.
 
 Usage
+Uso
+Usar
+
 -----
 
 Basic form:
@@ -74,6 +95,11 @@ GitHub::Markup.render_s(GitHub::Markups::MARKUP_MARKDOWN, "* One\n* Two")
 
 
 Contributing
+Contribuindo
+Contribuyendo
+
 ------------
 
 See [Contributing](CONTRIBUTING.md).
+Consulte [Contribuindo](CONTRIBUINDO.md).
+Consulte [Contribuir](CONTRIBUTING.md).
