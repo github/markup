@@ -1,0 +1,4 @@
+sudo apt-get update -y
+sudo apt-get install -y markdown
+Check the system logs to confirm that there are no related errors. You can use ZoomAdmin to check the logs, manager servers, host multiple websites and apps on your servers and more. The apps run in docker containers, to learn more
+see ZoomAdmin Features for list of features and demo videos. And you can start with the Free Plan.
