@@ -1,3 +1,6 @@
+## 4.0.2 - 2023-10-10
+* Add support for .mdx files in markdown
+
 ## 4.0.1 - 2022-03-07
 * Update to commonmarker 0.18.3; There isn't a version on RubyGems for this, so this is pointing to a [tag version on GitHub](https://github.com/gjtorikian/commonmarker/blob/v0.18.3/commonmarker.gemspec)
 
