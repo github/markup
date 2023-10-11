@@ -1,0 +1,146 @@
+<p></p><table summary="Contents"><tr><td>
+<div><h2>Table of Contents</h2></div>
+<ul><li>
+<a href="#MobileFrontend_Extension">MobileFrontend Extension</a><ul>
+<li><a href="#Installation">Installation</a></li>
+<li><a href="#Configuration">Configuration</a></li>
+<li>
+<a href="#Development">Development</a><ul>
+<li>
+<a href="#Coding_conventions">Coding conventions</a><ul><li><a href="#Git_hooks">Git hooks</a></li></ul>
+</li>
+<li><a href="#Committing">Committing</a></li>
+<li>
+<a href="#Testing">Testing</a><ul>
+<li><a href="#Unit_tests">Unit tests</a></li>
+<li><a href="#Selenium_tests">Selenium tests</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li></ul>
+</td></tr></table>
+<h1>
+<a name="MobileFrontend_Extension"></a>MobileFrontend Extension</h1>
+
+
+<p>The MobileFrontend extension adds a mobile view to your mediawiki
+instance.
+</p>
+
+<h2>
+<a name="Installation"></a>Installation</h2>
+
+
+<p>See <a href="https://www.mediawiki.org/wiki/Extension:MobileFrontend#Installation">https://www.mediawiki.org/wiki/Extension:MobileFrontend#Installation</a>
+</p>
+
+<h2>
+<a name="Configuration"></a>Configuration</h2>
+
+
+<p>See <a href="https://www.mediawiki.org/wiki/Extension:MobileFrontend#Configuration_settings">https://www.mediawiki.org/wiki/Extension:MobileFrontend#Configuration_settings</a>
+</p>
+
+<h2>
+<a name="Development"></a>Development</h2>
+
+
+
+
+<h3>
+<a name="Coding_conventions"></a>Coding conventions</h3>
+
+
+<p>Please follow the coding conventions of MobileFrontend:
+<a href="https://www.mediawiki.org/wiki/MobileFrontend/Coding_conventions">https://www.mediawiki.org/wiki/MobileFrontend/Coding_conventions</a>
+</p>
+
+<h4>
+<a name="Git_hooks"></a>Git hooks</h4>
+
+
+<p>Git hooks are provided in the dev-scripts directory to assist with adhering to JavaScript
+code standards, optimizing PNG files, etc. Running these hooks requires node.js, NPM, and
+grunt.
+</p>
+<p>Install like so:
+</p>
+<p></p><pre>  make installhooks
+</pre>
+
+
+<p>If you are not running Vagrant, be sure to set your MEDIAWIKI_URL env variable to your
+local index path, e.g. 'MEDIAWIKI_URL=http://localhost/index.php/'
+</p>
+
+<h3>
+<a name="Committing"></a>Committing</h3>
+
+
+<p>Commits are important as they give the reviewer more information to
+successfully review your code and find errors or potential problems you
+might not have thought of.
+</p>
+<p>Commits are also useful when troubleshooting issues and refactoring.  If
+it's not clear why a line of code is in the repository important bug
+fixes could be lost.
+</p>
+<p>Commits should be as minor as possible. Please avoid removing unrelated
+console.log statements, fixing unrelated whitespace etc.  do that in a
+separate commit which mentions the word cleanup.
+</p>
+<p>First line commit should summarise the commit with bug it fixes if
+applicable. e.g. Fix problem with toggling see bug x. Second line should
+be blank. Third line should go into detail where necessary providing
+links to blog posts/other bugs to provide more background. Mention the
+platforms/browsers the change is for where necessary, e.g.:
+</p>
+
+
+
+
+<ul>
+<li>'this is a problem on Android but not OSX see http://&lt;url&gt;&lt;/url&gt; which explains problem in detail'</li>
+<li>'this is a workaround for a known bug in opera mobile see http://&lt;url&gt;&lt;/url&gt;'</li>
+</ul>
+<h3>
+<a name="Testing"></a>Testing</h3>
+
+
+
+
+<h4>
+<a name="Unit_tests"></a>Unit tests</h4>
+
+
+<p>To run the full test suite run:
+</p>
+
+<p></p><pre>  make tests
+</pre>
+
+
+<p>To run only PHP tests:
+</p>
+
+<p></p><pre>  make phpunit
+</pre>
+
+
+<p>To run only JS tests:
+</p>
+
+<p></p><pre>  make qunit
+</pre>
+
+
+
+<h4>
+<a name="Selenium_tests"></a>Selenium tests</h4>
+
+
+
+<p>For information on how to run Selenium tests please see README file in
+tests/browser directory.</p>
