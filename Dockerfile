@@ -1,4 +1,4 @@
-FROM ubuntu:trusty
+FROM ubuntu:focal
 
 RUN apt-get update -qq
 RUN apt-get install -y apt-transport-https
@@ -8,17 +8,24 @@ RUN echo "deb https://dl.bintray.com/nxadm/rakudo-pkg-debs `lsb_release -cs` mai
 RUN apt-get update -qq
 
 RUN apt-get install -y \
-    perl rakudo-pkg curl git build-essential python python-pip \
+    perl rakudo-pkg curl git build-essential \
     libssl-dev libreadline-dev zlib1g-dev \
     libicu-dev cmake pkg-config
+
+# Add the deadsnakes PPA to get Python 3.11 and install it
+RUN add-apt-repository ppa:deadsnakes/ppa && \
+    apt-get update && \
+    apt-get install -y --no-install-recommends \
+        python3.11
+
+RUN curl -sS https://bootstrap.pypa.io/get-pip.py | python3.11
+RUN pip install python3-docutils
 
 ENV PATH $PATH:/opt/rakudo-pkg/bin
 RUN install-zef-as-user && zef install Pod::To::HTML
 
 RUN curl -L http://cpanmin.us | perl - App::cpanminus
 RUN cpanm --installdeps --notest Pod::Simple
-
-RUN pip install docutils
 
 ENV PATH $PATH:/root/.rbenv/bin:/root/.rbenv/shims
 RUN curl -fsSL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-installer | bash
