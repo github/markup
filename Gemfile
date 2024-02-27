@@ -1,6 +1,7 @@
 source "http://rubygems.org"
 gemspec
 
+gem "nokogiri", force_ruby_platform: true
 gem "posix-spawn", :platforms => :ruby
 gem "redcarpet", :platforms => :ruby
 gem "kramdown", :platforms => :jruby

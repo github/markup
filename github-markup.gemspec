@@ -10,8 +10,17 @@ Gem::Specification.new do |s|
   DESC
   s.authors       = ["Chris Wanstrath"]
   s.email         = "chris@ozmm.org"
-  s.homepage      = "https://github.com/github/markup"
+  github_link     = "https://github.com/github/markup"
+  s.homepage      = github_link
   s.license       = "MIT"
+
+  s.metadata = {
+    "bug_tracker_uri" => "#{github_link}/issues",
+    "changelog_uri" => "#{github_link}/releases",
+    "documentation_uri" => github_link,
+    "homepage_uri" => s.homepage,
+    "source_code_uri" => github_link
+  }
 
   s.files         = `git ls-files`.split($\)
   s.files        += Dir['vendor/**/*']
