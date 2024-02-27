@@ -52,7 +52,7 @@ ENV RUBY_VERSION 3.3.0
 RUN rbenv install $RUBY_VERSION && rbenv global $RUBY_VERSION && rbenv rehash
 RUN echo 'gem: --no-rdoc --no-ri' >> /.gemrc
 RUN gem install bundler:2.4.22
-RUN gem install nokogiri --use-system-libraries
+RUN gem install nokogiri --platform=ruby -- --use-system-libraries
 
 WORKDIR /data/github-markup
 COPY github-markup.gemspec .
