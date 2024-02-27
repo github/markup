@@ -3,8 +3,14 @@ FROM ubuntu:focal
 RUN apt-get update -qq
 RUN apt-get install -y apt-transport-https
 
-RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 379CE192D401AB61
-RUN echo "deb https://dl.bintray.com/nxadm/rakudo-pkg-debs `lsb_release -cs` main" | tee -a /etc/apt/sources.list.d/rakudo-pkg.list
+RUN apt-get install -y \
+    locales \
+    software-properties-common \
+    curl \
+    gnupg2
+
+RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 0DD4CA7EB1C6CC6B
+RUN curl -1sLf 'https://dl.cloudsmith.io/public/nxadm-pkgs/rakudo-pkg/config.deb.txt?distro=ubuntu&codename=lunar&component=main' > /etc/apt/sources.list.d/nxadm-pkgs-rakudo-pkg.list
 RUN apt-get update -qq
 
 RUN apt-get install -y \
