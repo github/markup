@@ -1,36 +1,58 @@
 FROM ubuntu:focal
 
 RUN apt-get update -qq
-RUN apt-get install -y apt-transport-https
-
 RUN apt-get install -y \
+    apt-transport-https \
     locales \
     software-properties-common \
     curl \
     gnupg2
 
-RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 0DD4CA7EB1C6CC6B
-RUN curl -1sLf 'https://dl.cloudsmith.io/public/nxadm-pkgs/rakudo-pkg/config.deb.txt?distro=ubuntu&codename=lunar&component=main' > /etc/apt/sources.list.d/nxadm-pkgs-rakudo-pkg.list
+# add the Raku repository
+RUN curl -1sLf 'https://dl.cloudsmith.io/public/nxadm-pkgs/rakudo-pkg/gpg.0DD4CA7EB1C6CC6B.key' |  gpg --dearmor >> /usr/share/keyrings/nxadm-pkgs-rakudo-pkg-archive-keyring.gpg
+RUN curl -1sLf 'https://dl.cloudsmith.io/public/nxadm-pkgs/rakudo-pkg/config.deb.txt?distro=ubuntu&codename=focal&component=main' > /etc/apt/sources.list.d/nxadm-pkgs-rakudo-pkg.list
+# add the Node.js repository
+RUN curl -1sLf https://deb.nodesource.com/setup_20.x | bash
 RUN apt-get update -qq
 
 RUN apt-get install -y \
-    perl rakudo-pkg curl git build-essential \
-    libssl-dev libreadline-dev zlib1g-dev \
-    libicu-dev cmake pkg-config
+    perl \
+    rakudo-pkg \
+    git \
+    libssl-dev \
+    libreadline-dev \
+    zlib1g-dev \
+    libicu-dev \
+    cmake \
+    build-essential \
+    g++ \
+    pkg-config \
+    nodejs \
+    libffi-dev \
+    libyaml-dev \
+    gcc \
+    libxslt-dev \
+    libxml2-dev \
+    zlib1g-dev
 
 ENV PATH $PATH:/opt/rakudo-pkg/bin
-RUN install-zef-as-user && zef install Pod::To::HTML
+RUN install-zef
+ENV PATH $PATH:/root/.raku/bin
+RUN zef install Pod::To::HTML2
 
 RUN curl -L http://cpanmin.us | perl - App::cpanminus
 RUN cpanm --installdeps --notest Pod::Simple
 
+# Install Rbenv and Ruby
+RUN git clone https://github.com/rbenv/rbenv.git ~/.rbenv && echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc && echo 'eval "$(rbenv init -)"' >> ~/.bashrc
+RUN git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
 ENV PATH $PATH:/root/.rbenv/bin:/root/.rbenv/shims
-RUN curl -fsSL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-installer | bash
-RUN rbenv install 3.3.0
-RUN rbenv global 3.3.0
-RUN rbenv rehash
-
-RUN gem install bundler
+RUN cd /root/.rbenv/plugins/ruby-build && git pull && cd -
+ENV RUBY_VERSION 3.3.0
+RUN rbenv install $RUBY_VERSION && rbenv global $RUBY_VERSION && rbenv rehash
+RUN echo 'gem: --no-rdoc --no-ri' >> /.gemrc
+RUN gem install bundler:2.4.22
+RUN gem install nokogiri --use-system-libraries
 
 WORKDIR /data/github-markup
 COPY github-markup.gemspec .
