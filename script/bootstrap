@@ -5,4 +5,4 @@ set -e
 cd $(dirname "$0")/..
 
 bundle install
-pip3 install docutils
+
