@@ -56,6 +56,8 @@ RUN gem install bundler:2.4.22
 
 RUN bundle config --global build.nokogiri --use-system-libraries
 
+RUN dpkg -i https://github.com/jgm/pandoc/releases/download/3.1.12.1/pandoc-3.1.12.1-linux-amd64.tar.gz
+
 WORKDIR /data/github-markup
 COPY github-markup.gemspec .
 COPY Gemfile .
