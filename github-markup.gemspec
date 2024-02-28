@@ -19,7 +19,7 @@ DESC
     "source_code_uri"   => "https://github.com/github/markup"
   }
 
-  spec.required_ruby_version = ">= 3.2.3"
+  spec.required_ruby_version = ">= 2.4"
 
   spec.files         = Dir.glob("lib/**/*", File::FNM_DOTMATCH)
   spec.executables   = spec.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
