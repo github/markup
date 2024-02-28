@@ -33,7 +33,8 @@ RUN apt-get install -y \
     gcc \
     libxslt-dev \
     libxml2-dev \
-    zlib1g-dev
+    zlib1g-dev \
+    libidn11-dev
 
 ENV PATH $PATH:/opt/rakudo-pkg/bin
 RUN install-zef
@@ -58,7 +59,7 @@ RUN bundle config --global build.nokogiri --use-system-libraries
 WORKDIR /data/github-markup
 COPY github-markup.gemspec .
 COPY Gemfile .
-COPY lib/github-markup.rb lib/github-markup.rb
+ADD lib ./lib
 RUN bundle
 
 ENV LC_ALL en_US.UTF-8
