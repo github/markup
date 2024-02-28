@@ -5,6 +5,7 @@ $LOAD_PATH.unshift File.dirname(__FILE__) + "/../lib"
 require 'github/markup'
 require 'minitest/autorun'
 require 'html/pipeline'
+require 'sanitize'
 require 'nokogiri'
 require 'nokogiri/diff'
 

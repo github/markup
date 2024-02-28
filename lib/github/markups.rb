@@ -1,6 +1,7 @@
 require "github/markup/markdown"
 require "github/markup/rdoc"
 require "shellwords"
+require 'pandoc-ruby'
 
 markup_impl(::GitHub::Markups::MARKUP_MARKDOWN, ::GitHub::Markup::Markdown.new)
 
@@ -47,13 +48,9 @@ markup(::GitHub::Markups::MARKUP_ASCIIDOC, :asciidoctor, /adoc|asc(iidoc)?/, ["A
   Asciidoctor.convert(content, :safe => :secure, :attributes => attributes)
 end
 
-command(
-  ::GitHub::Markups::MARKUP_RST,
-  "python3 #{Shellwords.escape(File.dirname(__FILE__))}/commands/rest2html",
-  /re?st(\.txt)?/,
-  ["reStructuredText"],
-  "restructuredtext"
-)
+markup(::GitHub::Markups::MARKUP_RST, :rst, /re?st(\.txt)?/, ["reStructuredText"]) do |filename, content, options: {}|
+  PandocRuby.new(content, from: 'rst').to_html
+end
 
 command(::GitHub::Markups::MARKUP_POD6, :pod62html, /pod6/, ["Pod 6"], "pod6")
 command(::GitHub::Markups::MARKUP_POD, :pod2html, /pod/, ["Pod"], "pod")
