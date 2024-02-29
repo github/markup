@@ -49,7 +49,7 @@ markup(::GitHub::Markups::MARKUP_ASCIIDOC, :asciidoctor, /adoc|asc(iidoc)?/, ["A
 end
 
 markup(::GitHub::Markups::MARKUP_RST, :rst, /re?st(\.txt)?/, ["reStructuredText"]) do |filename, content, options: {}|
-  PandocRuby.new(content, from: 'rst').to_html
+  PandocRuby.new(content, from: :rst).to_html
 end
 
 command(::GitHub::Markups::MARKUP_POD6, :pod62html, /pod6/, ["Pod 6"], "pod6")
