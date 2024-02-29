@@ -48,7 +48,7 @@ markup(::GitHub::Markups::MARKUP_ASCIIDOC, :asciidoctor, /adoc|asc(iidoc)?/, ["A
   Asciidoctor.convert(content, :safe => :secure, :attributes => attributes)
 end
 
-markup(::GitHub::Markups::MARKUP_RST, :rst, /re?st(\.txt)?/, ["rst"]) do |filename, content, options: {}|
+markup(::GitHub::Markups::MARKUP_RST, :paru, /re?st(\.txt)?/, ["rst"]) do |filename, content, options: {}|
   output = Paru::Pandoc.new do
     from "rst"
     to "html"
