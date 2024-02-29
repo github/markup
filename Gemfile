@@ -6,7 +6,7 @@ gem "posix-spawn", :platforms => :ruby
 gem "redcarpet", :platforms => :ruby
 gem "kramdown", :platforms => :jruby
 gem "RedCloth"
-gem "commonmarker", "~> 1.0.4"
+gem "commonmarker", "~> 0.23.10"
 gem 'rdoc', '~> 6.6', '>= 6.6.2'
 gem 'org-ruby', '~> 0.9.12'
 gem 'creole', '~> 0.5.0'

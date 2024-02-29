@@ -7,7 +7,7 @@ module GitHub
         "commonmarker" => proc { |content, options: {}|
           commonmarker_opts = [:GITHUB_PRE_LANG].concat(options.fetch(:commonmarker_opts, []))
           commonmarker_exts = options.fetch(:commonmarker_exts, [:tagfilter, :autolink, :table, :strikethrough])
-          Commonmarker.to_html(content, commonmarker_opts, commonmarker_exts)
+          CommonMarker.render_html(content, commonmarker_opts, commonmarker_exts)
         },
         "github/markdown" => proc { |content, options: {}|
           GitHub::Markdown.render(content)
