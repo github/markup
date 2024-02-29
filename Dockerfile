@@ -34,7 +34,9 @@ RUN apt-get install -y \
     libxslt-dev \
     libxml2-dev \
     zlib1g-dev \
-    libidn11-dev
+    libidn11-dev \
+    pandoc \
+    vim-nox
 
 ENV PATH $PATH:/opt/rakudo-pkg/bin
 RUN install-zef
@@ -44,19 +46,24 @@ RUN zef install Pod::To::HTML2
 RUN curl -L http://cpanmin.us | perl - App::cpanminus
 RUN cpanm --installdeps --notest Pod::Simple
 
+RUN apt-get purge ruby -y
+
 # Install Rbenv and Ruby
 RUN git clone https://github.com/rbenv/rbenv.git ~/.rbenv && echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc && echo 'eval "$(rbenv init -)"' >> ~/.bashrc
 RUN git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
 ENV PATH $PATH:/root/.rbenv/bin:/root/.rbenv/shims
 RUN cd /root/.rbenv/plugins/ruby-build && git pull && cd -
 ENV RUBY_VERSION 3.3.0
+RUN rbenv install -l
 RUN rbenv install $RUBY_VERSION && rbenv global $RUBY_VERSION && rbenv rehash
+RUN rbenv install --list-all
 RUN echo 'gem: --no-rdoc --no-ri' >> /.gemrc
+RUN gem install rubygems-update && update_rubygems
 RUN gem install bundler:2.4.22
 
 RUN bundle config --global build.nokogiri --use-system-libraries
 
-RUN dpkg -i https://github.com/jgm/pandoc/releases/download/3.1.12.1/pandoc-3.1.12.1-linux-amd64.tar.gz
+#RUN dpkg -i https://github.com/jgm/pandoc/releases/download/3.1.12.1/pandoc-3.1.12.1-1-amd64.deb
 
 WORKDIR /data/github-markup
 COPY github-markup.gemspec .
