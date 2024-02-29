@@ -1,7 +1,7 @@
 source "http://rubygems.org"
 gemspec
 
-gem "nokogiri", "= 1.16.2", force_ruby_platform: true
+gem "nokogiri", "~> 1.8.1", force_ruby_platform: true
 gem "posix-spawn", :platforms => :ruby
 gem "redcarpet", :platforms => :ruby
 gem "kramdown", :platforms => :jruby
