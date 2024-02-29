@@ -11,14 +11,14 @@ end
 
 markup_impl(::GitHub::Markups::MARKUP_RDOC, GitHub::Markup::RDoc.new)
 
-markup(::GitHub::Markups::MARKUP_ORG, 'org-ruby', /org/, ["Org"], "org-ruby") do |filename, content, options: {}|
+markup(::GitHub::Markups::MARKUP_ORG, 'org-ruby', /org/, ["Org"]) do |filename, content, options: {}|
   Orgmode::Parser.new(content, {
                         :allow_include_files => false,
                         :skip_syntax_highlight => true
                       }).to_html
 end
 
-markup(::GitHub::Markups::MARKUP_CREOLE, :creole, /creole/, ["Creole"], "creole") do |filename, content, options: {}|
+markup(::GitHub::Markups::MARKUP_CREOLE, :creole, /creole/, ["Creole"]) do |filename, content, options: {}|
   Creole.creolize(content)
 end
 
@@ -28,7 +28,7 @@ markup(::GitHub::Markups::MARKUP_MEDIAWIKI, :wikicloth, /mediawiki|wiki/, ["Medi
   wikicloth.to_html(:noedit => true)
 end
 
-markup(::GitHub::Markups::MARKUP_ASCIIDOC, :asciidoctor, /adoc|asc(iidoc)?/, ["AsciiDoc"], "adoc") do |filename, content, options: {}|
+markup(::GitHub::Markups::MARKUP_ASCIIDOC, :asciidoctor, /adoc|asc(iidoc)?/, ["AsciiDoc"]) do |filename, content, options: {}|
   attributes = {
     'showtitle' => '@',
     'idprefix' => '',
@@ -48,8 +48,12 @@ markup(::GitHub::Markups::MARKUP_ASCIIDOC, :asciidoctor, /adoc|asc(iidoc)?/, ["A
   Asciidoctor.convert(content, :safe => :secure, :attributes => attributes)
 end
 
-markup(::GitHub::Markups::MARKUP_RST, :rst, /re?st(\.txt)?/, ["reStructuredText"], "rst") do |filename, content, options: {}|
-  puts "hi"
+markup(::GitHub::Markups::MARKUP_RST, :rst, /re?st(\.txt)?/, ["rst"]) do |filename, content, options: {}|
+  output = Paru::Pandoc.new do
+    from "rst"
+    to "html"
+  end << content
+  puts output
 end
 
 command(::GitHub::Markups::MARKUP_POD6, :pod62html, /pod6/, ["Pod 6"], "pod6")
