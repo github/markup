@@ -48,7 +48,7 @@ markup(::GitHub::Markups::MARKUP_ASCIIDOC, :asciidoctor, /adoc|asc(iidoc)?/, ["A
   Asciidoctor.convert(content, :safe => :secure, :attributes => attributes)
 end
 
-markup(::GitHub::Markups::MARKUP_RST, :pandoc-ruby, /re?st(\.txt)?/, ["reStructuredText"]) do |filename, content, options: {}|
+markup(::GitHub::Markups::MARKUP_RST, "pandoc-ruby", /re?st(\.txt)?/, ["reStructuredText"]) do |filename, content, options: {}|
   PandocRuby.new(content, from: "rst").to_html
 end
 
