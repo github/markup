@@ -10,7 +10,7 @@ export RUBY_HEAP_SLOTS_INCREMENT=400000
 export RUBY_HEAP_SLOTS_GROWTH_FACTOR=1
 
 export PATH="/usr/share/rbenv/shims:$PATH"
-export RBENV_VERSION="1.9.3"
+export RBENV_VERSION="3.3.0"
 
 # bootstrap gem environment changes
 echo "Bootstrapping gem environment ..."
