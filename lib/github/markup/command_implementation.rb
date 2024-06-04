@@ -53,11 +53,13 @@ module GitHub
           output = Open3.popen3(*command) do |stdin, stdout, stderr, wait_thr|
             stdin.puts target
             stdin.close
-            if wait_thr.value.success?
-              stdout.readlines
-            else
-              raise CommandError.new(stderr.readlines.join('').strip)
-            end
+
+            stdout_lines = stdout.readlines
+            stderr_lines = stderr.readlines.join('').strip
+
+            raise CommandError.new(stderr_lines) unless wait_thr.value.success?
+
+            stdout_lines
           end
           sanitize(output.join(''), target.encoding)
         end
