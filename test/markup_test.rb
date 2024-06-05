@@ -130,4 +130,8 @@ message
     assert_equal "&lt;style>.red{color: red;}&lt;/style>\n", GitHub::Markup.render_s(GitHub::Markups::MARKUP_MARKDOWN, "<style>.red{color: red;}</style>", options: {commonmarker_opts: [:UNSAFE]})
     assert_equal "<style>.red{color: red;}</style>\n", GitHub::Markup.render_s(GitHub::Markups::MARKUP_MARKDOWN, "<style>.red{color: red;}</style>", options: {commonmarker_opts: [:UNSAFE], commonmarker_exts: [:autolink, :table, :strikethrough]})
   end
+
+  def test_large_document_with_command_implementation
+    assert GitHub::Markup.render_s(:rst, File.read("test/markups/README_large.rst"))
+  end
 end

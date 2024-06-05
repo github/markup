@@ -50,18 +50,12 @@ module GitHub
         end
       else
         def execute(command, target)
-          output = Open3.popen3(*command) do |stdin, stdout, stderr, wait_thr|
-            stdin.puts target
-            stdin.close
+          # capture3 blocks until both buffers are written to and the process terminates, but
+          # it won't allow either buffer to fill up
+          stdout, stderr, status = Open3.capture3(*command, stdin_data: target)
 
-            stdout_lines = stdout.readlines
-            stderr_lines = stderr.readlines.join('').strip
-
-            raise CommandError.new(stderr_lines) unless wait_thr.value.success?
-
-            stdout_lines
-          end
-          sanitize(output.join(''), target.encoding)
+          raise CommandError.new(stderr) unless status.success?
+          sanitize(stdout, target.encoding)
         end
       end
 
