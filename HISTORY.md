@@ -1,3 +1,6 @@
+## 4.0.3 - 2024-06-06
+* Update CommandImplementation to better support large files (affecting RST and POD6 rendering)
+
 ## 4.0.2 - 2023-10-10
 * Add support for .mdx files in markdown
 
