@@ -1,6 +1,7 @@
-## 4.0.3 - 2024-06-11
+## 5.0.0 - 2024-06-11
 * Update to Nokogiri ~> 1.16.5
 * Update to nokogiri-diff ~> 0.3.0
+* Drop support for Ruby versions < 3.0.0
 
 ## 4.0.2 - 2023-10-10
 * Add support for .mdx files in markdown
