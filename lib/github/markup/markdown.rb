@@ -7,7 +7,13 @@ module GitHub
         "commonmarker" => proc { |content, options: {}|
           commonmarker_opts = [:GITHUB_PRE_LANG].concat(options.fetch(:commonmarker_opts, []))
           commonmarker_exts = options.fetch(:commonmarker_exts, [:tagfilter, :autolink, :table, :strikethrough])
-          Commonmarker.render_html(content, commonmarker_opts, commonmarker_exts)
+          Commonmarker.to_html(
+            content,
+            options: {
+              render: commonmarker_opts.map { |opt| [opt.downcase, true] }.to_h,
+              extension: commonmarker_exts.map { |ext| [ext.downcase, true] }.to_h,
+            },
+          )
         },
         "github/markdown" => proc { |content, options: {}|
           GitHub::Markdown.render(content)
