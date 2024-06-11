@@ -1,5 +1,4 @@
 require "github/markup/implementation"
-require "commonmarker"
 
 module GitHub
   module Markup
@@ -8,7 +7,7 @@ module GitHub
         "commonmarker" => proc { |content, options: {}|
           commonmarker_opts = [:GITHUB_PRE_LANG].concat(options.fetch(:commonmarker_opts, []))
           commonmarker_exts = options.fetch(:commonmarker_exts, [:tagfilter, :autolink, :table, :strikethrough])
-          CommonMarker.render_html(content, commonmarker_opts, commonmarker_exts)
+          Commonmarker.render_html(content, commonmarker_opts, commonmarker_exts)
         },
         "github/markdown" => proc { |content, options: {}|
           GitHub::Markdown.render(content)
