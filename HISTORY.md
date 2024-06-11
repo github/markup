@@ -3,6 +3,7 @@
 * Update to nokogiri-diff ~> 0.3.0
 * Update to github-linguist ~> 7.30.0
 * Update to sanitize ~> 6.1.0
+* Update to html-pipeline ~> 2.14.3
 * Drop support for Ruby versions < 3.1.0
 
 ## 4.0.2 - 2023-10-10
