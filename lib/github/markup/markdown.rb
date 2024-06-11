@@ -1,4 +1,5 @@
 require "github/markup/implementation"
+require "commonmarker"
 
 module GitHub
   module Markup
