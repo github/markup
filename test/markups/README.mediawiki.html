@@ -1,0 +1,64 @@
+<p><a href="Home">» JRuby Project Wiki Home Page</a>
+</p><h1>Embedding JRuby</h1>
+Using Java from Ruby is JRuby's best-known feature---but you can also go in the other direction, and use Ruby from Java.  There are several different ways to do this. You can execute entire Ruby scripts, call individual Ruby methods, or even implement a Java interface in Ruby (thus allowing you to treat Ruby objects like Java ones).  We refer to all these techniques generically as "embedding."  This section will explain how to embed JRuby in your Java project.
+
+<p></p><table summary="Contents"><tr><td>
+<div><h2>Table of Contents</h2></div>
+<ul>
+<li>
+<a href="#Red_Bridge_JRuby_Embed">Red Bridge (JRuby Embed)</a><ul><li><a href="#Features_of_Red_Bridge">Features of Red Bridge</a></li></ul>
+</li>
+<li><a href="#Previous_Embedding_JRuby_Page">Previous Embedding JRuby Page</a></li>
+<li><a href="#References">References</a></li>
+</ul>
+</td></tr></table>
+
+
+<h1>
+<a name="Red_Bridge_JRuby_Embed"></a><span>Red Bridge (JRuby Embed)</span>
+</h1>
+
+
+
+<p><tt>one-&lt;two</tt>
+</p><pre>a-b</pre>
+
+<p>JRuby has long had a private embedding API, which was closely tied to the runtime's internals and therefore changed frequently as JRuby evolved. Since version 1.4, however, we have also provided a more stable public API, known as Red Bridge or JRuby Embed. Existing Java programs written to the <a href="DirectJRubyEmbedding">legacy API</a> should still work, but we strongly recommend Red Bridge for all new projects.
+</p>
+
+<h2>
+<a name="Features_of_Red_Bridge"></a><span>Features of Red Bridge</span>
+</h2>
+
+
+<p>Red Bridge consists of two layers: Embed Core on the bottom, and implementations of <a href="http://www.jcp.org/en/jsr/detail?id=223" target="_blank">JSR223</a> and <a href="http://jakarta.apache.org/bsf/" target="_blank">BSF</a> on top. Embed Core is JRuby-specific, and can take advantage of much of JRuby's power. JSR223 and BSF are more general interfaces that provide a common ground across scripting languages.
+</p>
+<p>Which API should you use? For projects where Ruby is the only scripting language involved, we recommend Embed Core for the following reasons:
+</p>
+
+
+
+<p></p><ol>
+<li>With Embed Core, you can create several Ruby environments in one JVM, and configure them individually (via <code>org.jruby.RubyInstanceConfig</code>. With the other APIs, configuration options can only be set globally, via the <code>System</code> properties.</li>
+<li>Embed Core offers several shortcuts, such as loading scripts from a <code>java.io.InputStream</code>, or returning Java-friendly objects from Ruby code. These allow you to skip a lot of boilerplate.</li>
+</ol>
+For projects requiring multiple scripting languages, JSR223 is a good fit. Though the API is language-independent, JRuby's implementation of it allows you to set some Ruby-specific options. In particular, you can control the threading model of the scripting engine, the lifetime of local variables, compilation mode, and how line numbers are displayed.
+
+<p>The full <a href="http://jruby-embed.kenai.com/docs/" target="_blank">API documentation</a> has all the gory details. It's worth talking about a couple of the finer points here.
+</p>
+
+<h1>
+<a name="Previous_Embedding_JRuby_Page"></a><span>Previous Embedding JRuby Page</span>
+</h1>
+
+
+<p>We recommend using Embed Core; however, if you're maintaining code that uses the old API, you can find its documentation on the <a href="JavaIntegration">legacy embedding</a><sup>[<a href="#cite_note-1">1</a>]</sup> page.
+</p>
+
+<h1>
+<a name="References"></a><span>References</span>
+</h1>
+
+
+<p></p><ol><li>
+<b><a href="#cite_ref-1-0">^</a> </b> This link goes nowhere.</li></ol>

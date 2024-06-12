@@ -24,6 +24,7 @@ you wish to run the library. You can also run `script/bootstrap` to fetch them a
 * [.rdoc](https://ruby.github.io/rdoc/) -- `gem install rdoc -v 3.6.1`
 * [.org](http://orgmode.org/) -- `gem install org-ruby` (https://github.com/wallyqs/org-ruby)
 * [.creole](http://wikicreole.org/) -- `gem install creole` (https://github.com/larsch/creole)
+* [.mediawiki, .wiki](http://www.mediawiki.org/wiki/Help:Formatting) -- `gem install wikicloth` (https://github.com/nricciar/wikicloth)
 * [.rst](http://docutils.sourceforge.net/rst.html) -- `pip install docutils`
 * [.asciidoc, .adoc, .asc](http://asciidoc.org/) -- `gem install asciidoctor` (http://asciidoctor.org)
 * [.pod](http://search.cpan.org/dist/perl/pod/perlpod.pod) -- `Pod::Simple::XHTML`

@@ -51,6 +51,10 @@ class MarkupTest < Minitest::Test
     markup = readme.split('/').last.gsub(/^README\./, '')
 
     define_method "test_#{markup}" do
+      skip(
+        "Skipping MediaWiki test because wikicloth is currently not compatible with JRuby.",
+      ) if markup == "mediawiki" && RUBY_PLATFORM == "java"
+
       source = File.read(readme)
       expected_file = "#{readme}.html"
       expected = File.read(expected_file).rstrip
@@ -65,6 +69,7 @@ class MarkupTest < Minitest::Test
         f.close_write
         f.read
       end
+
       assert_html_equal expected, actual, <<message
 #{File.basename expected_file}'s contents are not html equal to output:
 #{diff}
@@ -85,6 +90,7 @@ message
     assert_equal "rdoc", GitHub::Markup.renderer('README.rdoc', '* One').name
     assert_equal "org-ruby", GitHub::Markup.renderer('README.org', '* Title').name
     assert_equal "creole", GitHub::Markup.renderer('README.creole', '= Title =').name
+    assert_equal "wikicloth", GitHub::Markup.renderer('README.wiki', '<h1>Title</h1>').name
     assert_equal "asciidoctor", GitHub::Markup.renderer('README.adoc', '== Title').name
     assert_equal "restructuredtext", GitHub::Markup.renderer('README.rst', 'Title').name
     assert_equal "pod", GitHub::Markup.renderer('README.pod', '=head1').name

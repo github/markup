@@ -11,5 +11,7 @@ gem "commonmarker", git: "https://github.com/gjtorikian/commonmarker.git", tag: 
 gem "rdoc", "~> 6.7.0"
 gem "org-ruby", "= 0.9.12"
 gem "creole", "~> 0.5.0"
+gem "wikicloth", "0.8.4.6.ga1b6c30"
+gem "rexml"
 gem "asciidoctor", "~> 2.0.23"
 gem "rake"

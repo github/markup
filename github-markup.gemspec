@@ -20,8 +20,8 @@ Gem::Specification.new do |s|
   s.require_paths = %w[lib]
 
   s.add_development_dependency "rake", "~> 12"
-  s.add_development_dependency "activesupport", "~> 4.0"
-  s.add_development_dependency "minitest", "~> 5.4", ">= 5.4.3"
+  s.add_development_dependency "activesupport", "~> 7.1.3.4"
+  s.add_development_dependency "minitest", "~> 5.23.1"
   s.add_development_dependency "html-pipeline", "~> 2.14.3"
   s.add_development_dependency "sanitize", "~> 6.1.0"
   s.add_development_dependency "nokogiri", "~> 1.16.5"

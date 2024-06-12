@@ -1,5 +1,4 @@
 ## 5.0.0 - 2024-06-11
-* Drop wikicloth support
 * Drop support for Ruby versions < 3.1.0
 
 * Update to Nokogiri ~> 1.16.5
