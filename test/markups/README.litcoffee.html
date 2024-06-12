@@ -3,37 +3,37 @@
 <p>Taken from <a href="https://github.com/jashkenas/coffee-script/blob/master/test/literate.litcoffee">https://github.com/jashkenas/coffee-script/blob/master/test/literate.litcoffee</a></p>
 </blockquote>
 <p>comment comment</p>
-<pre><code>test "basic literate CoffeeScript parsing", -&gt;
-  ok yes
-</code></pre>
+<pre><code><span>test "basic literate CoffeeScript parsing", -&gt;
+</span><span>  ok yes
+</span></code></pre>
 <p>now with a...</p>
-<pre><code>test "broken up indentation", -&gt;
-</code></pre>
+<pre><code><span>test "broken up indentation", -&gt;
+</span></code></pre>
 <p>... broken up ...</p>
-<pre><code>  do -&gt;
-</code></pre>
+<pre><code><span>  do -&gt;
+</span></code></pre>
 <p>... nested block.</p>
-<pre><code>    ok yes
-</code></pre>
+<pre><code><span>    ok yes
+</span></code></pre>
 <p>Code must be separated from text by a blank line.</p>
-<pre><code>test "code blocks must be preceded by a blank line", -&gt;
-</code></pre>
+<pre><code><span>test "code blocks must be preceded by a blank line", -&gt;
+</span></code></pre>
 <p>The next line is part of the text and will not be executed.
 fail()</p>
-<pre><code>  ok yes
-</code></pre>
+<pre><code><span>  ok yes
+</span></code></pre>
 <p>Code in <code>backticks is not parsed</code> and...</p>
-<pre><code>test "comments in indented blocks work", -&gt;
-  do -&gt;
-    do -&gt;
-      # Regular comment.
-
-      ###
-        Block comment.
-      ###
-
-      ok yes
-</code></pre>
+<pre><code><span>test "comments in indented blocks work", -&gt;
+</span><span>  do -&gt;
+</span><span>    do -&gt;
+</span><span>      # Regular comment.
+</span><span>
+</span><span>      ###
+</span><span>        Block comment.
+</span><span>      ###
+</span><span>
+</span><span>      ok yes
+</span></code></pre>
 <p>Regular <a href="http://example.com/markdown">Markdown</a> features,
 like links and unordered lists, are fine:</p>
 <ul>
