@@ -1,11 +1,13 @@
 ## 5.0.0 - 2024-06-11
 * Drop support for Ruby versions < 3.1.0
 
-* Update to Nokogiri ~> 1.16.5
-* Update to nokogiri-diff ~> 0.3.0
-* Update to github-linguist ~> 7.30.0
-* Update to sanitize ~> 6.1.0
-* Update to html-pipeline ~> 2.14.3
+* activesupport to 7.1.3.4
+* minitest to 5.23.1
+* nokogiri to 1.16.5
+* nokogiri-diff to 0.3.0
+* github-linguist to 7.30.0
+* sanitize to 6.1.0
+* html-pipeline to 2.14.3
 
 ## 4.0.2 - 2023-10-10
 * Add support for .mdx files in markdown
