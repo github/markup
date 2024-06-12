@@ -4,4 +4,5 @@ pkg/
 Gemfile.lock
 .project
 .buildpath
-*~ 
+*~
+vendor/

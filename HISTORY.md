@@ -1,3 +1,10 @@
+## 5.0.0 - 2024-06-12
+* Drop support for Ruby versions < 3
+* Bump nokogiri from 1.8.1 to 1.16.5
+* Bump nokogiri-diff from 0.2.0 to 0.3.0
+* Bump rdoc from 3.6 to 6.7.0
+* Update CommandImplementation to better support large files (affecting RST and POD6 rendering)
+
 ## 4.0.2 - 2023-10-10
 * Add support for .mdx files in markdown
 
