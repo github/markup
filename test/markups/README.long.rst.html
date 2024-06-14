@@ -1,0 +1,1162 @@
+<h1 class="title">Robot Framework 7.0</h1>
+<p><a class="reference external" href="http://robotframework.org">Robot Framework</a> 7.0 is a new major release with highly enhanced listener interface
+(<a class="reference external" href="https://github.com/robotframework/robotframework/issues/3296">#3296</a>), native <code class="code">VAR</code> syntax for creating variables (<a class="reference external" href="https://github.com/robotframework/robotframework/issues/3761">#3761</a>), support for
+mixing embedded and normal arguments with library keywords (<a class="reference external" href="https://github.com/robotframework/robotframework/issues/4710">#4710</a>), JSON
+result format (<a class="reference external" href="https://github.com/robotframework/robotframework/issues/4847">#4847</a>) and various other enhancements and bug fixes.</p>
+<p>Robot Framework 7.0 was released on Thursday January 11, 2024. Questions and comments
+related to the release can be sent to the <code class="code">#devel</code> channel on <a class="reference external" href="http://slack.robotframework.org">Robot Framework Slack</a>
+and possible bugs submitted to the <a class="reference external" href="https://github.com/robotframework/robotframework/issues">issue tracker</a>.</p>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><a class="reference internal" href="#installation" id="id113">Installation</a></li>
+<li><a class="reference internal" href="#most-important-enhancements" id="id114">Most important enhancements</a><ul>
+<li><a class="reference internal" href="#listener-enhancements" id="id115">Listener enhancements</a></li>
+<li><a class="reference internal" href="#native-var-syntax" id="id116">Native <code class="code">VAR</code> syntax</a></li>
+<li><a class="reference internal" href="#mixed-argument-support-with-library-keywords" id="id117">Mixed argument support with library keywords</a></li>
+<li><a class="reference internal" href="#json-result-format" id="id118">JSON result format</a></li>
+<li><a class="reference internal" href="#argument-conversion-enhancements" id="id119">Argument conversion enhancements</a></li>
+<li><a class="reference internal" href="#tags-set-globally-can-be-removed-using-tag-syntax" id="id120">Tags set globally can be removed using <code class="code">-tag</code> syntax</a></li>
+<li><a class="reference internal" href="#dynamic-and-hybrid-library-apis-support-asynchronous-execution" id="id121">Dynamic and hybrid library APIs support asynchronous execution</a></li>
+<li><a class="reference internal" href="#timestamps-in-result-model-and-output-xml-use-standard-format" id="id122">Timestamps in result model and output.xml use standard format</a></li>
+<li><a class="reference internal" href="#dark-mode-support-to-report-and-log" id="id123">Dark mode support to report and log</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#backwards-incompatible-changes" id="id124">Backwards incompatible changes</a><ul>
+<li><a class="reference internal" href="#python-3-6-and-3-7-are-no-longer-supported" id="id125">Python 3.6 and 3.7 are no longer supported</a></li>
+<li><a class="reference internal" href="#changes-to-output-xml" id="id126">Changes to output.xml</a></li>
+<li><a class="reference internal" href="#changes-to-result-model" id="id127">Changes to result model</a></li>
+<li><a class="reference internal" href="#changes-to-parsing-model" id="id128">Changes to parsing model</a></li>
+<li><a class="reference internal" href="#changes-to-libdoc-spec-files" id="id129">Changes to Libdoc spec files</a></li>
+<li><a class="reference internal" href="#changes-to-selecting-tests-with-suite-test-and-include" id="id130">Changes to selecting tests with <code class="code">--suite</code>, <code class="code">--test</code> and <code class="code">--include</code></a></li>
+<li><a class="reference internal" href="#other-backwards-incompatible-changes" id="id131">Other backwards incompatible changes</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#deprecations" id="id132">Deprecations</a><ul>
+<li><a class="reference internal" href="#return-setting" id="id133"><code class="code">[Return]</code> setting</a></li>
+<li><a class="reference internal" href="#singular-section-headers" id="id134">Singular section headers</a></li>
+<li><a class="reference internal" href="#deprecated-attributes-in-parsing-running-and-result-models" id="id135">Deprecated attributes in parsing, running and result models</a></li>
+<li><a class="reference internal" href="#other-deprecated-features" id="id136">Other deprecated features</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#acknowledgements" id="id137">Acknowledgements</a></li>
+<li><a class="reference internal" href="#full-list-of-fixes-and-enhancements" id="id138">Full list of fixes and enhancements</a></li>
+</ul>
+</div>
+<a name="installation"></a>
+<h2><a class="toc-backref" href="#id113">Installation</a></h2>
+<p>If you have <a class="reference external" href="http://pip-installer.org">pip</a> installed, just run</p>
+<pre>
+pip install --upgrade robotframework
+</pre>
+<p>to install the latest available stable release or use</p>
+<pre>
+pip install robotframework==7.0
+</pre>
+<p>to install exactly this version. Alternatively you can download the package
+from <a class="reference external" href="https://pypi.python.org/pypi/robotframework">PyPI</a> and install it manually. For more details and other installation
+approaches, see the <a class="reference external" href="../../INSTALL.rst">installation instructions</a>.</p>
+<a name="most-important-enhancements"></a>
+<h2><a class="toc-backref" href="#id114">Most important enhancements</a></h2>
+<blockquote>
+<p>If you are interested to learn more about the new features in Robot Framework 7.0,
+join the <a class="reference external" href="https://robocon.io">RoboCon conference</a> in February, 2024. <a class="reference external" href="https://github.com/pekkaklarck">Pekka Klärck</a>, Robot Framework
+lead developer, will go through the key features briefly in the <a class="reference external" href="https://robocon.io/#live-opening-the-conference">onsite conference</a>
+in Helsinki and more thoroughly in the <a class="reference external" href="https://robocon.io/#online-opening-the-conference-live">online edition</a>.</p>
+<p>The conference has also dozens of other great talks, workshops and a lot of
+possibilities to meet other community members as well as developers of various
+tools and libraries in the ecosystem. All profits from the conference will be
+used for future Robot Framework development.</p>
+</blockquote>
+<a name="listener-enhancements"></a>
+<h3><a class="toc-backref" href="#id115">Listener enhancements</a></h3>
+<p>Robot Framework's <a class="reference external" href="http://robotframework.org/robotframework/latest/RobotFrameworkUserGuide.html#listener-interface">listener interface</a> is a very powerful mechanism to get
+notifications about various events during execution and it also allows modifying
+data and results on the fly. It is not typically directly used by normal Robot
+Framework users, but they are likely to use tools that use it internally.
+The listener API has been significantly enhanced making it possible
+to create even more powerful and interesting tools in the future.</p>
+<a name="support-keywords-and-control-structures-with-listener-version-3"></a>
+<h4>Support keywords and control structures with listener version 3</h4>
+<p>The major limitation with the listener API has been that the listener
+API version 2 only supports getting notifications, not making modifications,
+and that the more powerful listener API version 3 has only supported suites
+and tests/tasks.</p>
+<p>The biggest enhancement in the whole Robot Framework 7.0 is that the listener
+version 3 has been extended to support also keywords and control structures (<a class="reference external" href="https://github.com/robotframework/robotframework/issues/3296">#3296</a>).
+For example, a listener having the following methods prints information
+about started keywords and ended WHILE loops:</p>
+<pre lang="python">
+from robot import result, running
+
+
+def start_keyword(data: running.Keyword, result: result.Keyword):
+    print(f&quot;Keyword '{result.full_name}' used on line {data.lineno} started.&quot;)
+
+
+def end_while(data: running.While, result: result.While):
+    print(f&quot;WHILE loop on line {data.lineno} ended with status {result.status} &quot;
+          f&quot;after {len(result.body)} iterations.&quot;)
+</pre>
+<p>With keyword calls it is possible to also get more information about the actually
+executed keyword. For example, the following listener prints some information
+about the executed keyword and the library it belongs to:</p>
+<pre lang="python">
+from robot.running import Keyword as KeywordData, LibraryKeyword
+from robot.result import Keyword as KeywordResult
+
+
+def start_library_keyword(data: KeywordData,
+                          implementation: LibraryKeyword,
+                          result: KeywordResult):
+    library = implementation.owner
+    print(f&quot;Keyword '{implementation.name}' is implemented in library &quot;
+          f&quot;'{library.name}' at '{implementation.source}' on line &quot;
+          f&quot;{implementation.lineno}. The library has {library.scope.name} &quot;
+          f&quot;scope and the current instance is {library.instance}.&quot;)
+</pre>
+<p>As the above example already illustrated, it is even possible to get an access to
+the actual library instance. This means that listeners can inspect the library
+state and also modify it. With user keywords it is even possible to modify
+the keyword itself or, via the <code class="code">owner</code> resource file, any other keyword in
+the resource file.</p>
+<p>Listeners can also modify results if needed. Possible use cases include hiding
+sensitive information and adding more details to results based on external sources.</p>
+<p>Notice that although listener can change status of any executed keyword or control
+structure, that does not directly affect the status of the executed test. In general
+listeners cannot directly fail keywords so that execution would stop or handle
+failures so that execution would continue. This kind of functionality may be
+added in the future if there are needs.</p>
+<p>The new listener version 3 methods are so powerful and versatile that going them
+through thoroughly in these release notes is not possible. For more examples, you
+can see the <a class="reference external" href="https://github.com/robotframework/robotframework/tree/master/atest/testdata/output/listener_interface/body_items_v3">acceptance tests</a> using the methods in various interesting and even
+crazy ways.</p>
+<a name="listener-version-3-is-the-default-listener-version"></a>
+<h4>Listener version 3 is the default listener version</h4>
+<p>Earlier listeners always needed to specify the API version they used with the
+<code class="code">ROBOT_LISTENER_API_VERSION</code> attribute. Now that the listener version 3 got
+the new methods, it is considered so much more powerful than the version 2
+that it was made the default listener version (<a class="reference external" href="https://github.com/robotframework/robotframework/issues/4910">#4910</a>).</p>
+<p>The listener version 2 continues to work, but using it requires specifying
+the listener version as earlier. The are no plans to deprecate the listener
+version 2, but we nevertheless highly recommend using the version 3 whenever
+possible.</p>
+<a name="libraries-can-register-themselves-as-listeners-by-using-string-self"></a>
+<h4>Libraries can register themselves as listeners by using string <code class="code">SELF</code></h4>
+<p>Listeners are typically enabled from the command line, but libraries
+can register listeners as well. Often libraries themselves want to act
+as listeners, and that has earlier required using <code class="code">self.ROBOT_LIBRARY_LISTENER&nbsp;=&nbsp;self</code>
+in the <code class="code">__init__</code> method. Robot Framework 7.0 makes it possible to use string
+<code class="code">SELF</code> (case-insensitive) for this purpose as well (<a class="reference external" href="https://github.com/robotframework/robotframework/issues/4910">#4910</a>), which means
+that a listener can be specified as a class attribute and not only in <code class="code">__init__</code>.
+This is especially convenient when using the <code class="code">&#64;library</code> decorator:</p>
+<pre lang="python">
+from robot.api.deco import keyword, library
+
+
+&#64;library(listener='SELF')
+class Example:
+
+    def start_suite(self, data, result):
+        ...
+
+    &#64;keyword
+    def example(self, arg):
+        ...
+</pre>
+<a name="nicer-api-for-modifying-keyword-arguments"></a>
+<h4>Nicer API for modifying keyword arguments</h4>
+<p>Modifying keyword call arguments programmatically has been made more convenient
+(<a class="reference external" href="https://github.com/robotframework/robotframework/issues/5000">#5000</a>). This enhancement eases modifying arguments using the new listener
+version 3 <code class="code">start/end_keyword</code> methods.</p>
+<a name="paths-are-passed-to-version-3-listeners-as-pathlib-path-objects"></a>
+<h4>Paths are passed to version 3 listeners as <code class="code">pathlib.Path</code> objects</h4>
+<p>Listeners have methods like <code class="code">output_file</code> and <code class="code">log_file</code> that are called when
+result files are ready so that they get the file path as an argument. Earlier
+paths were strings, but nowadays listener version 3 methods get them as
+more convenient <a class="reference external" href="https://docs.python.org/3/library/pathlib.html">pathlib.Path</a> objects.</p>
+<a name="native-var-syntax"></a>
+<h3><a class="toc-backref" href="#id116">Native <code class="code">VAR</code> syntax</a></h3>
+<p>The new <code class="code">VAR</code> syntax (<a class="reference external" href="https://github.com/robotframework/robotframework/issues/3761">#3761</a>) makes it possible to create local variables
+as well as global, suite and test/task scoped variables dynamically during
+execution. The motivation is to have a more convenient syntax than using
+the <code class="code">Set Variable</code> keyword for creating local variables and to unify
+the syntax for creating variables in different scopes. Except for the mandatory
+<code class="code">VAR</code> marker, the syntax is also the same as when creating variables in the
+Variables section. The syntax is best explained with examples:</p>
+<pre lang="robotframework">
+*** Test Cases ***
+Example
+    # Create a local variable `${local}` with a value `value`.
+    VAR    ${local}    value
+
+    # Create a variable that is available throughout the whole suite.
+    # Supported scopes are GLOBAL, SUITE, TEST, TASK and LOCAL (default).
+    VAR    ${suite}    value    scope=SUITE
+
+    # Validate created variables.
+    Should Be Equal    ${local}    value
+    Should Be Equal    ${suite}    value
+
+Example continued
+    # Suite level variables are seen also by subsequent tests.
+    Should Be Equal    ${suite}    value
+</pre>
+<p>When creating <code class="code">${scalar}</code> variables having long values, it is possible to split
+the value to multiple lines. Lines are joined together with a space by default,
+but that can be changed with the <code class="code">separator</code> configuration option. Similarly as
+in the Variables section, it is possible to create also <code class="code">&#64;{list}</code> and <code class="code">&amp;{dict}</code>
+variables. Unlike in the Variables section, variables can be created conditionally
+using IF/ELSE structures:</p>
+<pre lang="robotframework">
+*** Test Cases ***
+Long value
+    VAR    ${long}
+    ...    This value is rather long.
+    ...    It has been split to multiple lines.
+    ...    Parts will be joined together with a space.
+
+Multiline
+    VAR    ${multiline}
+    ...    First line.
+    ...    Second line.
+    ...    Last line.
+    ...    separator=\n
+
+List
+    # Creates a list with three items.
+    VAR    &#64;{list}    a    b    c
+
+Dictionary
+    # Creates a dictionary with two items.
+    VAR    &amp;{dict}    key=value    second=item
+
+Normal IF
+    IF    1 &gt; 0
+        VAR    ${x}    true value
+    ELSE
+        VAR    ${x}    false value
+    END
+
+Inline IF
+    IF    1 &gt; 0    VAR    ${x}    true value    ELSE    VAR    ${x}    false value
+</pre>
+<a name="mixed-argument-support-with-library-keywords"></a>
+<h3><a class="toc-backref" href="#id117">Mixed argument support with library keywords</a></h3>
+<p>User keywords got support to use both embedded and normal arguments in Robot
+Framework 6.1 (<a class="reference external" href="https://github.com/robotframework/robotframework/issues/4234">#4234</a>) and now that support has been added also to library keywords
+(<a class="reference external" href="https://github.com/robotframework/robotframework/issues/4710">#4710</a>). The syntax works so, that if a function or method implementing a keyword
+accepts more arguments than there are embedded arguments, the remaining arguments
+can be passed in as normal arguments. This is illustrated by the following example
+keyword:</p>
+<pre lang="python">
+&#64;keyword('Number of ${animals} should be')
+def example(animals, count):
+    ...
+</pre>
+<p>The above keyword could be used like this:</p>
+<pre lang="robotframework">
+*** Test Cases ***
+Example
+    Number of horses should be    2
+    Number of horses should be    count=2
+    Number of dogs should be    3
+</pre>
+<a name="json-result-format"></a>
+<h3><a class="toc-backref" href="#id118">JSON result format</a></h3>
+<p>Robot Framework 6.1 added support to <a class="reference external" href="https://github.com/robotframework/robotframework/blob/master/doc/releasenotes/rf-6.1.rst#json-data-format">convert test/task data to JSON and back</a>
+and Robot Framework 7.0 extends the JSON serialization support to execution results
+(<a class="reference external" href="https://github.com/robotframework/robotframework/issues/4847">#4847</a>). One of the core use cases for data serialization was making it easy to
+transfer data between process and machines, and now it is also easy to pass results
+back.</p>
+<p>Also the built-in Rebot tool that is used for post-processing results supports
+JSON files both in output and in input. Creating JSON output files is done using
+the normal <code class="code">--output</code> option so that the specified file has a <code class="code">.json</code> extension:</p>
+<pre>
+rebot --output output.json output.xml
+</pre>
+<p>When reading output files, JSON files are automatically recognized by
+the extension:</p>
+<pre>
+rebot output.json
+rebot output1.json output2.json
+</pre>
+<p>When combining or merging results, it is possible to mix JSON and XML files:</p>
+<pre>
+rebot output1.xml output2.json
+rebot --merge original.xml rerun.json
+</pre>
+<p>The JSON output file structure is documented in the <code class="code">result.json</code> <a class="reference external" href="https://github.com/robotframework/robotframework/tree/master/doc/schema#readme">schema file</a>.</p>
+<p>The plan is to enhance the support for JSON output files in the future so that
+they could be created already during execution. For more details see issue <a class="reference external" href="https://github.com/robotframework/robotframework/issues/3423">#3423</a>.</p>
+<a name="argument-conversion-enhancements"></a>
+<h3><a class="toc-backref" href="#id119">Argument conversion enhancements</a></h3>
+<p>Automatic argument conversion is a very powerful feature that library developers
+can use to avoid converting arguments manually and to get more useful Libdoc
+documentation. There are two important new enhancements to it.</p>
+<a name="support-for-literal"></a>
+<h4>Support for <code class="code">Literal</code></h4>
+<p>In Python, the <a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Literal">Literal</a> type makes it possible to type arguments so that type
+checkers accept only certain values. For example, this function only accepts
+strings <code class="code">x</code>, <code class="code">y</code> and <code class="code">z</code>:</p>
+<pre lang="python">
+def example(arg: Literal['x', 'y', 'z']):
+    ...
+</pre>
+<p>Robot Framework has been enhanced so that it validates that an argument having
+a <code class="code">Literal</code> type can only be used with the specified values (<a class="reference external" href="https://github.com/robotframework/robotframework/issues/4633">#4633</a>). For
+example, using a keyword with the above implementation with a value <code class="code">xxx</code> would
+fail.</p>
+<p>In addition to validation, arguments are also converted. For example, if an
+argument accepts <code class="code">Literal[-1,&nbsp;0,&nbsp;1]</code>, used arguments are converted to
+integers and then validated. In addition to that, string matching is case, space,
+underscore and hyphen insensitive. In all cases exact matches have a precedence
+and the argument that is passed to the keyword is guaranteed to be in the exact
+format used with <code class="code">Literal</code>.</p>
+<p><code class="code">Literal</code> conversion is in many ways similar to <a class="reference external" href="https://docs.python.org/3/library/enum.html">Enum</a> conversion that Robot
+Framework has supported for long time. <code class="code">Enum</code> conversion has benefits like
+being able to use a custom documentation and it is typically better when using
+the same type multiple times. In simple cases being able to just use
+<code class="code">arg:&nbsp;Literal[...]</code> without defining a new type is very convenient, though.</p>
+<a name="support-stringified-types-like-list-int-and-int-float"></a>
+<h4>Support  &quot;stringified&quot; types like <code class="code">'list[int]'</code> and <code class="code">'int | float'</code></h4>
+<p>Python's type hinting syntax has evolved so that generic types can be parameterized
+like <code class="code">list[int]</code> (new in <a class="reference external" href="https://peps.python.org/pep-0585">Python 3.9</a>) and unions written as <code class="code">int | float</code>
+(new in <a class="reference external" href="https://peps.python.org/pep-0604">Python 3.10</a>). Using these constructs with older Python versions causes
+errors, but Python type checkers support also &quot;stringified&quot; type hints like
+<code class="code">'list[int]'</code> and <code class="code">'int | float'</code> that work regardless the Python version.</p>
+<p>Support for stringified generics and unions has now been added also to
+Robot Framework's argument conversion (<a class="reference external" href="https://github.com/robotframework/robotframework/issues/4711">#4711</a>). For example,
+the following typing now also works with Python 3.8:</p>
+<pre lang="python">
+def example(a: 'list[int]', b: 'int | float'):
+    ...
+</pre>
+<p>These stringified types are also compatible with the Remote library API and other
+scenarios where using actual types is not possible.</p>
+<a name="tags-set-globally-can-be-removed-using-tag-syntax"></a>
+<h3><a class="toc-backref" href="#id120">Tags set globally can be removed using <code class="code">-tag</code> syntax</a></h3>
+<p>Individual tests and keywords can nowadays remove tags that have been set in
+the Settings section with <code class="code">Test Tags</code> or <code class="code">Keyword Tags</code> settings by using
+the <code class="code">-tag</code> syntax with their own <code class="code">[Tags]</code> setting (<a class="reference external" href="https://github.com/robotframework/robotframework/issues/4374">#4374</a>). For example,
+tests <code class="code">T1</code> and <code class="code">T3</code> below get tags <code class="code">all</code> and <code class="code">most</code>, and test <code class="code">T2</code> gets
+tags <code class="code">all</code> and <code class="code">one</code>:</p>
+<pre lang="robotframework">
+*** Settings ***
+Test Tags      all    most
+
+*** Test Cases ***
+T1
+    No Operation
+T2
+    [Tags]    one    -most
+    No Operation
+T3
+    No Operation
+</pre>
+<p>With tests it is possible to get the same effect by using the <code class="code">Default Tags</code>
+setting and overriding it where needed. That syntax is, however, considered
+deprecated (<a class="reference external" href="https://github.com/robotframework/robotframework/issues/4365">#4365</a>) and using the new <code class="code">-tag</code> syntax is recommended. With
+keywords there was no similar functionality earlier.</p>
+<a name="dynamic-and-hybrid-library-apis-support-asynchronous-execution"></a>
+<h3><a class="toc-backref" href="#id121">Dynamic and hybrid library APIs support asynchronous execution</a></h3>
+<p>Dynamic and hybrid libraries nowadays support asynchronous execution.
+In practice the special methods like <code class="code">get_keyword_names</code> and <code class="code">run_keyword</code>
+can be implemented as async methods (<a class="reference external" href="https://github.com/robotframework/robotframework/issues/4803">#4803</a>).</p>
+<p>Async support was added to the normal static library API in Robot Framework
+6.1 (<a class="reference external" href="https://github.com/robotframework/robotframework/issues/4089">#4089</a>). A bug related to handling asynchronous keywords if execution
+is stopped gracefully has also been fixed (<a class="reference external" href="https://github.com/robotframework/robotframework/issues/4808">#4808</a>).</p>
+<a name="timestamps-in-result-model-and-output-xml-use-standard-format"></a>
+<h3><a class="toc-backref" href="#id122">Timestamps in result model and output.xml use standard format</a></h3>
+<p>Timestamps used in the result model and stored to the output.xml file used custom
+format like <code class="code">20231107 19:57:01.123</code> earlier. Non-standard formats are seldom
+a good idea, and in this case parsing the custom format turned out to be slow
+as well.</p>
+<p>Nowadays the result model stores timestamps as standard <a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime-objects">datetime</a> objects and
+elapsed times as a <a class="reference external" href="https://docs.python.org/3/library/datetime.html#timedelta-objects">timedelta</a> (<a class="reference external" href="https://github.com/robotframework/robotframework/issues/4258">#4258</a>). This makes creating timestamps and
+operating with them more convenient and considerably faster. The new objects can
+be accessed via <code class="code">start_time</code>, <code class="code">end_time</code> and <code class="code">elapsed_time</code> attributes that were
+added as forward compatibility already in Robot Framework 6.1 (<a class="reference external" href="https://github.com/robotframework/robotframework/issues/4765">#4765</a>).
+Old information is still available via the old <code class="code">starttime</code>, <code class="code">endtime</code> and
+<code class="code">elapsedtime</code> attributes, so this change is fully backwards compatible.</p>
+<p>The timestamp format in output.xml has also been changed from the custom
+<code class="code">YYYYMMDD HH:MM:SS.mmm</code> format to <a class="reference external" href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> compatible
+<code class="code">YYYY-MM-DDTHH:MM:SS.mmmmmm</code>. Using a standard format makes it
+easier to process output.xml files, but this change also has big positive
+performance effect. Now that the result model stores timestamps as <a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime-objects">datetime</a>
+objects, formatting and parsing them with the available <a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.datetime.isoformat">isoformat()</a> and
+<a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.datetime.fromisoformat">fromisoformat()</a> methods is very fast compared to custom formatting and parsing.</p>
+<p>A related change is that instead of storing start and end times of each executed
+item in output.xml, we nowadays store their start and elapsed times. Elapsed times
+are represented as floats denoting seconds. Having elapsed times directly available
+is a lot more convenient than calculating them based on start and end times.
+Storing start and elapsed times also takes less space than storing start and end times.</p>
+<p>As the result of these changes, times are available in the result model and in
+output.xml in higher precision than earlier. Earlier times were stored in millisecond
+granularity, but nowadays they use microseconds. Logs and reports still use milliseconds,
+but that can be changed in the future if there are needs.</p>
+<p>Changes to output.xml are backwards incompatible and affect all external tools
+that process timestamps. This is discussed more in <a class="reference internal" href="#changes-to-output-xml">Changes to output.xml</a>
+section below along with other output.xml changes.</p>
+<a name="dark-mode-support-to-report-and-log"></a>
+<h3><a class="toc-backref" href="#id123">Dark mode support to report and log</a></h3>
+<p>Report and log got a new dark mode (<a class="reference external" href="https://github.com/robotframework/robotframework/issues/3725">#3725</a>). It is enabled automatically based
+on browser and operating system preferences, but there is also a toggle to
+switch between the modes.</p>
+<a name="backwards-incompatible-changes"></a>
+<h2><a class="toc-backref" href="#id124">Backwards incompatible changes</a></h2>
+<a name="python-3-6-and-3-7-are-no-longer-supported"></a>
+<h3><a class="toc-backref" href="#id125">Python 3.6 and 3.7 are no longer supported</a></h3>
+<p>Robot Framework 7.0 requires Python 3.8 or newer (<a class="reference external" href="https://github.com/robotframework/robotframework/issues/4294">#4294</a>). The last version
+that supports Python 3.6 and 3.7 is Robot Framework 6.1.1.</p>
+<a name="changes-to-output-xml"></a>
+<h3><a class="toc-backref" href="#id126">Changes to output.xml</a></h3>
+<p>The output.xml file has changed in different ways making Robot Framework 7.0
+incompatible with external tools processing output.xml files until these tools
+are updated. We try to avoid this kind of breaking changes, but in this case
+especially the changes to timestamps were considered so important that we
+eventually would have needed to do them anyway.</p>
+<p>Due to the changes being relatively big, it can take some time before external
+tools are updated. To allow users to take Robot Framework 7.0 into use also
+if they depend on an incompatible tool, it is possible to use the new
+<code class="code">--legacy-output</code> option both as part of execution and with the Rebot tool
+to generate output.xml files that are compatible with older versions.</p>
+<a name="timestamp-related-changes"></a>
+<h4>Timestamp related changes</h4>
+<p>The biggest changes in output.xml are related to timestamps (<a class="reference external" href="https://github.com/robotframework/robotframework/issues/4258">#4258</a>).
+With earlier versions start and end times of executed items, as well as timestamps
+of the logged messages, were stored using a custom <code class="code">YYYYMMDD HH:MM:SS.mmm</code> format,
+but nowadays the format is <a class="reference external" href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> compatible <code class="code">YYYY-MM-DDTHH:MM:SS.mmmmmm</code>.
+In addition to that, instead of saving start and end times to <code class="code">starttime</code> and
+<code class="code">endtime</code> attributes and message times to <code class="code">timestamp</code>, start and elapsed times
+are now stored to <code class="code">start</code> and <code class="code">elapsed</code> attributes and message times to <code class="code">time</code>.</p>
+<p>Examples:</p>
+<pre lang="xml">
+&lt;!-- Old format --&gt;
+&lt;msg timestamp=&quot;20231108 15:36:34.278&quot; level=&quot;INFO&quot;&gt;Hello world!&lt;/msg&gt;
+&lt;status status=&quot;PASS&quot; starttime=&quot;20231108 15:37:35.046&quot; endtime=&quot;20231108 15:37:35.046&quot;/&gt;
+
+&lt;!-- New format --&gt;
+&lt;msg time=&quot;2023-11-08T15:36:34.278343&quot; level=&quot;INFO&quot;&gt;Hello world!&lt;/msg&gt;
+&lt;status status=&quot;PASS&quot; start=&quot;2023-11-08T15:37:35.046153&quot; elapsed=&quot;0.000161&quot;/&gt;
+</pre>
+<p>The new format is standard compliant, contains more detailed times, makes the elapsed
+time directly available and makes the <code class="code">&lt;status&gt;</code> elements over 10% shorter.
+These are all great benefits, but we are still sorry for all the extra work
+this causes for those developing tools that process output.xml files.</p>
+<a name="keyword-name-related-changes"></a>
+<h4>Keyword name related changes</h4>
+<p>How keyword names are stored in output.xml has changed slightly (<a class="reference external" href="https://github.com/robotframework/robotframework/issues/4884">#4884</a>).
+With each executed keywords we store both the name of the keyword and the name
+of the library or resource file containing it. Earlier the latter was stored to
+attribute <code class="code">library</code> also with resource files, but nowadays the attribute is generic
+<code class="code">owner</code>. In addition to <code class="code">owner</code> being a better name in general, it also
+matches the new <code class="code">owner</code> attribute keywords in the result model have.</p>
+<p>Another change is that the original name stored with keywords using embedded
+arguments is nowadays in <code class="code">source_name</code> attribute when it used to be in <code class="code">sourcename</code>.
+This change was done to make the attribute consistent with the attribute in
+the result model.</p>
+<p>Examples:</p>
+<pre lang="xml">
+&lt;!-- Old format --&gt;
+&lt;kw name=&quot;Log&quot; library=&quot;BuiltIn&quot;&gt;...&lt;/kw&gt;
+&lt;kw name=&quot;Number of horses should be&quot; sourcename=&quot;Number of ${animals} should be&quot; library=&quot;my_resource&quot;&gt;...&lt;/kw&gt;
+
+&lt;!-- New format --&gt;
+&lt;kw name=&quot;Log&quot; owner=&quot;BuiltIn&quot;&gt;...&lt;/kw&gt;
+&lt;kw name=&quot;Number of horses should be&quot; source_name=&quot;Number of ${animals} should be&quot; owner=&quot;my_resource&quot;&gt;...&lt;/kw&gt;
+</pre>
+<a name="other-changes"></a>
+<h4>Other changes</h4>
+<p>Nowadays keywords and control structures can have a message. Messages are represented
+as the text of the <code class="code">&lt;status&gt;</code> element, and they have been present already earlier with
+tests and suites. Related to this, control structured cannot anymore have <code class="code">&lt;doc&gt;</code>.
+(<a class="reference external" href="https://github.com/robotframework/robotframework/issues/4883">#4883</a>)</p>
+<p>These changes should not cause problems for tools processing output.xml files,
+but storing messages with each failed keyword and control structure may
+increase the output.xml size.</p>
+<a name="schema-updates"></a>
+<h4>Schema updates</h4>
+<p>The output.xml schema has been updated and can be found via
+<a class="reference external" href="https://github.com/robotframework/robotframework/tree/master/doc/schema/">https://github.com/robotframework/robotframework/tree/master/doc/schema/</a>.</p>
+<a name="changes-to-result-model"></a>
+<h3><a class="toc-backref" href="#id127">Changes to result model</a></h3>
+<p>There have been some changes to the result model that unfortunately affect
+external tools using it. The main motivation for these changes has been
+cleaning up the model before creating a JSON representation for it (<a class="reference external" href="https://github.com/robotframework/robotframework/issues/4847">#4847</a>).</p>
+<a name="changes-related-to-keyword-names"></a>
+<h4>Changes related to keyword names</h4>
+<p>The biggest changes are related to keyword names (<a class="reference external" href="https://github.com/robotframework/robotframework/issues/4884">#4884</a>). Earlier <code class="code">Keyword</code>
+objects had a <code class="code">name</code> attribute that contained the full keyword name like
+<code class="code">BuiltIn.Log</code>. The actual keyword name and the name of the library or resource
+file that the keyword belonged to were in <code class="code">kwname</code> and <code class="code">libname</code> attributes,
+respectively. In addition to these, keywords using embedded arguments also had
+a <code class="code">sourcename</code> attribute containing the original keyword name.</p>
+<p>Due to reasons explained in <a class="reference external" href="https://github.com/robotframework/robotframework/issues/4884">#4884</a>, the following changes have been made
+in Robot Framework 7.0:</p>
+<ul class="simple">
+<li>Old <code class="code">kwname</code> is renamed to <code class="code">name</code>. This is consistent with the execution side <code class="code">Keyword</code>.</li>
+<li>Old <code class="code">libname</code> is renamed to generic <code class="code">owner</code>.</li>
+<li>New <code class="code">full_name</code> is introduced to replace the old <code class="code">name</code>.</li>
+<li><code class="code">sourcename</code> is renamed to <code class="code">source_name</code>.</li>
+<li><code class="code">kwname</code>, <code class="code">libname</code> and <code class="code">sourcename</code> are preserved as properties. They are considered
+deprecated, but accessing them does not cause a deprecation warning yet.</li>
+</ul>
+<p>The backwards incompatible part of this change is changing the meaning of the
+<code class="code">name</code> attribute. It used to be a read-only property yielding the full name
+like <code class="code">BuiltIn.Log</code>, but now it is a normal attribute that contains just the actual
+keyword name like <code class="code">Log</code>. All other old attributes have been preserved as properties
+and code using them does not need to be updated immediately.</p>
+<a name="deprecated-attributes-have-been-removed"></a>
+<h4>Deprecated attributes have been removed</h4>
+<p>The following attributes that were deprecated already in Robot Framework 4.0
+have been removed (<a class="reference external" href="https://github.com/robotframework/robotframework/issues/4846">#4846</a>):</p>
+<ul class="simple">
+<li><code class="code">TestSuite.keywords</code>. Use <code class="code">TestSuite.setup</code> and <code class="code">TestSuite.teardown</code> instead.</li>
+<li><code class="code">TestCase.keywords</code>. Use <code class="code">TestCase.body</code>, <code class="code">TestCase.setup</code> and <code class="code">TestCase.teardown</code> instead.</li>
+<li><code class="code">Keyword.keywords</code>. Use <code class="code">Keyword.body</code> and <code class="code">Keyword.teardown</code> instead.</li>
+<li><code class="code">Keyword.children</code>. Use <code class="code">Keyword.body</code> and <code class="code">Keyword.teardown</code> instead.</li>
+<li><code class="code">TestCase.critical</code>. The whole criticality concept has been removed.</li>
+</ul>
+<p>Additionally, <code class="code">TestSuite.keywords</code> and <code class="code">TestCase.keywords</code> have been removed
+from the execution model.</p>
+<a name="changes-to-parsing-model"></a>
+<h3><a class="toc-backref" href="#id128">Changes to parsing model</a></h3>
+<p>There have been some changes also to the parsing model:</p>
+<ul>
+<li><p class="first">The node representing the deprecated <code class="code">[Return]</code> setting has been renamed from
+<code class="code">Return</code> to <code class="code">ReturnSetting</code>. At the same time, the node representing the
+<code class="code">RETURN</code> statement has been renamed from <code class="code">ReturnStatement</code> to <code class="code">Return</code> (<a class="reference external" href="https://github.com/robotframework/robotframework/issues/4939">#4939</a>).</p>
+<p>To ease transition, <code class="code">ReturnSetting</code> has existed as an alias for <code class="code">Return</code> starting
+from Robot Framework 6.1 (<a class="reference external" href="https://github.com/robotframework/robotframework/issues/4656">#4656</a>) and <code class="code">ReturnStatement</code> is preserved as an alias
+now. In addition to that, the <code class="code">ModelVisitor</code> base class has special handling for
+<code class="code">visit_ReturnSetting</code> and <code class="code">visit_ReturnStatement</code> visitor methods so that they work
+correctly with <code class="code">ReturnSetting</code> and <code class="code">ReturnStatement</code> with Robot Framework 6.1 and
+newer. Issue <a class="reference external" href="https://github.com/robotframework/robotframework/issues/4939">#4939</a> explains this in more detail and has a concrete example
+how to support also older Robot Framework versions.</p>
+</li>
+<li><p class="first">The node representing the <code class="code">Test Tags</code> setting as well as the deprecated
+<code class="code">Force Tags</code> setting has been renamed from <code class="code">ForceTags</code> to <code class="code">TestTags</code> (<a class="reference external" href="https://github.com/robotframework/robotframework/issues/4385">#4385</a>).
+<code class="code">ModelVisitor</code> has special handling for the <code class="code">visit_ForceTags</code> method so
+that it will continue to work also after the change.</p>
+</li>
+<li><p class="first">The token type used with <code class="code">AS</code> (or <code class="code">WITH NAME</code>) in library imports has been changed
+to <code class="code">Token.AS</code> (<a class="reference external" href="https://github.com/robotframework/robotframework/issues/4375">#4375</a>). <code class="code">Token.WITH_NAME</code> still exists as an alias for <code class="code">Token.AS</code>.</p>
+</li>
+<li><p class="first">Statement <code class="code">type</code> and <code class="code">tokens</code> have been moved from <code class="code">_fields</code> to <code class="code">_attributes</code> (<a class="reference external" href="https://github.com/robotframework/robotframework/issues/4912">#4912</a>).
+This may affect debugging the model.</p>
+</li>
+</ul>
+<a name="changes-to-libdoc-spec-files"></a>
+<h3><a class="toc-backref" href="#id129">Changes to Libdoc spec files</a></h3>
+<p>The following deprecated constructs have been removed from Libdoc spec files (<a class="reference external" href="https://github.com/robotframework/robotframework/issues/4667">#4667</a>):</p>
+<ul class="simple">
+<li><code class="code">datatypes</code> have been removed from XML or JSON spec files. They were deprecated in
+favor of <code class="code">typedocs</code> already in Robot Framework 5.0 (<a class="reference external" href="https://github.com/robotframework/robotframework/issues/4160">#4160</a>).</li>
+<li>Type names are not anymore written to XML specs as content of the <code class="code">&lt;type&gt;</code> elements.
+The name is available as the <code class="code">name</code> attribute of <code class="code">&lt;type&gt;</code> elements since
+Robot Framework 6.1 (<a class="reference external" href="https://github.com/robotframework/robotframework/issues/4538">#4538</a>).</li>
+<li><code class="code">types</code> and <code class="code">typedocs</code> attributes have been removed from arguments in JSON specs.
+The <code class="code">type</code> attribute introduced in RF 6.1 (<a class="reference external" href="https://github.com/robotframework/robotframework/issues/4538">#4538</a>) needs to be used instead.</li>
+</ul>
+<p>Libdoc schema files have been updated and can be found via
+<a class="reference external" href="https://github.com/robotframework/robotframework/tree/master/doc/schema/">https://github.com/robotframework/robotframework/tree/master/doc/schema/</a>.</p>
+<a name="changes-to-selecting-tests-with-suite-test-and-include"></a>
+<h3><a class="toc-backref" href="#id130">Changes to selecting tests with <code class="code">--suite</code>, <code class="code">--test</code> and <code class="code">--include</code></a></h3>
+<p>There are two changes related to selecting tests:</p>
+<ul class="simple">
+<li>When using <code class="code">--test</code> and <code class="code">--include</code> together, tests matching either of them
+are selected (<a class="reference external" href="https://github.com/robotframework/robotframework/issues/4721">#4721</a>). Earlier tests need to match both options to be selected.</li>
+<li>When selecting a suite using its parent suite as a prefix like <code class="code">--suite parent.suite</code>,
+the given name must match the full suite name (<a class="reference external" href="https://github.com/robotframework/robotframework/issues/4720">#4720</a>). Earlier it was enough if
+the prefix matched the closest parent or parents.</li>
+</ul>
+<a name="other-backwards-incompatible-changes"></a>
+<h3><a class="toc-backref" href="#id131">Other backwards incompatible changes</a></h3>
+<ul class="simple">
+<li>The default value of the <code class="code">stdin</code> argument used with <code class="code">Process</code> library keyword
+has been changed from <code class="code">subprocess.PIPE</code> to <code class="code">None</code> (<a class="reference external" href="https://github.com/robotframework/robotframework/issues/4103">#4103</a>). This change ought
+to avoid processes hanging in some cases. Those who depend on the old behavior
+need to use <code class="code">stdin=PIPE</code> explicitly to enable that.</li>
+<li>When type hints are specified as strings, they must use format <code class="code">type</code>, <code class="code">type[param]</code>,
+<code class="code">type[p1, p2]</code> or <code class="code">t1 | t2</code> (<a class="reference external" href="https://github.com/robotframework/robotframework/issues/4711">#4711</a>). Using other formats will cause errors taking
+keywords into use. In practice problems occur if the special characters <code class="code">[</code>, <code class="code">]</code>, <code class="code">,</code>
+and <code class="code">|</code> occur in unexpected places. For example, <code class="code">arg: &quot;Hello, world!&quot;</code> will cause
+an error due to the comma.</li>
+<li><code class="code">datetime</code>, <code class="code">date</code> and <code class="code">timedelta</code> objects are sent over the Remote interface
+differently than earlier (<a class="reference external" href="https://github.com/robotframework/robotframework/issues/4784">#4784</a>). They all used to be converted to strings, but
+nowadays <code class="code">datetime</code> is sent as-is, <code class="code">date</code> is converted to <code class="code">datetime</code> and sent like
+that, and <code class="code">timedelta</code> is converted to a <code class="code">float</code> by using <code class="code">timedelta.total_seconds()</code>.</li>
+<li>Argument conversion support with <code class="code">collections.abc.ByteString</code> has been removed (<a class="reference external" href="https://github.com/robotframework/robotframework/issues/4983">#4983</a>).
+The reason is that <code class="code">ByteString</code> is deprecated and will be removed in Python 3.14.
+It has not been too often needed, but if you happen to use it, you can change
+<code class="code">arg:&nbsp;ByteString</code> to <code class="code">arg:&nbsp;bytes&nbsp;|&nbsp;bytearray</code> and the functionality
+stays exactly the same.</li>
+<li>Paths passed to result file related listener version 3 methods like <code class="code">output_file</code>
+and <code class="code">log_file</code> have been changed from strings to <code class="code">pathlib.Path</code> objects (<a class="reference external" href="https://github.com/robotframework/robotframework/issues/4988">#4988</a>).
+Most of the time both kinds of paths work interchangeably, so this change is unlikely
+to cause issues. If you need to handle these paths as strings, they can be converted
+by using <code class="code">str(path)</code>.</li>
+<li><code class="code">robot.utils.normalize</code> does not anymore support bytes (<a class="reference external" href="https://github.com/robotframework/robotframework/issues/4936">#4936</a>).</li>
+<li>Deprecated <code class="code">accept_plain_values</code> argument has been removed from the
+<code class="code">timestr_to_secs</code> utility function (<a class="reference external" href="https://github.com/robotframework/robotframework/issues/4861">#4861</a>).</li>
+</ul>
+<a name="deprecations"></a>
+<h2><a class="toc-backref" href="#id132">Deprecations</a></h2>
+<a name="return-setting"></a>
+<h3><a class="toc-backref" href="#id133"><code class="code">[Return]</code> setting</a></h3>
+<p>The <code class="code">[Return]</code> setting for specifying the return value from user keywords has
+been &quot;loudly&quot; deprecated (<a class="reference external" href="https://github.com/robotframework/robotframework/issues/4876">#4876</a>). It has been &quot;silently&quot; deprecated since
+Robot Framework 5.0 when the much more versatile <code class="code">RETURN</code> setting was introduced
+(<a class="reference external" href="https://github.com/robotframework/robotframework/issues/4078">#4078</a>), but now using it will cause a deprecation warning. The plan is to
+preserve the <code class="code">[Return]</code> setting at least until Robot Framework 8.0.</p>
+<p>If you have lot of data that uses <code class="code">[Return]</code>, the easiest way to update it is
+using the <a class="reference external" href="https://robotidy.readthedocs.io">Robotidy</a> tool that can convert <code class="code">[Return]</code> to <code class="code">RETURN</code> automatically.
+If you have data that is executed also with Robot Framework versions that do
+not support <code class="code">RETURN</code>, you can use the <code class="code">Return From Keyword</code> keyword instead.
+That keyword will eventually be deprecated and removed as well, though.</p>
+<a name="singular-section-headers"></a>
+<h3><a class="toc-backref" href="#id134">Singular section headers</a></h3>
+<p>Using singular section headers like <code class="code">*** Test Case ***</code> or <code class="code">*** Setting ***</code>
+nowadays causes a deprecation warning (<a class="reference external" href="https://github.com/robotframework/robotframework/issues/4432">#4432</a>). They were silently deprecated
+in Robot Framework 6.0 for reasons explained in issue <a class="reference external" href="https://github.com/robotframework/robotframework/issues/4431">#4431</a>.</p>
+<a name="deprecated-attributes-in-parsing-running-and-result-models"></a>
+<h3><a class="toc-backref" href="#id135">Deprecated attributes in parsing, running and result models</a></h3>
+<ul class="simple">
+<li>In the parsing model, <code class="code">For.variables</code>, <code class="code">ForHeader.variables</code>, <code class="code">Try.variable</code> and
+<code class="code">ExceptHeader.variable</code> attributes have been deprecated in favor of the new <code class="code">assign</code>
+attribute (<a class="reference external" href="https://github.com/robotframework/robotframework/issues/4708">#4708</a>).</li>
+<li>In running and result models, <code class="code">For.variables</code> and <code class="code">TryBranch.variable</code> have been
+deprecated in favor of the new <code class="code">assign</code> attribute (<a class="reference external" href="https://github.com/robotframework/robotframework/issues/4708">#4708</a>).</li>
+<li>In the result model, control structures like <code class="code">FOR</code> were earlier modeled so that they
+looked like keywords. Nowadays they are considered totally different objects and
+their keyword specific attributes <code class="code">name</code>, <code class="code">kwnane</code>, <code class="code">libname</code>, <code class="code">doc</code>, <code class="code">args</code>,
+<code class="code">assign</code>, <code class="code">tags</code> and <code class="code">timeout</code> have been deprecated  (<a class="reference external" href="https://github.com/robotframework/robotframework/issues/4846">#4846</a>).</li>
+<li><code class="code">starttime</code>, <code class="code">endtime</code> and <code class="code">elapsed</code> time attributes in the result model have been
+silently deprecated (<a class="reference external" href="https://github.com/robotframework/robotframework/issues/4258">#4258</a>). Accessing them does not yet cause a deprecation
+warning, but users are recommended to use <code class="code">start_time</code>, <code class="code">end_time</code> and
+<code class="code">elapsed_time</code> attributes that are available since Robot Framework 6.1.</li>
+<li><code class="code">kwname</code>, <code class="code">libname</code> and <code class="code">sourcename</code> attributes used by the <code class="code">Keyword</code> object
+in the result model have been silently deprecated (<a class="reference external" href="https://github.com/robotframework/robotframework/issues/4884">#4884</a>). New code should use
+<code class="code">name</code>, <code class="code">owner</code> and <code class="code">source_name</code> instead.</li>
+</ul>
+<a name="other-deprecated-features"></a>
+<h3><a class="toc-backref" href="#id136">Other deprecated features</a></h3>
+<ul class="simple">
+<li>Using embedded arguments with a variable that has a value not matching custom
+embedded argument patterns nowadays causes a deprecation warning (<a class="reference external" href="https://github.com/robotframework/robotframework/issues/4524">#4524</a>).
+Earlier variables used as embedded arguments were always accepted without
+validating values.</li>
+<li>Using <code class="code">FOR IN ZIP</code> loops with lists having different lengths without explicitly
+using <code class="code">mode=SHORTEST</code> has been deprecated (<a class="reference external" href="https://github.com/robotframework/robotframework/issues/4685">#4685</a>). The strict mode where lengths
+must match will be the default mode in the future.</li>
+<li>Various utility functions in the <code class="code">robot.utils</code> package that are no longer used
+by Robot Framework itself, including the whole Python 2/3 compatibility layer,
+have been deprecated (<a class="reference external" href="https://github.com/robotframework/robotframework/issues/4501">#4501</a>). If you need some of these utils, you can copy
+their code to your own tool or library. This change may affect existing
+libraries and tools in the ecosystem.</li>
+<li><code class="code">case_insensitive</code> and <code class="code">whitespace_insensitive</code> arguments used by some
+Collections and String library keywords have been deprecated in favor of
+<code class="code">ignore_case</code> and <code class="code">ignore_whitespace</code>. The new arguments were added for
+consistency reasons (<a class="reference external" href="https://github.com/robotframework/robotframework/issues/4954">#4954</a>) and the old arguments will continue to work
+for the time being.</li>
+<li>Passing time as milliseconds to the <code class="code">elapsed_time_to_string</code> utility function
+has been deprecated (<a class="reference external" href="https://github.com/robotframework/robotframework/issues/4862">#4862</a>).</li>
+</ul>
+<a name="acknowledgements"></a>
+<h2><a class="toc-backref" href="#id137">Acknowledgements</a></h2>
+<p>Robot Framework development is sponsored by the <a class="reference external" href="http://robotframework.org/foundation">Robot Framework Foundation</a>
+and its over 60 member organizations. If your organization is using Robot Framework
+and benefiting from it, consider joining the foundation to support its
+development as well.</p>
+<p>Robot Framework 7.0 team funded by the foundation consists of <a class="reference external" href="https://github.com/pekkaklarck">Pekka Klärck</a> and
+<a class="reference external" href="https://github.com/yanne">Janne Härkönen</a> (part time).
+In addition to work done by them, the community has provided some great contributions:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://github.com/ygorpontelo">Ygor Pontelo</a> added async support to the
+dynamic and hybrid library APIs (<a class="reference external" href="https://github.com/robotframework/robotframework/issues/4803">#4803</a>) and fixed a bug with handling async
+keywords when execution is stopped gracefully (<a class="reference external" href="https://github.com/robotframework/robotframework/issues/4808">#4808</a>).</li>
+<li><a class="reference external" href="https://github.com/totu">Topi 'top1' Tuulensuu</a> fixed a performance regression
+when using <code class="code">Run Keyword</code> so that the name of the executed keyword contains a variable
+(<a class="reference external" href="https://github.com/robotframework/robotframework/issues/4659">#4659</a>).</li>
+<li><a class="reference external" href="https://github.com/psaikkonen">Pasi Saikkonen</a> added dark mode to reports
+and logs (<a class="reference external" href="https://github.com/robotframework/robotframework/issues/3725">#3725</a>).</li>
+<li><a class="reference external" href="https://github.com/Snooz82">René</a> added return type information to Libdoc's
+HTML output (<a class="reference external" href="https://github.com/robotframework/robotframework/issues/3017">#3017</a>), fixed <code class="code">DotDict</code> equality comparisons (<a class="reference external" href="https://github.com/robotframework/robotframework/issues/4956">#4956</a>) and
+helped finalizing the dark mode support (<a class="reference external" href="https://github.com/robotframework/robotframework/issues/3725">#3725</a>).</li>
+<li><a class="reference external" href="https://github.com/robinmackaij">Robin</a> added type hints to modules that
+did not yet have them under the public <code class="code">robot.api</code> package (<a class="reference external" href="https://github.com/robotframework/robotframework/issues/4841">#4841</a>).</li>
+<li><a class="reference external" href="https://github.com/MobyNL">Mark Moberts</a> added case-insensitive list and
+dictionary comparison support to the Collections library (<a class="reference external" href="https://github.com/robotframework/robotframework/issues/4343">#4343</a>).</li>
+<li><a class="reference external" href="https://github.com/d-biehl">Daniel Biehl</a> enhanced performance of traversing
+the parsing model using <code class="code">ModelVisitor</code> (<a class="reference external" href="https://github.com/robotframework/robotframework/issues/4934">#4934</a>).</li>
+</ul>
+<p>Big thanks to Robot Framework Foundation, to community members listed above, and to
+everyone else who has tested preview releases, submitted bug reports, proposed
+enhancements, debugged problems, or otherwise helped with Robot Framework 7.0
+development.</p>
+<p>See you at <a class="reference external" href="https://robocon.io">RoboCon 2024</a> either onsite or online!</p>
+<div class="line-block">
+<div class="line"><a class="reference external" href="https://github.com/pekkaklarck">Pekka Klärck</a></div>
+<div class="line">Robot Framework lead developer</div>
+</div>
+<a name="full-list-of-fixes-and-enhancements"></a>
+<h2><a class="toc-backref" href="#id138">Full list of fixes and enhancements</a></h2>
+<table class="docutils">
+<colgroup>
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">ID</th>
+<th class="head">Type</th>
+<th class="head">Priority</th>
+<th class="head">Summary</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td><a class="reference external" href="https://github.com/robotframework/robotframework/issues/3296">#3296</a></td>
+<td>enhancement</td>
+<td>critical</td>
+<td>Support keywords and control structures with listener version 3</td>
+</tr>
+<tr><td><a class="reference external" href="https://github.com/robotframework/robotframework/issues/3761">#3761</a></td>
+<td>enhancement</td>
+<td>critical</td>
+<td>Native <code class="code">VAR</code> syntax to create variables inside tests and keywords</td>
+</tr>
+<tr><td><a class="reference external" href="https://github.com/robotframework/robotframework/issues/4294">#4294</a></td>
+<td>enhancement</td>
+<td>critical</td>
+<td>Drop Python 3.6 and 3.7 support</td>
+</tr>
+<tr><td><a class="reference external" href="https://github.com/robotframework/robotframework/issues/4710">#4710</a></td>
+<td>enhancement</td>
+<td>critical</td>
+<td>Support library keywords with both embedded and normal arguments</td>
+</tr>
+<tr><td><a class="reference external" href="https://github.com/robotframework/robotframework/issues/4847">#4847</a></td>
+<td>enhancement</td>
+<td>critical</td>
+<td>Support JSON serialization with result model</td>
+</tr>
+<tr><td><a class="reference external" href="https://github.com/robotframework/robotframework/issues/4659">#4659</a></td>
+<td>bug</td>
+<td>high</td>
+<td>Performance regression when using <code class="code">Run Keyword</code> and keyword name contains a variable</td>
+</tr>
+<tr><td><a class="reference external" href="https://github.com/robotframework/robotframework/issues/4921">#4921</a></td>
+<td>bug</td>
+<td>high</td>
+<td>Log levels don't work correctly with <code class="code">robot:flatten</code></td>
+</tr>
+<tr><td><a class="reference external" href="https://github.com/robotframework/robotframework/issues/3725">#3725</a></td>
+<td>enhancement</td>
+<td>high</td>
+<td>Support dark theme with report and log</td>
+</tr>
+<tr><td><a class="reference external" href="https://github.com/robotframework/robotframework/issues/4258">#4258</a></td>
+<td>enhancement</td>
+<td>high</td>
+<td>Change timestamps from custom strings to <code class="code">datetime</code> in result model and to ISO 8601 format in output.xml</td>
+</tr>
+<tr><td><a class="reference external" href="https://github.com/robotframework/robotframework/issues/4374">#4374</a></td>
+<td>enhancement</td>
+<td>high</td>
+<td>Support removing tags set globally by using <code class="code">-tag</code> syntax with <code class="code">[Tags]</code> setting</td>
+</tr>
+<tr><td><a class="reference external" href="https://github.com/robotframework/robotframework/issues/4633">#4633</a></td>
+<td>enhancement</td>
+<td>high</td>
+<td>Automatic argument conversion and validation for <code class="code">Literal</code></td>
+</tr>
+<tr><td><a class="reference external" href="https://github.com/robotframework/robotframework/issues/4711">#4711</a></td>
+<td>enhancement</td>
+<td>high</td>
+<td>Support type aliases in formats <code class="code">'list[int]'</code> and <code class="code">'int | float'</code> in argument conversion</td>
+</tr>
+<tr><td><a class="reference external" href="https://github.com/robotframework/robotframework/issues/4803">#4803</a></td>
+<td>enhancement</td>
+<td>high</td>
+<td>Async support to dynamic and hybrid library APIs</td>
+</tr>
+<tr><td><a class="reference external" href="https://github.com/robotframework/robotframework/issues/4808">#4808</a></td>
+<td>bug</td>
+<td>medium</td>
+<td>Async keywords are not stopped when execution is stopped gracefully</td>
+</tr>
+<tr><td><a class="reference external" href="https://github.com/robotframework/robotframework/issues/4859">#4859</a></td>
+<td>bug</td>
+<td>medium</td>
+<td>Parsing errors in reStructuredText files have no source</td>
+</tr>
+<tr><td><a class="reference external" href="https://github.com/robotframework/robotframework/issues/4880">#4880</a></td>
+<td>bug</td>
+<td>medium</td>
+<td>Initially empty test fails even if pre-run modifier adds content to it</td>
+</tr>
+<tr><td><a class="reference external" href="https://github.com/robotframework/robotframework/issues/4886">#4886</a></td>
+<td>bug</td>
+<td>medium</td>
+<td><code class="code">Set Variable If</code> is slow if it has several conditions</td>
+</tr>
+<tr><td><a class="reference external" href="https://github.com/robotframework/robotframework/issues/4898">#4898</a></td>
+<td>bug</td>
+<td>medium</td>
+<td>Resolving special variables can fail with confusing message</td>
+</tr>
+<tr><td><a class="reference external" href="https://github.com/robotframework/robotframework/issues/4915">#4915</a></td>
+<td>bug</td>
+<td>medium</td>
+<td><code class="code">cached_property</code> attributes are called when importing library</td>
+</tr>
+<tr><td><a class="reference external" href="https://github.com/robotframework/robotframework/issues/4924">#4924</a></td>
+<td>bug</td>
+<td>medium</td>
+<td>WHILE <code class="code">on_limit</code> missing from listener v2 attributes</td>
+</tr>
+<tr><td><a class="reference external" href="https://github.com/robotframework/robotframework/issues/4926">#4926</a></td>
+<td>bug</td>
+<td>medium</td>
+<td>WHILE and TRY content are not removed with <code class="code">--removekeywords all</code></td>
+</tr>
+<tr><td><a class="reference external" href="https://github.com/robotframework/robotframework/issues/4945">#4945</a></td>
+<td>bug</td>
+<td>medium</td>
+<td><code class="code">TypedDict</code> with forward references do not work in argument conversion</td>
+</tr>
+<tr><td><a class="reference external" href="https://github.com/robotframework/robotframework/issues/4956">#4956</a></td>
+<td>bug</td>
+<td>medium</td>
+<td>DotDict behaves inconsistent on equality checks. <code class="code">x == y</code> != <code class="code">not x != y</code> and not <code class="code">x != y</code> == <code class="code">not x == y</code></td>
+</tr>
+<tr><td><a class="reference external" href="https://github.com/robotframework/robotframework/issues/4964">#4964</a></td>
+<td>bug</td>
+<td>medium</td>
+<td>Variables set using <code class="code">Set Suite Variable</code> with <code class="code">children=True</code> cannot be properly overwritten</td>
+</tr>
+<tr><td><a class="reference external" href="https://github.com/robotframework/robotframework/issues/4980">#4980</a></td>
+<td>bug</td>
+<td>medium</td>
+<td>DateTime library uses deprecated <code class="code">datetime.utcnow()</code></td>
+</tr>
+<tr><td><a class="reference external" href="https://github.com/robotframework/robotframework/issues/4999">#4999</a></td>
+<td>bug</td>
+<td>medium</td>
+<td>XML Library: Double namespace during Element To String</td>
+</tr>
+<tr><td><a class="reference external" href="https://github.com/robotframework/robotframework/issues/5005">#5005</a></td>
+<td>bug</td>
+<td>medium</td>
+<td><code class="code">Log Variables</code> should not consume iterables</td>
+</tr>
+<tr><td><a class="reference external" href="https://github.com/robotframework/robotframework/issues/3017">#3017</a></td>
+<td>enhancement</td>
+<td>medium</td>
+<td>Add return type to Libdoc specs and HTML output</td>
+</tr>
+<tr><td><a class="reference external" href="https://github.com/robotframework/robotframework/issues/4103">#4103</a></td>
+<td>enhancement</td>
+<td>medium</td>
+<td>Process: Change the default <code class="code">stdin</code> behavior from <code class="code">subprocess.PIPE</code> to <code class="code">None</code></td>
+</tr>
+<tr><td><a class="reference external" href="https://github.com/robotframework/robotframework/issues/4302">#4302</a></td>
+<td>enhancement</td>
+<td>medium</td>
+<td>Remove <code class="code">Reserved</code> library</td>
+</tr>
+<tr><td><a class="reference external" href="https://github.com/robotframework/robotframework/issues/4343">#4343</a></td>
+<td>enhancement</td>
+<td>medium</td>
+<td>Collections: Support case-insensitive list and dictionary comparisons</td>
+</tr>
+<tr><td><a class="reference external" href="https://github.com/robotframework/robotframework/issues/4375">#4375</a></td>
+<td>enhancement</td>
+<td>medium</td>
+<td>Change token type of <code class="code">AS</code> (or <code class="code">WITH NAME</code>) used with library imports to <code class="code">Token.AS</code></td>
+</tr>
+<tr><td><a class="reference external" href="https://github.com/robotframework/robotframework/issues/4385">#4385</a></td>
+<td>enhancement</td>
+<td>medium</td>
+<td>Change the parsing model object produced by <code class="code">Test Tags</code> (and <code class="code">Force Tags</code>) to <code class="code">TestTags</code></td>
+</tr>
+<tr><td><a class="reference external" href="https://github.com/robotframework/robotframework/issues/4432">#4432</a></td>
+<td>enhancement</td>
+<td>medium</td>
+<td>Loudly deprecate singular section headers</td>
+</tr>
+<tr><td><a class="reference external" href="https://github.com/robotframework/robotframework/issues/4501">#4501</a></td>
+<td>enhancement</td>
+<td>medium</td>
+<td>Loudly deprecate old Python 2/3 compatibility layer and other deprecated utils</td>
+</tr>
+<tr><td><a class="reference external" href="https://github.com/robotframework/robotframework/issues/4524">#4524</a></td>
+<td>enhancement</td>
+<td>medium</td>
+<td>Loudly deprecate variables used as embedded arguments not matching custom patterns</td>
+</tr>
+<tr><td><a class="reference external" href="https://github.com/robotframework/robotframework/issues/4545">#4545</a></td>
+<td>enhancement</td>
+<td>medium</td>
+<td>Support creating assigned variable name based on another variable like <code class="code">${${var}} =    Keyword</code></td>
+</tr>
+<tr><td><a class="reference external" href="https://github.com/robotframework/robotframework/issues/4667">#4667</a></td>
+<td>enhancement</td>
+<td>medium</td>
+<td>Remove deprecated constructs from Libdoc spec files</td>
+</tr>
+<tr><td><a class="reference external" href="https://github.com/robotframework/robotframework/issues/4685">#4685</a></td>
+<td>enhancement</td>
+<td>medium</td>
+<td>Deprecate <code class="code">SHORTEST</code> mode being default with <code class="code">FOR IN ZIP</code> loops</td>
+</tr>
+<tr><td><a class="reference external" href="https://github.com/robotframework/robotframework/issues/4708">#4708</a></td>
+<td>enhancement</td>
+<td>medium</td>
+<td>Use <code class="code">assing</code>, not <code class="code">variable</code>, with FOR and TRY/EXCEPT model objects when referring to assigned variables</td>
+</tr>
+<tr><td><a class="reference external" href="https://github.com/robotframework/robotframework/issues/4720">#4720</a></td>
+<td>enhancement</td>
+<td>medium</td>
+<td>Require <code class="code">--suite parent.suite</code> to match the full suite name</td>
+</tr>
+<tr><td><a class="reference external" href="https://github.com/robotframework/robotframework/issues/4721">#4721</a></td>
+<td>enhancement</td>
+<td>medium</td>
+<td>Change behavior of <code class="code">--test</code> and <code class="code">--include</code> so that they are cumulative</td>
+</tr>
+<tr><td><a class="reference external" href="https://github.com/robotframework/robotframework/issues/4747">#4747</a></td>
+<td>enhancement</td>
+<td>medium</td>
+<td>Support <code class="code">[Setup]</code> with user keywords</td>
+</tr>
+<tr><td><a class="reference external" href="https://github.com/robotframework/robotframework/issues/4784">#4784</a></td>
+<td>enhancement</td>
+<td>medium</td>
+<td>Remote: Enhance <code class="code">datetime</code>, <code class="code">date</code> and <code class="code">timedelta</code> conversion</td>
+</tr>
+<tr><td><a class="reference external" href="https://github.com/robotframework/robotframework/issues/4841">#4841</a></td>
+<td>enhancement</td>
+<td>medium</td>
+<td>Add typing to all modules under <code class="code">robot.api</code></td>
+</tr>
+<tr><td><a class="reference external" href="https://github.com/robotframework/robotframework/issues/4846">#4846</a></td>
+<td>enhancement</td>
+<td>medium</td>
+<td>Result model: Loudly deprecate not needed attributes and remove already deprecated ones</td>
+</tr>
+<tr><td><a class="reference external" href="https://github.com/robotframework/robotframework/issues/4872">#4872</a></td>
+<td>enhancement</td>
+<td>medium</td>
+<td>Control continue-on-failure mode by using recursive and non-recursive tags together</td>
+</tr>
+<tr><td><a class="reference external" href="https://github.com/robotframework/robotframework/issues/4876">#4876</a></td>
+<td>enhancement</td>
+<td>medium</td>
+<td>Loudly deprecate <code class="code">[Return]</code> setting</td>
+</tr>
+<tr><td><a class="reference external" href="https://github.com/robotframework/robotframework/issues/4877">#4877</a></td>
+<td>enhancement</td>
+<td>medium</td>
+<td>XML: Support ignoring element order with <code class="code">Elements Should Be Equal</code></td>
+</tr>
+<tr><td><a class="reference external" href="https://github.com/robotframework/robotframework/issues/4883">#4883</a></td>
+<td>enhancement</td>
+<td>medium</td>
+<td>Result model: Add <code class="code">message</code> to keywords and control structures and remove <code class="code">doc</code> from controls</td>
+</tr>
+<tr><td><a class="reference external" href="https://github.com/robotframework/robotframework/issues/4884">#4884</a></td>
+<td>enhancement</td>
+<td>medium</td>
+<td>Result model: Enhance storing keyword name</td>
+</tr>
+<tr><td><a class="reference external" href="https://github.com/robotframework/robotframework/issues/4896">#4896</a></td>
+<td>enhancement</td>
+<td>medium</td>
+<td>Support <code class="code">separator=&lt;value&gt;</code> configuration option with scalar variables in Variables section</td>
+</tr>
+<tr><td><a class="reference external" href="https://github.com/robotframework/robotframework/issues/4903">#4903</a></td>
+<td>enhancement</td>
+<td>medium</td>
+<td>Support argument conversion and named arguments with dynamic variable files</td>
+</tr>
+<tr><td><a class="reference external" href="https://github.com/robotframework/robotframework/issues/4905">#4905</a></td>
+<td>enhancement</td>
+<td>medium</td>
+<td>Support creating variable name based on another variable like <code class="code">${${VAR}}</code> in Variables section</td>
+</tr>
+<tr><td><a class="reference external" href="https://github.com/robotframework/robotframework/issues/4910">#4910</a></td>
+<td>enhancement</td>
+<td>medium</td>
+<td>Make listener v3 the default listener API</td>
+</tr>
+<tr><td><a class="reference external" href="https://github.com/robotframework/robotframework/issues/4912">#4912</a></td>
+<td>enhancement</td>
+<td>medium</td>
+<td>Parsing model: Move <code class="code">type</code> and <code class="code">tokens</code> from <code class="code">_fields</code> to <code class="code">_attributes</code></td>
+</tr>
+<tr><td><a class="reference external" href="https://github.com/robotframework/robotframework/issues/4930">#4930</a></td>
+<td>enhancement</td>
+<td>medium</td>
+<td>BuiltIn: New <code class="code">Reset Log Level</code> keyword for resetting the log level to the original value</td>
+</tr>
+<tr><td><a class="reference external" href="https://github.com/robotframework/robotframework/issues/4939">#4939</a></td>
+<td>enhancement</td>
+<td>medium</td>
+<td>Parsing model: Rename <code class="code">Return</code> to <code class="code">ReturnSetting</code> and <code class="code">ReturnStatement</code> to <code class="code">Return</code></td>
+</tr>
+<tr><td><a class="reference external" href="https://github.com/robotframework/robotframework/issues/4942">#4942</a></td>
+<td>enhancement</td>
+<td>medium</td>
+<td>Add public argument conversion API for libraries and other tools</td>
+</tr>
+<tr><td><a class="reference external" href="https://github.com/robotframework/robotframework/issues/4952">#4952</a></td>
+<td>enhancement</td>
+<td>medium</td>
+<td>Collections: Make <code class="code">ignore_order</code> and <code class="code">ignore_keys</code> recursive</td>
+</tr>
+<tr><td><a class="reference external" href="https://github.com/robotframework/robotframework/issues/4960">#4960</a></td>
+<td>enhancement</td>
+<td>medium</td>
+<td>Support integer conversion with strings representing whole number floats like <code class="code">'1.0'</code> and <code class="code">'2e10'</code></td>
+</tr>
+<tr><td><a class="reference external" href="https://github.com/robotframework/robotframework/issues/4976">#4976</a></td>
+<td>enhancement</td>
+<td>medium</td>
+<td>Support string <code class="code">SELF</code> (case-insenstive) when library registers itself as listener</td>
+</tr>
+<tr><td><a class="reference external" href="https://github.com/robotframework/robotframework/issues/4979">#4979</a></td>
+<td>enhancement</td>
+<td>medium</td>
+<td>Add <code class="code">robot.result.TestSuite.to/from_xml</code> methods</td>
+</tr>
+<tr><td><a class="reference external" href="https://github.com/robotframework/robotframework/issues/4982">#4982</a></td>
+<td>enhancement</td>
+<td>medium</td>
+<td>DateTime: Support <code class="code">datetime.date</code> as an input format with date related keywords</td>
+</tr>
+<tr><td><a class="reference external" href="https://github.com/robotframework/robotframework/issues/4983">#4983</a></td>
+<td>enhancement</td>
+<td>medium</td>
+<td>Type conversion: Remove support for deprecated <code class="code">ByteString</code></td>
+</tr>
+<tr><td><a class="reference external" href="https://github.com/robotframework/robotframework/issues/5000">#5000</a></td>
+<td>enhancement</td>
+<td>medium</td>
+<td>Nicer API for setting keyword call arguments programmatically</td>
+</tr>
+<tr><td><a class="reference external" href="https://github.com/robotframework/robotframework/issues/4934">#4934</a></td>
+<td>---</td>
+<td>medium</td>
+<td>Enhance performance of visiting parsing model</td>
+</tr>
+<tr><td><a class="reference external" href="https://github.com/robotframework/robotframework/issues/4621">#4621</a></td>
+<td>bug</td>
+<td>low</td>
+<td>OperatingSystem library docs have broken link / title</td>
+</tr>
+<tr><td><a class="reference external" href="https://github.com/robotframework/robotframework/issues/4798">#4798</a></td>
+<td>bug</td>
+<td>low</td>
+<td><code class="code">--removekeywords passed</code> doesn't remove test setup and teardown</td>
+</tr>
+<tr><td><a class="reference external" href="https://github.com/robotframework/robotframework/issues/4867">#4867</a></td>
+<td>bug</td>
+<td>low</td>
+<td>Original order of dictionaries is not preserved when they are pretty printed in log messages</td>
+</tr>
+<tr><td><a class="reference external" href="https://github.com/robotframework/robotframework/issues/4870">#4870</a></td>
+<td>bug</td>
+<td>low</td>
+<td>User keyword teardown missing from running model JSON schema</td>
+</tr>
+<tr><td><a class="reference external" href="https://github.com/robotframework/robotframework/issues/4904">#4904</a></td>
+<td>bug</td>
+<td>low</td>
+<td>Importing static variable file with arguments does not fail</td>
+</tr>
+<tr><td><a class="reference external" href="https://github.com/robotframework/robotframework/issues/4913">#4913</a></td>
+<td>bug</td>
+<td>low</td>
+<td>Trace log level logs arguments twice for embedded arguments</td>
+</tr>
+<tr><td><a class="reference external" href="https://github.com/robotframework/robotframework/issues/4927">#4927</a></td>
+<td>bug</td>
+<td>low</td>
+<td>WARN level missing from the log level selector in log.html</td>
+</tr>
+<tr><td><a class="reference external" href="https://github.com/robotframework/robotframework/issues/4967">#4967</a></td>
+<td>bug</td>
+<td>low</td>
+<td>Variables are not resolved in keyword name in WUKS error message</td>
+</tr>
+<tr><td><a class="reference external" href="https://github.com/robotframework/robotframework/issues/4861">#4861</a></td>
+<td>enhancement</td>
+<td>low</td>
+<td>Remove deprecated <code class="code">accept_plain_values</code> from <code class="code">timestr_to_secs</code> utility function</td>
+</tr>
+<tr><td><a class="reference external" href="https://github.com/robotframework/robotframework/issues/4862">#4862</a></td>
+<td>enhancement</td>
+<td>low</td>
+<td>Deprecate <code class="code">elapsed_time_to_string</code> accepting time as milliseconds</td>
+</tr>
+<tr><td><a class="reference external" href="https://github.com/robotframework/robotframework/issues/4864">#4864</a></td>
+<td>enhancement</td>
+<td>low</td>
+<td>Process: Make warning about processes hanging if output buffers get full more visible</td>
+</tr>
+<tr><td><a class="reference external" href="https://github.com/robotframework/robotframework/issues/4885">#4885</a></td>
+<td>enhancement</td>
+<td>low</td>
+<td>Add <code class="code">full_name</code> to replace <code class="code">longname</code> to suite and test objects</td>
+</tr>
+<tr><td><a class="reference external" href="https://github.com/robotframework/robotframework/issues/4900">#4900</a></td>
+<td>enhancement</td>
+<td>low</td>
+<td>Make keywords and control structures in log look more like original data</td>
+</tr>
+<tr><td><a class="reference external" href="https://github.com/robotframework/robotframework/issues/4922">#4922</a></td>
+<td>enhancement</td>
+<td>low</td>
+<td>Change the log level of <code class="code">Set Log Level</code> message from INFO to DEBUG</td>
+</tr>
+<tr><td><a class="reference external" href="https://github.com/robotframework/robotframework/issues/4933">#4933</a></td>
+<td>enhancement</td>
+<td>low</td>
+<td>Type conversion: Ignore hyphens when matching enum members</td>
+</tr>
+<tr><td><a class="reference external" href="https://github.com/robotframework/robotframework/issues/4935">#4935</a></td>
+<td>enhancement</td>
+<td>low</td>
+<td>Use <code class="code">casefold</code>, not <code class="code">lower</code>, when comparing strings case-insensitively</td>
+</tr>
+<tr><td><a class="reference external" href="https://github.com/robotframework/robotframework/issues/4936">#4936</a></td>
+<td>enhancement</td>
+<td>low</td>
+<td>Remove bytes support from <code class="code">robot.utils.normalize</code> function</td>
+</tr>
+<tr><td><a class="reference external" href="https://github.com/robotframework/robotframework/issues/4954">#4954</a></td>
+<td>enhancement</td>
+<td>low</td>
+<td>Collections and String: Add <code class="code">ignore_case</code> as alias for <code class="code">case_insensitive</code></td>
+</tr>
+<tr><td><a class="reference external" href="https://github.com/robotframework/robotframework/issues/4958">#4958</a></td>
+<td>enhancement</td>
+<td>low</td>
+<td>Document <code class="code">robot_running</code> and <code class="code">dry_run_active</code> properties of the BuiltIn library in the User Guide</td>
+</tr>
+<tr><td><a class="reference external" href="https://github.com/robotframework/robotframework/issues/4975">#4975</a></td>
+<td>enhancement</td>
+<td>low</td>
+<td>Support <code class="code">times</code> and <code class="code">x</code> suffixes with <code class="code">WHILE</code> limit to make it more compatible with <code class="code">Wait Until Keyword Succeeds</code></td>
+</tr>
+<tr><td><a class="reference external" href="https://github.com/robotframework/robotframework/issues/4988">#4988</a></td>
+<td>enhancement</td>
+<td>low</td>
+<td>Change paths passed to listener v3 methods to <code class="code">pathlib.Path</code> instances</td>
+</tr>
+</tbody>
+</table>
+<p>Altogether 88 issues. View on the <a class="reference external" href="https://github.com/robotframework/robotframework/issues?q=milestone%3Av7.0">issue tracker</a>.</p>
+
