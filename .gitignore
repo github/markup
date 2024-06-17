@@ -6,3 +6,4 @@ Gemfile.lock
 .buildpath
 *~
 vendor/
+.DS_Store
