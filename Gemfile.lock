@@ -48,6 +48,7 @@ GEM
     htmlentities (4.3.4)
     i18n (1.14.5)
       concurrent-ruby (~> 1.0)
+    idn-ruby (0.1.5)
     mini_mime (1.1.5)
     minitest (5.23.1)
     mutex_m (0.2.0)
@@ -87,7 +88,8 @@ GEM
     stringio (3.1.1)
     strscan (3.1.0)
     tdiff (0.4.0)
-    twitter-text (1.14.7)
+    twitter-text (3.1.0)
+      idn-ruby
       unf (~> 0.1.0)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
@@ -128,7 +130,7 @@ DEPENDENCIES
   redcarpet
   rexml
   sanitize (>= 4.6.3)
-  twitter-text (~> 1.14)
+  twitter-text (~> 3.1)
   wikicloth (= 0.8.3)
 
 BUNDLED WITH
