@@ -1,4 +1,4 @@
-## 5.0.0 - 2024-06-12
+## 5.0.0 - 2024-06-17
 * Drop support for Ruby versions < 3
 * Bump nokogiri from 1.8.1 to 1.16.5
 * Bump nokogiri-diff from 0.2.0 to 0.3.0
