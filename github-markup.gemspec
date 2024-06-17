@@ -13,8 +13,9 @@ Gem::Specification.new do |s|
   s.homepage      = "https://github.com/github/markup"
   s.license       = "MIT"
 
+  s.required_ruby_version = '>= 3.0.0'
+
   s.files         = `git ls-files`.split($\)
-  s.files        += Dir['vendor/**/*']
   s.executables   = s.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
   s.test_files    = s.files.grep(%r{^(test|spec|features)/})
   s.require_paths = %w[lib]
@@ -24,7 +25,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'minitest', '~> 5.4', '>= 5.4.3'
   s.add_development_dependency 'html-pipeline', '~> 1.0'
   s.add_development_dependency 'sanitize', '>= 4.6.3'
-  s.add_development_dependency 'nokogiri', '~> 1.8.1'
-  s.add_development_dependency 'nokogiri-diff', '~> 0.2.0'
+  s.add_development_dependency 'nokogiri', '~> 1.16.5'
+  s.add_development_dependency 'nokogiri-diff', '~> 0.3.0'
   s.add_development_dependency "github-linguist", ">= 7.1.3"
 end

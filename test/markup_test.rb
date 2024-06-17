@@ -66,6 +66,11 @@ class MarkupTest < Minitest::Test
         f.close_write
         f.read
       end
+
+      if ENV['UPDATE']
+        File.open(expected_file, 'w') { |f| f.write actual }
+      end
+
       assert_html_equal expected, actual, <<message
 #{File.basename expected_file}'s contents are not html equal to output:
 #{diff}
@@ -106,7 +111,7 @@ message
     begin
       GitHub::Markup.render('README.java', "stop swallowing errors", symlink: false)
     rescue GitHub::Markup::CommandError => e
-      assert_equal "failure message", e.message
+      assert_equal "failure message", e.message.strip
     else
       fail "an exception was expected but was not raised"
     end
