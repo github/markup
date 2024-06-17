@@ -1,3 +1,6 @@
+## 5.0.1 - 2024-06-17
+* Bump activesupport from 4.0 to 7.1.3.4
+
 ## 5.0.0 - 2024-06-17
 * Drop support for Ruby versions < 3
 * Bump nokogiri from 1.8.1 to 1.16.5
