@@ -8,6 +8,8 @@ Example text.
 
 .. contents:: Table of Contents
 
+.. _label_for_header_2:
+
 Header 2
 --------
 
@@ -16,6 +18,8 @@ Header 2
 2. More ``code``, hooray
 
 3. Somé UTF-8°
+
+4. `Link to the above header <label_for_header_2_>`_
 
 The UTF-8 quote character in this table used to cause python to go boom. Now docutils just silently ignores it.
 
