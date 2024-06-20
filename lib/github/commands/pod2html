@@ -3,6 +3,8 @@
 use strict;
 use Pod::Simple::XHTML 3.11;
 
+STDOUT->binmode(':encoding(UTF-8)');
+
 my $p = Pod::Simple::XHTML->new;
 $p->html_header('');
 $p->html_footer('');
