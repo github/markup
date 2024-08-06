@@ -4,6 +4,9 @@ on: [push, pull_request]
 env:
   JRUBY_OPTS: -Xcext.enabled=true
 
+permissions:
+  contents: read
+
 jobs:
   build:
     name: "Test / Ruby ${{ matrix.ruby }}"
