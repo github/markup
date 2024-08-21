@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# Djot2html -- Simple script to render a djot file to HTML!
+
+djot -f djot -t html $1
