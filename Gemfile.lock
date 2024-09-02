@@ -75,7 +75,7 @@ GEM
     rdoc (6.7.0)
       psych (>= 4.0.0)
     redcarpet (3.6.0)
-    rexml (3.3.3)
+    rexml (3.3.6)
       strscan
     ruby-enum (0.9.0)
       i18n
