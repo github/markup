@@ -6,3 +6,5 @@ pkg/
 *~
 vendor/
 .DS_Store
+.venv
+venv
