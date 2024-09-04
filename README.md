@@ -72,6 +72,15 @@ require 'github/markup'
 GitHub::Markup.render_s(GitHub::Markups::MARKUP_MARKDOWN, "* One\n* Two")
 ```
 
+Local Development
+-----------------
+
+```sh
+python3 -m venv .venv
+source .venv/bin/activate
+cd script
+./bootstrap
+```
 
 Contributing
 ------------
