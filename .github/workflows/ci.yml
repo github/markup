@@ -26,7 +26,7 @@ jobs:
         with:
           fetch-depth: 10
 
-      - uses: ruby/setup-ruby@52753b7da854d5c07df37391a986c76ab4615999 # v1
+      - uses: ruby/setup-ruby@f321cf5a4d1533575411f8752cf25b86478b0442 # v1
         with:
           ruby-version: ${{ matrix.ruby }}
           bundler-cache: true
