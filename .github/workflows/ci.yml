@@ -22,7 +22,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
+        uses: actions/checkout@v4.2.2
         with:
           fetch-depth: 10
 
@@ -31,12 +31,12 @@ jobs:
           ruby-version: ${{ matrix.ruby }}
           bundler-cache: true
 
-      - uses: actions/setup-python@0b93645e9fea7318ecaed2b359559ac225c90a2b # v5
+      - uses: actions/setup-python@v5.3.0
         with:
           # This should match lib/github/markups.rb GitHub::Markups::MARKUP_RST
-          python-version: '3.x'
+          python-version: "3.x"
 
-      - uses: actions/cache@6849a6489940f00c2f30c0fb92c6274307ccb58a # v4
+      - uses: actions/cache@v4.1.2
         with:
           path: ~/.cache/pip
           key: ${{ runner.os }}-pip
