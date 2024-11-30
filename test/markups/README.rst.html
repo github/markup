@@ -2,18 +2,20 @@
 <h2>Subtitle</h2>
 <p>Example text.</p>
 <div>
-<p>Table of Contents</p>
+<p><a href="#top">Table of Contents</a></p>
 <ul>
 <li><a href="#header-2">Header 2</a></li>
 <li><a href="#field-list">Field list</a></li>
 </ul>
 </div>
 <a name="header-2"></a>
-<h2><a href="#id1">Header 2</a></h2>
+<a name="label-for-header-2"></a>
+<h2><a href="#toc-entry-1">Header 2</a></h2>
 <ol>
 <li>Blah blah <code>code</code> blah</li>
 <li>More <code>code</code>, hooray</li>
 <li>Somé UTF-8°</li>
+<li><a href="#label-for-header-2">Link to the above header</a></li>
 </ol>
 <p>The UTF-8 quote character in this table used to cause python to go boom. Now docutils just silently ignores it.</p>
 <table>
@@ -102,11 +104,12 @@ python.code('hello world')
 </tr>
 </tbody>
 </table>
-<a href="https://scan.coverity.com/projects/621"><img alt="Coverity Scan Build Status" src="https://scan.coverity.com/projects/621/badge.svg">
+<a href="https://scan.coverity.com/projects/621">
+<img alt="Coverity Scan Build Status" src="https://scan.coverity.com/projects/621/badge.svg">
 </a>
 <img alt="Coverity Scan Build Status" src="https://scan.coverity.com/projects/621/badge.svg">
 <a name="field-list"></a>
-<h2><a href="#id2">Field list</a></h2>
+<h2><a href="#toc-entry-2">Field list</a></h2>
 <table frame="void" rules="none">
 
 

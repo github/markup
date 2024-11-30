@@ -1,3 +1,19 @@
+## 5.0.1 - 2024-06-17
+* Bump activesupport from 4.0 to 7.1.3.4
+
+## 5.0.0 - 2024-06-17
+* Drop support for Ruby versions < 3
+* Bump nokogiri from 1.8.1 to 1.16.5
+* Bump nokogiri-diff from 0.2.0 to 0.3.0
+* Bump rdoc from 3.6 to 6.7.0
+* Update CommandImplementation to better support large files (affecting RST and POD6 rendering)
+
+## 4.0.2 - 2023-10-10
+* Add support for .mdx files in markdown
+
+## 4.0.1 - 2022-03-07
+* Update to commonmarker 0.18.3; There isn't a version on RubyGems for this, so this is pointing to a [tag version on GitHub](https://github.com/gjtorikian/commonmarker/blob/v0.18.3/commonmarker.gemspec)
+
 ## 4.0.0 - 2021-03-31
 
 * Drop support for Python 2 in RST rendering [#1456](https://github.com/github/markup/pull/1456)
