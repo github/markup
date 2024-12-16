@@ -26,7 +26,7 @@ jobs:
         with:
           fetch-depth: 10
 
-      - uses: ruby/setup-ruby@a2bbe5b1b236842c1cb7dd11e8e3b51e0a616acc # v1
+      - uses: ruby/setup-ruby@401c19e14f474b54450cd3905bb8b86e2c8509cf # v1
         with:
           ruby-version: ${{ matrix.ruby }}
           bundler-cache: true
@@ -36,7 +36,7 @@ jobs:
           # This should match lib/github/markups.rb GitHub::Markups::MARKUP_RST
           python-version: "3.x"
 
-      - uses: actions/cache@v4.1.2
+      - uses: actions/cache@v4.2.0
         with:
           path: ~/.cache/pip
           key: ${{ runner.os }}-pip
