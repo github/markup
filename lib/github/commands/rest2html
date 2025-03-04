@@ -258,6 +258,12 @@ class GitHubHTMLTranslator(HTMLTranslator):
             self.body.append(self.starttag(node, 'img', **atts))
         HTMLTranslator.depart_image(self, node)
 
+        # treat images held in a reference on the base document as inlined
+        # images; this is to help avoid rendering a reference's decorative
+        # line for the spacing after an image
+        if (isinstance(node.parent, nodes.reference)
+            and isinstance(node.parent.parent, nodes.document)):
+            self.body.append(self.body.pop().rstrip('\n'))
 
 def kbd(name, rawtext, text, lineno, inliner, options={}, content=[]):
     return [nodes.raw('', '<kbd>%s</kbd>' % text, format='html')], []
