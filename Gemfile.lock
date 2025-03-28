@@ -33,8 +33,8 @@ GEM
     benchmark (0.3.0)
     bigdecimal (3.1.8)
     builder (3.3.0)
-    cgi (0.4.1)
-    charlock_holmes (0.7.7)
+    cgi (0.4.2)
+    charlock_holmes (0.7.9)
     concurrent-ruby (1.3.4)
     connection_pool (2.4.1)
     crass (1.0.6)
@@ -42,7 +42,7 @@ GEM
     date (3.4.1)
     drb (2.2.1)
     expression_parser (0.9.0)
-    github-linguist (7.30.0)
+    github-linguist (9.1.0)
       cgi
       charlock_holmes (~> 0.7.7)
       mini_mime (~> 1.0)
@@ -86,7 +86,7 @@ GEM
     ruby-enum (0.9.0)
       i18n
     rubypants (0.7.1)
-    rugged (1.7.2)
+    rugged (1.9.0)
     sanitize (6.1.3)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
