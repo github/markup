@@ -13,7 +13,7 @@ Gem::Specification.new do |s|
   s.homepage      = "https://github.com/github/markup"
   s.license       = "MIT"
 
-  s.required_ruby_version = '>= 3.0.0'
+  s.required_ruby_version = '>= 3.1.0'
 
   s.files         = `git ls-files`.split($\)
   s.executables   = s.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
