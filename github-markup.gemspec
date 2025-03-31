@@ -25,7 +25,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'minitest', '~> 5.4', '>= 5.4.3'
   s.add_development_dependency 'html-pipeline', '~> 1.0'
   s.add_development_dependency 'sanitize', '>= 4.6.3'
-  s.add_development_dependency 'nokogiri', '~> 1.17.2'
+  s.add_development_dependency 'nokogiri', '~> 1.18.4'
   s.add_development_dependency 'nokogiri-diff', '~> 0.3.0'
   s.add_development_dependency "github-linguist", ">= 7.1.3"
 end
