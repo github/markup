@@ -89,9 +89,9 @@ GEM
       i18n
     rubypants (0.7.1)
     rugged (1.9.0)
-    sanitize (6.1.3)
+    sanitize (7.0.0)
       crass (~> 1.0.2)
-      nokogiri (>= 1.12.0)
+      nokogiri (>= 1.16.8)
     securerandom (0.3.2)
     stringio (3.1.6)
     tdiff (0.4.0)
