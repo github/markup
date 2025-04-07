@@ -15,19 +15,18 @@ GEM
   remote: https://rubygems.org/
   specs:
     RedCloth (4.3.4)
-    activesupport (7.1.5.1)
+    activesupport (7.2.2.1)
       base64
       benchmark (>= 0.3)
       bigdecimal
-      concurrent-ruby (~> 1.0, >= 1.0.2)
+      concurrent-ruby (~> 1.0, >= 1.3.1)
       connection_pool (>= 2.2.5)
       drb
       i18n (>= 1.6, < 2)
       logger (>= 1.4.2)
       minitest (>= 5.1)
-      mutex_m
       securerandom (>= 0.3)
-      tzinfo (~> 2.0)
+      tzinfo (~> 2.0, >= 2.0.5)
     asciidoctor (2.0.23)
     base64 (0.2.0)
     benchmark (0.4.0)
@@ -57,7 +56,6 @@ GEM
     mini_mime (1.1.5)
     mini_portile2 (2.8.8)
     minitest (5.25.5)
-    mutex_m (0.3.0)
     nokogiri (1.18.7)
       mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
@@ -92,7 +90,7 @@ GEM
     sanitize (6.1.3)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
-    securerandom (0.3.2)
+    securerandom (0.4.1)
     stringio (3.1.6)
     tdiff (0.4.0)
     twitter-text (1.14.7)
@@ -119,7 +117,7 @@ PLATFORMS
 
 DEPENDENCIES
   RedCloth
-  activesupport (~> 7.1.5)
+  activesupport (~> 7.2.2)
   asciidoctor (~> 2.0.5)
   commonmarker!
   creole (~> 0.5.0)
