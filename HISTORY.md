@@ -1,3 +1,21 @@
+## 5.0.2 - 2025-07-22
+* Drop support for Ruby versions < 3.1 (was 3.0)
+* Bump nokogiri from 1.16.5 (release) to 1.18.9
+* Bump nokogiri-diff from 0.2.0 (release) to 0.3.0
+* Bump rdoc from 6.7.0 (release) to 6.13.1
+* Bump org-ruby from 0.9.9 (release) to 0.9.12
+* Bump creole from 0.3.6 (release) to 0.5.0
+* Bump github-linguist from 7.1.3 (release) to 9.1.0
+* Bump activesupport from 7.1.3.4 (release) to 7.1.5.1
+* Bump minitest from 5.23.1 (release) to 5.25.5
+* Bump sanitize from 6.1.1 (release) to 6.1.3
+* Bump redcarpet from 3.6.0 (release) to 3.6.1
+* Bump rexml from 3.3.9 (release) to 3.4.1
+* Bump commonmarker to v0.18.3 (now using git tag)
+* Bump mini_portile2 from 2.8.8 (release) to 2.8.9
+* Bump racc dependency within nokogiri to ~> 1.4
+* Update dependency source URL to use HTTPS
+
 ## 5.0.1 - 2024-06-17
 * Bump activesupport from 4.0 to 7.1.3.4
 
