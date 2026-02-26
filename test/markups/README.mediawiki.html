@@ -15,18 +15,20 @@ Using Java from Ruby is JRuby's best-known feature---but you can also go in the 
 
 
 <h1>
-<a name="Red_Bridge_JRuby_Embed"></a>Red Bridge (JRuby Embed)</h1>
+<a name="Red_Bridge_JRuby_Embed"></a>Red Bridge (JRuby Embed)
+</h1>
+
 
 
 <p><tt>one-&lt;two</tt>
 </p><pre>a-b</pre>
 
-
 <p>JRuby has long had a private embedding API, which was closely tied to the runtime's internals and therefore changed frequently as JRuby evolved. Since version 1.4, however, we have also provided a more stable public API, known as Red Bridge or JRuby Embed. Existing Java programs written to the <a href="DirectJRubyEmbedding">legacy API</a> should still work, but we strongly recommend Red Bridge for all new projects.
 </p>
 
 <h2>
-<a name="Features_of_Red_Bridge"></a>Features of Red Bridge</h2>
+<a name="Features_of_Red_Bridge"></a>Features of Red Bridge
+</h2>
 
 
 <p>Red Bridge consists of two layers: Embed Core on the bottom, and implementations of <a href="http://www.jcp.org/en/jsr/detail?id=223" target="_blank">JSR223</a> and <a href="http://jakarta.apache.org/bsf/" target="_blank">BSF</a> on top. Embed Core is JRuby-specific, and can take advantage of much of JRuby's power. JSR223 and BSF are more general interfaces that provide a common ground across scripting languages.
@@ -46,14 +48,16 @@ For projects requiring multiple scripting languages, JSR223 is a good fit. Thoug
 </p>
 
 <h1>
-<a name="Previous_Embedding_JRuby_Page"></a>Previous Embedding JRuby Page</h1>
+<a name="Previous_Embedding_JRuby_Page"></a>Previous Embedding JRuby Page
+</h1>
 
 
 <p>We recommend using Embed Core; however, if you're maintaining code that uses the old API, you can find its documentation on the <a href="JavaIntegration">legacy embedding</a><sup>[<a href="#cite_note-1">1</a>]</sup> page.
 </p>
 
 <h1>
-<a name="References"></a>References</h1>
+<a name="References"></a>References
+</h1>
 
 
 <p></p><ol><li>

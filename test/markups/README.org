@@ -58,7 +58,7 @@ end
      - Skipping text before the first headline (option skip:t)
      - Skipping tables (option |:nil)
      - Custom todo keywords
-     - EXPORT_SELECT_TAGS and EXPORT_EXLUDE_TAGS for controlling parts of
+     - EXPORT_SELECT_TAGS and EXPORT_EXCLUDE_TAGS for controlling parts of
        the tree to export
    - Rewrite "file:(blah).org" links to "http:(blah).html" links. This
      makes the inter-links to other org-mode files work.

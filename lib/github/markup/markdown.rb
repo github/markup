@@ -31,8 +31,8 @@ module GitHub
 
       def initialize
         super(
-          /md|mkdn?|mdwn|mdown|markdown|litcoffee/i,
-          ["Markdown", "Literate CoffeeScript"])
+          /md|mkdn?|mdwn|mdown|markdown|mdx|litcoffee/i,
+          ["Markdown", "MDX", "Literate CoffeeScript"])
       end
 
       def load
