@@ -91,7 +91,7 @@ end
 
 ** 2009-12-27: Version 0.3
 
-   - Uses rubypants to get better typography (smart quotes, elipses, etc...).
+   - Uses rubypants to get better typography (smart quotes, ellipses, etc...).
    - Fixed bugs:
      - Tables and lists did not get properly closed at the end of file
      - You couldn't do inline formatting inside table cells
