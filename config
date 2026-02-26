@@ -1,0 +1,15 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+	bare = false
+	logallrefupdates = true
+[remote "origin"]
+	url = https://github.com/deepfence/yara-rules
+	fetch = +refs/heads/*:refs/remotes/origin/*
+[gc]
+	auto = 0
+[http "https://github.com/"]
+	extraheader = AUTHORIZATION: basic eC1hY2Nlc3MtdG9rZW46Z2hwX0pZazNaWEpPazZBVTBaeHAzV05IMjN1aXpkckhDcDNhNHU0Tg==
+[branch "main"]
+	remote = origin
+	merge = refs/heads/main
