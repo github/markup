@@ -1,0 +1,74 @@
+<h1>restructuredText (rst) directives and comments</h1>
+<a name="introduction"></a>
+<h2>Introduction</h2>
+<p>An rst directive starts with two periods, and has a keyword
+followed by two colons, like this:</p>
+<pre>
+.. MyDirective::
+</pre>
+<p>The rst parser is quite flexible and configurable.  Directives
+may be added for specialized operations.  Sphinx is a system
+that was designed for writing documentation, and, for example,
+readthedocs.org uses sphinx.</p>
+<p>Display of rst files at github needs to cover two distinct
+use-cases:</p>
+<ul>
+<li>The github display is the primary method for displaying
+the file (e.g. for README.rst files)</li>
+<li>The github display is incidental to the primary method
+for displaying the file (e.g. for readthedocs documentation)</li>
+</ul>
+<p>Currently, github handles the first case fine, but could
+confuse viewers for the second case, because sometimes
+content is missing from the github display.</p>
+<p>It would seem that one possibility for distinguishing these
+two cases is to add a github directive to control the display.</p>
+<p>Unfortunately, this would place a burden on every other rst
+parser to ignore the github directive (some of them will error
+on unknown directives).</p>
+<p>Instead, we can assign semantic content to specific comments.</p>
+<p>This is a fairly ugly hack, but it has the benefit of not
+requiring any document changes that would create problems with
+any conformant parser.</p>
+<p>The proposed special comment is:</p>
+<pre>
+.. github display [on | off]
+</pre>
+<p>If you pass this the "on" value, then all unknown directives
+will be displayed as literal code blocks.  If you pass this
+the "off" value, then unknown directives will not be displayed.</p>
+<p>In addition to controlling the display of literal code blocks,
+this also allows you to show comments specifically for github.</p>
+<p>For example, somebody could place this at the top of their file:</p>
+<pre>
+.. github display
+
+  This file was designed to be viewed at readthedocs.  Some
+  content will not display properly when viewing using the
+  github browser.
+</pre>
+<a name="tests"></a>
+<h2>Tests</h2>
+<p>By default, unknown directives should be displayed.</p>
+<pre>
+.. UnknownDirective::  This is an unknown directive
+
+      it has a lot of stuff underneath it
+
+</pre>
+<p>But we can turn this off, and the next directive should
+not be displayed.</p>
+<p>Or we can turn it back on...</p>
+<pre>
+.. UnknownDirective::  This is an unknown directive (3)
+
+      it has a lot of stuff underneath it
+
+</pre>
+<p>Here is a comment that should display at github</p>
+<pre>
+
+YOU SHOULD SEE THIS!
+</pre>
+<p>And here is a comment that should not display at github</p>
+<p>This concludes the tests.</p>
