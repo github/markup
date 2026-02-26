@@ -58,7 +58,7 @@ end
      - Skipping text before the first headline (option skip:t)
      - Skipping tables (option |:nil)
      - Custom todo keywords
-     - EXPORT_SELECT_TAGS and EXPORT_EXLUDE_TAGS for controlling parts of
+     - EXPORT_SELECT_TAGS and EXPORT_EXCLUDE_TAGS for controlling parts of
        the tree to export
    - Rewrite "file:(blah).org" links to "http:(blah).html" links. This
      makes the inter-links to other org-mode files work.
@@ -91,7 +91,7 @@ end
 
 ** 2009-12-27: Version 0.3
 
-   - Uses rubypants to get better typography (smart quotes, elipses, etc...).
+   - Uses rubypants to get better typography (smart quotes, ellipses, etc...).
    - Fixed bugs:
      - Tables and lists did not get properly closed at the end of file
      - You couldn't do inline formatting inside table cells

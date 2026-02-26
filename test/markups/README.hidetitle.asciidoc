@@ -1,0 +1,4 @@
+= Not Shown
+:!showtitle:
+
+This test verifies the author can disable the document title by adding `:!showtitle:` to the document header.

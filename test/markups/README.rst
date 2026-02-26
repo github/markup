@@ -8,6 +8,8 @@ Example text.
 
 .. contents:: Table of Contents
 
+.. _label_for_header_2:
+
 Header 2
 --------
 
@@ -16,6 +18,8 @@ Header 2
 2. More ``code``, hooray
 
 3. Somé UTF-8°
+
+4. `Link to the above header <label_for_header_2_>`_
 
 The UTF-8 quote character in this table used to cause python to go boom. Now docutils just silently ignores it.
 
@@ -30,6 +34,28 @@ The UTF-8 quote character in this table used to cause python to go boom. Now doc
 	Iron Man 2, 3
 	Tabular Data, 5
 	Made up ratings, 11
+
+.. code::
+
+	A block of code
+
+.. code:: python
+
+	python.code('hooray')
+
+.. code:: python
+	:caption: An ignored Sphinx option
+	:made-up-option: An ignored made up option
+
+	python.code('hello world')
+
+.. doctest:: ignored
+
+	>>> some_function()
+	'result'
+
+>>> some_function()
+'result'
 
 ==============  ==========================================================
 Travis          http://travis-ci.org/tony/pullv
@@ -55,3 +81,12 @@ Field list
 	but no problem!
 :123456789 12345: this is not so long, but long enough for the default!
 :123456789 1234: this should work even with the default :)
+
+someone@somewhere.org
+
+Press :kbd:`Ctrl+C` to quit
+
+
+.. raw:: html
+
+    <p><strong>RAW HTML!</strong></p><style> p {color:blue;} </style>

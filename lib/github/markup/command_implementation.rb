@@ -1,10 +1,6 @@
-begin
-  require "posix-spawn"
-rescue LoadError
-  require "open3"
-end
-
+require "open3"
 require "github/markup/implementation"
+
 
 module GitHub
   module Markup
@@ -12,15 +8,16 @@ module GitHub
     end
 
     class CommandImplementation < Implementation
-      attr_reader :command, :block
+      attr_reader :command, :block, :name
 
-      def initialize(regexp, command, &block)
-        super regexp
+      def initialize(regexp, languages, command, name, &block)
+        super(regexp, languages)
         @command = command.to_s
         @block = block
+        @name = name
       end
 
-      def render(content)
+      def render(filename, content, options: {})
         rendered = execute(command, content)
         rendered = rendered.to_s.empty? ? content : rendered
         call_block(rendered, content)
@@ -36,35 +33,20 @@ module GitHub
           rendered
         end
       end
-      
-      if defined?(Posix::Spawn)
-        def execute(command, target)
-          spawn = POSIX::Spawn::Child.new(*command, :input => target)
-          if spawn.status.success?
-            sanitize(spawn.out, target.encoding)
-          else
-            raise CommandError.new(spawn.err.strip)
-          end
-        end
-      else
-        def execute(command, target)
-          output = Open3.popen3(*command) do |stdin, stdout, stderr, wait_thr|
-            stdin.puts target
-            stdin.close
-            if wait_thr.value.success?
-              stdout.readlines
-            else
-              raise CommandError.new(stderr.readlines.join('').strip)
-            end
-          end
-          sanitize(output.join(''), target.encoding)
-        end
+
+      def execute(command, target)
+        # capture3 blocks until both buffers are written to and the process terminates, but
+        # it won't allow either buffer to fill up
+        stdout, stderr, status = Open3.capture3(*command, stdin_data: target)
+
+        raise CommandError.new(stderr) unless status.success?
+        sanitize(stdout, target.encoding)
       end
-      
+
       def sanitize(input, encoding)
         input.gsub("\r", '').force_encoding(encoding)
       end
-      
+
     end
   end
 end
