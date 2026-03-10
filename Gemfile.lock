@@ -58,18 +58,18 @@ GEM
     mini_portile2 (2.8.9)
     minitest (5.25.5)
     mutex_m (0.3.0)
-    nokogiri (1.18.9)
+    nokogiri (1.19.1)
       mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
-    nokogiri (1.18.9-aarch64-linux-gnu)
+    nokogiri (1.19.1-aarch64-linux-gnu)
       racc (~> 1.4)
-    nokogiri (1.18.9-arm-linux-gnu)
+    nokogiri (1.19.1-arm-linux-gnu)
       racc (~> 1.4)
-    nokogiri (1.18.9-arm64-darwin)
+    nokogiri (1.19.1-arm64-darwin)
       racc (~> 1.4)
-    nokogiri (1.18.9-x86_64-darwin)
+    nokogiri (1.19.1-x86_64-darwin)
       racc (~> 1.4)
-    nokogiri (1.18.9-x86_64-linux-gnu)
+    nokogiri (1.19.1-x86_64-linux-gnu)
       racc (~> 1.4)
     nokogiri-diff (0.3.0)
       nokogiri (~> 1.5)
@@ -128,7 +128,7 @@ DEPENDENCIES
   html-pipeline (~> 1.0)
   kramdown
   minitest (~> 5.4, >= 5.4.3)
-  nokogiri (~> 1.18.9)
+  nokogiri (>= 1.19.1)
   nokogiri-diff (~> 0.3.0)
   org-ruby (= 0.9.12)
   rake
@@ -140,4 +140,4 @@ DEPENDENCIES
   wikicloth (= 0.8.3)
 
 BUNDLED WITH
-   2.5.9
+   2.4.10
