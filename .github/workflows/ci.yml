@@ -35,7 +35,7 @@ jobs:
           # This should match lib/github/markups.rb GitHub::Markups::MARKUP_RST
           python-version: "3.x"
 
-      - uses: actions/cache@v4.2.3
+      - uses: actions/cache@v5.0.3
         with:
           path: ~/.cache/pip
           key: ${{ runner.os }}-pip
