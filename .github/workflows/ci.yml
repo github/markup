@@ -30,7 +30,7 @@ jobs:
           ruby-version: ${{ matrix.ruby }}
           bundler-cache: true
 
-      - uses: actions/setup-python@v5.5.0
+      - uses: actions/setup-python@v6.2.0
         with:
           # This should match lib/github/markups.rb GitHub::Markups::MARKUP_RST
           python-version: "3.x"
