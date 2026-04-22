@@ -18,7 +18,7 @@ RUN install-zef-as-user && zef install Pod::To::HTML
 RUN curl -L http://cpanmin.us | perl - App::cpanminus
 RUN cpanm --installdeps --notest Pod::Simple
 
-RUN echo 'docutils==0.22.4 --hash=sha256:d0013f540772d1420576855455d050a2180186c91c15779301ac2ccb3eeb68de' > /tmp/requirements.txt && \
+RUN echo 'docutils==0.18.1 --hash=sha256:23010f129180089fbcd3bc08cfefccb3b890b0050e1ca00c867036e9d161b98c' > /tmp/requirements.txt && \
     pip install -r /tmp/requirements.txt
 
 ENV PATH $PATH:/root/.rbenv/bin:/root/.rbenv/shims
