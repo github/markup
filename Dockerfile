@@ -1,4 +1,4 @@
-FROM ubuntu:trusty
+FROM ubuntu:trusty@sha256:64483f3496c1373bfd55348e88694d1c4d0c9b660dee6bfef5e12f43b9933b30 # trusty
 
 RUN apt-get update -qq
 RUN apt-get install -y apt-transport-https
@@ -18,7 +18,7 @@ RUN install-zef-as-user && zef install Pod::To::HTML
 RUN curl -L http://cpanmin.us | perl - App::cpanminus
 RUN cpanm --installdeps --notest Pod::Simple
 
-RUN pip install docutils
+RUN pip install docutils==0.18.1
 
 ENV PATH $PATH:/root/.rbenv/bin:/root/.rbenv/shims
 RUN curl -fsSL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-installer | bash
@@ -26,7 +26,7 @@ RUN rbenv install 2.4.1
 RUN rbenv global 2.4.1
 RUN rbenv rehash
 
-RUN gem install bundler
+RUN gem install bundler -v 2.3.26
 
 WORKDIR /data/github-markup
 COPY github-markup.gemspec .
