@@ -21,7 +21,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v6.0.2
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
         with:
           fetch-depth: 10
 
@@ -30,12 +30,12 @@ jobs:
           ruby-version: ${{ matrix.ruby }}
           bundler-cache: true
 
-      - uses: actions/setup-python@v6.2.0
+      - uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6.2.0
         with:
           # This should match lib/github/markups.rb GitHub::Markups::MARKUP_RST
           python-version: "3.x"
 
-      - uses: actions/cache@v5.0.4
+      - uses: actions/cache@668228422ae6a00e4ad889ee87cd7109ec5666a7 # v5.0.4
         with:
           path: ~/.cache/pip
           key: ${{ runner.os }}-pip
@@ -52,7 +52,9 @@ jobs:
           sudo cpanm --installdeps --notest Pod::Simple
 
       - name: Install Python dependencies
-        run: python -m pip install docutils
+        run: |
+          echo 'docutils==0.22.4 --hash=sha256:d0013f540772d1420576855455d050a2180186c91c15779301ac2ccb3eeb68de' > /tmp/requirements.txt
+          python -m pip install -r /tmp/requirements.txt
 
       - name: Run rake
         run: |
