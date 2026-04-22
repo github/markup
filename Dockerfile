@@ -18,8 +18,7 @@ RUN install-zef-as-user && zef install Pod::To::HTML
 RUN curl -L http://cpanmin.us | perl - App::cpanminus
 RUN cpanm --installdeps --notest Pod::Simple
 
-RUN echo 'docutils==0.18.1 --hash=sha256:23010f129180089fbcd3bc08cfefccb3b890b0050e1ca00c867036e9d161b98c' > /tmp/requirements.txt && \
-    pip install -r /tmp/requirements.txt
+RUN pip install docutils==0.18.1
 
 ENV PATH $PATH:/root/.rbenv/bin:/root/.rbenv/shims
 RUN curl -fsSL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-installer | bash
@@ -27,7 +26,7 @@ RUN rbenv install 2.4.1
 RUN rbenv global 2.4.1
 RUN rbenv rehash
 
-RUN gem install bundler -v 2.4.10
+RUN gem install bundler -v 2.3.26
 
 WORKDIR /data/github-markup
 COPY github-markup.gemspec .

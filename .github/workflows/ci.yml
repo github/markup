@@ -32,7 +32,7 @@ jobs:
 
       - uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6.2.0
         with:
-          # This should match lib/github/markups.rb GitHub::Markups::MARKUP_RST
+          # Required by lib/github/commands/rest2html (RST rendering)
           python-version: "3.x"
 
       - uses: actions/cache@668228422ae6a00e4ad889ee87cd7109ec5666a7 # v5.0.4
