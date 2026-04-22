@@ -25,7 +25,7 @@ jobs:
         with:
           fetch-depth: 10
 
-      - uses: ruby/setup-ruby@3ff19f5e2baf30647122352b96108b1fbe250c64 # v1
+      - uses: ruby/setup-ruby@0cb964fd540e0a24c900370abf38a33466142735 # v1
         with:
           ruby-version: ${{ matrix.ruby }}
           bundler-cache: true
@@ -35,7 +35,7 @@ jobs:
           # Required by lib/github/commands/rest2html (RST rendering)
           python-version: "3.x"
 
-      - uses: actions/cache@668228422ae6a00e4ad889ee87cd7109ec5666a7 # v5.0.4
+      - uses: actions/cache@27d5ce7f107fe9357f9df03efb73ab90386fccae # v5.0.5
         with:
           path: ~/.cache/pip
           key: ${{ runner.os }}-pip
