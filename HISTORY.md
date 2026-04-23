@@ -1,3 +1,28 @@
+## 6.0.0 - 2026-04-22
+
+### Breaking
+
+* Drop support for Ruby < 3.3 (Ruby 3.1 EOL March 2025, Ruby 3.2 EOL March 2026)
+
+### Security
+
+* Use HTTPS for cpanminus download in CI to prevent MITM attacks [#2050](https://github.com/github/markup/pull/2050)
+* Bump nokogiri to >= 1.19.1 to fix GHSA-wx95-c6cv-8532
+* Harden CI pip install with `--require-hashes --no-deps` [#2048](https://github.com/github/markup/pull/2048)
+
+### Bug Fixes
+
+* Fix RST section ID rendering to iterate all anchors instead of only the first [040f91d](https://github.com/github/markup/commit/040f91d)
+
+### Infrastructure
+
+* Remove legacy Dockerfile and .dockerignore (Ubuntu Trusty, non-functional) [#2048](https://github.com/github/markup/pull/2048)
+* Update CI test matrix: drop Ruby 3.2, add Ruby 4.0 (now testing 3.3, 3.4, 4.0)
+* Bump nokogiri to 1.19.2, activesupport to 7.2.3.1
+* Bump github-linguist from 7.30.0 to 9.3.0
+* Pin GitHub Actions to commit SHAs for supply chain hardening
+* Add Dependabot configuration for automated dependency updates
+
 ## 5.0.1 - 2024-06-17
 * Bump activesupport from 4.0 to 7.1.3.4
 
