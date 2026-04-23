@@ -8,7 +8,7 @@
 
 * Use HTTPS for cpanminus download in CI to prevent MITM attacks [#2050](https://github.com/github/markup/pull/2050)
 * Bump nokogiri to >= 1.19.1 to fix GHSA-wx95-c6cv-8532
-* Harden CI pip install with `--require-hashes --no-deps`
+* Harden CI pip install with `--require-hashes --no-deps` [#2048](https://github.com/github/markup/pull/2048)
 
 ### Bug Fixes
 
@@ -17,9 +17,9 @@
 ### Infrastructure
 
 * Remove legacy Dockerfile and .dockerignore (Ubuntu Trusty, non-functional) [#2048](https://github.com/github/markup/pull/2048)
-* Add Ruby 4.0 to CI test matrix
+* Update CI test matrix: drop Ruby 3.2, add Ruby 4.0 (now testing 3.3, 3.4, 4.0)
 * Bump nokogiri to 1.19.2, activesupport to 7.2.3.1
-* Bump github-linguist from 7.30.0 to 9.1.0
+* Bump github-linguist from 7.30.0 to 9.3.0
 * Pin GitHub Actions to commit SHAs for supply chain hardening
 * Add Dependabot configuration for automated dependency updates
 
