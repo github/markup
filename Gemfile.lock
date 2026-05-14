@@ -1,10 +1,10 @@
 GIT
   remote: https://github.com/gjtorikian/commonmarker.git
-  revision: 2838ebaa83ee0081d481c21f3bc0e4cb3e8de9da
-  tag: v0.18.3
+  revision: f3be00837bdee333384445f537013dab33d5d317
+  tag: v2.8.2
   specs:
-    commonmarker (0.18.3)
-      ruby-enum (~> 0.5)
+    commonmarker (2.8.2)
+      rb_sys (~> 0.9)
 
 PATH
   remote: .
@@ -80,12 +80,13 @@ GEM
       stringio
     racc (1.8.1)
     rake (13.4.2)
+    rake-compiler-dock (1.12.0)
+    rb_sys (0.9.128)
+      rake-compiler-dock (= 1.12.0)
     rdoc (6.13.1)
       psych (>= 4.0.0)
     redcarpet (3.6.1)
     rexml (3.4.4)
-    ruby-enum (0.9.0)
-      i18n
     rubypants (0.7.1)
     rugged (1.9.0)
     sanitize (6.1.3)
