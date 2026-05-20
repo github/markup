@@ -38,8 +38,9 @@ GEM
     connection_pool (3.0.2)
     crass (1.0.6)
     creole (0.5.0)
-    date (3.4.1)
+    date (3.5.1)
     drb (2.2.3)
+    erb (6.0.4)
     expression_parser (0.9.0)
     github-linguist (9.5.0)
       cgi
@@ -75,13 +76,15 @@ GEM
       tdiff (~> 0.4)
     org-ruby (0.9.12)
       rubypants (~> 0.2)
-    psych (5.2.3)
+    psych (5.3.1)
       date
       stringio
     racc (1.8.1)
     rake (13.4.2)
-    rdoc (6.13.1)
+    rdoc (7.2.0)
+      erb
       psych (>= 4.0.0)
+      tsort
     redcarpet (3.6.1)
     rexml (3.4.4)
     ruby-enum (0.9.0)
@@ -92,8 +95,9 @@ GEM
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
     securerandom (0.4.1)
-    stringio (3.1.6)
+    stringio (3.2.0)
     tdiff (0.4.0)
+    tsort (0.2.0)
     twitter-text (1.14.7)
       unf (~> 0.1.0)
     tzinfo (2.0.6)
@@ -132,7 +136,7 @@ DEPENDENCIES
   nokogiri-diff (~> 0.3.0)
   org-ruby (= 0.9.12)
   rake (~> 13)
-  rdoc (~> 6.13.1)
+  rdoc (~> 7.2.0)
   redcarpet
   rexml
   sanitize (>= 4.6.3)
