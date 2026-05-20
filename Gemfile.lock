@@ -56,7 +56,9 @@ GEM
     logger (1.7.0)
     mini_mime (1.1.5)
     mini_portile2 (2.8.9)
-    minitest (5.27.0)
+    minitest (6.0.6)
+      drb (~> 2.0)
+      prism (~> 1.5)
     nokogiri (1.19.3)
       mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
@@ -75,6 +77,7 @@ GEM
       tdiff (~> 0.4)
     org-ruby (0.9.12)
       rubypants (~> 0.2)
+    prism (1.9.0)
     psych (5.2.3)
       date
       stringio
@@ -127,7 +130,7 @@ DEPENDENCIES
   github-markup!
   html-pipeline (~> 1.0)
   kramdown
-  minitest (~> 5.4, >= 5.4.3)
+  minitest (~> 6.0, >= 5.4.3)
   nokogiri (~> 1.19.2)
   nokogiri-diff (~> 0.3.0)
   org-ruby (= 0.9.12)
