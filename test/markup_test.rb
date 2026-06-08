@@ -2,6 +2,8 @@
 
 $LOAD_PATH.unshift File.dirname(__FILE__) + "/../lib"
 
+require_relative 'test_helper'
+require 'github-markup'
 require 'github/markup'
 require 'minitest/autorun'
 require 'html/pipeline'

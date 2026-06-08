@@ -1,8 +1,11 @@
-require File.expand_path("../lib/github-markup", __FILE__)
+version_file = File.expand_path("../lib/github-markup.rb", __FILE__)
+version_match = File.read(version_file).match(/VERSION = ['"]([^'"]+)['"]/)
+raise "Could not find VERSION in #{version_file}" unless version_match
+version = version_match[1]
 
 Gem::Specification.new do |s|
   s.name          = "github-markup"
-  s.version       = GitHub::Markup::VERSION
+  s.version       = version
   s.summary       = "The code GitHub uses to render README.markup"
   s.description   = <<~DESC
     This gem is used by GitHub to render any fancy markup such as Markdown,
@@ -28,4 +31,5 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'nokogiri', '~> 1.19.2'
   s.add_development_dependency 'nokogiri-diff', '~> 0.3.0'
   s.add_development_dependency "github-linguist", ">= 7.1.3"
+  s.add_development_dependency 'simplecov', '~> 0.22'
 end
