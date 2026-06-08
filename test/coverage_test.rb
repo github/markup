@@ -229,7 +229,7 @@ class CoverageTest < Minitest::Test
 
   def test_command_render_falls_back_to_content_when_command_returns_empty
     impl = GitHub::Markup::CommandImplementation.new(
-      /covempty/, ['Text'], '/usr/bin/true', 'covempty'
+      /covempty/, ['Text'], 'test/fixtures/empty.sh', 'covempty'
     )
     assert_equal 'fallback-body', impl.render('README.covempty', 'fallback-body')
   end
