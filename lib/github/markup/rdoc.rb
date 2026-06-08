@@ -13,7 +13,9 @@ module GitHub
         if ::RDoc::VERSION.to_i >= 4
           h = ::RDoc::Markup::ToHtml.new(::RDoc::Options.new)
         else
+          # :nocov: RDoc < 4 has been unsupported since Ruby 2.4 (2016); modern RDoc requires Options.
           h = ::RDoc::Markup::ToHtml.new
+          # :nocov:
         end
         h.convert(content)
       end
