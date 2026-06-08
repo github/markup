@@ -241,7 +241,111 @@ class CoverageTest < Minitest::Test
     assert_raises(GitHub::Markup::CommandError) { impl.render('README.covfail', 'payload') }
   end
 
+  # --- commonmarker proc legacy option/extension mapping -----------------
+
+  def test_commonmarker_default_option_is_a_noop
+    capture = capture_commonmarker_call(commonmarker_opts: [:DEFAULT])
+    refute capture[:render].key?(:sourcepos)
+    refute capture[:parse].key?(:smart)
+    refute capture[:extension].key?(:footnotes)
+  end
+
+  def test_commonmarker_sourcepos_option_sets_render_sourcepos
+    capture = capture_commonmarker_call(commonmarker_opts: [:SOURCEPOS])
+    assert_equal true, capture[:render][:sourcepos]
+  end
+
+  def test_commonmarker_hardbreaks_option_enables_render_hardbreaks
+    capture = capture_commonmarker_call(commonmarker_opts: [:HARDBREAKS])
+    assert_equal true, capture[:render][:hardbreaks]
+  end
+
+  def test_commonmarker_nobreaks_option_disables_render_hardbreaks
+    # Combine with :HARDBREAKS so the assertion observes a transition true -> false
+    capture = capture_commonmarker_call(commonmarker_opts: [:HARDBREAKS, :NOBREAKS])
+    assert_equal false, capture[:render][:hardbreaks]
+  end
+
+  def test_commonmarker_smart_option_sets_parse_smart
+    capture = capture_commonmarker_call(commonmarker_opts: [:SMART])
+    assert_equal true, capture[:parse][:smart]
+  end
+
+  def test_commonmarker_github_pre_lang_option_sets_render_github_pre_lang
+    capture = capture_commonmarker_call(commonmarker_opts: [:GITHUB_PRE_LANG])
+    assert_equal true, capture[:render][:github_pre_lang]
+  end
+
+  def test_commonmarker_unsafe_option_enables_render_unsafe
+    capture = capture_commonmarker_call(commonmarker_opts: [:UNSAFE])
+    assert_equal true, capture[:render][:unsafe]
+  end
+
+  def test_commonmarker_footnotes_option_enables_extension_footnotes
+    capture = capture_commonmarker_call(commonmarker_opts: [:FOOTNOTES])
+    assert_equal true, capture[:extension][:footnotes]
+  end
+
+  def test_commonmarker_full_info_string_option_sets_render_full_info_string
+    capture = capture_commonmarker_call(commonmarker_opts: [:FULL_INFO_STRING])
+    assert_equal true, capture[:render][:full_info_string]
+  end
+
+  def test_commonmarker_accepts_legacy_no_op_options_without_raising
+    [
+      :VALIDATE_UTF8,
+      :LIBERAL_HTML_TAG,
+      :TABLE_PREFER_STYLE_ATTRIBUTES,
+      :STRIKETHROUGH_DOUBLE_TILDE,
+    ].each do |opt|
+      capture = capture_commonmarker_call(commonmarker_opts: [opt])
+      refute capture[:render].key?(:sourcepos), "#{opt} should not alter render options"
+      refute capture[:parse].key?(:smart), "#{opt} should not alter parse options"
+    end
+  end
+
+  def test_commonmarker_unknown_option_raises_argument_error
+    err = assert_raises(ArgumentError) do
+      capture_commonmarker_call(commonmarker_opts: [:TOTALLY_FAKE_OPT])
+    end
+    assert_match(/unknown commonmarker option:.*TOTALLY_FAKE_OPT/, err.message)
+  end
+
+  def test_commonmarker_header_ids_extension_sets_empty_string_prefix
+    capture = capture_commonmarker_call(commonmarker_exts: [:header_ids])
+    assert_equal "", capture[:extension][:header_ids]
+  end
+
+  def test_commonmarker_unknown_extension_raises_argument_error
+    err = assert_raises(ArgumentError) do
+      capture_commonmarker_call(commonmarker_exts: [:not_a_real_ext])
+    end
+    assert_match(/unknown commonmarker extension:.*not_a_real_ext/, err.message)
+  end
+
   private
+
+  # Invokes the commonmarker MARKDOWN_GEMS proc against a stubbed Commonmarker
+  # constant and returns the parse/render/extension options the proc passed to
+  # Commonmarker.to_html.
+  def capture_commonmarker_call(options)
+    captured = {}
+    fake = Module.new
+    fake.define_singleton_method(:to_html) do |content, **kwargs|
+      captured[:content] = content
+      opts = kwargs.fetch(:options, {})
+      captured[:parse] = opts[:parse] || {}
+      captured[:render] = opts[:render] || {}
+      captured[:extension] = opts[:extension] || {}
+      "stub-html"
+    end
+    with_stub_const("Commonmarker", fake) do
+      GitHub::Markup::Markdown::MARKDOWN_GEMS
+        .fetch("commonmarker")
+        .call("payload", options: options)
+    end
+    captured
+  end
 
   def with_stub_const(path, value)
     parts = path.split("::")
