@@ -1,11 +1,3 @@
-GIT
-  remote: https://github.com/gjtorikian/commonmarker.git
-  revision: 2838ebaa83ee0081d481c21f3bc0e4cb3e8de9da
-  tag: v0.18.3
-  specs:
-    commonmarker (0.18.3)
-      ruby-enum (~> 0.5)
-
 PATH
   remote: .
   specs:
@@ -34,6 +26,13 @@ GEM
     builder (3.3.0)
     cgi (0.5.1)
     charlock_holmes (0.7.9)
+    commonmarker (2.8.2)
+      rb_sys (~> 0.9)
+    commonmarker (2.8.2-aarch64-linux)
+    commonmarker (2.8.2-arm-linux)
+    commonmarker (2.8.2-arm64-darwin)
+    commonmarker (2.8.2-x86_64-darwin)
+    commonmarker (2.8.2-x86_64-linux)
     concurrent-ruby (1.3.6)
     connection_pool (3.0.2)
     crass (1.0.6)
@@ -85,14 +84,15 @@ GEM
       stringio
     racc (1.8.1)
     rake (13.4.2)
+    rake-compiler-dock (1.12.0)
+    rb_sys (0.9.128)
+      rake-compiler-dock (= 1.12.0)
     rdoc (7.2.0)
       erb
       psych (>= 4.0.0)
       tsort
     redcarpet (3.6.1)
     rexml (3.4.4)
-    ruby-enum (0.9.0)
-      i18n
     rubypants (0.7.1)
     rugged (1.9.0)
     sanitize (6.1.3)
@@ -135,7 +135,7 @@ DEPENDENCIES
   RedCloth
   activesupport (~> 8.1.3)
   asciidoctor (~> 2.0.26)
-  commonmarker!
+  commonmarker (~> 2.8.2)
   creole (~> 0.5.0)
   github-linguist (>= 7.1.3)
   github-markup!
