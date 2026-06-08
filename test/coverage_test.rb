@@ -185,8 +185,11 @@ class CoverageTest < Minitest::Test
     body = "==Hello==\nworld"
     # First render adds 'tt'; second render hits the `else` branch of `unless include?('tt')`.
     GitHub::Markup.render("README.mediawiki", body)
+    count_after_first = WikiCloth::WikiBuffer::HTMLElement::ESCAPED_TAGS.count('tt')
     GitHub::Markup.render("README.mediawiki", body)
-    assert_includes WikiCloth::WikiBuffer::HTMLElement::ESCAPED_TAGS, 'tt'
+    count_after_second = WikiCloth::WikiBuffer::HTMLElement::ESCAPED_TAGS.count('tt')
+    assert_equal 1, count_after_first, "first render should leave exactly one 'tt' entry"
+    assert_equal 1, count_after_second, "second render must not append a duplicate 'tt'"
   end
 
   # --- command_implementation.rb block arity branches --------------------
