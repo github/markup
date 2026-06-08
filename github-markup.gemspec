@@ -1,5 +1,7 @@
-version = File.read(File.expand_path("../lib/github-markup.rb", __FILE__))
-              .match(/VERSION = ['"]([^'"]+)['"]/)[1]
+version_file = File.expand_path("../lib/github-markup.rb", __FILE__)
+version_match = File.read(version_file).match(/VERSION = ['"]([^'"]+)['"]/)
+raise "Could not find VERSION in #{version_file}" unless version_match
+version = version_match[1]
 
 Gem::Specification.new do |s|
   s.name          = "github-markup"
