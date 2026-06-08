@@ -1,10 +1,10 @@
 # encoding: utf-8
 
 # Exercises code paths the original markup_test.rb does not reach:
-# - The five fallback markdown gem procs (executed against stubbed constants)
-# - The LoadError raised when no markdown gem is available
+# - The six fallback markdown gem procs (github/markdown, redcarpet,
+#   rdiscount, maruku, kramdown, bluecloth) executed against stubbed constants
+# - The LoadError ("no suitable markdown gem found") raised when no gem is available
 # - try_require's rescue clause
-# - The legacy RDoc < 4 render branch
 # - Implementation#render's NotImplementedError default
 # - Implementation#match? without Linguist (and the lazy regexp memoization)
 # - GitHub::Markup.markup_impl's duplicate-symbol guard
