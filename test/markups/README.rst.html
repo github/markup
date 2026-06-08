@@ -1,11 +1,11 @@
 <h1>Header 1</h1>
-<h2>Subtitle</h2>
+<h2 id="subtitle">Subtitle</h2>
 <p>Example text.</p>
-<div>
+<div id="table-of-contents">
 <p><a href="#top">Table of Contents</a></p>
 <ul>
-<li><a href="#header-2">Header 2</a></li>
-<li><a href="#field-list">Field list</a></li>
+<li><a href="#header-2" id="toc-entry-1">Header 2</a></li>
+<li><a href="#field-list" id="toc-entry-2">Field list</a></li>
 </ul>
 </div>
 <a name="header-2"></a>
@@ -19,42 +19,34 @@
 </ol>
 <p>The UTF-8 quote character in this table used to cause python to go boom. Now docutils just silently ignores it.</p>
 <table>
-Things that are Awesome (on a scale of 1-11)
+<caption>Things that are Awesome (on a scale of 1-11)</caption>
 
 
 
 
 <tbody valign="top">
-<tr>
-<td>Thing</td>
+<tr><td>Thing</td>
 <td>Awesomeness</td>
 </tr>
-<tr>
-<td>Icecream</td>
+<tr><td>Icecream</td>
 <td>7</td>
 </tr>
-<tr>
-<td>Honey Badgers</td>
+<tr><td>Honey Badgers</td>
 <td>10.5</td>
 </tr>
-<tr>
-<td>Nickelback</td>
+<tr><td>Nickelback</td>
 <td>-2</td>
 </tr>
-<tr>
-<td>Iron Man</td>
+<tr><td>Iron Man</td>
 <td>10</td>
 </tr>
-<tr>
-<td>Iron Man 2</td>
+<tr><td>Iron Man 2</td>
 <td>3</td>
 </tr>
-<tr>
-<td>Tabular Data</td>
+<tr><td>Tabular Data</td>
 <td>5</td>
 </tr>
-<tr>
-<td>Made up ratings</td>
+<tr><td>Made up ratings</td>
 <td>11</td>
 </tr>
 </tbody>
@@ -82,24 +74,19 @@ python.code('hello world')
 
 
 <tbody valign="top">
-<tr>
-<td>Travis</td>
+<tr><td>Travis</td>
 <td><a href="http://travis-ci.org/tony/pullv">http://travis-ci.org/tony/pullv</a></td>
 </tr>
-<tr>
-<td>Docs</td>
+<tr><td>Docs</td>
 <td><a href="http://pullv.rtfd.org">http://pullv.rtfd.org</a></td>
 </tr>
-<tr>
-<td>API</td>
+<tr><td>API</td>
 <td><a href="http://pullv.readthedocs.org/en/latest/api.html">http://pullv.readthedocs.org/en/latest/api.html</a></td>
 </tr>
-<tr>
-<td>Issues</td>
+<tr><td>Issues</td>
 <td><a href="https://github.com/tony/pullv/issues">https://github.com/tony/pullv/issues</a></td>
 </tr>
-<tr>
-<td>Source</td>
+<tr><td>Source</td>
 <td><a href="https://github.com/tony/pullv">https://github.com/tony/pullv</a></td>
 </tr>
 </tbody>
@@ -115,25 +102,17 @@ python.code('hello world')
 
 <tbody valign="top">
 <tr><th colspan="2">123456789 123456789 123456789 123456789 123456789 1:</th></tr>
-<tr>
-<td> </td>
-<td>Uh-oh! This name is too long!</td>
+<tr><td>&nbsp;</td><td>Uh-oh! This name is too long!</td>
 </tr>
-<tr>
-<th>123456789 123456789 123456789 123456789 1234567890:</th>
-<td>this is a long name,
+<tr><th>123456789 123456789 123456789 123456789 1234567890:</th><td>this is a long name,
 but no problem!</td>
 </tr>
-<tr>
-<th>123456789 12345:</th>
-<td>this is not so long, but long enough for the default!</td>
+<tr><th>123456789 12345:</th><td>this is not so long, but long enough for the default!</td>
 </tr>
-<tr>
-<th>123456789 1234:</th>
-<td>this should work even with the default :)</td>
+<tr><th>123456789 1234:</th><td>this should work even with the default :)</td>
 </tr>
 </tbody>
 </table>
-<p><a href="mailto:someone@somewhere.org">someone@somewhere.org</a></p>
+<p><a href="mailto:someone@somewhere.org">someone&#64;somewhere.org</a></p>
 <p>Press <kbd>Ctrl+C</kbd> to quit</p>
-<p><strong>RAW HTML!</strong></p> p {color:blue;} 
+<p><strong>RAW HTML!</strong></p>
