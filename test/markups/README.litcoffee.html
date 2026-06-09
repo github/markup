@@ -3,11 +3,11 @@
 <p>Taken from <a href="https://github.com/jashkenas/coffee-script/blob/master/test/literate.litcoffee">https://github.com/jashkenas/coffee-script/blob/master/test/literate.litcoffee</a></p>
 </blockquote>
 <p>comment comment</p>
-<pre><code>test "basic literate CoffeeScript parsing", -&gt;
+<pre><code>test &quot;basic literate CoffeeScript parsing&quot;, -&gt;
   ok yes
 </code></pre>
 <p>now with a...</p>
-<pre><code>test "broken up indentation", -&gt;
+<pre><code>test &quot;broken up indentation&quot;, -&gt;
 </code></pre>
 <p>... broken up ...</p>
 <pre><code>  do -&gt;
@@ -16,14 +16,14 @@
 <pre><code>    ok yes
 </code></pre>
 <p>Code must be separated from text by a blank line.</p>
-<pre><code>test "code blocks must be preceded by a blank line", -&gt;
+<pre><code>test &quot;code blocks must be preceded by a blank line&quot;, -&gt;
 </code></pre>
 <p>The next line is part of the text and will not be executed.
 fail()</p>
 <pre><code>  ok yes
 </code></pre>
 <p>Code in <code>backticks is not parsed</code> and...</p>
-<pre><code>test "comments in indented blocks work", -&gt;
+<pre><code>test &quot;comments in indented blocks work&quot;, -&gt;
   do -&gt;
     do -&gt;
       # Regular comment.
@@ -51,5 +51,5 @@ like links and unordered lists, are fine:</p>
 </li>
 </ul>
 <p>Tabs work too:</p>
-<p>test "tabbed code", -&gt;
+<p>test &quot;tabbed code&quot;, -&gt;
 ok yes</p>

@@ -6,7 +6,7 @@ require_relative 'test_helper'
 require 'github-markup'
 require 'github/markup'
 require 'minitest/autorun'
-require 'html/pipeline'
+require 'html_pipeline'
 require 'nokogiri'
 require 'nokogiri/diff'
 
@@ -36,17 +36,17 @@ def assert_html_equal(expected, actual, msg = nil)
 end
 
 class MarkupTest < Minitest::Test
-  class MarkupFilter < HTML::Pipeline::Filter
-    def call
-      filename = context[:filename]
+  class MarkupFilter < HTMLPipeline::ConvertFilter
+    def call(_text, context: {})
+      filename = context[:filename] || @context[:filename]
       GitHub::Markup.render(filename, File.read(filename)).strip.force_encoding("utf-8")
     end
   end
 
-  Pipeline = HTML::Pipeline.new [
-    MarkupFilter,
-    HTML::Pipeline::SanitizationFilter
-  ]
+  Pipeline = HTMLPipeline.new(
+    convert_filter: MarkupFilter.new,
+    sanitization_config: HTMLPipeline::SanitizationFilter::DEFAULT_CONFIG
+  )
 
   Dir['test/markups/README.*'].each do |readme|
     next if readme =~ /html$/
@@ -57,7 +57,7 @@ class MarkupTest < Minitest::Test
       source = File.read(readme)
       expected_file = "#{readme}.html"
       expected = File.read(expected_file).rstrip
-      actual = Pipeline.to_html(nil, :filename => readme)
+      actual = Pipeline.call("", context: { filename: readme })[:output].to_s
 
       if source != expected
         assert(source != actual, "#{markup} did not render anything")
