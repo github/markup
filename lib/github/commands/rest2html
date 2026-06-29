@@ -160,6 +160,7 @@ SETTINGS = {
     'syntax_highlight': 'none',
     'math_output': 'latex',
     'field_name_limit': 50,
+    'auto_id_prefix': 'id',
 }
 
 default_highlight_language = None
