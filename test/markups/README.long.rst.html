@@ -43,7 +43,7 @@ and possible bugs submitted to the <a href="https://github.com/robotframework/ro
 </ul>
 </div>
 <a name="installation"></a>
-<h2><a href="#toc-entry-1">Installation</a></h2>
+<h2><a href="#id113">Installation</a></h2>
 <p>If you have <a href="http://pip-installer.org">pip</a> installed, just run</p>
 <pre>
 pip install --upgrade robotframework
@@ -56,7 +56,7 @@ pip install robotframework==7.0
 from <a href="https://pypi.python.org/pypi/robotframework">PyPI</a> and install it manually. For more details and other installation
 approaches, see the <a href="../../INSTALL.rst">installation instructions</a>.</p>
 <a name="most-important-enhancements"></a>
-<h2><a href="#toc-entry-2">Most important enhancements</a></h2>
+<h2><a href="#id114">Most important enhancements</a></h2>
 <blockquote>
 <p>If you are interested to learn more about the new features in Robot Framework 7.0,
 join the <a href="https://robocon.io">RoboCon conference</a> in February, 2024. <a href="https://github.com/pekkaklarck">Pekka Klärck</a>, Robot Framework
@@ -68,7 +68,7 @@ tools and libraries in the ecosystem. All profits from the conference will be
 used for future Robot Framework development.</p>
 </blockquote>
 <a name="listener-enhancements"></a>
-<h3><a href="#toc-entry-3">Listener enhancements</a></h3>
+<h3><a href="#id115">Listener enhancements</a></h3>
 <p>Robot Framework's <a href="http://robotframework.org/robotframework/latest/RobotFrameworkUserGuide.html#listener-interface">listener interface</a> is a very powerful mechanism to get
 notifications about various events during execution and it also allows modifying
 data and results on the fly. It is not typically directly used by normal Robot
@@ -175,7 +175,7 @@ result files are ready so that they get the file path as an argument. Earlier
 paths were strings, but nowadays listener version 3 methods get them as
 more convenient <a href="https://docs.python.org/3/library/pathlib.html">pathlib.Path</a> objects.</p>
 <a name="native-var-syntax"></a>
-<h3><a href="#toc-entry-4">Native <code>VAR</code> syntax</a></h3>
+<h3><a href="#id116">Native <code>VAR</code> syntax</a></h3>
 <p>The new <code>VAR</code> syntax (<a href="https://github.com/robotframework/robotframework/issues/3761">#3761</a>) makes it possible to create local variables
 as well as global, suite and test/task scoped variables dynamically during
 execution. The motivation is to have a more convenient syntax than using
@@ -241,7 +241,7 @@ Inline IF
     IF    1 &gt; 0    VAR    ${x}    true value    ELSE    VAR    ${x}    false value
 </pre>
 <a name="mixed-argument-support-with-library-keywords"></a>
-<h3><a href="#toc-entry-5">Mixed argument support with library keywords</a></h3>
+<h3><a href="#id117">Mixed argument support with library keywords</a></h3>
 <p>User keywords got support to use both embedded and normal arguments in Robot
 Framework 6.1 (<a href="https://github.com/robotframework/robotframework/issues/4234">#4234</a>) and now that support has been added also to library keywords
 (<a href="https://github.com/robotframework/robotframework/issues/4710">#4710</a>). The syntax works so, that if a function or method implementing a keyword
@@ -262,7 +262,7 @@ Example
     Number of dogs should be    3
 </pre>
 <a name="json-result-format"></a>
-<h3><a href="#toc-entry-6">JSON result format</a></h3>
+<h3><a href="#id118">JSON result format</a></h3>
 <p>Robot Framework 6.1 added support to <a href="https://github.com/robotframework/robotframework/blob/master/doc/releasenotes/rf-6.1.rst#json-data-format">convert test/task data to JSON and back</a>
 and Robot Framework 7.0 extends the JSON serialization support to execution results
 (<a href="https://github.com/robotframework/robotframework/issues/4847">#4847</a>). One of the core use cases for data serialization was making it easy to
@@ -289,7 +289,7 @@ rebot --merge original.xml rerun.json
 <p>The plan is to enhance the support for JSON output files in the future so that
 they could be created already during execution. For more details see issue <a href="https://github.com/robotframework/robotframework/issues/3423">#3423</a>.</p>
 <a name="argument-conversion-enhancements"></a>
-<h3><a href="#toc-entry-7">Argument conversion enhancements</a></h3>
+<h3><a href="#id119">Argument conversion enhancements</a></h3>
 <p>Automatic argument conversion is a very powerful feature that library developers
 can use to avoid converting arguments manually and to get more useful Libdoc
 documentation. There are two important new enhancements to it.</p>
@@ -334,7 +334,7 @@ def example(a: 'list[int]', b: 'int | float'):
 <p>These stringified types are also compatible with the Remote library API and other
 scenarios where using actual types is not possible.</p>
 <a name="tags-set-globally-can-be-removed-using-tag-syntax"></a>
-<h3><a href="#toc-entry-8">Tags set globally can be removed using <code>-tag</code> syntax</a></h3>
+<h3><a href="#id120">Tags set globally can be removed using <code>-tag</code> syntax</a></h3>
 <p>Individual tests and keywords can nowadays remove tags that have been set in
 the Settings section with <code>Test Tags</code> or <code>Keyword Tags</code> settings by using
 the <code>-tag</code> syntax with their own <code>[Tags]</code> setting (<a href="https://github.com/robotframework/robotframework/issues/4374">#4374</a>). For example,
@@ -358,7 +358,7 @@ setting and overriding it where needed. That syntax is, however, considered
 deprecated (<a href="https://github.com/robotframework/robotframework/issues/4365">#4365</a>) and using the new <code>-tag</code> syntax is recommended. With
 keywords there was no similar functionality earlier.</p>
 <a name="dynamic-and-hybrid-library-apis-support-asynchronous-execution"></a>
-<h3><a href="#toc-entry-9">Dynamic and hybrid library APIs support asynchronous execution</a></h3>
+<h3><a href="#id121">Dynamic and hybrid library APIs support asynchronous execution</a></h3>
 <p>Dynamic and hybrid libraries nowadays support asynchronous execution.
 In practice the special methods like <code>get_keyword_names</code> and <code>run_keyword</code>
 can be implemented as async methods (<a href="https://github.com/robotframework/robotframework/issues/4803">#4803</a>).</p>
@@ -366,7 +366,7 @@ can be implemented as async methods (<a href="https://github.com/robotframework/
 6.1 (<a href="https://github.com/robotframework/robotframework/issues/4089">#4089</a>). A bug related to handling asynchronous keywords if execution
 is stopped gracefully has also been fixed (<a href="https://github.com/robotframework/robotframework/issues/4808">#4808</a>).</p>
 <a name="timestamps-in-result-model-and-output-xml-use-standard-format"></a>
-<h3><a href="#toc-entry-10">Timestamps in result model and output.xml use standard format</a></h3>
+<h3><a href="#id122">Timestamps in result model and output.xml use standard format</a></h3>
 <p>Timestamps used in the result model and stored to the output.xml file used custom
 format like <code>20231107 19:57:01.123</code> earlier. Non-standard formats are seldom
 a good idea, and in this case parsing the custom format turned out to be slow
@@ -398,18 +398,18 @@ but that can be changed in the future if there are needs.</p>
 that process timestamps. This is discussed more in <a href="#changes-to-output-xml">Changes to output.xml</a>
 section below along with other output.xml changes.</p>
 <a name="dark-mode-support-to-report-and-log"></a>
-<h3><a href="#toc-entry-11">Dark mode support to report and log</a></h3>
+<h3><a href="#id123">Dark mode support to report and log</a></h3>
 <p>Report and log got a new dark mode (<a href="https://github.com/robotframework/robotframework/issues/3725">#3725</a>). It is enabled automatically based
 on browser and operating system preferences, but there is also a toggle to
 switch between the modes.</p>
 <a name="backwards-incompatible-changes"></a>
-<h2><a href="#toc-entry-12">Backwards incompatible changes</a></h2>
+<h2><a href="#id124">Backwards incompatible changes</a></h2>
 <a name="python-3-6-and-3-7-are-no-longer-supported"></a>
-<h3><a href="#toc-entry-13">Python 3.6 and 3.7 are no longer supported</a></h3>
+<h3><a href="#id125">Python 3.6 and 3.7 are no longer supported</a></h3>
 <p>Robot Framework 7.0 requires Python 3.8 or newer (<a href="https://github.com/robotframework/robotframework/issues/4294">#4294</a>). The last version
 that supports Python 3.6 and 3.7 is Robot Framework 6.1.1.</p>
 <a name="changes-to-output-xml"></a>
-<h3><a href="#toc-entry-14">Changes to output.xml</a></h3>
+<h3><a href="#id126">Changes to output.xml</a></h3>
 <p>The output.xml file has changed in different ways making Robot Framework 7.0
 incompatible with external tools processing output.xml files until these tools
 are updated. We try to avoid this kind of breaking changes, but in this case
@@ -479,7 +479,7 @@ increase the output.xml size.</p>
 <p>The output.xml schema has been updated and can be found via
 <a href="https://github.com/robotframework/robotframework/tree/master/doc/schema/">https://github.com/robotframework/robotframework/tree/master/doc/schema/</a>.</p>
 <a name="changes-to-result-model"></a>
-<h3><a href="#toc-entry-15">Changes to result model</a></h3>
+<h3><a href="#id127">Changes to result model</a></h3>
 <p>There have been some changes to the result model that unfortunately affect
 external tools using it. The main motivation for these changes has been
 cleaning up the model before creating a JSON representation for it (<a href="https://github.com/robotframework/robotframework/issues/4847">#4847</a>).</p>
@@ -520,7 +520,7 @@ have been removed (<a href="https://github.com/robotframework/robotframework/iss
 <p>Additionally, <code>TestSuite.keywords</code> and <code>TestCase.keywords</code> have been removed
 from the execution model.</p>
 <a name="changes-to-parsing-model"></a>
-<h3><a href="#toc-entry-16">Changes to parsing model</a></h3>
+<h3><a href="#id128">Changes to parsing model</a></h3>
 <p>There have been some changes also to the parsing model:</p>
 <ul>
 <li><p>The node representing the deprecated <code>[Return]</code> setting has been renamed from
@@ -547,7 +547,7 @@ This may affect debugging the model.</p>
 </li>
 </ul>
 <a name="changes-to-libdoc-spec-files"></a>
-<h3><a href="#toc-entry-17">Changes to Libdoc spec files</a></h3>
+<h3><a href="#id129">Changes to Libdoc spec files</a></h3>
 <p>The following deprecated constructs have been removed from Libdoc spec files (<a href="https://github.com/robotframework/robotframework/issues/4667">#4667</a>):</p>
 <ul>
 <li><code>datatypes</code> have been removed from XML or JSON spec files. They were deprecated in
@@ -561,7 +561,7 @@ The <code>type</code> attribute introduced in RF 6.1 (<a href="https://github.co
 <p>Libdoc schema files have been updated and can be found via
 <a href="https://github.com/robotframework/robotframework/tree/master/doc/schema/">https://github.com/robotframework/robotframework/tree/master/doc/schema/</a>.</p>
 <a name="changes-to-selecting-tests-with-suite-test-and-include"></a>
-<h3><a href="#toc-entry-18">Changes to selecting tests with <code>--suite</code>, <code>--test</code> and <code>--include</code></a></h3>
+<h3><a href="#id130">Changes to selecting tests with <code>--suite</code>, <code>--test</code> and <code>--include</code></a></h3>
 <p>There are two changes related to selecting tests:</p>
 <ul>
 <li>When using <code>--test</code> and <code>--include</code> together, tests matching either of them
@@ -571,7 +571,7 @@ the given name must match the full suite name (<a href="https://github.com/robot
 the prefix matched the closest parent or parents.</li>
 </ul>
 <a name="other-backwards-incompatible-changes"></a>
-<h3><a href="#toc-entry-19">Other backwards incompatible changes</a></h3>
+<h3><a href="#id131">Other backwards incompatible changes</a></h3>
 <ul>
 <li>The default value of the <code>stdin</code> argument used with <code>Process</code> library keyword
 has been changed from <code>subprocess.PIPE</code> to <code>None</code> (<a href="https://github.com/robotframework/robotframework/issues/4103">#4103</a>). This change ought
@@ -601,9 +601,9 @@ by using <code>str(path)</code>.</li>
 <code>timestr_to_secs</code> utility function (<a href="https://github.com/robotframework/robotframework/issues/4861">#4861</a>).</li>
 </ul>
 <a name="deprecations"></a>
-<h2><a href="#toc-entry-20">Deprecations</a></h2>
+<h2><a href="#id132">Deprecations</a></h2>
 <a name="return-setting"></a>
-<h3><a href="#toc-entry-21"><code>[Return]</code> setting</a></h3>
+<h3><a href="#id133"><code>[Return]</code> setting</a></h3>
 <p>The <code>[Return]</code> setting for specifying the return value from user keywords has
 been &quot;loudly&quot; deprecated (<a href="https://github.com/robotframework/robotframework/issues/4876">#4876</a>). It has been &quot;silently&quot; deprecated since
 Robot Framework 5.0 when the much more versatile <code>RETURN</code> setting was introduced
@@ -615,12 +615,12 @@ If you have data that is executed also with Robot Framework versions that do
 not support <code>RETURN</code>, you can use the <code>Return From Keyword</code> keyword instead.
 That keyword will eventually be deprecated and removed as well, though.</p>
 <a name="singular-section-headers"></a>
-<h3><a href="#toc-entry-22">Singular section headers</a></h3>
+<h3><a href="#id134">Singular section headers</a></h3>
 <p>Using singular section headers like <code>*** Test Case ***</code> or <code>*** Setting ***</code>
 nowadays causes a deprecation warning (<a href="https://github.com/robotframework/robotframework/issues/4432">#4432</a>). They were silently deprecated
 in Robot Framework 6.0 for reasons explained in issue <a href="https://github.com/robotframework/robotframework/issues/4431">#4431</a>.</p>
 <a name="deprecated-attributes-in-parsing-running-and-result-models"></a>
-<h3><a href="#toc-entry-23">Deprecated attributes in parsing, running and result models</a></h3>
+<h3><a href="#id135">Deprecated attributes in parsing, running and result models</a></h3>
 <ul>
 <li>In the parsing model, <code>For.variables</code>, <code>ForHeader.variables</code>, <code>Try.variable</code> and
 <code>ExceptHeader.variable</code> attributes have been deprecated in favor of the new <code>assign</code>
@@ -640,7 +640,7 @@ in the result model have been silently deprecated (<a href="https://github.com/r
 <code>name</code>, <code>owner</code> and <code>source_name</code> instead.</li>
 </ul>
 <a name="other-deprecated-features"></a>
-<h3><a href="#toc-entry-24">Other deprecated features</a></h3>
+<h3><a href="#id136">Other deprecated features</a></h3>
 <ul>
 <li>Using embedded arguments with a variable that has a value not matching custom
 embedded argument patterns nowadays causes a deprecation warning (<a href="https://github.com/robotframework/robotframework/issues/4524">#4524</a>).
@@ -663,7 +663,7 @@ for the time being.</li>
 has been deprecated (<a href="https://github.com/robotframework/robotframework/issues/4862">#4862</a>).</li>
 </ul>
 <a name="acknowledgements"></a>
-<h2><a href="#toc-entry-25">Acknowledgements</a></h2>
+<h2><a href="#id137">Acknowledgements</a></h2>
 <p>Robot Framework development is sponsored by the <a href="http://robotframework.org/foundation">Robot Framework Foundation</a>
 and its over 60 member organizations. If your organization is using Robot Framework
 and benefiting from it, consider joining the foundation to support its
@@ -700,7 +700,7 @@ development.</p>
 <div>Robot Framework lead developer</div>
 </div>
 <a name="full-list-of-fixes-and-enhancements"></a>
-<h2><a href="#toc-entry-26">Full list of fixes and enhancements</a></h2>
+<h2><a href="#id138">Full list of fixes and enhancements</a></h2>
 <table>
 
 
