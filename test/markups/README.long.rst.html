@@ -8,38 +8,38 @@ related to the release can be sent to the <code>#devel</code> channel on <a href
 and possible bugs submitted to the <a href="https://github.com/robotframework/robotframework/issues">issue tracker</a>.</p>
 <div id="contents">
 <ul>
-<li><a href="#installation" id="toc-entry-1">Installation</a></li>
-<li><a href="#most-important-enhancements" id="toc-entry-2">Most important enhancements</a><ul>
-<li><a href="#listener-enhancements" id="toc-entry-3">Listener enhancements</a></li>
-<li><a href="#native-var-syntax" id="toc-entry-4">Native <code>VAR</code> syntax</a></li>
-<li><a href="#mixed-argument-support-with-library-keywords" id="toc-entry-5">Mixed argument support with library keywords</a></li>
-<li><a href="#json-result-format" id="toc-entry-6">JSON result format</a></li>
-<li><a href="#argument-conversion-enhancements" id="toc-entry-7">Argument conversion enhancements</a></li>
-<li><a href="#tags-set-globally-can-be-removed-using-tag-syntax" id="toc-entry-8">Tags set globally can be removed using <code>-tag</code> syntax</a></li>
-<li><a href="#dynamic-and-hybrid-library-apis-support-asynchronous-execution" id="toc-entry-9">Dynamic and hybrid library APIs support asynchronous execution</a></li>
-<li><a href="#timestamps-in-result-model-and-output-xml-use-standard-format" id="toc-entry-10">Timestamps in result model and output.xml use standard format</a></li>
-<li><a href="#dark-mode-support-to-report-and-log" id="toc-entry-11">Dark mode support to report and log</a></li>
+<li><a href="#installation" id="id113">Installation</a></li>
+<li><a href="#most-important-enhancements" id="id114">Most important enhancements</a><ul>
+<li><a href="#listener-enhancements" id="id115">Listener enhancements</a></li>
+<li><a href="#native-var-syntax" id="id116">Native <code>VAR</code> syntax</a></li>
+<li><a href="#mixed-argument-support-with-library-keywords" id="id117">Mixed argument support with library keywords</a></li>
+<li><a href="#json-result-format" id="id118">JSON result format</a></li>
+<li><a href="#argument-conversion-enhancements" id="id119">Argument conversion enhancements</a></li>
+<li><a href="#tags-set-globally-can-be-removed-using-tag-syntax" id="id120">Tags set globally can be removed using <code>-tag</code> syntax</a></li>
+<li><a href="#dynamic-and-hybrid-library-apis-support-asynchronous-execution" id="id121">Dynamic and hybrid library APIs support asynchronous execution</a></li>
+<li><a href="#timestamps-in-result-model-and-output-xml-use-standard-format" id="id122">Timestamps in result model and output.xml use standard format</a></li>
+<li><a href="#dark-mode-support-to-report-and-log" id="id123">Dark mode support to report and log</a></li>
 </ul>
 </li>
-<li><a href="#backwards-incompatible-changes" id="toc-entry-12">Backwards incompatible changes</a><ul>
-<li><a href="#python-3-6-and-3-7-are-no-longer-supported" id="toc-entry-13">Python 3.6 and 3.7 are no longer supported</a></li>
-<li><a href="#changes-to-output-xml" id="toc-entry-14">Changes to output.xml</a></li>
-<li><a href="#changes-to-result-model" id="toc-entry-15">Changes to result model</a></li>
-<li><a href="#changes-to-parsing-model" id="toc-entry-16">Changes to parsing model</a></li>
-<li><a href="#changes-to-libdoc-spec-files" id="toc-entry-17">Changes to Libdoc spec files</a></li>
-<li><a href="#changes-to-selecting-tests-with-suite-test-and-include" id="toc-entry-18">Changes to selecting tests with <code>--suite</code>, <code>--test</code> and <code>--include</code></a></li>
-<li><a href="#other-backwards-incompatible-changes" id="toc-entry-19">Other backwards incompatible changes</a></li>
+<li><a href="#backwards-incompatible-changes" id="id124">Backwards incompatible changes</a><ul>
+<li><a href="#python-3-6-and-3-7-are-no-longer-supported" id="id125">Python 3.6 and 3.7 are no longer supported</a></li>
+<li><a href="#changes-to-output-xml" id="id126">Changes to output.xml</a></li>
+<li><a href="#changes-to-result-model" id="id127">Changes to result model</a></li>
+<li><a href="#changes-to-parsing-model" id="id128">Changes to parsing model</a></li>
+<li><a href="#changes-to-libdoc-spec-files" id="id129">Changes to Libdoc spec files</a></li>
+<li><a href="#changes-to-selecting-tests-with-suite-test-and-include" id="id130">Changes to selecting tests with <code>--suite</code>, <code>--test</code> and <code>--include</code></a></li>
+<li><a href="#other-backwards-incompatible-changes" id="id131">Other backwards incompatible changes</a></li>
 </ul>
 </li>
-<li><a href="#deprecations" id="toc-entry-20">Deprecations</a><ul>
-<li><a href="#return-setting" id="toc-entry-21"><code>[Return]</code> setting</a></li>
-<li><a href="#singular-section-headers" id="toc-entry-22">Singular section headers</a></li>
-<li><a href="#deprecated-attributes-in-parsing-running-and-result-models" id="toc-entry-23">Deprecated attributes in parsing, running and result models</a></li>
-<li><a href="#other-deprecated-features" id="toc-entry-24">Other deprecated features</a></li>
+<li><a href="#deprecations" id="id132">Deprecations</a><ul>
+<li><a href="#return-setting" id="id133"><code>[Return]</code> setting</a></li>
+<li><a href="#singular-section-headers" id="id134">Singular section headers</a></li>
+<li><a href="#deprecated-attributes-in-parsing-running-and-result-models" id="id135">Deprecated attributes in parsing, running and result models</a></li>
+<li><a href="#other-deprecated-features" id="id136">Other deprecated features</a></li>
 </ul>
 </li>
-<li><a href="#acknowledgements" id="toc-entry-25">Acknowledgements</a></li>
-<li><a href="#full-list-of-fixes-and-enhancements" id="toc-entry-26">Full list of fixes and enhancements</a></li>
+<li><a href="#acknowledgements" id="id137">Acknowledgements</a></li>
+<li><a href="#full-list-of-fixes-and-enhancements" id="id138">Full list of fixes and enhancements</a></li>
 </ul>
 </div>
 <a name="installation"></a>
