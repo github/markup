@@ -115,6 +115,8 @@ class CoverageTest < Minitest::Test
       assert impl.match?("README.md", nil)
       # call again to cover the memoization branch in file_ext_regexp
       assert impl.match?("README.markdown", nil)
+      assert impl.match?("README.MD", nil)
+      assert impl.match?("README.Markdown", nil)
       refute impl.match?("README.txt", nil)
     end
   end
