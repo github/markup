@@ -2,6 +2,7 @@ PATH
   remote: .
   specs:
     github-markup (6.0.0)
+      rdoc (< 8)
 
 GEM
   remote: https://rubygems.org/
