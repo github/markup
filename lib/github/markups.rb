@@ -10,18 +10,18 @@ end
 
 GitHub::Markup.markup_impl(::GitHub::Markups::MARKUP_RDOC, GitHub::Markup::RDoc.new)
 
-GitHub::Markup.markup(::GitHub::Markups::MARKUP_ORG, 'org-ruby', /org/, ["Org"]) do |filename, content, options: {}|
+GitHub::Markup.markup(::GitHub::Markups::MARKUP_ORG, 'org-ruby', /org/, ["Org"], mutable_string_literals: true) do |filename, content, options: {}|
   Orgmode::Parser.new(content, {
                         :allow_include_files => false,
                         :skip_syntax_highlight => true
                       }).to_html
 end
 
-GitHub::Markup.markup(::GitHub::Markups::MARKUP_CREOLE, :creole, /creole/, ["Creole"]) do |filename, content, options: {}|
+GitHub::Markup.markup(::GitHub::Markups::MARKUP_CREOLE, :creole, /creole/, ["Creole"], mutable_string_literals: true) do |filename, content, options: {}|
   Creole.creolize(content)
 end
 
-GitHub::Markup.markup(::GitHub::Markups::MARKUP_MEDIAWIKI, :wikicloth, /mediawiki|wiki/, ["MediaWiki"]) do |filename, content, options: {}|
+GitHub::Markup.markup(::GitHub::Markups::MARKUP_MEDIAWIKI, :wikicloth, /mediawiki|wiki/, ["MediaWiki"], mutable_string_literals: true) do |filename, content, options: {}|
   wikicloth = WikiCloth::WikiCloth.new(:data => content)
   WikiCloth::WikiBuffer::HTMLElement::ESCAPED_TAGS << 'tt' unless WikiCloth::WikiBuffer::HTMLElement::ESCAPED_TAGS.include?('tt')
   wikicloth.to_html(:noedit => true)

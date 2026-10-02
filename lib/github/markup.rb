@@ -58,7 +58,8 @@ module GitHub
     end
 
     def markup(symbol, gem_name, regexp, languages, opts = {}, &block)
-      impl = GemImplementation.new(regexp, languages, gem_name, &block)
+      impl = GemImplementation.new(regexp, languages, gem_name,
+                                   mutable_string_literals: opts.fetch(:mutable_string_literals, false), &block)
       markup_impl(symbol, impl)
     end
 
