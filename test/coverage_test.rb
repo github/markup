@@ -192,6 +192,34 @@ class CoverageTest < Minitest::Test
     assert_equal 1, count_after_second, "second render must not append a duplicate 'tt'"
   end
 
+  # --- gem_implementation.rb mutable_string_literals ---------------------
+
+  def test_mutable_string_literals_unfreezes_literals_while_the_gem_loads
+    probe = File.expand_path("fixtures/compile_option_probe", __dir__)
+    impl = GitHub::Markup::GemImplementation.new(/covmutable/, [], probe, mutable_string_literals: true)
+    with_fake_compile_option(frozen_string_literal: true) do |writes|
+      impl.load
+      assert_equal false, COMPILE_OPTION_PROBE, "the gem should load with mutable string literals"
+      assert_equal [false, true], writes.map { |options| options[:frozen_string_literal] }
+    end
+  end
+
+  def test_mutable_string_literals_restores_the_option_when_the_gem_fails_to_load
+    impl = GitHub::Markup::GemImplementation.new(/covmissing/, [], "covmissing-not-a-gem", mutable_string_literals: true)
+    with_fake_compile_option(frozen_string_literal: true) do |writes|
+      assert_raises(LoadError) { impl.load }
+      assert_equal [false, true], writes.map { |options| options[:frozen_string_literal] }
+    end
+  end
+
+  def test_mutable_string_literals_leaves_the_default_chilled_mode_alone
+    impl = GitHub::Markup::GemImplementation.new(/covchilled/, [], "shellwords", mutable_string_literals: true)
+    with_fake_compile_option(frozen_string_literal: nil) do |writes|
+      impl.load
+      assert_empty writes
+    end
+  end
+
   # --- command_implementation.rb block arity branches --------------------
 
   def test_command_block_with_arity_two_receives_rendered_and_content
@@ -359,6 +387,32 @@ class CoverageTest < Minitest::Test
   ensure
     parent.send(:remove_const, name) if parent.const_defined?(name, false)
     parent.const_set(name, original) if had_const
+  end
+
+  # Replaces RubyVM::InstructionSequence.compile_option and compile_option= with
+  # a fake, so a test can simulate frozen string literals without touching the
+  # real compile options (Ruby can't restore its default "chilled" state).
+  # Yields the list of values written to compile_option=.
+  def with_fake_compile_option(options)
+    iseq = RubyVM::InstructionSequence
+    getter = iseq.method(:compile_option)
+    setter = iseq.method(:compile_option=)
+    current = getter.call.merge(options)
+    writes = []
+    redefine_quietly(iseq, :compile_option) { current }
+    redefine_quietly(iseq, :compile_option=) { |value| writes << value; current = value }
+    yield writes
+  ensure
+    redefine_quietly(iseq, :compile_option, getter)
+    redefine_quietly(iseq, :compile_option=, setter)
+  end
+
+  # define_singleton_method without the "method redefined" warning.
+  def redefine_quietly(object, name, body = nil, &block)
+    verbose, $VERBOSE = $VERBOSE, nil
+    object.define_singleton_method(name, body || block)
+  ensure
+    $VERBOSE = verbose
   end
 
   def without_linguist

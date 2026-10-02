@@ -9,7 +9,7 @@ permissions:
 
 jobs:
   build:
-    name: "Test / Ruby ${{ matrix.ruby }}"
+    name: "Test / Ruby ${{ matrix.ruby }}${{ matrix.frozen-string-literal && ' (frozen string literals)' || '' }}"
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -17,6 +17,10 @@ jobs:
           - "3.3"
           - "3.4"
           - "4.0"
+        frozen-string-literal: [false]
+        include:
+          - ruby: "4.0"
+            frozen-string-literal: true
       fail-fast: false
 
     steps:
@@ -57,6 +61,8 @@ jobs:
           python -m pip install --require-hashes --no-deps -r /tmp/requirements.txt
 
       - name: Run rake
+        env:
+          RUBYOPT: ${{ matrix.frozen-string-literal && '--enable=frozen-string-literal' || '' }}
         run: |
           export PATH=$PATH:/.perl6/bin:/opt/rakudo-pkg/bin
           bundle exec rake
