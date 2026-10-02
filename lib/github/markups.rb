@@ -1,3 +1,4 @@
+require "github/markup/diagrams"
 require "github/markup/markdown"
 require "github/markup/rdoc"
 require "shellwords"
@@ -44,7 +45,7 @@ GitHub::Markup.markup(::GitHub::Markups::MARKUP_ASCIIDOC, :asciidoctor, /adoc|as
     attributes['outfilesuffix'] = '.adoc'
   end
   Asciidoctor::Compliance.unique_id_start_index = 1
-  Asciidoctor.convert(content, :safe => :secure, :attributes => attributes)
+  ::GitHub::Markup::Diagrams.convert(content, :safe => :secure, :attributes => attributes)
 end
 
 GitHub::Markup.command(
