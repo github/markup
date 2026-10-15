@@ -94,11 +94,6 @@ class CoverageTest < Minitest::Test
     refute md.send(:try_require, "github_markup_definitely_not_a_real_gem_#{Time.now.to_i}")
   end
 
-  # --- rdoc.rb legacy version branch --------------------------------------
-  # The `RDoc::VERSION < 4` branch in rdoc.rb is marked :nocov: in source
-  # because the modern RDoc::Markup::ToHtml constructor requires Options
-  # and the legacy zero-arg form has been broken since RDoc 4 (2013).
-
   # --- implementation.rb default render and Linguist-less match? ---------
 
   def test_base_implementation_render_raises_not_implemented_error

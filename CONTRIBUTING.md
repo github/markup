@@ -37,6 +37,11 @@ To run the tests:
 
 If nothing complains, congratulations!
 
+CI tests RDoc 7.2 and 8.x. To test RDoc 8.x locally:
+
+    $ RDOC_VERSION='~> 8.0' bundle update rdoc
+    $ RDOC_VERSION='~> 8.0' bundle exec rake
+
 ## Releasing a new version
 
 If you are the current maintainer of this gem:
