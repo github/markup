@@ -17,11 +17,13 @@ jobs:
       matrix:
         rdoc:
           - "7.2.0"
-          - "8.0"
         ruby:
           - "3.3"
           - "3.4"
           - "4.0"
+        include:
+          - ruby: "4.0"
+            rdoc: "8.0"
       fail-fast: false
 
     steps:
