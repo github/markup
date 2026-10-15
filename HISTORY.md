@@ -4,6 +4,8 @@
 
 * Require commonmarker 2.x when using the CommonMarker renderer; upgrade existing commonmarker 0.x installations [#2059](https://github.com/github/markup/pull/2059).
 * Accept `VALIDATE_UTF8`, `LIBERAL_HTML_TAG`, `TABLE_PREFER_STYLE_ATTRIBUTES`, and `STRIKETHROUGH_DOUBLE_TILDE` without applying them [#2059](https://github.com/github/markup/pull/2059).
+* Preserve soft line breaks with `NOBREAKS` instead of converting them to spaces [#2059](https://github.com/github/markup/pull/2059).
+* Apply `HARDBREAKS` and `NOBREAKS` in their supplied order; the last flag wins, replacing the old `HARDBREAKS` precedence [#2059](https://github.com/github/markup/pull/2059).
 
 ### Bug Fixes
 
