@@ -107,6 +107,23 @@ message
     assert_match result, GitHub::Markup.render_s(GitHub::Markups::MARKUP_ASCIIDOC, markup).split.join
   end
 
+  def test_rdoc_rendering_by_filename_and_symbol
+    source = "= Title\n\nA *bold* paragraph.\n\n* One\n* Two\n"
+    results = [
+      GitHub::Markup.render("README.rdoc", source),
+      GitHub::Markup.render_s(GitHub::Markups::MARKUP_RDOC, source),
+    ]
+
+    results.each do |result|
+      document = Nokogiri::HTML.fragment(result)
+      document.css("h1 > span").remove
+      assert_equal "Title", document.at_css("h1").text
+      assert_equal "bold", document.at_css("p strong").text
+      assert_equal ["One", "Two"], document.css("ul li").map { |item| item.text.strip }
+    end
+    assert_equal results.first, results.last
+  end
+
   def test_raises_error_if_command_exits_non_zero
     GitHub::Markup.command(:doesntmatter, 'test/fixtures/fail.sh', /fail/, ['Java'], 'fail')
     assert GitHub::Markup.can_render?('README.java', 'stop swallowing errors')

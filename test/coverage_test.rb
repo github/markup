@@ -94,10 +94,40 @@ class CoverageTest < Minitest::Test
     refute md.send(:try_require, "github_markup_definitely_not_a_real_gem_#{Time.now.to_i}")
   end
 
-  # --- rdoc.rb legacy version branch --------------------------------------
-  # The `RDoc::VERSION < 4` branch in rdoc.rb is marked :nocov: in source
-  # because the modern RDoc::Markup::ToHtml constructor requires Options
-  # and the legacy zero-arg form has been broken since RDoc 4 (2013).
+  # --- rdoc.rb formatter constructor compatibility -----------------------
+
+  def test_rdoc_4_through_7_receive_options
+    formatter = Class.new do
+      def initialize(options)
+        raise ArgumentError, "expected RDoc::Options" unless options.is_a?(::RDoc::Options)
+      end
+
+      def convert(content); "rendered:#{content}"; end
+    end
+
+    ["4.0.0", "6.3.4.1", "7.2.0"].each do |version|
+      with_stub_const("RDoc::VERSION", version) do
+        with_stub_const("RDoc::Markup::ToHtml", formatter) do
+          assert_equal "rendered:hello", GitHub::Markup::RDoc.new.render("README.rdoc", "hello")
+        end
+      end
+    end
+  end
+
+  def test_rdoc_8_and_legacy_versions_receive_no_positional_options
+    formatter = Class.new do
+      def initialize; end
+      def convert(content); "rendered:#{content}"; end
+    end
+
+    ["3.6.1", "8.0.0", "8.1.0"].each do |version|
+      with_stub_const("RDoc::VERSION", version) do
+        with_stub_const("RDoc::Markup::ToHtml", formatter) do
+          assert_equal "rendered:hello", GitHub::Markup::RDoc.new.render("README.rdoc", "hello")
+        end
+      end
+    end
+  end
 
   # --- implementation.rb default render and Linguist-less match? ---------
 

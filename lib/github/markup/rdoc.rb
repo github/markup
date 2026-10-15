@@ -10,12 +10,11 @@ module GitHub
       end
 
       def render(filename, content, options: {})
-        if ::RDoc::VERSION.to_i >= 4
+        # RDoc 4-7 require positional Options; RDoc 8 uses keyword options.
+        if (4...8).cover?(::RDoc::VERSION.to_i)
           h = ::RDoc::Markup::ToHtml.new(::RDoc::Options.new)
         else
-          # :nocov: RDoc < 4 has been unsupported since Ruby 2.4 (2016); modern RDoc requires Options.
           h = ::RDoc::Markup::ToHtml.new
-          # :nocov:
         end
         h.convert(content)
       end
