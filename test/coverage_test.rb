@@ -94,9 +94,6 @@ class CoverageTest < Minitest::Test
     refute md.send(:try_require, "github_markup_definitely_not_a_real_gem_#{Time.now.to_i}")
   end
 
-  # --- rdoc.rb formatter constructor compatibility -----------------------
-  # Only the tests matching the installed RDoc are defined; CI runs both.
-
   if ::RDoc::VERSION.to_i >= 8
     def test_rdoc_8_formatter_rejects_positional_options
       assert_raises(ArgumentError) { ::RDoc::Markup::ToHtml.new(::RDoc::Options.new) }
