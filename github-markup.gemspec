@@ -23,7 +23,7 @@ Gem::Specification.new do |s|
   s.test_files    = s.files.grep(%r{^(test|spec|features)/})
   s.require_paths = %w[lib]
 
-  s.add_dependency 'rdoc', '< 8'
+  s.add_dependency 'rdoc', '< 9'
 
   s.add_development_dependency 'rake', '~> 13'
   s.add_development_dependency 'activesupport', '~> 8.1.3'
