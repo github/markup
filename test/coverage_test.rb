@@ -95,37 +95,17 @@ class CoverageTest < Minitest::Test
   end
 
   # --- rdoc.rb formatter constructor compatibility -----------------------
+  # Only the tests matching the installed RDoc are defined; CI runs both.
 
-  def test_rdoc_4_through_7_receive_options
-    formatter = Class.new do
-      def initialize(options)
-        raise ArgumentError, "expected RDoc::Options" unless options.is_a?(::RDoc::Options)
-      end
-
-      def convert(content); "rendered:#{content}"; end
+  if ::RDoc::VERSION.to_i >= 8
+    def test_rdoc_8_formatter_rejects_positional_options
+      assert_raises(ArgumentError) { ::RDoc::Markup::ToHtml.new(::RDoc::Options.new) }
+      assert_includes GitHub::Markup::RDoc.new.render("README.rdoc", "*bold*"), "<strong>bold</strong>"
     end
-
-    ["4.0.0", "6.3.4.1", "7.2.0"].each do |version|
-      with_stub_const("RDoc::VERSION", version) do
-        with_stub_const("RDoc::Markup::ToHtml", formatter) do
-          assert_equal "rendered:hello", GitHub::Markup::RDoc.new.render("README.rdoc", "hello")
-        end
-      end
-    end
-  end
-
-  def test_rdoc_8_and_legacy_versions_receive_no_positional_options
-    formatter = Class.new do
-      def initialize; end
-      def convert(content); "rendered:#{content}"; end
-    end
-
-    ["3.6.1", "8.0.0", "8.1.0"].each do |version|
-      with_stub_const("RDoc::VERSION", version) do
-        with_stub_const("RDoc::Markup::ToHtml", formatter) do
-          assert_equal "rendered:hello", GitHub::Markup::RDoc.new.render("README.rdoc", "hello")
-        end
-      end
+  else
+    def test_rdoc_7_formatter_requires_positional_options
+      assert_raises(ArgumentError) { ::RDoc::Markup::ToHtml.new }
+      assert_includes GitHub::Markup::RDoc.new.render("README.rdoc", "*bold*"), "<strong>bold</strong>"
     end
   end
 
