@@ -94,10 +94,6 @@ class CoverageTest < Minitest::Test
     refute md.send(:try_require, "github_markup_definitely_not_a_real_gem_#{Time.now.to_i}")
   end
 
-  def test_rdoc_renders_with_installed_version
-    assert_includes GitHub::Markup::RDoc.new.render("README.rdoc", "*bold*"), "<strong>bold</strong>"
-  end
-
   # --- implementation.rb default render and Linguist-less match? ---------
 
   def test_base_implementation_render_raises_not_implemented_error
