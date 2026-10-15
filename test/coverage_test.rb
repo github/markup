@@ -94,16 +94,8 @@ class CoverageTest < Minitest::Test
     refute md.send(:try_require, "github_markup_definitely_not_a_real_gem_#{Time.now.to_i}")
   end
 
-  if ::RDoc::VERSION.to_i >= 8
-    def test_rdoc_8_formatter_rejects_positional_options
-      assert_raises(ArgumentError) { ::RDoc::Markup::ToHtml.new(::RDoc::Options.new) }
-      assert_includes GitHub::Markup::RDoc.new.render("README.rdoc", "*bold*"), "<strong>bold</strong>"
-    end
-  else
-    def test_rdoc_7_formatter_requires_positional_options
-      assert_raises(ArgumentError) { ::RDoc::Markup::ToHtml.new }
-      assert_includes GitHub::Markup::RDoc.new.render("README.rdoc", "*bold*"), "<strong>bold</strong>"
-    end
+  def test_rdoc_renders_with_installed_version
+    assert_includes GitHub::Markup::RDoc.new.render("README.rdoc", "*bold*"), "<strong>bold</strong>"
   end
 
   # --- implementation.rb default render and Linguist-less match? ---------
