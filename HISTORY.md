@@ -1,3 +1,20 @@
+## 7.0.0 - 2026-10-15
+
+### Breaking
+
+* Require commonmarker 2.x when using the CommonMarker renderer; upgrade existing commonmarker 0.x installations [#2059](https://github.com/github/markup/pull/2059).
+* Accept `VALIDATE_UTF8`, `LIBERAL_HTML_TAG`, `TABLE_PREFER_STYLE_ATTRIBUTES`, and `STRIKETHROUGH_DOUBLE_TILDE` without applying them [#2059](https://github.com/github/markup/pull/2059).
+
+### Bug Fixes
+
+* Support RDoc 8 formatter initialization and declare `rdoc < 9` as a runtime dependency [#2109](https://github.com/github/markup/pull/2109), [#2104](https://github.com/github/markup/pull/2104).
+* Restore reStructuredText section and table-of-contents anchors with docutils 0.18 and later [#2081](https://github.com/github/markup/pull/2081), [#2087](https://github.com/github/markup/pull/2087).
+
+### Development
+
+* Update development dependencies to commonmarker 2.8.2, html-pipeline 3.2, minitest 6, and activesupport 8.1.
+* Require 100% measured line and branch coverage and load gem metadata without loading renderers [#2072](https://github.com/github/markup/pull/2072).
+
 ## 6.0.0 - 2026-05-04
 
 ### Breaking
