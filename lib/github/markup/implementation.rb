@@ -35,7 +35,10 @@ module GitHub
       private
 
       def file_ext_regexp
-        @file_ext_regexp ||= /\.(#{regexp})\z/
+        # Use regexp.source so an /i flag on this pattern applies to the
+        # extension itself. Interpolating a Regexp object embeds (?-mix:),
+        # which would keep .MD from matching /md/.
+        @file_ext_regexp ||= /\.(?:#{regexp.source})\z/i
       end
     end
   end
