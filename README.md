@@ -26,7 +26,9 @@ you wish to run the library. You can also run `script/bootstrap` to fetch them a
 * [.creole](http://wikicreole.org/) -- `gem install creole` (https://github.com/larsch/creole)
 * [.mediawiki, .wiki](http://www.mediawiki.org/wiki/Help:Formatting) -- `gem install wikicloth` (https://github.com/nricciar/wikicloth)
 * [.rst](http://docutils.sourceforge.net/rst.html) -- `pip install docutils`
-* [.asciidoc, .adoc, .asc](http://asciidoc.org/) -- `gem install asciidoctor` (http://asciidoctor.org)
+* [.asciidoc, .adoc, .asc](http://asciidoc.org/) -- `gem install asciidoctor` (http://asciidoctor.org).
+  Optionally `gem install asciidoctor-diagram` to render diagram blocks; see
+  [Diagrams in AsciiDoc](#diagrams-in-asciidoc).
 * [.pod](http://search.cpan.org/dist/perl/pod/perlpod.pod) -- `Pod::Simple::XHTML`
   comes with Perl >= 5.10. Lower versions should install Pod::Simple from CPAN.
 
@@ -70,6 +72,79 @@ And a convenience form:
 require 'github/markup'
 
 GitHub::Markup.render_s(GitHub::Markups::MARKUP_MARKDOWN, "* One\n* Two")
+```
+
+Diagrams in AsciiDoc
+--------------------
+
+Diagram blocks in AsciiDoc files -- PlantUML, C4, Mermaid, Graphviz, D2,
+Structurizr and friends -- are rendered as images when
+[asciidoctor-diagram](https://github.com/asciidoctor/asciidoctor-diagram) is
+installed:
+
+```asciidoc
+[plantuml]
+----
+@startuml
+!include <C4/C4_Container>
+Person(user, "User")
+Container(api, "API", "Ruby")
+Rel(user, api, "uses", "HTTPS")
+@enduml
+----
+```
+
+The diagram is rendered locally and inlined as a data URI, so the output stays
+self-contained and does not depend on where the generated file landed:
+
+```html
+<img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGlu..." alt="plantuml diagram">
+```
+
+**A data URI only survives a sanitizer that allows the `data:` protocol on
+`img/src`, and the stock html-pipeline config does not** -- it keeps the `<img>`
+but drops the `src`, leaving a broken image. If you sanitize the output of this
+library (as [the pipeline described above](#github-markup) does), allow the
+protocol:
+
+```ruby
+config = HTMLPipeline::SanitizationFilter::DEFAULT_CONFIG
+img = config[:protocols]["img"]
+config = config.merge(
+  protocols: config[:protocols].merge(
+    "img" => img.merge("src" => img["src"] + ["data"])
+  )
+)
+```
+
+Rendering a diagram needs the toolchain for its type -- a JVM for PlantUML (see
+`asciidoctor-diagram-plantuml`, which bundles the JAR), Graphviz for `dot`, the
+`d2` binary for D2, and so on. Install the gem alongside this one:
+
+```
+gem install asciidoctor-diagram asciidoctor-diagram-plantuml
+```
+
+When the gem is not installed, or the toolchain a diagram type needs is missing,
+the block falls back to a source block that keeps the diagram language on the
+`<pre>`, so a client-side renderer can still pick it up:
+
+```html
+<pre lang="plantuml"><code>@startuml ...</code></pre>
+```
+
+Nothing is enabled by default: a plain install never depends on a diagram
+toolchain, and always produces the tagged source block above.
+
+Choosing an output format (`svg` or `png`), per block:
+
+```asciidoc
+[plantuml,format=png]
+----
+@startuml
+Alice -> Bob: hi
+@enduml
+----
 ```
 
 Local Development
