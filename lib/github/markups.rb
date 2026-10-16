@@ -43,8 +43,9 @@ GitHub::Markup.markup(::GitHub::Markups::MARKUP_ASCIIDOC, :asciidoctor, /adoc|as
   else
     attributes['outfilesuffix'] = '.adoc'
   end
+  require "github/markup/asciidoctor_converter"
   Asciidoctor::Compliance.unique_id_start_index = 1
-  Asciidoctor.convert(content, :safe => :secure, :attributes => attributes)
+  Asciidoctor.convert(content, :safe => :secure, :attributes => attributes, :converter => GitHub::Markup::AsciidoctorConverter)
 end
 
 GitHub::Markup.command(
