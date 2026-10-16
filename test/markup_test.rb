@@ -112,7 +112,7 @@ message
       NOTE: A *simple* note.
 
       [[tip-id]]
-      .A title
+      .A _custom_ title
       [TIP.custom-role]
       ====
       A compound tip.
@@ -125,8 +125,8 @@ message
     assert_equal 'A <strong>simple</strong> note.', note.css('> p')[1].inner_html
     assert_equal 'tip-id', tip['id']
     assert_equal 'markdown-alert markdown-alert-tip custom-role', tip['class']
-    assert_equal 'Tip', tip.at_css('> p.markdown-alert-title').text
-    assert_equal 'A title', tip.at_css('> div.title').text
+    assert_equal 'A <em>custom</em> title', tip.at_css('> p.markdown-alert-title').inner_html
+    assert_empty tip.css('div.title')
     assert_equal 'A compound tip.', tip.at_css('> div.paragraph > p').text
     assert_empty doc.css('.admonitionblock')
   end

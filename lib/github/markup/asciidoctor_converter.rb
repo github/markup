@@ -16,11 +16,12 @@ module GitHub
         id_attr = node.id ? %( id="#{node.id}") : ''
         name = node.attr 'name'
         role = node.role ? " #{node.role}" : ''
-        title_element = node.title? ? %(<div class="title">#{node.title}</div>\n) : ''
+        # Like a Markdown alert with a custom title, the block title replaces the label.
+        title = node.title? ? node.title : (node.attr 'textlabel')
         content = node.content_model == :compound ? node.content : %(<p>#{node.content}</p>)
         %(<div#{id_attr} class="markdown-alert markdown-alert-#{name}#{role}">
-<p class="markdown-alert-title">#{node.attr 'textlabel'}</p>
-#{title_element}#{content}
+<p class="markdown-alert-title">#{title}</p>
+#{content}
 </div>)
       end
     end
