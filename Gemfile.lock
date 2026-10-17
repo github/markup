@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    github-markup (7.0.0)
+    github-markup (6.1.0)
       rdoc (< 9)
 
 GEM
