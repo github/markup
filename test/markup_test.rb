@@ -137,4 +137,16 @@ message
     assert_equal "&lt;style>.red{color: red;}&lt;/style>\n", GitHub::Markup.render_s(GitHub::Markups::MARKUP_MARKDOWN, "<style>.red{color: red;}</style>", options: {commonmarker_opts: [:UNSAFE]})
     assert_equal "<style>.red{color: red;}</style>\n", GitHub::Markup.render_s(GitHub::Markups::MARKUP_MARKDOWN, "<style>.red{color: red;}</style>", options: {commonmarker_opts: [:UNSAFE], commonmarker_exts: [:autolink, :table, :strikethrough]})
   end
+
+  def test_blanks_rst_inlined_reference
+    expected = '<img src="https://example.com/img.svg"></a>'
+
+    actual = GitHub::Markup.render_s(GitHub::Markups::MARKUP_RST, <<~RST
+    .. image:: https://example.com/img.svg
+        :target: https://example.com/
+    RST
+    )
+
+    assert_equal expected, actual.strip.lines.last
+  end
 end
