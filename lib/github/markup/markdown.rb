@@ -11,6 +11,10 @@ module GitHub
             [:tagfilter, :autolink, :table, :strikethrough],
           )
 
+          unless defined?(::Commonmarker) && ::Commonmarker.respond_to?(:to_html)
+            next ::CommonMarker.render_html(content, [:GITHUB_PRE_LANG] + legacy_opts, legacy_exts)
+          end
+
           parse_options = {}
           # commonmarker 2.x changes several render defaults that diverge from cmark-gfm 0.x:
           #   - hardbreaks defaults to true in 2.x but was false in 0.x.

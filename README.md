@@ -48,6 +48,8 @@ from this directory.
 Usage
 -----
 
+Markdown rendering supports CommonMarker 0.x and 2.x. Keep the installed version to retain that parser's option behavior. Extensions follow the installed parser; 2.x-only extensions remain unavailable with 0.x.
+
 Basic form:
 
 ```ruby
@@ -81,6 +83,8 @@ source .venv/bin/activate
 cd script
 ./bootstrap
 ```
+
+The development bundle uses CommonMarker 2.8.2 by default. Set `COMMONMARKER_VERSION` to test another version, then resolve dependencies with `bundle update commonmarker`. See [Testing](CONTRIBUTING.md#testing) for commands.
 
 Contributing
 ------------

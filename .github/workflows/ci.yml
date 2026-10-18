@@ -9,12 +9,15 @@ permissions:
 
 jobs:
   build:
-    name: "Test / Ruby ${{ matrix.ruby }} / RDoc ${{ matrix.rdoc }}"
+    name: "Test / Ruby ${{ matrix.ruby }} / RDoc ${{ matrix.rdoc }} / CommonMarker ${{ matrix.commonmarker }}"
     runs-on: ubuntu-latest
     env:
       RDOC_VERSION: "~> ${{ matrix.rdoc }}"
+      COMMONMARKER_VERSION: "${{ matrix.commonmarker }}"
     strategy:
       matrix:
+        commonmarker:
+          - "~> 2.8.2"
         rdoc:
           - "7.2.0"
         ruby:
@@ -24,6 +27,10 @@ jobs:
         include:
           - ruby: "4.0"
             rdoc: "8.0"
+            commonmarker: "~> 2.8.2"
+          - ruby: "3.4"
+            rdoc: "7.2.0"
+            commonmarker: "0.23.12"
       fail-fast: false
 
     steps:
@@ -31,15 +38,16 @@ jobs:
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           fetch-depth: 10
+          persist-credentials: false
 
-      - uses: ruby/setup-ruby@a0102e0972be65f351c307e2d64b9314a57c8073 # v1
+      - uses: ruby/setup-ruby@651ff0d62c5c79bed6d53ec518387aae20e72c1a # v1.329.0
         with:
           ruby-version: ${{ matrix.ruby }}
-          bundler-cache: ${{ matrix.rdoc == '7.2.0' }}
+          bundler-cache: ${{ matrix.rdoc == '7.2.0' && matrix.commonmarker == '~> 2.8.2' }}
 
-      - name: Install RDoc 8 dependencies
-        if: matrix.rdoc == '8.0'
-        run: bundle update rdoc
+      - name: Resolve overridden parser dependencies
+        if: matrix.rdoc != '7.2.0' || matrix.commonmarker != '~> 2.8.2'
+        run: bundle update commonmarker rdoc
 
       - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:
