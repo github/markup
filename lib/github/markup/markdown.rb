@@ -64,17 +64,16 @@ module GitHub
                  :greentext, :alerts, :description_lists
               extension_options[ext] = true
             when :header_ids
-              # header_ids takes a string prefix in 2.x rather than a boolean. The legacy contract
-              # only passed it as a symbol, so use an empty prefix to enable anchor generation.
+              # header_ids takes a string prefix in 2.x rather than a boolean. An empty prefix
+              # enables anchor generation for the symbol-based commonmarker_exts option.
               extension_options[:header_ids] = ""
             else
               raise ArgumentError, "unknown commonmarker extension: #{ext.inspect}"
             end
           end
 
-          # Several extensions (tagfilter, autolink, table, strikethrough, tasklist, shortcodes)
-          # are enabled by default in commonmarker 2.x but were strictly opt-in in 0.x. Explicitly
-          # disable any extension the caller did not request so behavior matches the legacy contract.
+          # CommonMarker 2.x enables more extensions by default than this wrapper does.
+          # Disable unrequested defaults to preserve the wrapper's extension choices.
           [:strikethrough, :tagfilter, :autolink, :table, :tasklist, :shortcodes].each do |ext|
             extension_options[ext] = false unless extension_options[ext]
           end

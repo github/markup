@@ -84,7 +84,7 @@ cd script
 ./bootstrap
 ```
 
-The development bundle uses CommonMarker 2.8.2 by default. Set `COMMONMARKER_VERSION` to test another version, then resolve dependencies with `bundle update commonmarker`. See [Testing](CONTRIBUTING.md#testing) for commands.
+Set `COMMONMARKER_VERSION` to override the development bundle's default `~> 2.8.2` requirement. See [Testing](CONTRIBUTING.md#testing) for parser version commands.
 
 Contributing
 ------------
