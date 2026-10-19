@@ -1,6 +1,16 @@
-## 6.1.0 - 2026-10-16
+## 6.1.1 (unreleased)
 
-Version `6.1.0` replaces the withdrawn `7.0.0` release with the same runtime behavior and dependency requirements. The CommonMarker compatibility changes below remain in effect.
+### Bug Fixes
+
+* I restored the CommonMarker 0.x API without requiring a parser upgrade. Existing 0.x installations retain their rendering flags, extension validation, and output behavior.
+* I retained CommonMarker 2.x support with its existing option behavior.
+* I added full-suite CI coverage for CommonMarker 0.23.12 alongside the default 2.8.2 dependency.
+
+The RDoc 8 and reStructuredText fixes listed below remain included.
+
+## 6.1.0 - 2026-10-16 (withdrawn)
+
+I withdrew this release because it required a CommonMarker upgrade for existing 0.x installations. The `v6.1.0` tag remains available for traceability.
 
 ### Compatibility Changes
 

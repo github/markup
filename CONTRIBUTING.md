@@ -42,6 +42,13 @@ CI tests RDoc 7.2 and 8.x. To test RDoc 8.x locally:
     $ RDOC_VERSION='~> 8.0' bundle update rdoc
     $ RDOC_VERSION='~> 8.0' bundle exec rake
 
+CI also tests CommonMarker 0.23.12. To run the full suite with the legacy parser:
+
+    $ COMMONMARKER_VERSION=0.23.12 bundle update commonmarker
+    $ COMMONMARKER_VERSION=0.23.12 bundle exec rake
+
+Run these commands in a separate checkout to keep the default lockfile unchanged. You can combine `COMMONMARKER_VERSION` and `RDOC_VERSION` to test both overrides.
+
 ## Releasing a new version
 
 If you are the current maintainer of this gem:
