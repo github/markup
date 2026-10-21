@@ -107,6 +107,30 @@ message
     assert_match result, GitHub::Markup.render_s(GitHub::Markups::MARKUP_ASCIIDOC, markup).split.join
   end
 
+  def test_asciidoc_admonitions_render_as_markdown_alerts
+    html = GitHub::Markup.render('README.adoc', <<~ADOC)
+      NOTE: A *simple* note.
+
+      [[tip-id]]
+      .A _custom_ title
+      [TIP.custom-role]
+      ====
+      A compound tip.
+      ====
+    ADOC
+    doc = Nokogiri::HTML.fragment(html)
+    note, tip = doc.css('div.markdown-alert').to_a
+    assert_equal 'markdown-alert markdown-alert-note', note['class']
+    assert_equal 'Note', note.at_css('> p.markdown-alert-title').text
+    assert_equal 'A <strong>simple</strong> note.', note.css('> p')[1].inner_html
+    assert_equal 'tip-id', tip['id']
+    assert_equal 'markdown-alert markdown-alert-tip custom-role', tip['class']
+    assert_equal 'A <em>custom</em> title', tip.at_css('> p.markdown-alert-title').inner_html
+    assert_empty tip.css('div.title')
+    assert_equal 'A compound tip.', tip.at_css('> div.paragraph > p').text
+    assert_empty doc.css('.admonitionblock')
+  end
+
   def test_raises_error_if_command_exits_non_zero
     GitHub::Markup.command(:doesntmatter, 'test/fixtures/fail.sh', /fail/, ['Java'], 'fail')
     assert GitHub::Markup.can_render?('README.java', 'stop swallowing errors')
