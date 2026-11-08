@@ -1,0 +1,13 @@
+=encoding utf8
+
+=begin html
+
+<p>Latin-1 range: «» é</p>
+
+=end html
+
+=begin html
+
+<p>Above Latin-1: ੦..੯ ٠..٩</p>
+
+=end html
