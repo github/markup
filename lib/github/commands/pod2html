@@ -13,4 +13,5 @@ $p->strip_verbatim_indent(sub {
     (my $indent = $lines->[0]) =~ s/\S.*//;
     return $indent;
 });
+binmode STDOUT, ':encoding(UTF-8)';
 $p->parse_from_file(shift);
